@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<playlist version="1" xmlns="http://xspf.org/ns/0/">
+  <trackList>
+  	<track>
+      <title>1. Blues na cesty</title>
+      <location>./a-to-uz-dneska-nikdo-neposloucha/01-blues-na-cesty.mp3</location>
+      <info>./a-to-uz-dneska-nikdo-neposloucha/01-blues-na-cesty.mp3</info>
+    </track>
+		<track>
+		  <title>2. Opilec Bedřich</title>
+		  <location>./a-to-uz-dneska-nikdo-neposloucha/02-opilec-bedrich.mp3</location>
+		  <info>./a-to-uz-dneska-nikdo-neposloucha/02-opilec-bedrich.mp3</info>
+		</track>
+		<track>
+		  <title>3. Panelák</title>
+		  <location>./a-to-uz-dneska-nikdo-neposloucha/03-panelak.mp3</location>
+		  <info>./a-to-uz-dneska-nikdo-neposloucha/03-panelak.mp3</info>
+		</track>
+		<track>
+		  <title>4. Bufet Adrie</title>
+		  <location>./a-to-uz-dneska-nikdo-neposloucha/04-bufet-adrie.mp3</location>
+		  <info>./a-to-uz-dneska-nikdo-neposloucha/04-bufet-adrie.mp3</info>
+		</track>
+		<track>
+		  <title>5. Krise středního věku</title>
+		  <location>./a-to-uz-dneska-nikdo-neposloucha/05-krise-stredniho-veku.mp3</location>
+		  <info>./a-to-uz-dneska-nikdo-neposloucha/05-krise-stredniho-veku.mp3</info>
+		</track>
+  	<track>
+      <title>6. Nemá to cenu</title>
+      <location>./a-to-uz-dneska-nikdo-neposloucha/06-nema-to-cenu.mp3</location>
+      <info>./a-to-uz-dneska-nikdo-neposloucha/06-nema-to-cenu.mp3</info>
+    </track>
+		<track>
+		  <title>7. Plakát</title>
+		  <location>./a-to-uz-dneska-nikdo-neposloucha/07-plakat.mp3</location>
+		  <info>./a-to-uz-dneska-nikdo-neposloucha/07-plakat.mp3</info>
+		</track>
+		<track>
+		  <title>8. Jeřáby, jeřáby</title>
+		  <location>./a-to-uz-dneska-nikdo-neposloucha/08-jeraby-jeraby.mp3</location>
+		  <info>./a-to-uz-dneska-nikdo-neposloucha/08-jeraby-jeraby.mp3</info>
+		</track>
+		<track>
+		  <title>9. Lež</title>
+		  <location>./a-to-uz-dneska-nikdo-neposloucha/09-lez.mp3</location>
+		  <info>./a-to-uz-dneska-nikdo-neposloucha/09-lez.mp3</info>
+		</track>
+		<track>
+		  <title>10. Kapesní blues</title>
+		  <location>./a-to-uz-dneska-nikdo-neposloucha/10-kapesni-blues.mp3</location>
+		  <info>./a-to-uz-dneska-nikdo-neposloucha/10-kapesni-blues.mp3</info>
+		</track>
+  </trackList>
+</playlist>
