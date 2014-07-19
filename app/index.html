@@ -22,10 +22,10 @@
     <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
+          <a href="#/"><img src="images/napis.png"></a>
           <a class="fa fa-facebook" href="http://www.facebook.com/rezatyrakety"></a>
           <a class="fa fa-twitter" href="http://www.twitter.com/juhy"></a>  
-          <a class="fa fa-google-plus" href="https://plus.google.com/111938233519428544841/?prsrc=3"></a><br>      
-          <a href="#/"><img src="images/napis.png"></a>
+          <a class="fa fa-google-plus" href="https://plus.google.com/111938233519428544841/?prsrc=3"></a>      
         </div>
         <div class="navbar-collapse collapse" id="navbar-main">
           <ul class="nav navbar-nav">
@@ -48,19 +48,21 @@
         </div>
         <div class="col-lg-4 column">
           <h1>Nejbližší koncert</h1>
+            {{koncerty[0]}}
         </div>
       </div>
-
-      <div class="footer">
-        <p>
-          <p>Kontakt:
-          <b>Miroslav Juhy Juhos</b>
-          <span class="glyphicon glyphicon-phone"></span> <span class="tel">605 376 741</span>
-          <span class="glyphicon glyphicon-envelope"></span> <script type="text/javascript">var email='juhy',domain='rezatyrakety.cz',address=email+'@'+domain;document.write('<a class="email" href="mailto:'+address+'">'+address+'</a>')</script>
-          <span class="glyphicon glyphicon-map-marker"></span>Plzeň, Česká republika</p>
-        </p>
-      </div>
     </div>
+
+
+
+    <footer >
+      <div class="container">
+          <span>Miroslav Juhy Juhos</span>
+          <span><i class="glyphicon glyphicon-phone"></i> 605 376 741</span>
+          <span><i class="glyphicon glyphicon-envelope"></i> <script type="text/javascript">var email='juhy',domain='rezatyrakety.cz',address=email+'@'+domain;document.write('<a class="email" href="mailto:'+address+'">'+address+'</a>')</script></span>
+          <span><i class="glyphicon glyphicon-map-marker"></i> Plzeň, Česká republika</span>
+      </div>
+    </footer>
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->

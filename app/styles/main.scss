@@ -1,7 +1,13 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
-$font-size-base: 16px;
+$font-size-base: 18px;
 $font-size-h1: floor(($font-size-base * 4));
 
+$navbar-default-bg: #B24227;
+$navbar-default-color: white;
+
+$link-color: #33A8AC;
+
+$body-bg:  #FDF5E8; 
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/bootstrap.scss";
 // endbower
@@ -46,13 +52,59 @@ body {
 }
 
 
-
-
-h1, h2, h3, .header li a {
+h1 {
   font-family: 'Lobster', cursive;
+  color: white;
+  text-shadow: 0 0 1px #B24227,  -5px 5px 0px #B24227;
+}
+h2 {
+  color: #B24227;
+text-shadow: 0 0 2px white; 
 }
 
 .column {
-  background-color: gray;
+  box-shadow: -2px 0 0 white ,-3px 0 0 lighten(#B24227, 20%);
   min-height: 500px;
+}
+
+.koncerty-list  {
+  .time {
+    color: gray;
+    font-size: 0.6em;
+  }
+  li {
+
+    list-style-type:none;
+    margin: {
+      bottom: 2em;
+    }
+  }
+  ul {
+    li {
+      margin: 0;
+      font-style: italic;
+    }
+  }
+}
+
+$footerBg:  #444444;
+footer {
+  border: {
+    top: 4px solid darken($footerBg, 10%);
+  }
+  background-color: $footerBg;
+  color: #EEEEEE;
+  padding: 1em;
+  min-height: 150px;
+  margin: {top: 1em;}
+  span {
+    margin: {
+      right: 3em;
+    }
+  }
+}
+
+summary {
+  color: #33A8AC;
+  cursor: pointer;
 }

@@ -4,16 +4,20 @@
 		"selected_items":
 		[
 			[
+				"fo",
+				"font-size"
+			],
+			[
+				"font",
+				"font-style"
+			],
+			[
 				"fonte",
 				"font-size: "
 			],
 			[
 				"ba",
 				"background-color: "
-			],
-			[
-				"font",
-				"font-family"
 			],
 			[
 				"mar",
@@ -275,6 +279,54 @@
 	},
 	"buffers":
 	[
+		{
+			"file": ".gitignore",
+			"settings":
+			{
+				"buffer_size": 57,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/controllers/Concerts.js",
+			"settings":
+			{
+				"buffer_size": 548,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/styles/main.scss",
+			"settings":
+			{
+				"buffer_size": 1365,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap-mincer.scss",
+			"settings":
+			{
+				"buffer_size": 720,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/main.html",
+			"settings":
+			{
+				"buffer_size": 1586,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/projects/www.rezatyrakety.cz-older/app/scripts/rr.js",
+			"settings":
+			{
+				"buffer_size": 2554,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -400,6 +452,10 @@
 	},
 	"file_history":
 	[
+		"/C/projects/www.rezatyrakety.cz/.sass-cache/6e7beb7e9f194716031ba9549e5017bdbb43e354/_variables.scssc",
+		"/C/projects/www.rezatyrakety.cz/bower_components/font-awesome/less/variables.less",
+		"/C/projects/www.rezatyrakety.cz/.sass-cache/4a3be19c82549c7646004461622b2cd3b94d2918/_nav-vertical-align.scssc",
+		"/C/projects/www.rezatyrakety.cz/app/views/vorr.html",
 		"/C/projects/www.rezatyrakety.cz/app/scripts/controllers/Concerts.js",
 		"/C/projects/www.rezatyrakety.cz/app/scripts/app.js",
 		"/C/projects/www.rezatyrakety.cz/app/views/nahravky.html",
@@ -407,13 +463,9 @@
 		"/C/projects/www.rezatyrakety.cz/app/index.html",
 		"/C/projects/www.rezatyrakety.cz/app/styles/main.scss",
 		"/C/projects/www.rezatyrakety.cz/app/views/texty.html",
-		"/C/projects/www.rezatyrakety.cz/app/views/vorr.html",
 		"/C/projects/www.rezatyrakety.cz/app/views/trojka.html",
 		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-google-cdn/node_modules/bower/node_modules/inquirer/node_modules/cli-color/node_modules/es5-ext/object/valid-object.js",
 		"/C/projects/www.rezatyrakety.cz/.sass-cache/4a3be19c82549c7646004461622b2cd3b94d2918/_text-emphasis.scssc",
-		"/C/projects/www.rezatyrakety.cz/.sass-cache/6e7beb7e9f194716031ba9549e5017bdbb43e354/_variables.scssc",
-		"/C/projects/www.rezatyrakety.cz/bower_components/font-awesome/less/variables.less",
-		"/C/projects/www.rezatyrakety.cz/.sass-cache/4a3be19c82549c7646004461622b2cd3b94d2918/_nav-vertical-align.scssc",
 		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-google-cdn/node_modules/bower/node_modules/retry/test/integration/test-retry-operation.js",
 		"/C/projects/www.rezatyrakety.cz/.sass-cache/4a3be19c82549c7646004461622b2cd3b94d2918/_table-row.scssc",
 		"/C/projects/www.rezatyrakety.cz - old/index.html",
@@ -531,7 +583,7 @@
 	],
 	"find":
 	{
-		"height": 39.0
+		"height": 36.0
 	},
 	"find_in_files":
 	{
@@ -673,6 +725,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"|unsafe",
 			"vendor",
 			"X",
 			"rrApp",
@@ -799,8 +852,7 @@
 			"span",
 			"linky",
 			"configureProxies",
-			"	\n",
-			"profi"
+			"	\n"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -831,14 +883,189 @@
 	"groups":
 	[
 		{
+			"selected": 3,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": ".gitignore",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 57,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								51,
+								51
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/scripts/controllers/Concerts.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 548,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								254,
+								254
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/styles/main.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1365,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1125,
+								1125
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1161.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap-mincer.scss",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 720,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/views/main.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1586,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								894,
+								894
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/C/projects/www.rezatyrakety.cz-older/app/scripts/rr.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2554,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								256,
+								256
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 31.0
+		"height": 28.0
 	},
 	"input":
 	{
@@ -878,7 +1105,7 @@
 	"project": "rr.sublime-project",
 	"replace":
 	{
-		"height": 58.0
+		"height": 52.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1406,6 +1633,10 @@
 		"height": 625.0,
 		"selected_items":
 		[
+			[
+				"bl",
+				"C:\\projects\\blueweb.sublime-project"
+			],
 			[
 				"",
 				"C:\\projects\\hearth-app.sublime-project"

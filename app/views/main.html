@@ -8,11 +8,11 @@
     <span class="time">{{koncert.date*1000 | date :'HH:mm'}}</span>
     <a target="_blank" href="http://mapy.cz/?q=Loc:{{koncert.linkMapa}}" title="{{koncert.adresaUlice}}">{{koncert.adresaMesto}}</a>, 
     <a target="_blank"  href="{{koncert.WWW}}" title="Web klubu">{{koncert.jmeno}}</a>
-    <div class="note" ng-bind-html="koncert.poznamka|unsafe"></div>
+    <div class="note" ng-bind-html="koncert.poznamka"></div>
   </li> 
 </ul>
 <details>
-  <summary id="odehrane" ng-cloak >Odehrané ({{odehraneKoncerty.length - 2}})</summary>
+  <summary id="odehrane" ng-cloak ><h2>Odehrané ({{odehraneKoncerty.length - 2}})</h2></summary>
     <ul id="koncerty-list-odehrane" class="koncerty-list">
       <li ng-repeat="koncert in odehraneKoncerty">
         <div ng-if="koncert.trojkazblues_flag == 1" class="trojka" title="Trojka"></div>
@@ -20,7 +20,7 @@
         {{koncert.date*1000 | date :'dd.MM. yyyy'}}
         <a target="_blank" href="http://mapy.cz/?q=Loc:{{koncert.linkMapa}}" title="{{koncert.adresaUlice}}"> {{koncert.adresaMesto}}</a>, 
         <a target="_blank" href="{{koncert.WWW}}" title="Web klubu">{{koncert.jmeno}}</a>
-        <div class="note" ng-bind-html="koncert.poznamka|unsafe"></div>
+        <div class="note" ng-bind-html="koncert.poznamka"></div>
       </li> 
     </ul>
   </details>
