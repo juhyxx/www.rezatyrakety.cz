@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"border-",
+				"border-bottom-right-radius: "
+			],
+			[
+				"border-radius",
+				"border-bottom-left-radius: "
+			],
+			[
+				"ba",
+				"background-image: "
+			],
+			[
+				"no-",
+				"no-repeat"
+			],
+			[
 				"min",
 				"min-height: "
 			],
@@ -22,10 +38,6 @@
 			[
 				"fonte",
 				"font-size: "
-			],
-			[
-				"ba",
-				"background-color: "
 			],
 			[
 				"info",
@@ -280,14 +292,6 @@
 	"buffers":
 	[
 		{
-			"file": ".gitignore",
-			"settings":
-			{
-				"buffer_size": 57,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "app/scripts/controllers/Concerts.js",
 			"settings":
 			{
@@ -296,19 +300,53 @@
 			}
 		},
 		{
-			"file": "app/scripts/app.js",
+			"file": "app/styles/main.scss",
 			"settings":
 			{
-				"buffer_size": 649,
+				"buffer_size": 2313,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/styles/main.scss",
+			"contents": "Searching 37 files for \"container\"\n\nC:\\projects\\www.rezatyrakety.cz\\app\\404.html:\n   64        }\n   65  \n   66:       .container {\n   67          max-width: 380px;\n   68          _width: 380px;\n   ..\n  141    </head>\n  142    <body>\n  143:     <div class=\"container\">\n  144        <h1>Not found <span>:(</span></h1>\n  145        <p>Sorry, but the page you were trying to view does not exist.</p>\n\nC:\\projects\\www.rezatyrakety.cz\\app\\index.html:\n   21  \n   22      <div class=\"navbar navbar-default navbar-fixed-top\">\n   23:       <div class=\"container\">\n   24          <div class=\"navbar-header\">\n   25            <a href=\"#/\"><img src=\"images/napis.png\"></a>\n   ..\n   42        </div>\n   43      </div>\n   44:     <div class=\"container\" style=\"padding-top:5em;\">\n   45        <div class=\"row\">\n   46          <div class=\"col-lg-8\">\n   ..\n   57  \n   58      <footer >\n   59:       <div class=\"container\">\n   60            <span>Miroslav Juhy Juhos</span>\n   61            <span><i class=\"glyphicon glyphicon-phone\"></i> 605 376 741</span>\n\nC:\\projects\\www.rezatyrakety.cz\\app\\styles\\main.scss:\n   61  /* Responsive: Portrait tablets and up */\n   62  @media screen and (min-width: 768px) {\n   63:   .container {\n   64      max-width: 960px;\n   65    }\n\n6 matches across 3 files\n",
 			"settings":
 			{
-				"buffer_size": 1931,
+				"buffer_size": 1277,
+				"line_ending": "Windows",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "app/styles/mixins/_palette.scss",
+			"settings":
+			{
+				"buffer_size": 685,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Gruntfile.js",
+			"settings":
+			{
+				"buffer_size": 10866,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/main.html",
+			"settings":
+			{
+				"buffer_size": 1577,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/projects/hearth-rails/web/app/app/styles/main.scss",
+			"settings":
+			{
+				"buffer_size": 32808,
+				"line_ending": "Windows"
 			}
 		},
 		{
@@ -452,6 +490,9 @@
 	},
 	"file_history":
 	[
+		"/C/projects/www.rezatyrakety.cz/app/styles/mixins/_pallette-color.scss",
+		"/C/projects/www.rezatyrakety.cz/app/styles/palette.scss",
+		"/C/projects/www.rezatyrakety.cz/.gitignore",
 		"/C/projects/hearth-rails/web/app/Gruntfile.js",
 		"/C/projects/www.rezatyrakety.cz-older/app/scripts/rr.js",
 		"/C/projects/www.rezatyrakety.cz/app/views/main.html",
@@ -576,20 +617,19 @@
 		"/C/projects/hearth-rails/web/app/app/vendor/foundation/scss/foundation/components/_inline-lists.scss",
 		"/C/projects/hearth-rails/web/app/app/vendor/font-awesome/less/spinning.less",
 		"/C/projects/hearth-rails/web/app/app/vendor/modernizr/feature-detects/pointerlock-api.js",
-		"/C/projects/hearth-rails/web/app/app/vendor/foundation-icon-fonts/svgs/fi-social-pinterest.svg",
-		"/C/projects/hearth-rails/web/app/app/vendor/foundation-icon-fonts/svgs/fi-social-picasa.svg",
-		"/C/projects/hearth-rails/web/app/app/templates/needOfferSelector.html",
-		"/C/projects/hearth-rails/web/app/app/scripts/services/CommunityService.js"
+		"/C/projects/hearth-rails/web/app/app/vendor/foundation-icon-fonts/svgs/fi-social-pinterest.svg"
 	],
 	"find":
 	{
-		"height": 40.0
+		"height": 53.0
 	},
 	"find_in_files":
 	{
 		"height": 105.0,
 		"where_history":
 		[
+			"C:\\projects\\www.rezatyrakety.cz\\app",
+			"C:\\projects\\www.rezatyrakety.cz\\app\\scripts",
 			"C:\\projects\\hearth-rails\\web\\app\\app\\scripts",
 			"C:\\projects\\hearth-rails\\web\\app\\app\\styles",
 			"C:\\projects\\hearth-rails\\web\\app\\app\\scripts",
@@ -715,9 +755,7 @@
 			"C:\\projects\\hearth-rails\\web\\app\\app\\scripts\\controllers",
 			"C:\\projects\\hearth-rails\\web\\app\\app\\scripts",
 			"C:\\projects\\hearth-rails\\web\\app\\app\\templates",
-			"C:\\projects\\hearth-rails\\web\\app\\app\\scripts",
-			"C:\\projects\\hearth-rails\\web\\app\\app\\styles",
-			"C:\\projects\\hearth-rails\\web\\app\\app\\templates"
+			"C:\\projects\\hearth-rails\\web\\app\\app\\scripts"
 		]
 	},
 	"find_state":
@@ -725,6 +763,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"container",
+			"container\\",
+			"5em",
+			"containe",
+			"#B24227",
+			"nth",
+			"pall",
 			"prox",
 			"color",
 			"control",
@@ -845,14 +890,7 @@
 			"item",
 			"item.author._type != 'Community'",
 			"reply",
-			"author",
-			"filter",
-			"ismine",
-			"item",
-			"avatar",
-			"avatate",
-			"item",
-			"12"
+			"author"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -883,39 +921,11 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 7,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": ".gitignore",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 57,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								51,
-								51
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "app/scripts/controllers/Concerts.js",
 					"semi_transient": false,
 					"settings":
@@ -940,53 +950,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "app/scripts/app.js",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 649,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
+					"buffer": 1,
 					"file": "app/styles/main.scss",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1931,
+						"buffer_size": 2313,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1929,
-								1929
+								255,
+								255
 							]
 						],
 						"settings":
@@ -996,14 +977,200 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2116.0,
+						"translation.y": 137.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1277,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										119,
+										128
+									],
+									[
+										256,
+										265
+									],
+									[
+										542,
+										551
+									],
+									[
+										727,
+										736
+									],
+									[
+										893,
+										902
+									],
+									[
+										1199,
+										1208
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								733,
+								733
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 1,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 333.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
+					"buffer": 3,
+					"file": "app/styles/mixins/_palette.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 685,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								382,
+								382
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
 					"buffer": 4,
+					"file": "Gruntfile.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10866,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3436,
+								3436
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4944.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "app/views/main.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1577,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								888,
+								888
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/C/projects/hearth-rails/web/app/app/styles/main.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 32808,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								233,
+								233
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
 					"file": "app/index.html",
 					"semi_transient": false,
 					"settings":
@@ -1015,8 +1182,8 @@
 						"selection":
 						[
 							[
-								1949,
-								1949
+								1709,
+								1709
 							]
 						],
 						"settings":
@@ -1026,14 +1193,14 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 349.0,
+						"translation.y": 1276.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 8,
 					"file": "bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_variables.scss",
 					"semi_transient": false,
 					"settings":
@@ -1054,10 +1221,10 @@
 							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 392.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 8,
 					"type": "text"
 				}
 			]
@@ -1065,7 +1232,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 40.0
+		"height": 45.0
 	},
 	"input":
 	{
@@ -1105,7 +1272,7 @@
 	"project": "rr.sublime-project",
 	"replace":
 	{
-		"height": 76.0
+		"height": 86.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1699,7 +1866,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 267.0,
+	"side_bar_width": 184.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

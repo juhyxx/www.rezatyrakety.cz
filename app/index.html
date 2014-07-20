@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="rr">
+  <body ng-app="rr" ng-controller="Concerts">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -33,11 +33,9 @@
             <li><a ng-href="#/texty">Texty</a></li>
             <li><a ng-href="#/trojka">Trojka</a></li>
           </ul>
-
           <ul class="nav navbar-nav navbar-right">
             <li><a ng-href="#/vorr">Vo Raketách</a></li>
           </ul>
-
         </div>
       </div>
     </div>
@@ -48,12 +46,18 @@
         </div>
         <div class="col-lg-4 column">
           <h1>Nejbližší koncert</h1>
-            {{koncerty[0]}}
+
+          <div ng-if="nearest.trojkazblues_flag == 1" class="trojka" title="Trojka"></div>
+            <div ng-if="nearest.trojkazblues_flag == 2" class="rock" title="Rock do klobouku"></div>
+            <a  ng-if="nearest.fblink" href="{{nearest.fblink}}" class="webicon facebook" title="Událost na Facebooku"></a>
+            <div>{{nearest.date*1000 | date :'dd.MM. yyyy'}}</div>
+            <div class="time">{{nearest.date*1000 | date :'HH:mm'}}</div>
+            <a target="_blank" href="http://mapy.cz/?q=Loc:{{nearest.linkMapa}}" title="{{nearest.adresaUlice}}">{{nearest.adresaMesto}}</a>, 
+            <a target="_blank"  href="{{nearest.WWW}}" title="Web klubu">{{nearest.jmeno}}</a>
+            <div class="note" ng-bind-html="nearest.poznamka"></div>
         </div>
       </div>
     </div>
-
-
 
     <footer >
       <div class="container">

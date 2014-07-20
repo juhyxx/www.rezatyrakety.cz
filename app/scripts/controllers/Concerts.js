@@ -9,15 +9,17 @@
  */
 angular.module('rr')
 	.controller('Concerts', [
-		'$scope', '$http', '$rootScope',
-		
-		function($scope, $http, $rootScope) {
+		'$scope', '$http',
+
+		function($scope, $http) {
+
 			$http({
 				method: 'GET',
 				url: 'data.json'
 			}).success(function(data, status, headers, config) {
-				$rootScope.koncerty = data.result.koncerts;
+				$scope.koncerty = data.result.koncerts;
 				$scope.odehraneKoncerty = data.result.oldkoncerts;
+				$scope.nearest = $scope.koncerty[0];
 			}).error(function(data, status, headers, config) {
 				window.console.error('Loading data error');
 			});

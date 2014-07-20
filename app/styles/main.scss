@@ -1,131 +1,174 @@
 @import "mixins/palette";
 
-$color: #9b1915, #33A8AC, #ba9d63, #e2c78e;
+$color: #9b1915, #33a8ac, #ba9d63, #e2c78e, #444444;
 
 @include palette($color);
 
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 $font-size-base: 18px;
-$font-size-h1: floor(($font-size-base * 4));
+$font-size-h1: floor($font-size-base * 4);
 
 $navbar-default-bg: color(1);
 $navbar-default-color: white;
 
-$link-color: #33A8AC;
+$link-color: #33a8ac;
 
-$body-bg:  #FDF5E8; 
+$body-bg: #fdf5e8;
+
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/bootstrap.scss";
+
 // endbower
 
 $fa-font-path: "../bower_components/font-awesome/fonts";
+
 @import "font-awesome/scss/font-awesome.scss";
+
 @import url(http://fonts.googleapis.com/css?family=Bree+Serif&subset=latin,latin-ext);
+
 @import url(http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext);
 
-
 .browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
 }
 
 .navbar {
-  box-shadow: 0 2px 0 -1px white, 0 2px 0 2px color(1);
+    box-shadow: 0 2px 0 -1px white, 0 2px 0 2px color(1);
 }
 
 /* Space out content a bit */
 body {
-  font-family: Bree Serif, serif;
-  background-image: inline-image("v2.png");
-  background-repeat: no-repeat;
-  padding: 0;
-  margin: 1em;
-  border: 0.8em solid color(1);
-  border-radius: 2em;
- // font-size: 200%;    
+    font-family: Bree Serif, serif;
+    background-image: inline-image("v2.png");
+    background-repeat: no-repeat;
+    padding: 0;
+    margin: 1em;
+    border: 0.8em solid color(1);
+    border-radius: 2em;
+    // font-size: 200%;
 }
 
+.container {}
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
+
 .header,
 .marketing,
 .footer {
-  padding-left: 15px;
-  padding-right: 15px;
-
+    padding-left: 15px;
+    padding-right: 15px;
 }
-
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-  .container {
-    max-width: 960px;
-  }
-
+    .container {
+        max-width: 960px;
+    }
 }
-
 
 h1 {
-  font-family: 'Lobster', cursive;
-  color: white;
-  text-shadow: 0 0 1px color(1),  -5px 5px 0px color(1);
+    font-family: 'Lobster', cursive;
+    color: white;
+    text-shadow: 0 0 1px color(1), -5px 5px 0px color(1);
 }
+
 h2 {
-  color: color(1);
-text-shadow: 0 0 2px white; 
+    color: color(1);
+    text-shadow: 0 0 2px white;
 }
 
 .column {
-  box-shadow: -2px 0 0 white ,-3px 0 0 lighten(color(1), 20%);
-  min-height: 500px;
+    box-shadow: -2px 0 0 white, -3px 0 0 lighten(color(1), 20%);
+    min-height: 500px;
 }
 
-.koncerty-list  {
-   margin: 0;
+.koncerty-list {
+    margin: 0;
     padding: 0;
-  .time {
-    color: gray;
-    font-size: 0.6em;
-  }
-  li {
-
-    list-style-type:none;
-    margin: {
-      bottom: 2em;
+    .time {
+        color: gray;
+        font-size: 0.6em;
     }
-  }
-  ul {
-
     li {
-      margin: 0;
-      font-style: italic;
+        list-style-type: none;
+        margin: {
+            bottom: 2em;
+        };
     }
-  }
+    ul {
+        li {
+            margin: 0;
+            font-style: italic;
+        }
+    }
 }
 
-$footerBg:  #444444;
+$footerBg: #444444;
+
 footer {
-  border-bottom-left-radius: 1em;
-  border-bottom-right-radius: 1em;
-  
-  border: {
-    top: 3px solid color(1);
-  }
-  background-color: color(3);
-  color: #EEEEEE;
-  padding: 1em;
-  min-height: 150px;
-  margin: {top: 1em;}
-  span {
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+    border: {
+        top: 3px solid color(1);
+    };
+    background-color: color(3);
+    color: #EEEEEE;
+    padding: 1em;
+    min-height: 150px;
     margin: {
-      right: 3em;
+        top: 1em;
+    };
+    span {
+        margin: {
+            right: 3em;
+        };
     }
-  }
 }
 
 summary {
-  color: #33A8AC;
-  cursor: pointer;
+    color: #33A8AC;
+    cursor: pointer;
+}
+
+.cd {
+    box-shadow: 0 0 4px gray;
+    box-sizing: border-box;
+    img {
+        border: {
+            left: 20px solid color(5);
+            top: 3px solid color(5);
+            right: 3px solid color(5);
+            bottom: 3px solid color(5);
+        };
+    }
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    &::before {
+        content: '';
+        position: absolute;
+        background-color: white;
+        opacity: 0.5;
+        top: 45px;
+        height: 550px;
+        left: -45px;
+        width: 750px;
+        border-radius: 50%;
+        background: radial-gradient(rgba(white, 0), rgba(white, 0) 60%, white);
+        z-index: 2;
+    }
+    &::after {
+        content: '';
+        position: absolute;
+        background-image: linear-gradient(to left, color(5), color(5) 50%, darken(color(5), 5%) );
+        background-size: 4px 4px;
+        top: 3px;
+        height: 300px;
+        left: 0px;
+        width: 20px;
+        z-index: 3;
+    }
 }
