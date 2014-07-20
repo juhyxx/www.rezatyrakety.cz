@@ -1,8 +1,14 @@
+@import "mixins/palette";
+
+$color: #9b1915, #33A8AC, #ba9d63, #e2c78e;
+
+@include palette($color);
+
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 $font-size-base: 18px;
 $font-size-h1: floor(($font-size-base * 4));
 
-$navbar-default-bg: #B24227;
+$navbar-default-bg: color(1);
 $navbar-default-color: white;
 
 $link-color: #33A8AC;
@@ -25,11 +31,19 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
   padding: 0.2em 0;
 }
 
+.navbar {
+  box-shadow: 0 2px 0 -1px white, 0 2px 0 2px color(1);
+}
+
 /* Space out content a bit */
 body {
-  padding-top: 0;
-  padding-bottom: 0;
   font-family: Bree Serif, serif;
+  background-image: inline-image("v2.png");
+  background-repeat: no-repeat;
+  padding: 0;
+  margin: 1em;
+  border: 0.8em solid color(1);
+  border-radius: 2em;
  // font-size: 200%;    
 }
 
@@ -40,6 +54,7 @@ body {
 .footer {
   padding-left: 15px;
   padding-right: 15px;
+
 }
 
 
@@ -55,19 +70,21 @@ body {
 h1 {
   font-family: 'Lobster', cursive;
   color: white;
-  text-shadow: 0 0 1px #B24227,  -5px 5px 0px #B24227;
+  text-shadow: 0 0 1px color(1),  -5px 5px 0px color(1);
 }
 h2 {
-  color: #B24227;
+  color: color(1);
 text-shadow: 0 0 2px white; 
 }
 
 .column {
-  box-shadow: -2px 0 0 white ,-3px 0 0 lighten(#B24227, 20%);
+  box-shadow: -2px 0 0 white ,-3px 0 0 lighten(color(1), 20%);
   min-height: 500px;
 }
 
 .koncerty-list  {
+   margin: 0;
+    padding: 0;
   .time {
     color: gray;
     font-size: 0.6em;
@@ -80,6 +97,7 @@ text-shadow: 0 0 2px white;
     }
   }
   ul {
+
     li {
       margin: 0;
       font-style: italic;
@@ -89,10 +107,13 @@ text-shadow: 0 0 2px white;
 
 $footerBg:  #444444;
 footer {
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+  
   border: {
-    top: 4px solid darken($footerBg, 10%);
+    top: 3px solid color(1);
   }
-  background-color: $footerBg;
+  background-color: color(3);
   color: #EEEEEE;
   padding: 1em;
   min-height: 150px;

@@ -1,0 +1,29 @@
+@import "compass";
+
+@mixin palette($colors, $size: 2em) {
+    $grad: ();
+    $width: 100% / length($color);
+    $i: 0;
+    @each $color in $colors {
+        $grad: append($grad, $color $i);
+        $i: $i + $width;
+        $grad: append($grad, $color $i);
+    }
+    body:before {
+        position: fixed;
+        z-index: 10000;
+        height: length($color) * $size;
+        width: $size;
+        right: 5*$size;
+        bottom: 80px;
+        border: 1px solid black;
+        content: "";
+        background : -webkit-linear-gradient($grad);
+        background : linear-gradient($grad);
+        @include box-shadow;
+    }
+}
+
+@function color($order) {
+  @return nth($color, $order);
+}
