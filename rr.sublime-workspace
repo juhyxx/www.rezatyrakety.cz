@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"fon",
+				"font-style"
+			],
+			[
+				"te",
+				"text-indent"
+			],
+			[
+				"border-ra",
+				"border-radius: "
+			],
+			[
 				"border-",
 				"border-bottom-right-radius: "
 			],
@@ -50,10 +62,6 @@
 			[
 				"max",
 				"max-width"
-			],
-			[
-				"fon",
-				"font-family"
 			],
 			[
 				"cur",
@@ -162,10 +170,6 @@
 			[
 				"po",
 				"pointer"
-			],
-			[
-				"te",
-				"templates"
 			],
 			[
 				"in",
@@ -292,77 +296,51 @@
 	"buffers":
 	[
 		{
+			"file": "app/index.html",
+			"settings":
+			{
+				"buffer_size": 6362,
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "app/scripts/controllers/Concerts.js",
 			"settings":
 			{
-				"buffer_size": 581,
+				"buffer_size": 591,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/nahravky.html",
+			"settings":
+			{
+				"buffer_size": 3517,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/views/vorr.html",
+			"settings":
+			{
+				"buffer_size": 1101,
+				"line_ending": "Windows"
 			}
 		},
 		{
 			"file": "app/styles/main.scss",
 			"settings":
 			{
-				"buffer_size": 2313,
+				"buffer_size": 5184,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "Searching 37 files for \"container\"\n\nC:\\projects\\www.rezatyrakety.cz\\app\\404.html:\n   64        }\n   65  \n   66:       .container {\n   67          max-width: 380px;\n   68          _width: 380px;\n   ..\n  141    </head>\n  142    <body>\n  143:     <div class=\"container\">\n  144        <h1>Not found <span>:(</span></h1>\n  145        <p>Sorry, but the page you were trying to view does not exist.</p>\n\nC:\\projects\\www.rezatyrakety.cz\\app\\index.html:\n   21  \n   22      <div class=\"navbar navbar-default navbar-fixed-top\">\n   23:       <div class=\"container\">\n   24          <div class=\"navbar-header\">\n   25            <a href=\"#/\"><img src=\"images/napis.png\"></a>\n   ..\n   42        </div>\n   43      </div>\n   44:     <div class=\"container\" style=\"padding-top:5em;\">\n   45        <div class=\"row\">\n   46          <div class=\"col-lg-8\">\n   ..\n   57  \n   58      <footer >\n   59:       <div class=\"container\">\n   60            <span>Miroslav Juhy Juhos</span>\n   61            <span><i class=\"glyphicon glyphicon-phone\"></i> 605 376 741</span>\n\nC:\\projects\\www.rezatyrakety.cz\\app\\styles\\main.scss:\n   61  /* Responsive: Portrait tablets and up */\n   62  @media screen and (min-width: 768px) {\n   63:   .container {\n   64      max-width: 960px;\n   65    }\n\n6 matches across 3 files\n",
+			"file": "app/views/texty.html",
 			"settings":
 			{
-				"buffer_size": 1277,
-				"line_ending": "Windows",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"file": "app/styles/mixins/_palette.scss",
-			"settings":
-			{
-				"buffer_size": 685,
+				"buffer_size": 21165,
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "Gruntfile.js",
-			"settings":
-			{
-				"buffer_size": 10866,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/main.html",
-			"settings":
-			{
-				"buffer_size": 1577,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/C/projects/hearth-rails/web/app/app/styles/main.scss",
-			"settings":
-			{
-				"buffer_size": 32808,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/index.html",
-			"settings":
-			{
-				"buffer_size": 5546,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_variables.scss",
-			"settings":
-			{
-				"buffer_size": 29978,
-				"line_ending": "Unix"
 			}
 		}
 	],
@@ -490,21 +468,33 @@
 	},
 	"file_history":
 	[
+		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-autoprefixer/node_modules/autoprefixer/bin/autoprefixer",
+		"/C/projects/www.rezatyrakety.cz/app/styles/main.scss",
+		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-google-cdn/node_modules/bower/node_modules/inquirer/node_modules/cli-color/node_modules/memoizee/profile.js",
+		"/C/projects/www.rezatyrakety.cz/bower_components/jquery/src/attributes/prop.js",
+		"/C/projects/www.rezatyrakety.cz/node_modules/grunt/node_modules/glob/test/pause-resume.js",
+		"/C/projects/www.rezatyrakety.cz/package.json",
+		"/C/projects/www.rezatyrakety.cz-older/app/index.html",
+		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-contrib-uglify/node_modules/uglify-js/lib/mozilla-ast.js",
+		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-contrib-jshint/node_modules/jshint/data/non-ascii-identifier-start.js",
+		"/C/projects/www.rezatyrakety.cz/.sass-cache/4a3be19c82549c7646004461622b2cd3b94d2918/_nav-vertical-align.scssc",
+		"/C/projects/www.rezatyrakety.cz/app/views/nahravky.html",
+		"/C/projects/www.rezatyrakety.cz/app/scripts/controllers/Concerts.js",
+		"/C/projects/www.rezatyrakety.cz/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_variables.scss",
+		"/C/projects/www.rezatyrakety.cz/app/styles/mixins/_palette.scss",
+		"/C/projects/www.rezatyrakety.cz/Gruntfile.js",
+		"/C/projects/www.rezatyrakety.cz/app/views/main.html",
+		"/C/projects/hearth-rails/web/app/app/styles/main.scss",
+		"/C/projects/www.rezatyrakety.cz/app/index.html",
 		"/C/projects/www.rezatyrakety.cz/app/styles/mixins/_pallette-color.scss",
 		"/C/projects/www.rezatyrakety.cz/app/styles/palette.scss",
 		"/C/projects/www.rezatyrakety.cz/.gitignore",
 		"/C/projects/hearth-rails/web/app/Gruntfile.js",
 		"/C/projects/www.rezatyrakety.cz-older/app/scripts/rr.js",
-		"/C/projects/www.rezatyrakety.cz/app/views/main.html",
 		"/C/projects/www.rezatyrakety.cz/.sass-cache/6e7beb7e9f194716031ba9549e5017bdbb43e354/_variables.scssc",
 		"/C/projects/www.rezatyrakety.cz/bower_components/font-awesome/less/variables.less",
-		"/C/projects/www.rezatyrakety.cz/.sass-cache/4a3be19c82549c7646004461622b2cd3b94d2918/_nav-vertical-align.scssc",
 		"/C/projects/www.rezatyrakety.cz/app/views/vorr.html",
-		"/C/projects/www.rezatyrakety.cz/app/scripts/controllers/Concerts.js",
 		"/C/projects/www.rezatyrakety.cz/app/scripts/app.js",
-		"/C/projects/www.rezatyrakety.cz/app/views/nahravky.html",
-		"/C/projects/www.rezatyrakety.cz/app/index.html",
-		"/C/projects/www.rezatyrakety.cz/app/styles/main.scss",
 		"/C/projects/www.rezatyrakety.cz/app/views/texty.html",
 		"/C/projects/www.rezatyrakety.cz/app/views/trojka.html",
 		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-google-cdn/node_modules/bower/node_modules/inquirer/node_modules/cli-color/node_modules/es5-ext/object/valid-object.js",
@@ -527,9 +517,7 @@
 		"/C/projects/www.rezatyrakety.cz/node_modules/karma/node_modules/source-map/build/assert-shim.js",
 		"/C/projects/www.rezatyrakety.cz/bower_components/angular-sanitize/angular-sanitize.js",
 		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-autoprefixer/node_modules/chalk/node_modules/.bin/strip-ansi",
-		"/C/projects/www.rezatyrakety.cz-older/app/index.html",
 		"/C/projects/www.rezatyrakety.cz/app/texty.html",
-		"/C/projects/www.rezatyrakety.cz/Gruntfile.js",
 		"/C/projects/hearth-rails/web/Gruntfile.js",
 		"/C/projects/scalear2/index.html",
 		"/C/projects/www.rezatyrakety.cz/app/styles/style.scss",
@@ -566,7 +554,6 @@
 		"/C/projects/hearth-rails/web/app/app/scripts/app.js",
 		"/C/projects/hearth-rails/web/app/app/scripts/geo/geo.js",
 		"/C/projects/hearth-rails/web/app/app/templates/geo/markerTooltip.html",
-		"/C/projects/hearth-rails/web/app/app/styles/main.scss",
 		"/C/projects/hearth-rails/web/app/app/scripts/geo/map.js",
 		"/C/projects/hearth-rails/web/app/app/templates/login.html",
 		"/C/projects/hearth-rails/web/app/app/index.html",
@@ -608,20 +595,11 @@
 		"/C/projects/hearth-rails/web/app/app/scripts/services/Invitation.js",
 		"/C/projects/hearth-rails/web/app/app/templates/navigation.html",
 		"/C/projects/hearth-rails/web/app/app/scripts/directives/invitationForm.js",
-		"/C/projects/hearth-rails/web/app/app/scripts/utils/emails.js",
-		"/C/projects/hearth-rails/web/app/app/scripts/directives/identitySwitch.js",
-		"/C/projects/hearth-rails/web/app/app/vendor/jquery/src/core/init.js",
-		"/C/projects/hearth-rails/web/app/app/test/spec/filters/filters.js",
-		"/C/projects/hearth-rails/web/app/app/templates/about.html",
-		"/C/projects/hearth-rails/web/app/app/templates/communityProfile.html",
-		"/C/projects/hearth-rails/web/app/app/vendor/foundation/scss/foundation/components/_inline-lists.scss",
-		"/C/projects/hearth-rails/web/app/app/vendor/font-awesome/less/spinning.less",
-		"/C/projects/hearth-rails/web/app/app/vendor/modernizr/feature-detects/pointerlock-api.js",
-		"/C/projects/hearth-rails/web/app/app/vendor/foundation-icon-fonts/svgs/fi-social-pinterest.svg"
+		"/C/projects/hearth-rails/web/app/app/scripts/utils/emails.js"
 	],
 	"find":
 	{
-		"height": 53.0
+		"height": 38.0
 	},
 	"find_in_files":
 	{
@@ -763,6 +741,35 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Domine",
+			"Lora",
+			"50px",
+			"3",
+			"footerBg",
+			"25px",
+			"50px",
+			"%);",
+			"4",
+			"50px",
+			"100px",
+			"#ECEDDC",
+			"3",
+			"radius",
+			"navba",
+			"1",
+			"color(1)",
+			"contai",
+			"bar",
+			"2px",
+			"span",
+			"koncert",
+			"55px",
+			"75px",
+			"350px",
+			"50px",
+			"150px",
+			"darkgray",
+			"$rootScope",
 			"container",
 			"container\\",
 			"5em",
@@ -861,36 +868,7 @@
 			"markers",
 			"createPins",
 			"clearMarkers",
-			"limi",
-			"lon",
-			"myLocation",
-			"lon",
-			"lat",
-			"updateLocation",
-			"map",
-			"broadcast",
-			"reply",
-			"this.",
-			"errors",
-			"$timeout",
-			"scope",
-			"Scope",
-			"scope",
-			"timeout",
-			"message",
-			"PostsService.reply",
-			"$scope",
-			"replyToAd",
-			"reply.message",
-			"reply",
-			"span",
-			"img",
-			"border",
-			"span",
-			"item",
-			"item.author._type != 'Community'",
-			"reply",
-			"author"
+			"limi"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -921,24 +899,54 @@
 	"groups":
 	[
 		{
-			"selected": 7,
+			"selected": 4,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/scripts/controllers/Concerts.js",
+					"file": "app/index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 581,
+						"buffer_size": 6362,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								213,
-								213
+								97,
+								97
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/scripts/controllers/Concerts.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 591,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								444,
+								451
 							]
 						],
 						"settings":
@@ -950,217 +958,59 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "app/styles/main.scss",
+					"buffer": 2,
+					"file": "app/views/nahravky.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2313,
+						"buffer_size": 3517,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								255,
-								255
+								110,
+								110
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 137.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1277,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										119,
-										128
-									],
-									[
-										256,
-										265
-									],
-									[
-										542,
-										551
-									],
-									[
-										727,
-										736
-									],
-									[
-										893,
-										902
-									],
-									[
-										1199,
-										1208
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								733,
-								733
-							]
-						],
-						"settings":
-						{
-							"detect_indentation": false,
-							"line_numbers": false,
-							"output_tag": 1,
-							"result_base_dir": "",
-							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 333.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
 					"buffer": 3,
-					"file": "app/styles/mixins/_palette.scss",
+					"file": "app/views/vorr.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 685,
+						"buffer_size": 1101,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								382,
-								382
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "Gruntfile.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 10866,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3436,
-								3436
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 4944.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "app/views/main.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1577,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								888,
-								888
+								117,
+								117
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "/C/projects/hearth-rails/web/app/app/styles/main.scss",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 32808,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								233,
-								233
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1170,61 +1020,62 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "app/index.html",
+					"buffer": 4,
+					"file": "app/styles/main.scss",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5546,
+						"buffer_size": 5184,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1709,
-								1709
+								343,
+								343
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1276.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_variables.scss",
+					"buffer": 5,
+					"file": "app/views/texty.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 29978,
+						"buffer_size": 21165,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1299,
-								1284
+								21164,
+								21164
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 8046.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -1232,7 +1083,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 45.0
+		"height": 30.0
 	},
 	"input":
 	{
@@ -1272,7 +1123,7 @@
 	"project": "rr.sublime-project",
 	"replace":
 	{
-		"height": 86.0
+		"height": 56.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1280,6 +1131,22 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"texty",
+				"app\\views\\texty.html"
+			],
+			[
+				"main",
+				"app\\styles\\main.scss"
+			],
+			[
+				"vo",
+				"app\\views\\vorr.html"
+			],
+			[
+				"nahra",
+				"app\\views\\nahravky.html"
+			],
 			[
 				"trojka",
 				"app\\views\\trojka.html"
@@ -1775,22 +1642,6 @@
 			[
 				"user",
 				"app\\scripts\\services\\User.js"
-			],
-			[
-				"profle",
-				"app\\templates\\profileEdit.html"
-			],
-			[
-				"prfole",
-				"app\\scripts\\controllers\\ProfileCtrl.js"
-			],
-			[
-				"naviga",
-				"app\\templates\\navigation.html"
-			],
-			[
-				"terms",
-				"app\\templates\\terms.html"
 			]
 		],
 		"width": 0.0
@@ -1801,16 +1652,28 @@
 		"selected_items":
 		[
 			[
+				"hea",
+				"C:\\projects\\hearth-app.sublime-project"
+			],
+			[
+				"",
+				"C:\\projects\\hearth-app.sublime-project"
+			],
+			[
+				"he",
+				"C:\\projects\\hearth-app.sublime-project"
+			],
+			[
+				"re",
+				"C:\\projects\\www.rezatyrakety.cz\\rr.sublime-project"
+			],
+			[
 				"hear",
 				"C:\\projects\\hearth-app.sublime-project"
 			],
 			[
 				"bl",
 				"C:\\projects\\blueweb.sublime-project"
-			],
-			[
-				"",
-				"C:\\projects\\hearth-app.sublime-project"
 			],
 			[
 				"web",
@@ -1838,10 +1701,6 @@
 			],
 			[
 				"reza",
-				"/C/projects/www.rezatyrakety.cz/rr.sublime-project"
-			],
-			[
-				"re",
 				"/C/projects/www.rezatyrakety.cz/rr.sublime-project"
 			],
 			[

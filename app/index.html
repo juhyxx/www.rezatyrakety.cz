@@ -2,7 +2,7 @@
 <html class="no-js">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Rezatý Rakety</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -15,14 +15,15 @@
     <!-- endbuild -->
   </head>
   <body ng-app="rr" ng-controller="Concerts">
+    <div class="main-container">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
-          <a href="#/"><img src="images/napis.png"></a>
+          <a href="#/"><img src="images/logo.png" class="logo"></a>
           <a class="fa fa-facebook" href="http://www.facebook.com/rezatyrakety"></a>
           <a class="fa fa-twitter" href="http://www.twitter.com/juhy"></a>  
           <a class="fa fa-google-plus" href="https://plus.google.com/111938233519428544841/?prsrc=3"></a>      
@@ -39,21 +40,20 @@
         </div>
       </div>
     </div>
-    <div class="container" style="padding-top:1em;">
-      <div class="row">
+    <div class="container">
+      <div class="row content">
         <div class="col-lg-8">
           <div ng-view=""></div>
         </div>
         <div class="col-lg-4 column">
-          <h1>Nejbližší koncert</h1>
-
-          <div ng-if="nearest.trojkazblues_flag == 1" class="trojka" title="Trojka"></div>
+            <h1>Nejbližší koncert</h1>
+            <div ng-if="nearest.trojkazblues_flag == 1" class="trojka" title="Trojka"></div>
             <div ng-if="nearest.trojkazblues_flag == 2" class="rock" title="Rock do klobouku"></div>
             <a  ng-if="nearest.fblink" href="{{nearest.fblink}}" class="webicon facebook" title="Událost na Facebooku"></a>
             <div>{{nearest.date*1000 | date :'dd.MM. yyyy'}}</div>
             <div class="time">{{nearest.date*1000 | date :'HH:mm'}}</div>
-            <a target="_blank" href="http://mapy.cz/?q=Loc:{{nearest.linkMapa}}" title="{{nearest.adresaUlice}}">{{nearest.adresaMesto}}</a>, 
-            <a target="_blank"  href="{{nearest.WWW}}" title="Web klubu">{{nearest.jmeno}}</a>
+            <div><a target="_blank"  href="{{nearest.WWW}}" title="Web klubu">{{nearest.jmeno}}</a></div>
+            <div><a target="_blank" href="http://mapy.cz/?q=Loc:{{nearest.linkMapa}}" title="{{nearest.adresaUlice}}">{{nearest.adresaMesto}}</a></div>
             <div class="note" ng-bind-html="nearest.poznamka"></div>
         </div>
       </div>
@@ -67,6 +67,7 @@
           <span><i class="glyphicon glyphicon-map-marker"></i> Plzeň, Česká republika</span>
       </div>
     </footer>
+    </div>
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
