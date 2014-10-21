@@ -4,102 +4,82 @@ $color: #9b1915, #33a8ac, #ba9d63, #e2c78e, #444444;
 
 //@include palette($color);
 
+$font-size-base: 18px;
+$font-size-h1: floor($font-size-base * 4);
+
+$navbar-height: 80px;
+$navbar-default-bg: color(1);
+$navbar-default-color: white;
+$navbar-default-link-color: color(2);
+$navbar-default-link-hover-color: white;
+
+$link-color: #33a8ac;
+$body-bg: #fdf5e8;
+
+// bower:scss
+// endbower
+
 $fa-font-path: "//netdna.bootstrapcdn.com/font-awesome/4.1.0/fonts";
 
 @import "font-awesome/scss/font-awesome.scss";
 
-@import url(http://fonts.googleapis.com/css?family=Ranchers&subset=latin,latin-ext);
+@import url(http://fonts.googleapis.com/css?family=Oranienbaum&subset=latin,latin-ext);
 
 @import url(http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext);
 
-body {
-    font-family: Ranchers, serif;
-    background-color: #EFFFFF;
-    font-size: 150%;
-    color: rgba(black, 0.5);
-    b {
-        color: darken(gray, 20%);
+.navbar {
+    box-shadow: 0 2px 0 -1px white, 0 2px 0 2px color(1);
+    a:not(.fa) {
+        transition: color 1s;
+        font-family: 'Lobster', cursive;
+        text-shadow: 0 0 1px color(1), -5px 5px 0px color(1);
     }
-    footer {
-        text-align: center;
+    a.fa {
+        font-size: 2em;
         padding: {
-            top: 1em;
-            bottom: 1em;
-
-        }
-    }
-    padding: 0;
-    margin: 0;
-}
-
-#logo {
-    background: url(../images/logo.png) no-repeat 50% center;
-    height: 201px;width: 100%;
-}
-
-article {
-    padding: {
-        bottom: 100px;
-        top: 100px;
-    };
-    > div {
-        padding: 1em;
-        @media screen and (min-width: 768px) {
-            max-width: 800px;
-        }
-        
-        margin: {
-            left: auto;
-            right: auto;
+            right: 0;
         };
     }
-    &:nth-child(1) {
-        background-color: color(1);
-        h1 {
-            font-size: 2em;
-            text-align: center;
-        }
-        min-height: 800px;
-        background: linear-gradient(transparent, rgba(black, 0.5)) color(1);
-    }
-    &:nth-child(2) {
-        background-color: lighten(desaturate(green, 60%), 40%);
-    }
-    &:nth-child(3) {
-        background-color: lighten(color(3), 10%);
-    }
-    &:nth-child(4) {
-         background-color: color(1);
-         background: linear-gradient(transparent, rgba(black, 0.2))  color(1);
-    }
-    &:nth-child(5) {
-        background-color: color(4);
-         background: linear-gradient(transparent, rgba(black, 0.2))  color(4);
-    }
-    &:nth-child(6) {
-        background-color: lighten(color(2), 10%);
-         background: linear-gradient(transparent, rgba(black, 0.2))  lighten(color(2), 10%);
-    }
+    background-image: linear-gradient(to left, lighten(color(1), 5%), lighten(color(1), 5%) 50%, darken(color(1), 5%));
+    background-size: 4px 4px;
+    box-shadow: inset 0 0 50px black;
+    margin: {
+        bottom: 0;
+    };
+    border: {
+        bottom: 4px solid color(1);
+    };
+    border-radius: 0;
+}
+
+/* Space out content a bit */
+body {
+    font-family: Oranienbaum, serif;
+    background-color: lighten(color(3), 3%);
+    background-image: linear-gradient(transparent 50%, lighten(color(3), 7%) 50%);
+    background-size: 10px 10px;
 }
 
 .main-container {
     //background-image: inline-image("v2.png");
+    // background-repeat: no-repeat;
     padding: 0;
     margin: {
-        top: 0;
+        top: 1em;
         left: auto;
         right: auto;
         bottom: 1em;
     };
-}
-
-a {
-    color: color(2);
-    text-decoration: none;
-    &:hover {
-        text-decoration: underline;
-         color: darken(color(2), 10%);
-    }
+    border-radius: 2em;
+    border: 0.8em solid color(1);
+    overflow: hidden;
+    max-width: 1000px;
+    //background-color: lighten(color(4), 5%) ;
+    // background-image: linear-gradient(to left, lighten(color(3), 5%), lighten(color(3), 5%) 50%, darken(color(3), 5%));
+    //background-size: 4px 4px;
+    background-color: lighten(color(4), 5%);
+    background-image: linear-gradient(transparent 50%, lighten(color(4), 7%) 50%);
+    background-size: 10px 10px;
 }
 
 .logo {
@@ -109,19 +89,28 @@ a {
     };
 }
 
+/* Everything but the jumbotron gets side spacing for mobile first views */
 
+.header,
+.marketing,
+.footer {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 960px;
+    }
+}
 
 h1 {
-    font-family: 'Ranchers', serif;
+    font-family: 'Lobster', cursive;
     color: white;
     text-shadow: 0 0 1px color(1), -5px 5px 0px color(1);
     margin: {
         top: 10px;
-    };
-    font-size: 4em;
-    margin: {
-        top: 0.25em;
-        bottom: 0.25em;
     };
 }
 
@@ -129,17 +118,25 @@ h2 {
     color: white;
     font-weight: bold;
     text-shadow: 0 0 1px color(1), -2px 2px 0px color(1);
-    margin: {
-        top: 0.25em;
-        bottom: 0.25em;
-    };
+    /* text-shadow: 
+         0 0 3px white,
+         -1px -1px 0 white,
+         1px -1px 0 white,
+         -1px 1px 0 white,
+         1px 1px 0 white
+         ;*/
 }
 
-ul {
-    margin: {
-        top: 0;
-        bottom: 0;
-    };
+.column {
+    //box-shadow: -2px 0 0 color(4), -3px 0 0 color(1);
+    min-height: 500px;
+    text-align: center;
+    ul {
+        text-align: left;
+    }
+    .date {
+        font-size: 2em;
+    }
 }
 
 .koncerty-list {
@@ -160,6 +157,30 @@ ul {
             margin: 0;
             font-style: italic;
         }
+    }
+}
+
+footer {
+    border: {
+        top: 3px solid color(1);
+    };
+    background-color: color(3);
+    color: #EEEEEE;
+    padding: 1em;
+    margin: {
+        top: 1em;
+    };
+    span {
+        margin: {
+            right: 3em;
+        };
+        white-space: nowrap;
+    }
+    background-image: linear-gradient(to left, lighten(color(2), 5%), lighten(color(2), 5%) 50%, darken(color(2), 5%));
+    background-size: 4px 4px;
+    box-shadow: inset 0 0 50px darken(color(2), 20%);
+    a {
+        color: lighten(color(2), 30%);
     }
 }
 
@@ -237,9 +258,8 @@ ul {
 
 .texty {
     em, i {
-        color: color(2);
+        color: color(1);
         font-style: normal;
-        padding: {right: 0.5em;}
     }
 }
 

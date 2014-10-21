@@ -10,64 +10,227 @@
     <!-- bower:css -->
     <!-- endbower -->
     <!-- endbuild -->
+
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+      <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
   <body ng-app="rr" ng-controller="Concerts">
-    <div class="main-container">
-    <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-
-    <div class="navbar navbar-default">
-      <div class="container">
-        <div class="navbar-header">
-          <a href="#/"><img src="images/logo.png" class="logo"></a>
-          <a class="fa fa-facebook" href="http://www.facebook.com/rezatyrakety"></a>
-          <a class="fa fa-twitter" href="http://www.twitter.com/juhy"></a>  
-          <a class="fa fa-google-plus" href="https://plus.google.com/111938233519428544841/?prsrc=3"></a>      
-        </div>
-        <div class="navbar-collapse collapse" id="navbar-main">
-          <ul class="nav navbar-nav">
-            <li><a ng-href="#/nahravky">Nahrávky</a></li>
-            <li><a ng-href="#/texty">Texty</a></li>
-            <li><a ng-href="#/trojka">Trojka</a></li>
+    <article>
+      <div>
+          <div id="logo"></div>
+          <h1>bigbít s jadernou hlavicí</h1>
+      </div>
+  </article>
+  <article>
+      <div>
+          <h1>Nejbližší koncert</h1>
+          <div class="koncerty-list">
+              <div ng-if="nearest.trojkazblues_flag == 1" class="trojka" title="Trojka"></div>
+              <div ng-if="nearest.trojkazblues_flag == 2" class="rock" title="Rock do klobouku"></div>
+              <a ng-if="nearest.fblink" href="{{nearest.fblink}}" class="fa fa-facebook-square" title="Událost na Facebooku"></a>
+              {{nearest.date*1000 | date :'dd.MM. yyyy'}}
+              <span class="time">{{nearest.date*1000 | date :'HH:mm'}}</span>
+              <a target="_blank" href="http://mapy.cz/?q=Loc:{{nearest.linkMapa}}" title="{{nearest.adresaUlice}}">{{nearest.adresaMesto}}</a>,
+              <a target="_blank" href="{{nearest.WWW}}" title="Web klubu">{{nearest.jmeno}}</a>
+              <div class="note" ng-bind-html="nearest.poznamka"></div>
+          </div>
+               
+          <h1>Koncerty</h1>
+          <ul ng-cloak class="koncerty-list">
+              <li ng-repeat="koncert in koncerty">
+                  <div ng-if="koncert.trojkazblues_flag == 1" class="trojka" title="Trojka"></div>
+                  <div ng-if="koncert.trojkazblues_flag == 2" class="rock" title="Rock do klobouku"></div>
+                  <a ng-if="koncert.fblink" href="{{koncert.fblink}}" class="fa fa-facebook-square" title="Událost na Facebooku"></a>
+                  {{koncert.date*1000 | date :'dd.MM. yyyy'}}
+                  <span class="time">{{koncert.date*1000 | date :'HH:mm'}}</span>
+                  <a target="_blank" href="http://mapy.cz/?q=Loc:{{koncert.linkMapa}}" title="{{koncert.adresaUlice}}">{{koncert.adresaMesto}}</a>,
+                  <a target="_blank" href="{{koncert.WWW}}" title="Web klubu">{{koncert.jmeno}}</a>
+                  <div class="note" ng-bind-html="koncert.poznamka"></div>
+              </li>
           </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a ng-href="#/vorr">Vo Raketách</a></li>
-          </ul>
-        </div>
+          <details>
+              <summary id="odehrane" ng-cloak>Odehrané ({{odehraneKoncerty.length - 2}})</summary>
+              <ul id="koncerty-list-odehrane" class="koncerty-list">
+                  <li ng-repeat="koncert in odehraneKoncerty">
+                      <div ng-if="koncert.trojkazblues_flag == 1" class="trojka" title="Trojka"></div>
+                      <div ng-if="koncert.trojkazblues_flag == 2" class="rock" title="Rock do klobouku"></div>
+                      {{koncert.date*1000 | date :'dd.MM. yyyy'}}
+                      <a target="_blank" href="http://mapy.cz/?q=Loc:{{koncert.linkMapa}}" title="{{koncert.adresaUlice}}"> {{koncert.adresaMesto}}</a>,
+                      <a target="_blank" href="{{koncert.WWW}}" title="Web klubu">{{koncert.jmeno}}</a>
+                      <div class="note" ng-bind-html="koncert.poznamka"></div>
+                  </li>
+              </ul>
+          </details>
       </div>
-    </div>
-    <div class="container">
-      <div class="row content">
-        <div class="col-lg-8">
-          <div ng-view=""></div>
-        </div>
-        <div class="col-lg-4 column">
-            <h1>Nejbližší koncert</h1>
-            <div ng-if="nearest.trojkazblues_flag == 1" class="trojka" title="Trojka"></div>
-            <div ng-if="nearest.trojkazblues_flag == 2" class="rock" title="Rock do klobouku"></div>
-            <a  ng-if="nearest.fblink" href="{{nearest.fblink}}" class="webicon facebook" title="Událost na Facebooku"></a>
-            <div>{{nearest.date*1000 | date :'dd.MM. yyyy'}}</div>
-            <div class="time">{{nearest.date*1000 | date :'HH:mm'}}</div>
-            <div><a target="_blank"  href="{{nearest.WWW}}" title="Web klubu">{{nearest.jmeno}}</a></div>
-            <div><a target="_blank" href="http://mapy.cz/?q=Loc:{{nearest.linkMapa}}" title="{{nearest.adresaUlice}}">{{nearest.adresaMesto}}</a></div>
-            <div class="note" ng-bind-html="nearest.poznamka"></div>
-        </div>
-      </div>
-    </div>
+  </article>
 
-    <footer >
-      <div class="container">
-          <span>Miroslav Juhy Juhos</span>
-          <span><i class="glyphicon glyphicon-phone"></i> 605 376 741</span>
-          <span><i class="glyphicon glyphicon-envelope"></i> <script type="text/javascript">var email='juhy',domain='rezatyrakety.cz',address=email+'@'+domain;document.write('<a class="email" href="mailto:'+address+'">'+address+'</a>')</script></span>
-          <span><i class="glyphicon glyphicon-map-marker"></i> Plzeň, Česká republika</span>
+  <article>
+      <div>
+          <h1>Nahrávky</h1>
+
+      <section class="row">
+          <div class="col-lg-12 columns">
+              <h2>(2011) Starý dobrý časy</h2>
+              <details>
+                  <summary>Recenze (Petr Korál, Muzikus)</summary>
+                  <p>Tahle plzeňská, pouze v&nbsp;nejzákladnějším a nejúspornějším triu kytara-baskytara-bicí hrající skupina rezignovala na jakékoliv hledání a mnohdy pofiderní progresivitu. Naopak se ohlíží do dávné a dostatečně prověřené historie (včetně nejspíš záměrně archaického zvuku kytary Miroslava Juhose) a holduje jadrnému blues rocku v&nbsp;poklidnější i náležitě tvrdé podobě.</p>
+                  <p>A dělá to docela dobře, to zase ne že ne! I když něco podobného už tu samozřejmě tisíckrát bylo, počínání téhle party působí přesvědčivě a sympaticky. Co chtít víc? Texty s myšlenkově hlubším obsahem? Na to se v tomhle ranku nikdy moc nehrálo a ani to tu v podstatě nikdo neočekává. Jen by si debutové album Rezatých Raket možná zasloužilo kratší stopáž. Těch skoro sedmdesát minut už je opravdu až zbytečně masivní kláda... </p>
+                  <p><b>Zlatý hřeb:</b> Rádio Starý dobrý časy, Láhev rumu od Ježíška</p>
+                  <p><b>Zní to jako:</b> tak trochu jako Cream a jiná klasická bluesrocková tria</p>
+              </details>
+              <p><em>studiovej snímek, zaznamenanej 4-6. února.</em></p>
+          </div>
+          <div class="col-md-5 col-lg-5">
+              <ol>
+                  <li>Rádio Starý dobrý časy</li>
+                  <li>Na vlnách MHD</li>
+                  <li>Jedna hodně hodná paní</li>
+                  <li>Opilec Bedřich</li>
+                  <li>Hvězdy</li>
+                  <li>Mrakodrap v dešti</li>
+                  <li>Bufet Adrie</li>
+                  <li>Co šeptá vítr</li>
+                  <li>Dveře do léta</li>
+                  <li>Láhev rumu od Ježíška</li>
+                  <li>Plakát</li>
+                  <li>Krize středního věku</li>
+                  <li>Jeřáby, jeřáby</li>
+                  <li>Lež</li>
+                  <li>Dokud</li>
+              </ol>
+          </div>
+          <div class="col-md-7 col-lg-7">
+              <div class="cd">
+                  <img class="cd" src="nahravky/stary-dobry-casy/obal.jpg" alt="Obal"  />
+              </div>
+          </div>
+          <div class="col-lg-12">
+              <p>Kompletní album ke <a href="nahravky/2011-stary-dobry-casy.zip">stažení</a> (66MB).</p>
+          </div>
+      </section>
+
+      <section class="row">
+          <div class="col-lg-12">
+              <h2>(2009) ...a to už dneska nikdo neposlouchá</h2>
+              <p><em>živý demosnímek, zaznamenán 30.5.2009 na festivalu Kerio MusicFest.</em></p>
+          </div>  
+          <div class="col-md-5 col-lg-5">
+              <ol>
+                  <li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/01-blues-na-cesty.mp3">Blues na cesty</a></li>
+                  <li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/02-opilec-bedrich.mp3">Opilec Bedřich</a></li>
+                  <li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/03-panelak.mp3">Panelák</a></li>
+                  <li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/04-bufet-adrie.mp3">Bufet Adrie</a></li>
+                  <li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/05-krise-stredniho-veku.mp3">Krise středního věku</a></li>
+                  <li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/06-nema-to-cenu.mp3">Nemá to cenu</a></li>
+                  <li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/07-plakat.mp3">Plakát</a></li>
+                  <li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/08-jeraby-jeraby.mp3">Jeřáby, jeřáby</a></li>
+                  <li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/09-lez.mp3">Lež</a></li>
+                  <li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/10-kapesni-blues.mp3">Kapesní blues</a></li>
+              </ol>
+          </div>
+          <div class="col-md-7 col-lg-7">
+              <div class="cd">
+                  <img src="nahravky/a-to-uz-dneska-nikdo-neposloucha/obal.jpg" alt="Obal">
+              </div>
+          </div>
+          <div class="col-md-6 col-lg-12">
+              <p>Kompletní album ke <a href="nahravky/a-to-uz-dneska-nikdo-neposloucha.zip">stažení</a> (44MB).</p>
+          </div>
+      </section>
+
       </div>
-    </footer>
-    </div>
+  </article>
+  <article><div ng-include="'views/texty.html'"></div></article>
+  <article>
+      <div>
+          <h1>Trojka</h1>
+          <ul>
+              <li><b>Trojka</b> je setkání tří autorských kapel v mezích stylů jazz, blues a rocku.</li>
+              <li>Pořádá se pravidelně každou <b>první středu v měsíci</b> (když houká siréna) v klubu <a href="http://www.buenavistaclub.cz">Buena Vista</a> v Plzni.</li>
+              <li>Začátek ve <b>20,00</b>.</li>
+              <li><b>Vstup volný</b>.</li>
+          </ul>
+          <h2>Pro kapely</h2>
+          <ul>
+              <li><b>Ozvučení</b> je zajištěno klubem.</li>
+              <li>Každá z kapel má dohromady na nazvučení a samotný koncert <b>hodinu</b>.</li>
+              <li><b>Základ bicích</b> dodávají Rezatý Rakety - bubeníci, dovezte si
+                  <ul>
+                      <li>činely</li>
+                      <li>šlapku</li>
+                      <li>virbl</li>
+                  </ul>
+              </li>
+              <li>Rezatý Rakety taktéž mohou zapůjčit kytarové kombo <b>Vox AC&nbsp;15</b>, popř. basový aparát</li>
+              <li>Z koncertu obvykle pořizujeme jednostopý, zvukový záznam.</li>
+              <li>Máme vlastního fotografa, takže svoje kapesní aparáty klidně nechte doma.</li>
+              <li>Autorská tvorba vítána.</li>
+          </ul>
+          <h3>Proč to děláme?</h3>
+          <ul>
+              <li>Je to realizace naší představy o spolupráci mezi kapelami.</li>
+              <li>Jsme rádi, že poznáváme muzikanty ze všech končin.</li>
+              <li>Jsme rádi, že hrajeme pravidelně každý měsíc.</li>
+              <li>Pokud <b>Rezatý Rakety</b> pozvete na koncert do své domoviny, nebudeme se zlobit.</li>
+          </ul>
+          <p>
+              <em>Trojku pořádají Rezatý Rakety za laskavé podpory klubu Buena Vista.</em>
+          </p>
+      </div>
+  </article>
+  <article>
+      <div>
+          <h1>Vo Raketách</h1>
+          <ul>
+              <li>první koncert odehráli <b>29. srpna 2008</b>
+              </li>
+              <li>23. listopadu 2009 vydali vlastníma silama záznam z&nbsp;koncertu</li>
+              <li>zakládaj si na <b>vlastním</b>, českým repertoáru</li>
+              <li>1. června 2011 vydali svoje <a href="#nahravky">první studiový album</a>
+              </li>
+              <li>mají <a href="http://www.youtube.com/watch?v=oE7gZZuwVnw">videoklip</a>
+              </li>
+              <li>hrajou možná bluesrock, možná hardrock, prostě <b>bigbít</b>, jenže bigbít v Plzni a okolí je výraz pro tancovačku, takže <b>alternativní bigbít</b>
+              </li>
+              <li>pořádaj <a href="#trojka">Trojku</a>
+              </li>
+          </ul>
+          <h2>Posádka</h2>
+          <ul>
+              <li><b>Miroslav Juhy Juhos</b> kytara</li>
+              <li><b>Jíra Svatoš</b> bicí</li>
+              <li><b>Jan Hezcko</b> basová kytara</li>
+          </ul>
+          <h1>Stageplan</h1>
+          <h2>Jíra (bicí, zpěv)</h2>
+          <ul>
+              <li>standardní nazvučení bicích</li>
+              <li>zpěvový mikrofon</li>
+          </ul>
+          <h2>Honza (basa, zpěv)</h2>
+          <ul>
+              <li>mikrofon pro basový zesilovač</li>
+              <li>zpěvový mikrofon</li>
+          </ul>
+          <h2>Juhy (kytara, zpěv)</h2>
+          <ul>
+              <li>mikrofon pro kytarový zesilovač <b>Vox AC15</b>
+              </li>
+              <li>zpěvový mikrofon</li>
+          </ul>
+      </div>
+  </article>
+
+
+   
+ 
+    <div class="visible-lg-block">
+      <div ng-repeat="photo in photoList" class="photo">
+        <img src={{photo.media$group.media$thumbnail[0].url}}>
+        <i>{{photo.summary.$t}}</i>
+      </div>
+      </div>
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -92,31 +255,36 @@
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/json3/lib/json3.js"></script>
-    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/affix.js"></script>
-    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/alert.js"></script>
-    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/button.js"></script>
-    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/carousel.js"></script>
-    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/collapse.js"></script>
-    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/dropdown.js"></script>
-    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tab.js"></script>
-    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition.js"></script>
-    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/scrollspy.js"></script>
-    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/modal.js"></script>
-    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tooltip.js"></script>
-    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/popover.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/Concerts.js"></script>
-        <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/Concerts.js"></script>
+    <script src="scripts/directives/details.js"></script>
+    <!-- endbuild -->
+
+     <!--script>
+      var photos= [];
+      function setData(data) {
+        photos = data;
+      }
+    </script>
+
+    <script src="http://picasaweb.google.com/data/feed/api/user/juhyxx/albumid/5252817473210531713?kind=photo&alt=json-in-script&thumbsize=243c,354&callback=setData&fields=entry(summary,exif:tags, media:group/media:thumbnail)" type="text/javascript"></script-->
+    
+
+     <footer>
+          <a class="fa fa-facebook-square" target="_blank" href="http://www.facebook.com/rezatyrakety"></a>
+          <span>Miroslav Juhy Juhos</span>
+          <span><i class="fa fa-phone"></i> 605 376 741</span>
+          <span><i class="fa fa-envelope"></i> <script type="text/javascript">var email='juhy',domain='rezatyrakety.cz',address=email+'@'+domain;document.write('<a class="email" href="mailto:'+address+'">'+address+'</a>')</script></span>
+          <span><i class="fa fa -map-marker"></i> Plzeň, Česká republika</span>
+    </footer>
+
 </body>
 </html>

@@ -4,8 +4,56 @@
 		"selected_items":
 		[
 			[
+				"bac",
+				"background: "
+			],
+			[
+				"back",
+				"background-color: "
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"font-",
+				"font-size"
+			],
+			[
 				"fon",
-				"font-style"
+				"font-size"
+			],
+			[
+				"ar",
+				"randomArray"
+			],
+			[
+				"random",
+				"randomArray"
+			],
+			[
+				"rando",
+				"random"
+			],
+			[
+				"tra",
+				"transform: "
+			],
+			[
+				"pos",
+				"position: "
+			],
+			[
+				"no",
+				"normal"
+			],
+			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"dr",
+				"darken"
 			],
 			[
 				"te",
@@ -44,10 +92,6 @@
 				"font-size"
 			],
 			[
-				"font",
-				"font-style"
-			],
-			[
 				"fonte",
 				"font-size: "
 			],
@@ -74,10 +118,6 @@
 			[
 				"bo",
 				"border-radius"
-			],
-			[
-				"back",
-				"background-color"
 			],
 			[
 				"disa",
@@ -112,10 +152,6 @@
 				"background-color"
 			],
 			[
-				"bac",
-				"background"
-			],
-			[
 				"lo",
 				"locations"
 			],
@@ -138,10 +174,6 @@
 			[
 				"text-s",
 				"text-shadow"
-			],
-			[
-				"pos",
-				"position"
 			],
 			[
 				"se",
@@ -204,10 +236,6 @@
 				"margin"
 			],
 			[
-				"text",
-				"text-align"
-			],
-			[
 				"edi",
 				"editedProfile"
 			],
@@ -242,10 +270,6 @@
 			[
 				"sele",
 				"selectedStep"
-			],
-			[
-				"no",
-				"nowrap"
 			],
 			[
 				"inline",
@@ -296,10 +320,26 @@
 	"buffers":
 	[
 		{
+			"file": "app/styles/main.scss",
+			"settings":
+			{
+				"buffer_size": 5798,
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "app/index.html",
 			"settings":
 			{
-				"buffer_size": 6362,
+				"buffer_size": 14167,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "bower.json",
+			"settings":
+			{
+				"buffer_size": 471,
 				"line_ending": "Unix"
 			}
 		},
@@ -307,40 +347,24 @@
 			"file": "app/scripts/controllers/Concerts.js",
 			"settings":
 			{
-				"buffer_size": 591,
+				"buffer_size": 1509,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/views/nahravky.html",
+			"file": "app/scripts/app.js",
 			"settings":
 			{
-				"buffer_size": 3517,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/views/vorr.html",
-			"settings":
-			{
-				"buffer_size": 1101,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/styles/main.scss",
-			"settings":
-			{
-				"buffer_size": 5184,
+				"buffer_size": 202,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/views/texty.html",
+			"file": "app/data.json",
 			"settings":
 			{
-				"buffer_size": 21165,
-				"line_ending": "Windows"
+				"buffer_size": 87340,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -466,26 +490,97 @@
 		"side_bar_visible": true,
 		"status_bar_visible": true
 	},
+	"expanded_folders":
+	[
+		"/C/projects/www.rezatyrakety.cz",
+		"/C/projects/www.rezatyrakety.cz/app",
+		"/C/projects/www.rezatyrakety.cz/app/scripts",
+		"/C/projects/www.rezatyrakety.cz/app/scripts/controllers",
+		"/C/projects/www.rezatyrakety.cz/app/scripts/directives",
+		"/C/projects/www.rezatyrakety.cz/app/views",
+		"/C/projects/www.rezatyrakety.cz/bower_components/jquery",
+		"/C/projects/www.rezatyrakety.cz/bower_components/jquery/dist"
+	],
 	"file_history":
 	[
-		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-autoprefixer/node_modules/autoprefixer/bin/autoprefixer",
+		"/C/projects/www.rezatyrakety.cz/app/views/main.html",
+		"/C/projects/www.rezatyrakety.cz/app/views/vorr.html",
+		"/C/projects/www.rezatyrakety.cz/app/.htaccess",
+		"/C/projects/www.rezatyrakety.cz/.bowerrc",
+		"/C/projects/www.rezatyrakety.cz/bower.json",
+		"/C/projects/www.rezatyrakety.cz/node_modules/karma/node_modules/source-map/build/assert-shim.js",
+		"/C/projects/www.rezatyrakety.cz/bower_components/angular-sanitize/angular-sanitize.js",
+		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-autoprefixer/node_modules/chalk/node_modules/.bin/strip-ansi",
+		"/C/projects/www.rezatyrakety.cz/bower_components/es5-shim/shims.json",
+		"/C/projects/www.rezatyrakety.cz/bower_components/bootstrap-sass-official/bower.json",
+		"/C/projects/www.rezatyrakety.cz/bower_components/es5-shim/bower.json",
+		"/C/projects/www.rezatyrakety.cz/bower_components/angular-touch/bower.json",
+		"/C/projects/www.rezatyrakety.cz/bower_components/angular-scenario/bower.json",
+		"/C/projects/www.rezatyrakety.cz/bower_components/angular-sanitize/bower.json",
+		"/C/projects/www.rezatyrakety.cz/bower_components/angular-route/bower.json",
+		"/C/projects/www.rezatyrakety.cz/bower_components/angular-resource/bower.json",
+		"/C/projects/www.rezatyrakety.cz/bower_components/angular-mocks/bower.json",
+		"/C/projects/www.rezatyrakety.cz/bower_components/angular-cookies/bower.json",
+		"/C/projects/www.rezatyrakety.cz/bower_components/angular-animate/bower.json",
+		"/C/projects/www.rezatyrakety.cz/bower_components/angular/bower.json",
+		"/C/projects/www.rezatyrakety.cz/node_modules/karma/node_modules/log4js/test/dateFileAppender-test.js",
+		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-ngmin/node_modules/ngmin/node_modules/astral-angular-annotate/lib/deep-apply.js",
+		"/C/projects/www.rezatyrakety.cz/app/data.json",
+		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-google-cdn/node_modules/bower/node_modules/mout/lang/isNull.js",
+		"/C/projects/www.rezatyrakety.cz/app/index.html",
 		"/C/projects/www.rezatyrakety.cz/app/styles/main.scss",
+		"/C/projects/www.rezatyrakety.cz/app/styles/main-old.scss",
+		"/C/projects/www.rezatyrakety.cz/app/scripts/controllers/Concerts.js",
+		"/C/projects/www.rezatyrakety.cz/node_modules/karma/node_modules/http-proxy/node_modules/utile/test/fixtures/read-json-file/config.json",
+		"/C/projects/www.rezatyrakety.cz/node_modules/karma/node_modules/source-map/build/prefix-utils.jsm",
+		"/C/projects/www.rezatyrakety.cz/package.json",
+		"/C/projects/www.rezatyrakety.cz/bower_components/es5-shim/CHANGES",
+		"/C/projects/www.rezatyrakety.cz/.sass-cache/2d5a42b05abff780d0714c647ad0e1681813868c/_component-animations.scssc",
+		"/C/projects/www.rezatyrakety.cz/bower_components/jquery/src/callbacks.js",
+		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-autoprefixer/node_modules/autoprefixer/node_modules/caniuse-db/features-json/calc.json",
+		"/C/projects/www.rezatyrakety.cz/.sass-cache/0eecf58a8434c8e6a3d87563bdf3430d8fc37018/_alternating-rows-and-columns.scssc",
+		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-contrib-cssmin/node_modules/clean-css/lib/images/url-rebase.js",
+		"/C/projects/www.rezatyrakety.cz/bower_components/angular-cookies/angular-cookies.js",
+		"/C/projects/www.rezatyrakety.cz/node_modules/karma/node_modules/log4js/test/clusteredAppender-test.js",
+		"/C/projects/www.rezatyrakety.cz/bower_components/angular-touch/angular-touch.js",
+		"/C/projects/www.rezatyrakety.cz/dist/scripts/scripts.f01ed390.js",
+		"/C/projects/www.rezatyrakety.cz/app/scripts/app.js",
+		"/C/projects/www.rezatyrakety.cz/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap.scss",
+		"/C/projects/www.rezatyrakety.cz/Gruntfile.js",
+		"/C/projects/www.rezatyrakety.cz/.sass-cache/4a28f42095393df44796183984acb56d1a57ca95/_background-origin.scssc",
+		"/C/projects/www.rezatyrakety.cz/.sass-cache/4a28f42095393df44796183984acb56d1a57ca95/_appearance.scssc",
+		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-autoprefixer/node_modules/autoprefixer/node_modules/caniuse-db/features-json/offline-apps.json",
+		"/C/projects/www.rezatyrakety.cz/app/views/nahravky.html",
+		"/C/projects/www.rezatyrakety.cz/app/scripts/directives/details.js",
+		"/C/projects/www.rezatyrakety.cz - old/resources/scripts/rr.js",
+		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-contrib-jshint/node_modules/jshint/src/style.js",
+		"/C/projects/www.rezatyrakety.cz/app/styles/mixins/_palette.scss",
+		"/C/projects/www.rezatyrakety.cz/.sass-cache/8ea49491bf699416f8f5c777f9ad4ed730ed4fea/_unstyled-link.scssc",
+		"/C/projects/www.rezatyrakety.cz/node_modules/karma/node_modules/socket.io/node_modules/socket.io-client/node_modules/uglify-js/docstyle.css",
+		"/C/projects/www.rezatyrakety.cz/node_modules/karma/node_modules/connect/lib/public/style.css",
+		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-contrib-connect/node_modules/connect/lib/public/style.css",
+		"/C/projects/www.rezatyrakety.cz/node_modules/karma/node_modules/log4js/test/smtpAppender-test.js",
+		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-contrib-uglify/node_modules/uglify-js/lib/ast.js",
+		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-autoprefixer/node_modules/autoprefixer/node_modules/caniuse-db/features-json/stream.json",
+		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-svgmin/node_modules/svgo/plugins/convertStyleToAttrs.js",
+		"/C/projects/www.rezatyrakety.cz/node_modules/jshint-stylish/stylish.js",
+		"/C/projects/www.rezatyrakety.cz/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_wells.scss",
+		"/C/projects/www.rezatyrakety.cz/app/scripts/directives",
+		"/C/projects/www.rezatyrakety.cz/app/views/trojka.html",
+		"/C/projects/www.rezatyrakety.cz - old/index.html",
+		"/C/projects/www.rezatyrakety.cz/app/views/texty.html",
+		"/C/projects/www.rezatyrakety.cz/node_modules/karma/node_modules/socket.io/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/WebSocketMainInsecure.as",
+		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-google-cdn/node_modules/bower/node_modules/inquirer/node_modules/cli-color/node_modules/memoizee/node_modules/event-emitter/benchmark/many-on.js",
+		"/C/projects/hearth-rails/web/app/app/styles/main.scss",
+		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-autoprefixer/node_modules/autoprefixer/bin/autoprefixer",
 		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-google-cdn/node_modules/bower/node_modules/inquirer/node_modules/cli-color/node_modules/memoizee/profile.js",
 		"/C/projects/www.rezatyrakety.cz/bower_components/jquery/src/attributes/prop.js",
 		"/C/projects/www.rezatyrakety.cz/node_modules/grunt/node_modules/glob/test/pause-resume.js",
-		"/C/projects/www.rezatyrakety.cz/package.json",
 		"/C/projects/www.rezatyrakety.cz-older/app/index.html",
 		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-contrib-uglify/node_modules/uglify-js/lib/mozilla-ast.js",
 		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-contrib-jshint/node_modules/jshint/data/non-ascii-identifier-start.js",
 		"/C/projects/www.rezatyrakety.cz/.sass-cache/4a3be19c82549c7646004461622b2cd3b94d2918/_nav-vertical-align.scssc",
-		"/C/projects/www.rezatyrakety.cz/app/views/nahravky.html",
-		"/C/projects/www.rezatyrakety.cz/app/scripts/controllers/Concerts.js",
 		"/C/projects/www.rezatyrakety.cz/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_variables.scss",
-		"/C/projects/www.rezatyrakety.cz/app/styles/mixins/_palette.scss",
-		"/C/projects/www.rezatyrakety.cz/Gruntfile.js",
-		"/C/projects/www.rezatyrakety.cz/app/views/main.html",
-		"/C/projects/hearth-rails/web/app/app/styles/main.scss",
-		"/C/projects/www.rezatyrakety.cz/app/index.html",
 		"/C/projects/www.rezatyrakety.cz/app/styles/mixins/_pallette-color.scss",
 		"/C/projects/www.rezatyrakety.cz/app/styles/palette.scss",
 		"/C/projects/www.rezatyrakety.cz/.gitignore",
@@ -493,30 +588,16 @@
 		"/C/projects/www.rezatyrakety.cz-older/app/scripts/rr.js",
 		"/C/projects/www.rezatyrakety.cz/.sass-cache/6e7beb7e9f194716031ba9549e5017bdbb43e354/_variables.scssc",
 		"/C/projects/www.rezatyrakety.cz/bower_components/font-awesome/less/variables.less",
-		"/C/projects/www.rezatyrakety.cz/app/views/vorr.html",
-		"/C/projects/www.rezatyrakety.cz/app/scripts/app.js",
-		"/C/projects/www.rezatyrakety.cz/app/views/texty.html",
-		"/C/projects/www.rezatyrakety.cz/app/views/trojka.html",
 		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-google-cdn/node_modules/bower/node_modules/inquirer/node_modules/cli-color/node_modules/es5-ext/object/valid-object.js",
 		"/C/projects/www.rezatyrakety.cz/.sass-cache/4a3be19c82549c7646004461622b2cd3b94d2918/_text-emphasis.scssc",
 		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-google-cdn/node_modules/bower/node_modules/retry/test/integration/test-retry-operation.js",
 		"/C/projects/www.rezatyrakety.cz/.sass-cache/4a3be19c82549c7646004461622b2cd3b94d2918/_table-row.scssc",
-		"/C/projects/www.rezatyrakety.cz - old/index.html",
 		"/C/projects/www.rezatyrakety.cz/app/scripts/controllers/about.js",
 		"/C/projects/www.rezatyrakety.cz/bower_components/font-awesome/.bower.json",
 		"/C/projects/www.rezatyrakety.cz/.sass-cache/74dfff623104a1494a3f14b4aad9e32497f8333a/font-awesome.scssc",
 		"/C/projects/www.rezatyrakety.cz/bower_components/font-awesome/less/extras.less",
 		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-contrib-watch/node_modules/tiny-lr-fork/node_modules/noptify/test/api.js",
 		"/C/projects/www.rezatyrakety.cz/node_modules/karma/node_modules/log4js/examples/flush-on-exit.js",
-		"/C/projects/www.rezatyrakety.cz/node_modules/karma/node_modules/connect/lib/public/style.css",
-		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-contrib-connect/node_modules/connect/lib/public/style.css",
-		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-contrib-jshint/node_modules/jshint/src/style.js",
-		"/C/projects/www.rezatyrakety.cz/node_modules/jshint-stylish/stylish.js",
-		"/C/projects/www.rezatyrakety.cz/node_modules/karma/node_modules/log4js/test/smtpAppender-test.js",
-		"/C/projects/www.rezatyrakety.cz/bower_components/es5-shim/shims.json",
-		"/C/projects/www.rezatyrakety.cz/node_modules/karma/node_modules/source-map/build/assert-shim.js",
-		"/C/projects/www.rezatyrakety.cz/bower_components/angular-sanitize/angular-sanitize.js",
-		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-autoprefixer/node_modules/chalk/node_modules/.bin/strip-ansi",
 		"/C/projects/www.rezatyrakety.cz/app/texty.html",
 		"/C/projects/hearth-rails/web/Gruntfile.js",
 		"/C/projects/scalear2/index.html",
@@ -549,53 +630,7 @@
 		"/C/projects/hearth-rails/web/app/app/templates/profileProgress.html",
 		"/C/projects/hearth-rails/web/app/app/templates/profileList.html",
 		"/C/projects/hearth-rails/web/app/app/templates/profileDelete.html",
-		"/C/projects/hearth-rails/web/app/app/scripts/services/AdDetailResource.js",
-		"/C/projects/hearth-rails/web/app/app/styles/_adDetail.scss",
-		"/C/projects/hearth-rails/web/app/app/scripts/app.js",
-		"/C/projects/hearth-rails/web/app/app/scripts/geo/geo.js",
-		"/C/projects/hearth-rails/web/app/app/templates/geo/markerTooltip.html",
-		"/C/projects/hearth-rails/web/app/app/scripts/geo/map.js",
-		"/C/projects/hearth-rails/web/app/app/templates/login.html",
-		"/C/projects/hearth-rails/web/app/app/index.html",
-		"/C/projects/hearth-rails/web/app/app/vendor/modernizr/feature-detects/dom-createElement-attrs.js",
-		"/C/projects/hearth-rails/web/app/app/scripts/directives/datepicker.js",
-		"/C/projects/hearth-rails/web/app/app/templates/createAd.html",
-		"/C/projects/hearth-rails/web/app/app/templates/searchResults.html",
-		"/C/projects/hearth-rails/web/app/app/scripts/controllers/SearchCtrl.js",
-		"/C/projects/hearth-rails/web/app/app/scripts/geo/searchMap.js",
-		"/C/projects/hearth-rails/web/app/app/templates/communityList.html",
-		"/C/projects/hearth-rails/web/app/app/templates/fulltext.html",
-		"/C/projects/hearth-rails/web/app/app/scripts/geo/locations.js",
-		"/C/projects/hearth-rails/web/app/app/vendor/modernizr/feature-detects/quota-management-api.js",
-		"/C/projects/hearth-rails/web/app/app/locales/en/messages.json",
-		"/C/projects/hearth-rails/web/app/app/scripts/directives/addressAutocomplete.js",
-		"/C/projects/hearth-rails/web/app/app/scripts/utils/timeAgo.js",
-		"/C/projects/hearth-rails/web/app/app/scripts/filters/filters.js",
-		"/C/projects/www.rezatyrakety.cz/app/scripts/rr.js",
-		"/C/projects/hearth-rails/web/app/app/styles/_filter.scss",
-		"/C/projects/hearth-rails/web/app/app/scripts/directives/filter.js",
-		"/C/projects/hearth-rails/web/app/app/templates/filter.html",
-		"/C/projects/hearth-rails/web/app/app/vendor/foundation-icon-fonts/foundation-icons.css",
-		"/C/projects/hearth-rails/web/app/app/scripts/services/Feedback.js",
-		"/C/projects/hearth-rails/web/app/app/templates/social.html",
-		"/C/projects/hearth-rails/web/app/app/templates/invitationForm.html",
-		"/C/projects/hearth-rails/web/app/app/templates/geo/searchMap.html",
-		"/C/Dropbox/Psaní/Texty/Ozubený hodinář.txt",
-		"/C/projects/hearth-rails/web/app/app/styles/_social.scss",
-		"/C/projects/hearth-rails/web/app/app/scripts/directives/social.js",
-		"/C/projects/hearth-rails/web/app/app/fonts/social_foundicons.woff",
-		"/C/projects/hearth-rails/web/app/app/fonts/social_foundicons.svg",
-		"/C/projects/hearth-rails/web/app/app/scripts/utils/monkPlaceholder.js",
-		"/C/projects/hearth-rails/web/app/app/templates/404.html",
-		"/C/projects/hearth-rails/web/app/app/templates/my.html",
-		"/C/projects/hearth-rails/web/app/app/templates/feedback.html",
-		"/C/projects/hearth-rails/web/app/app/locales/cs/messages.json",
-		"/C/temp/tra/hearth-en_US.json",
-		"/C/temp/tra/hearth-cs_CZ.json",
-		"/C/projects/hearth-rails/web/app/app/scripts/services/Invitation.js",
-		"/C/projects/hearth-rails/web/app/app/templates/navigation.html",
-		"/C/projects/hearth-rails/web/app/app/scripts/directives/invitationForm.js",
-		"/C/projects/hearth-rails/web/app/app/scripts/utils/emails.js"
+		"/C/projects/hearth-rails/web/app/app/scripts/services/AdDetailResource.js"
 	],
 	"find":
 	{
@@ -606,6 +641,8 @@
 		"height": 105.0,
 		"where_history":
 		[
+			"C:\\projects\\www.rezatyrakety.cz\\app",
+			"C:\\projects\\www.rezatyrakety.cz\\app\\scripts",
 			"C:\\projects\\www.rezatyrakety.cz\\app",
 			"C:\\projects\\www.rezatyrakety.cz\\app\\scripts",
 			"C:\\projects\\hearth-rails\\web\\app\\app\\scripts",
@@ -731,8 +768,6 @@
 			"C:\\projects\\hearth-rails\\web\\app\\app\\scripts",
 			"C:\\projects\\hearth-rails\\web\\app\\app\\templates",
 			"C:\\projects\\hearth-rails\\web\\app\\app\\scripts\\controllers",
-			"C:\\projects\\hearth-rails\\web\\app\\app\\scripts",
-			"C:\\projects\\hearth-rails\\web\\app\\app\\templates",
 			"C:\\projects\\hearth-rails\\web\\app\\app\\scripts"
 		]
 	},
@@ -741,6 +776,50 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"0.5",
+			"koncert",
+			"logo",
+			"jquer",
+			"text",
+			"max",
+			"div",
+			"include",
+			"dlou",
+			"font-fa",
+			"//$",
+			"font-s",
+			"nav",
+			"head",
+			"foote",
+			"30px",
+			"url",
+			"data.js",
+			"data",
+			"bower",
+			"useminPrepare",
+			"ngmin",
+			"bower",
+			"css",
+			"url",
+			"autoprefixer",
+			"details",
+			"display",
+			"height",
+			"border",
+			"face",
+			"fa",
+			"face",
+			"5",
+			"1px",
+			"h3",
+			"photo",
+			"(Math.random() * 45)",
+			"random",
+			"100",
+			"pi",
+			"sass",
+			"fonts",
+			"font",
 			"Domine",
 			"Lora",
 			"50px",
@@ -824,51 +903,7 @@
 			"rep",
 			"item",
 			"prof",
-			"replyForm",
-			"profileUrl",
-			"ad",
-			"container login",
-			"id",
-			"openedInfoWindow",
-			"infoWindow",
-			"ad._id",
-			"marker-tooltip",
-			"infoWindow",
-			"infowindow",
-			"InfoWindow",
-			"infowindow",
-			"centerChangeTimeout",
-			"repl",
-			"login-prompt",
-			"login-prompt ",
-			"in",
-			"hearthicon-reply",
-			"myLocation",
-			"search",
-			"showAutodetect",
-			"orderBy",
-			"OrderBy",
-			"orderBy",
-			"dista",
-			"orderBy",
-			"sort",
-			"processRow",
-			"try",
-			"Unable to convert coordinates",
-			"Unable to count distances of",
-			"clearMarkers",
-			"markers",
-			"Markers",
-			"markers",
-			"Markers",
-			"markers",
-			"http",
-			"markers",
-			"Markers",
-			"markers",
-			"createPins",
-			"clearMarkers",
-			"limi"
+			"replyForm"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -899,24 +934,366 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
+					"file": "app/styles/main.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5798,
+						"regions":
+						{
+							"gutter_color_1710":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#33A8AC.png",
+								"regions":
+								[
+									[
+										3290,
+										3313
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_2500":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#33A8AC.png",
+								"regions":
+								[
+									[
+										3293,
+										3316
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_2521":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#33A8AC.png",
+								"regions":
+								[
+									[
+										3308,
+										3333
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_2633":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#33A8AC.png",
+								"regions":
+								[
+									[
+										3293,
+										3316
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_2635":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#33A8AC.png",
+								"regions":
+								[
+									[
+										3293,
+										3316
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_2648":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#33A8AC.png",
+								"regions":
+								[
+									[
+										3293,
+										3316
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_27":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#9b1915.png",
+								"regions":
+								[
+									[
+										27,
+										79
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_2799":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#33A8AC.png",
+								"regions":
+								[
+									[
+										3293,
+										3316
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_2805":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#33A8AC.png",
+								"regions":
+								[
+									[
+										3293,
+										3316
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_2865":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#33A8AC.png",
+								"regions":
+								[
+									[
+										3293,
+										3316
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_2924":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#33A8AC.png",
+								"regions":
+								[
+									[
+										3293,
+										3316
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_2926":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#33A8AC.png",
+								"regions":
+								[
+									[
+										3293,
+										3316
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_2927":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#33A8AC.png",
+								"regions":
+								[
+									[
+										3293,
+										3316
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_3033":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#33A8AC.png",
+								"regions":
+								[
+									[
+										3293,
+										3316
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_3042":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#33A8AC.png",
+								"regions":
+								[
+									[
+										3293,
+										3316
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_3293":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#33A8AC.png",
+								"regions":
+								[
+									[
+										3293,
+										3316
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_3411":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#EEEEEE.png",
+								"regions":
+								[
+									[
+										3187,
+										3187
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_343":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#33a8ac.png",
+								"regions":
+								[
+									[
+										151,
+										151
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_3492":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#33A8AC.png",
+								"regions":
+								[
+									[
+										3293,
+										3316
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_365":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#fdf5e8.png",
+								"regions":
+								[
+									[
+										151,
+										151
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_4326":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#33A8AC.png",
+								"regions":
+								[
+									[
+										3290,
+										3313
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_440":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#EFFFFF.png",
+								"regions":
+								[
+									[
+										440,
+										470
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_441":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#EFFFFF.png",
+								"regions":
+								[
+									[
+										545,
+										575
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_443":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#EFFFFF.png",
+								"regions":
+								[
+									[
+										545,
+										575
+									]
+								],
+								"scope": "gutter_color"
+							}
+						},
+						"selection":
+						[
+							[
+								1455,
+								1455
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1213.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
 					"file": "app/index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6362,
+						"buffer_size": 14167,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								97,
-								97
+								13602,
+								13602
 							]
 						],
 						"settings":
@@ -926,27 +1303,86 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 7168.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "app/scripts/controllers/Concerts.js",
+					"buffer": 2,
+					"file": "bower.json",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 591,
+						"buffer_size": 471,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								444,
-								451
+								471,
+								471
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/scripts/controllers/Concerts.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1509,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1046,
+								1046
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 672.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/scripts/app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 202,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								202,
+								202
 							]
 						],
 						"settings":
@@ -958,124 +1394,37 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/views/nahravky.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3517,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								110,
-								110
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "app/views/vorr.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1101,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								117,
-								117
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "app/styles/main.scss",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5184,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								343,
-								343
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 5,
-					"file": "app/views/texty.html",
+					"file": "app/data.json",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 21165,
+						"buffer_size": 87340,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								21164,
-								21164
+								17338,
+								17338
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 8046.0,
+						"translation.y": 12097.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -1132,12 +1481,48 @@
 		"selected_items":
 		[
 			[
-				"texty",
-				"app\\views\\texty.html"
+				"bower",
+				"www.rezatyrakety.cz\\bower.json"
+			],
+			[
+				"data",
+				"app\\data.json"
+			],
+			[
+				"inde",
+				"app\\index.html"
+			],
+			[
+				"bowe",
+				"www.rezatyrakety.cz\\bower.json"
+			],
+			[
+				"g",
+				"www.rezatyrakety.cz\\Gruntfile.js"
+			],
+			[
+				"style.sc",
+				"app\\styles\\main.scss"
+			],
+			[
+				"style",
+				"www.rezatyrakety.cz\\node_modules\\grunt-contrib-jshint\\node_modules\\jshint\\src\\style.js"
+			],
+			[
+				"index",
+				"app\\index.html"
 			],
 			[
 				"main",
 				"app\\styles\\main.scss"
+			],
+			[
+				"text",
+				"app\\views\\texty.html"
+			],
+			[
+				"texty",
+				"app\\views\\texty.html"
 			],
 			[
 				"vo",
@@ -1154,14 +1539,6 @@
 			[
 				"vorr",
 				"app\\views\\vorr.html"
-			],
-			[
-				"text",
-				"app\\views\\texty.html"
-			],
-			[
-				"index",
-				"app\\index.html"
 			],
 			[
 				"font-awesome/var",
@@ -1614,34 +1991,6 @@
 			[
 				"use",
 				"app\\scripts\\services\\UserPosts.js"
-			],
-			[
-				"navi",
-				"app\\templates\\navigation.html"
-			],
-			[
-				"about",
-				"app\\templates\\about.html"
-			],
-			[
-				"identit",
-				"app\\templates\\identitySwitch.html"
-			],
-			[
-				"messag",
-				"app\\locales\\en\\messages.json"
-			],
-			[
-				"message",
-				"app\\locales\\de\\messages.json"
-			],
-			[
-				"location.scs",
-				"app\\styles\\_location.scss"
-			],
-			[
-				"user",
-				"app\\scripts\\services\\User.js"
 			]
 		],
 		"width": 0.0
@@ -1652,11 +2001,35 @@
 		"selected_items":
 		[
 			[
-				"hea",
-				"C:\\projects\\hearth-app.sublime-project"
+				"blu",
+				"C:\\projects\\blueweb.sublime-project"
+			],
+			[
+				"blue",
+				"C:\\projects\\blueweb.sublime-project"
+			],
+			[
+				"bl",
+				"C:\\projects\\blueweb.sublime-project"
 			],
 			[
 				"",
+				"C:\\projects\\csas-loans\\csas-loands.sublime-project"
+			],
+			[
+				" ",
+				"C:\\projects\\blueweb.sublime-project"
+			],
+			[
+				"cs",
+				"C:\\projects\\csas-loans\\csas-loands.sublime-project"
+			],
+			[
+				"psa",
+				"C:\\Dropbox\\Psaní\\psani.sublime-project"
+			],
+			[
+				"hea",
 				"C:\\projects\\hearth-app.sublime-project"
 			],
 			[
@@ -1670,10 +2043,6 @@
 			[
 				"hear",
 				"C:\\projects\\hearth-app.sublime-project"
-			],
-			[
-				"bl",
-				"C:\\projects\\blueweb.sublime-project"
 			],
 			[
 				"web",
@@ -1702,10 +2071,6 @@
 			[
 				"reza",
 				"/C/projects/www.rezatyrakety.cz/rr.sublime-project"
-			],
-			[
-				"psa",
-				"/C/Dropbox/psani.sublime-project"
 			]
 		],
 		"width": 475.0
@@ -1718,6 +2083,7 @@
 		],
 		"width": 0.0
 	},
+	"selected_group": 0,
 	"settings":
 	{
 	},
@@ -1725,7 +2091,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 184.0,
+	"side_bar_width": 347.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
