@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js">
   <head>
     <meta charset="utf-8">
@@ -16,18 +16,17 @@
     <!-- endbuild -->
   </head>
   <body ng-app="rr" ng-controller="Concerts">
-    <article>
+    <header>
       <div>
-          <div id="logo"></div>
-          <h1>bigbít s jadernou hlavicí</h1>
+          <h1>Bigbít s jadernou hlavicí</h1>
+           <img  id="logo" src="images/logo.png" alt="logo"/>
+        
       </div>
-  </article>
+  </header>
   <article>
       <div>
           <h1>Nejbližší koncert</h1>
-          <div class="koncerty-list">
-              <div ng-if="nearest.trojkazblues_flag == 1" class="trojka" title="Trojka"></div>
-              <div ng-if="nearest.trojkazblues_flag == 2" class="rock" title="Rock do klobouku"></div>
+          <div class="koncerty-list" ng-class="{trojka: nearest.trojkazblues_flag == 1}">
               <a ng-if="nearest.fblink" href="{{nearest.fblink}}" class="fa fa-facebook-square" title="Událost na Facebooku"></a>
               {{nearest.date*1000 | date :'dd.MM. yyyy'}}
               <span class="time">{{nearest.date*1000 | date :'HH:mm'}}</span>
@@ -37,10 +36,8 @@
           </div>
                
           <h1>Koncerty</h1>
-          <ul ng-cloak class="koncerty-list">
-              <li ng-repeat="koncert in koncerty">
-                  <div ng-if="koncert.trojkazblues_flag == 1" class="trojka" title="Trojka"></div>
-                  <div ng-if="koncert.trojkazblues_flag == 2" class="rock" title="Rock do klobouku"></div>
+          <ul ng-cloak class="koncerty-list" >
+              <li ng-repeat="koncert in koncerty" ng-class="{trojka: koncert.trojkazblues_flag == 1}">
                   <a ng-if="koncert.fblink" href="{{koncert.fblink}}" class="fa fa-facebook-square" title="Událost na Facebooku"></a>
                   {{koncert.date*1000 | date :'dd.MM. yyyy'}}
                   <span class="time">{{koncert.date*1000 | date :'HH:mm'}}</span>
@@ -49,19 +46,17 @@
                   <div class="note" ng-bind-html="koncert.poznamka"></div>
               </li>
           </ul>
-          <details>
-              <summary id="odehrane" ng-cloak>Odehrané ({{odehraneKoncerty.length - 2}})</summary>
+          <div class="old" ng-click="loadConcerts();"  ng-class="{loading:loading,closed: !opened}">
+              <summary id="odehrane" ng-cloak>Odehrané ({{oldkoncertsCount}})</summary>
               <ul id="koncerty-list-odehrane" class="koncerty-list">
-                  <li ng-repeat="koncert in odehraneKoncerty">
-                      <div ng-if="koncert.trojkazblues_flag == 1" class="trojka" title="Trojka"></div>
-                      <div ng-if="koncert.trojkazblues_flag == 2" class="rock" title="Rock do klobouku"></div>
+                  <li ng-repeat="koncert in odehraneKoncerty" ng-class="{trojka: koncert.trojkazblues_flag == 1}">
                       {{koncert.date*1000 | date :'dd.MM. yyyy'}}
                       <a target="_blank" href="http://mapy.cz/?q=Loc:{{koncert.linkMapa}}" title="{{koncert.adresaUlice}}"> {{koncert.adresaMesto}}</a>,
                       <a target="_blank" href="{{koncert.WWW}}" title="Web klubu">{{koncert.jmeno}}</a>
                       <div class="note" ng-bind-html="koncert.poznamka"></div>
                   </li>
               </ul>
-          </details>
+          </div>
       </div>
   </article>
 
@@ -69,8 +64,7 @@
       <div>
           <h1>Nahrávky</h1>
 
-      <section class="row">
-          <div class="col-lg-12 columns">
+      <section>
               <h2>(2011) Starý dobrý časy</h2>
               <details>
                   <summary>Recenze (Petr Korál, Muzikus)</summary>
@@ -79,70 +73,72 @@
                   <p><b>Zlatý hřeb:</b> Rádio Starý dobrý časy, Láhev rumu od Ježíška</p>
                   <p><b>Zní to jako:</b> tak trochu jako Cream a jiná klasická bluesrocková tria</p>
               </details>
-              <p><em>studiovej snímek, zaznamenanej 4-6. února.</em></p>
-          </div>
-          <div class="col-md-5 col-lg-5">
-              <ol>
-                  <li>Rádio Starý dobrý časy</li>
-                  <li>Na vlnách MHD</li>
-                  <li>Jedna hodně hodná paní</li>
-                  <li>Opilec Bedřich</li>
-                  <li>Hvězdy</li>
-                  <li>Mrakodrap v dešti</li>
-                  <li>Bufet Adrie</li>
-                  <li>Co šeptá vítr</li>
-                  <li>Dveře do léta</li>
-                  <li>Láhev rumu od Ježíška</li>
-                  <li>Plakát</li>
-                  <li>Krize středního věku</li>
-                  <li>Jeřáby, jeřáby</li>
-                  <li>Lež</li>
-                  <li>Dokud</li>
-              </ol>
-          </div>
-          <div class="col-md-7 col-lg-7">
+              <em>studiovej snímek, zaznamenanej 4-6. února.</em>
+          
+          <div class="row">
+            <div class="col left">
+                <ol>
+                    <li>Rádio Starý dobrý časy</li>
+                    <li>Na vlnách MHD</li>
+                    <li>Jedna hodně hodná paní</li>
+                    <li>Opilec Bedřich</li>
+                    <li>Hvězdy</li>
+                    <li>Mrakodrap v dešti</li>
+                    <li>Bufet Adrie</li>
+                    <li>Co šeptá vítr</li>
+                    <li>Dveře do léta</li>
+                    <li>Láhev rumu od Ježíška</li>
+                    <li>Plakát</li>
+                    <li>Krize středního věku</li>
+                    <li>Jeřáby, jeřáby</li>
+                    <li>Lež</li>
+                    <li>Dokud</li>
+                </ol>
+            </div>
+             <div class="col right">
               <div class="cd">
                   <img class="cd" src="nahravky/stary-dobry-casy/obal.jpg" alt="Obal"  />
               </div>
+                  <div class="download">Kompletní album ke <a href="nahravky/2011-stary-dobry-casy.zip">stažení</a> (66MB).</div>
+             </div>
           </div>
-          <div class="col-lg-12">
-              <p>Kompletní album ke <a href="nahravky/2011-stary-dobry-casy.zip">stažení</a> (66MB).</p>
+         
+        
+            
+          
+      </section>
+
+      <section >
+          <h2>(2009) ...a to už dneska nikdo neposlouchá</h2>
+          <em>živej demosnímek, zaznamenán 30.5.2009 na festivalu Kerio MusicFest.</em>
+          <div class="row">
+            <div class="col left">
+                <ol>
+                    <li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/01-blues-na-cesty.mp3">Blues na cesty</a></li>
+                    <li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/02-opilec-bedrich.mp3">Opilec Bedřich</a></li>
+                    <li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/03-panelak.mp3">Panelák</a></li>
+                    <li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/04-bufet-adrie.mp3">Bufet Adrie</a></li>
+                    <li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/05-krise-stredniho-veku.mp3">Krise středního věku</a></li>
+                    <li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/06-nema-to-cenu.mp3">Nemá to cenu</a></li>
+                    <li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/07-plakat.mp3">Plakát</a></li>
+                    <li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/08-jeraby-jeraby.mp3">Jeřáby, jeřáby</a></li>
+                    <li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/09-lez.mp3">Lež</a></li>
+                    <li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/10-kapesni-blues.mp3">Kapesní blues</a></li>
+                </ol>
+            </div>
+            <div class="col right">
+                <div class="cd">
+                    <img src="nahravky/a-to-uz-dneska-nikdo-neposloucha/obal.jpg" alt="Obal">
+                </div>
+                <div class="download">Kompletní album ke <a href="nahravky/a-to-uz-dneska-nikdo-neposloucha.zip">stažení</a> (44MB).</div>
+            </div>
           </div>
       </section>
 
-      <section class="row">
-          <div class="col-lg-12">
-              <h2>(2009) ...a to už dneska nikdo neposlouchá</h2>
-              <p><em>živý demosnímek, zaznamenán 30.5.2009 na festivalu Kerio MusicFest.</em></p>
-          </div>  
-          <div class="col-md-5 col-lg-5">
-              <ol>
-                  <li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/01-blues-na-cesty.mp3">Blues na cesty</a></li>
-                  <li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/02-opilec-bedrich.mp3">Opilec Bedřich</a></li>
-                  <li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/03-panelak.mp3">Panelák</a></li>
-                  <li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/04-bufet-adrie.mp3">Bufet Adrie</a></li>
-                  <li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/05-krise-stredniho-veku.mp3">Krise středního věku</a></li>
-                  <li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/06-nema-to-cenu.mp3">Nemá to cenu</a></li>
-                  <li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/07-plakat.mp3">Plakát</a></li>
-                  <li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/08-jeraby-jeraby.mp3">Jeřáby, jeřáby</a></li>
-                  <li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/09-lez.mp3">Lež</a></li>
-                  <li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/10-kapesni-blues.mp3">Kapesní blues</a></li>
-              </ol>
-          </div>
-          <div class="col-md-7 col-lg-7">
-              <div class="cd">
-                  <img src="nahravky/a-to-uz-dneska-nikdo-neposloucha/obal.jpg" alt="Obal">
-              </div>
-          </div>
-          <div class="col-md-6 col-lg-12">
-              <p>Kompletní album ke <a href="nahravky/a-to-uz-dneska-nikdo-neposloucha.zip">stažení</a> (44MB).</p>
-          </div>
-      </section>
-
-      </div>
+    </div>
   </article>
   <article><div ng-include="'views/texty.html'"></div></article>
-  <article>
+  <article id="tri">
       <div>
           <h1>Trojka</h1>
           <ul>
@@ -151,10 +147,12 @@
               <li>Začátek ve <b>20,00</b>.</li>
               <li><b>Vstup volný</b>.</li>
           </ul>
-          <h2>Pro kapely</h2>
-          <ul>
+          <details>
+            <summary>Pro kapely</summary>
+            <ul>
               <li><b>Ozvučení</b> je zajištěno klubem.</li>
               <li>Každá z kapel má dohromady na nazvučení a samotný koncert <b>hodinu</b>.</li>
+              <li>Začíná se ve <b>20:00</b>, končí v 23:00. Bez vyjímky.</li>
               <li><b>Základ bicích</b> dodávají Rezatý Rakety - bubeníci, dovezte si
                   <ul>
                       <li>činely</li>
@@ -162,8 +160,8 @@
                       <li>virbl</li>
                   </ul>
               </li>
-              <li>Rezatý Rakety taktéž mohou zapůjčit kytarové kombo <b>Vox AC&nbsp;15</b>, popř. basový aparát</li>
-              <li>Z koncertu obvykle pořizujeme jednostopý, zvukový záznam.</li>
+              <li>Rezatý Rakety taktéž mohou zapůjčit <b>kytarové kombo</b> Vox AC&nbsp;15, popř. <b>basový aparát</b></li>
+              <li>Z koncertu obvykle pořizujeme jednostopý, zvukový <b>záznam</b>.</li>
               <li>Máme vlastního fotografa, takže svoje kapesní aparáty klidně nechte doma.</li>
               <li>Autorská tvorba vítána.</li>
           </ul>
@@ -174,8 +172,11 @@
               <li>Jsme rádi, že hrajeme pravidelně každý měsíc.</li>
               <li>Pokud <b>Rezatý Rakety</b> pozvete na koncert do své domoviny, nebudeme se zlobit.</li>
           </ul>
+          </details>
+         
+          
           <p>
-              <em>Trojku pořádají Rezatý Rakety za laskavé podpory klubu Buena Vista.</em>
+              <em>Trojku pořádají od 2009 Rezatý Rakety za laskavé podpory klubu Buena Vista.</em>
           </p>
       </div>
   </article>
@@ -193,7 +194,7 @@
               </li>
               <li>hrajou možná bluesrock, možná hardrock, prostě <b>bigbít</b>, jenže bigbít v Plzni a okolí je výraz pro tancovačku, takže <b>alternativní bigbít</b>
               </li>
-              <li>pořádaj <a href="#trojka">Trojku</a>
+              <li>pořádaj <a href="#tri">Trojku</a>
               </li>
           </ul>
           <h2>Posádka</h2>
@@ -202,13 +203,14 @@
               <li><b>Jíra Svatoš</b> bicí</li>
               <li><b>Jan Hezcko</b> basová kytara</li>
           </ul>
-          <h1>Stageplan</h1>
-          <h2>Jíra (bicí, zpěv)</h2>
+          <details>
+            <summary>Technický požadavky</summary>
+            <h2>Jíra (bicí, zpěv)</h2>
           <ul>
               <li>standardní nazvučení bicích</li>
               <li>zpěvový mikrofon</li>
           </ul>
-          <h2>Honza (basa, zpěv)</h2>
+          <h2>Honzík (basa, zpěv)</h2>
           <ul>
               <li>mikrofon pro basový zesilovač</li>
               <li>zpěvový mikrofon</li>
@@ -219,18 +221,15 @@
               </li>
               <li>zpěvový mikrofon</li>
           </ul>
+          </details>
+          
       </div>
   </article>
 
 
    
  
-    <div class="visible-lg-block">
-      <div ng-repeat="photo in photoList" class="photo">
-        <img src={{photo.media$group.media$thumbnail[0].url}}>
-        <i>{{photo.summary.$t}}</i>
-      </div>
-      </div>
+
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -255,10 +254,7 @@
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -268,22 +264,21 @@
     <script src="scripts/directives/details.js"></script>
     <!-- endbuild -->
 
-     <!--script>
+     <script>
       var photos= [];
       function setData(data) {
-        photos = data;
+        $('[ng-controller="Concerts"]').scope().loadPhotos(data);
       }
     </script>
 
-    <script src="http://picasaweb.google.com/data/feed/api/user/juhyxx/albumid/5252817473210531713?kind=photo&alt=json-in-script&thumbsize=243c,354&callback=setData&fields=entry(summary,exif:tags, media:group/media:thumbnail)" type="text/javascript"></script-->
     
 
      <footer>
-          <a class="fa fa-facebook-square" target="_blank" href="http://www.facebook.com/rezatyrakety"></a>
-          <span>Miroslav Juhy Juhos</span>
-          <span><i class="fa fa-phone"></i> 605 376 741</span>
-          <span><i class="fa fa-envelope"></i> <script type="text/javascript">var email='juhy',domain='rezatyrakety.cz',address=email+'@'+domain;document.write('<a class="email" href="mailto:'+address+'">'+address+'</a>')</script></span>
-          <span><i class="fa fa -map-marker"></i> Plzeň, Česká republika</span>
+          <span><a  target="_blank" href="http://www.facebook.com/rezatyrakety"><i class="fa fa-facebook-square"></i> Rezatý Rakety</a></span>
+          <span>Miroslav Juhy Juhos</span> 
+          <span><a href="tel:+420605376741"><i class="fa fa-phone"></i>  605 376 741</a></span> 
+          <span> <script type="text/javascript">var email='juhy',domain='rezatyrakety.cz',address=email+'@'+domain;document.write('<a class="email" href="mailto:'+address+'"><i class="fa fa-envelope"></i> '+address+'</a>')</script></span>
+          <span><i class="fa fa-map-marker"></i> Plzeň</span>
     </footer>
 
 </body>

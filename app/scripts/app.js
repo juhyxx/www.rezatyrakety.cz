@@ -10,8 +10,5 @@
  */
 angular
 	.module('rr', [
-		'ngResource',
-		'ngRoute',
-		'ngSanitize',
-		'ngTouch'
+		'ngSanitize'
 	]);
