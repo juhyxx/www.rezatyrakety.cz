@@ -22,26 +22,6 @@ angular.module('rr')
 				return randomArray;
 			};
 
-			/*$scope.scatter = function() {
-
-				$('.photo').each(function(index, item) {
-					var angle = (Math.random() * 80) - 40,
-						top = ($(window).height() / 7) * index,
-						css = {
-							top: top,
-							left: Math.random() * 100,
-							transform: 'rotate(' + angle + 'deg)',
-							"-web-transform": 'rotate(' + angle + 'deg)'
-						};
-					if (index % 2 > 0) {
-						css.right = css.left;
-						css.left = 'auto';
-					}
-					$(item).css(css);
-				});
-
-			};*/
-
 			$scope.opened = false;
 
 			$scope.loadConcerts = function() {
@@ -55,7 +35,7 @@ angular.module('rr')
 						$scope.loading = false;
 						$scope.opened = true;
 					}).error(function() {
-						window.console.error('Loading data error');
+						window.console.error('Loading concert data error');
 						$scope.loading = true;
 						$scope.opened = false;
 					});
@@ -65,16 +45,26 @@ angular.module('rr')
 				}
 			};
 
-			$scope.loadPhotos = function(data) {
-				console.log(data);
-
-				var photos = $scope.getRandomItems(data.feed.entry, 20);
+			$scope.renderPhotos = function(data) {
+				$scope.photos = $scope.photos || data.feed.entry;
 
 				var imgMarkup = '<div class="photo loading"><img><i></i><span></span></div>';
 
 				$('article:not(article:first-child)>div')
 					.append(imgMarkup)
 					.prepend(imgMarkup);
+				$scope.loadPhotos();
+			},
+
+			setInterval(function() {
+				$('.photo').addClass('loading');
+				setTimeout(function() {
+					$scope.loadPhotos();
+				}, 5000);
+			}, 30000);
+
+			$scope.loadPhotos = function() {
+				var photos = $scope.getRandomItems($scope.photos, 20);
 
 				$('.photo').each(function(index, photo) {
 					try {
@@ -82,20 +72,20 @@ angular.module('rr')
 							date;
 
 						$('img', photo).load(function() {
-							
 							$(this).parent('.photo').removeClass('loading')
 						}).attr('src', item['media$group']['media$thumbnail'][0].url);
+
 						$('i', photo).html(item['summary']['$t']);
 
-						date = new Date(parseInt(item['exif$tags']['exif$time']['$t'], 10));
-						$('span', photo).html(date.getDay() + '.' + (date.getMonth() + 1) + '. ' + date.getFullYear());
+						date = new Date(parseInt(item['gphoto$timestamp']['$t'], 10));
+						$('span', photo).html((date.getDay() + 1) + '.' + (date.getMonth() + 1) + '. ' + date.getFullYear());
 					} catch (e) {
 						console.error('Unable to render item ' + index + ': ', item);
 					}
 				});
 			}
 
-			$('body').append('<script src="http://picasaweb.google.com/data/feed/api/user/juhyxx/albumid/5252817473210531713?kind=photo&alt=json-in-script&thumbsize=243c,354&callback=setData&fields=entry(summary,exif:tags, media:group/media:thumbnail)"><\/script>');
+			$('body').append('<script src="http://picasaweb.google.com/data/feed/api/user/juhyxx/albumid/5252817473210531713?kind=photo&alt=json-in-script&thumbsize=243c&callback=setData&fields=entry(summary,gphoto:timestamp , media:group/media:thumbnail)"><\/script>');
 
 			$('header, article').css({
 				'min-height': window.innerHeight
