@@ -4,12 +4,24 @@
 		"selected_items":
 		[
 			[
-				"bac",
-				"background-color: "
+				"no",
+				"nowrap"
+			],
+			[
+				"impor",
+				"important"
 			],
 			[
 				"font",
-				"font-style"
+				"font-size"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"bac",
+				"background-color: "
 			],
 			[
 				"text-",
@@ -50,10 +62,6 @@
 			[
 				"pos",
 				"position: "
-			],
-			[
-				"no",
-				"normal"
 			],
 			[
 				"text",
@@ -327,30 +335,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "app/scripts/controllers/Concerts.js",
-			"settings":
-			{
-				"buffer_size": 3136,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/styles/main.scss",
-			"settings":
-			{
-				"buffer_size": 8702,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/index.html",
-			"settings":
-			{
-				"buffer_size": 13252,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -361,6 +345,18 @@
 			[
 				"sass",
 				"SassBeautify"
+			],
+			[
+				"html",
+				"HTMLPrettify"
+			],
+			[
+				"ht",
+				"HTMLPrettify"
+			],
+			[
+				"bea",
+				"HTMLBeautify"
 			],
 			[
 				"sasss",
@@ -405,10 +401,6 @@
 			[
 				"sas",
 				"SassBeautify"
-			],
-			[
-				"html",
-				"HTMLBeautify"
 			],
 			[
 				"ass",
@@ -485,6 +477,7 @@
 		"/C/projects/www.rezatyrakety.cz/app/styles",
 		"/C/projects/www.rezatyrakety.cz/app/views",
 		"/C/projects/www.rezatyrakety.cz/app",
+		"/C/projects/www.rezatyrakety.cz/app/images",
 		"/C/projects/www.rezatyrakety.cz/app/scripts",
 		"/C/projects/www.rezatyrakety.cz/app/scripts/controllers",
 		"/C/projects/www.rezatyrakety.cz/app/scripts/directives",
@@ -493,12 +486,15 @@
 	],
 	"file_history":
 	[
+		"/C/projects/www.rezatyrakety.cz/app/index.html",
+		"/C/projects/www.rezatyrakety.cz/app/styles/main.scss",
+		"/C/projects/www.rezatyrakety.cz/app/views/texty.html",
+		"/C/projects/www.rezatyrakety.cz/app/scripts/controllers/Concerts.js",
 		"/C/projects/www.rezatyrakety.cz/.sass-cache/4a28f42095393df44796183984acb56d1a57ca95/_appearance.scssc",
 		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-autoprefixer/node_modules/autoprefixer/node_modules/caniuse-db/features-json/offline-apps.json",
 		"/C/projects/www.rezatyrakety.cz/app/scripts/app.js",
 		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-contrib-jshint/node_modules/jshint/bin/apply",
 		"/C/projects/www.rezatyrakety.cz/node_modules/grunt/appveyor.yml",
-		"/C/projects/www.rezatyrakety.cz/app/styles/main.scss",
 		"/C/projects/www.rezatyrakety.cz/Gruntfile.js",
 		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-google-cdn/node_modules/bower/lib/core/resolvers/GitResolver.js",
 		"/C/projects/html5-presetation/css/spinner.css",
@@ -506,7 +502,6 @@
 		"/C/projects/html5-presetation/index.html",
 		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-google-cdn/node_modules/bower/node_modules/mout/number/MAX_INT.js",
 		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-autoprefixer/node_modules/autoprefixer/node_modules/caniuse-db/features-json/indexeddb.json",
-		"/C/projects/www.rezatyrakety.cz/app/index.html",
 		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-google-cdn/node_modules/bower/node_modules/mout/lang/isNull.js",
 		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-google-cdn/node_modules/bower/node_modules/mout/lang/isPlainObject.js",
 		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-contrib-jshint/node_modules/jshint/data/non-ascii-identifier-part-only.js",
@@ -515,7 +510,6 @@
 		"/C/projects/www.rezatyrakety.cz/.sass-cache/e690801ad5d3951533a2f5c4a7eb0761de05931d/main-old.scssc",
 		"/C/projects/www.rezatyrakety.cz/bower.json",
 		"/C/projects/www.rezatyrakety.cz/app/data.json",
-		"/C/projects/www.rezatyrakety.cz/app/scripts/controllers/Concerts.js",
 		"/C/projects/www.rezatyrakety.cz/app/images/hand.svg",
 		"/C/projects/www.rezatyrakety.cz/app/views/main.html",
 		"/C/projects/www.rezatyrakety.cz/app/views/vorr.html",
@@ -571,7 +565,6 @@
 		"/C/projects/www.rezatyrakety.cz/app/scripts/directives",
 		"/C/projects/www.rezatyrakety.cz/app/views/trojka.html",
 		"/C/projects/www.rezatyrakety.cz - old/index.html",
-		"/C/projects/www.rezatyrakety.cz/app/views/texty.html",
 		"/C/projects/www.rezatyrakety.cz/node_modules/karma/node_modules/socket.io/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/WebSocketMainInsecure.as",
 		"/C/projects/www.rezatyrakety.cz/node_modules/grunt-google-cdn/node_modules/bower/node_modules/inquirer/node_modules/cli-color/node_modules/memoizee/node_modules/event-emitter/benchmark/many-on.js",
 		"/C/projects/hearth-rails/web/app/app/styles/main.scss",
@@ -624,7 +617,7 @@
 	],
 	"find":
 	{
-		"height": 44.0
+		"height": 39.0
 	},
 	"find_in_files":
 	{
@@ -766,6 +759,31 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"tri",
+			"nahra",
+			"texty",
+			"XXXXX",
+			"UA-XXXXX-X ",
+			"section",
+			"photo",
+			"nahravky",
+			"Texty",
+			"$color",
+			"2deg",
+			"180deg",
+			"photo",
+			"getRandomItems",
+			"data",
+			"getRandomItems",
+			"trojka",
+			"trojku",
+			"left",
+			"10px",
+			"url",
+			"#logo",
+			"color(4)",
+			"color(1)",
+			"a",
 			"article",
 			"1em",
 			"photo",
@@ -868,32 +886,7 @@
 			"container",
 			"container\\",
 			"5em",
-			"containe",
-			"#B24227",
-			"nth",
-			"pall",
-			"prox",
-			"color",
-			"control",
-			"5",
-			"bar",
-			"darken",
-			"foot",
-			"|unsafe",
-			"vendor",
-			"X",
-			"rrApp",
-			"Concerts",
-			"main",
-			"logo",
-			";\n",
-			"bar",
-			"columns",
-			"large-",
-			"font",
-			"texty",
-			"nahr",
-			"vorr"
+			"containe"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -924,169 +917,14 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "app/scripts/controllers/Concerts.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3136,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2620,
-								2620
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2231.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/styles/main.scss",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8702,
-						"regions":
-						{
-							"gutter_color_1283":
-							{
-								"flags": 144,
-								"icon": "Cache/GutterColor/#EFFFFF.png",
-								"regions":
-								[
-									[
-										1283,
-										1313
-									]
-								],
-								"scope": "gutter_color"
-							},
-							"gutter_color_1298":
-							{
-								"flags": 144,
-								"icon": "Cache/GutterColor/#EFFFFF.png",
-								"regions":
-								[
-									[
-										1127,
-										1157
-									]
-								],
-								"scope": "gutter_color"
-							},
-							"gutter_color_1615":
-							{
-								"flags": 144,
-								"icon": "Cache/GutterColor/#EFFFFF.png",
-								"regions":
-								[
-									[
-										1127,
-										1157
-									]
-								],
-								"scope": "gutter_color"
-							},
-							"gutter_color_27":
-							{
-								"flags": 144,
-								"icon": "Cache/GutterColor/#9b1915.png",
-								"regions":
-								[
-									[
-										27,
-										79
-									]
-								],
-								"scope": "gutter_color"
-							},
-							"gutter_color_412":
-							{
-								"flags": 144,
-								"icon": "Cache/GutterColor/#EFFFFF.png",
-								"regions":
-								[
-									[
-										1127,
-										1157
-									]
-								],
-								"scope": "gutter_color"
-							}
-						},
-						"selection":
-						[
-							[
-								2059,
-								2059
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2175.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 13252,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								91,
-								91
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 112.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 36.0
+		"height": 31.0
 	},
 	"input":
 	{
@@ -1126,7 +964,7 @@
 	"project": "rr.sublime-project",
 	"replace":
 	{
-		"height": 68.0
+		"height": 58.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1655,6 +1493,14 @@
 		"selected_items":
 		[
 			[
+				"blue",
+				"C:\\projects\\blueweb.sublime-project"
+			],
+			[
+				"blu",
+				"C:\\projects\\blueweb.sublime-project"
+			],
+			[
 				"calc",
 				"C:\\projects\\calc-blueweb.sublime-project"
 			],
@@ -1665,14 +1511,6 @@
 			[
 				"cac",
 				"C:\\projects\\calc-blueweb.sublime-project"
-			],
-			[
-				"blue",
-				"C:\\projects\\blueweb.sublime-project"
-			],
-			[
-				"blu",
-				"C:\\projects\\blueweb.sublime-project"
 			],
 			[
 				"bl",
