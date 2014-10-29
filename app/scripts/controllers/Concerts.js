@@ -59,7 +59,10 @@ angular.module('rr')
 			setInterval(function() {
 				$('.photo').addClass('loading');
 				setTimeout(function() {
-					$scope.loadPhotos();
+					var photos = $scope.getRandomItems($scope.photos, 20);
+					$('.photo').each(function(index, photo) {
+						$scope.renderPhoto(photo, photos[index]);
+					});
 				}, 5000);
 			}, 30000);
 
@@ -67,23 +70,29 @@ angular.module('rr')
 				var photos = $scope.getRandomItems($scope.photos, 20);
 
 				$('.photo').each(function(index, photo) {
-					try {
-						var item = photos[index],
-							date;
+					var item = photos[index];
 
-						$('img', photo).load(function() {
-							$(this).parent('.photo').removeClass('loading')
-						}).attr('src', item['media$group']['media$thumbnail'][0].url);
+					$('img', photo).load(function() {
+						$(this).parent('.photo').removeClass('loading');
+					});
+					$scope.renderPhoto(photo, item);
 
-						$('i', photo).html(item['summary']['$t']);
-
-						date = new Date(parseInt(item['gphoto$timestamp']['$t'], 10));
-						$('span', photo).html((date.getDay() + 1) + '.' + (date.getMonth() + 1) + '. ' + date.getFullYear());
-					} catch (e) {
-						console.error('Unable to render item ' + index + ': ', item);
-					}
 				});
-			}
+			};
+
+			$scope.renderPhoto = function(photo, item) {
+				try {
+					var date = new Date(parseInt(item['gphoto$timestamp']['$t'], 10));
+
+					$(photo).addClass('loading');
+
+					$('img', photo).attr('src', item['media$group']['media$thumbnail'][0].url);
+					$('i', photo).html(item['summary']['$t']);
+					$('span', photo).html((date.getDay() + 1) + '.' + (date.getMonth() + 1) + '. ' + date.getFullYear());
+				} catch (e) {
+					console.error('Unable to render item : ', item, e);
+				}
+			};
 
 			$('body').append('<script src="http://picasaweb.google.com/data/feed/api/user/juhyxx/albumid/5252817473210531713?kind=photo&alt=json-in-script&thumbsize=243c&callback=setData&fields=entry(summary,gphoto:timestamp , media:group/media:thumbnail)"><\/script>');
 

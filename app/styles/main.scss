@@ -136,6 +136,9 @@ body {
                 font-size: 50px;
                 bottom: 20px;
                 right: 20px;
+                  @media screen and (max-width: 687px) {
+                    font-size: 20px;
+                }
             }
             border-bottom-color: darken(color(4), 20%);
         }
