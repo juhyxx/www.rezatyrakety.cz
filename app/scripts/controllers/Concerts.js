@@ -53,30 +53,26 @@ angular.module('rr')
 				$('article:not(article:first-child)>div')
 					.append(imgMarkup)
 					.prepend(imgMarkup);
-				$scope.loadPhotos();
-			},
-
-			setInterval(function() {
-				$('.photo').addClass('loading');
-				setTimeout(function() {
-					var photos = $scope.getRandomItems($scope.photos, 20);
-					$('.photo').each(function(index, photo) {
-						$scope.renderPhoto(photo, photos[index]);
-					});
-				}, 5000);
-			}, 30000);
-
-			$scope.loadPhotos = function() {
-				var photos = $scope.getRandomItems($scope.photos, 20);
 
 				$('.photo').each(function(index, photo) {
-					var item = photos[index];
+					var rnd = Math.round(Math.random() * $scope.photos.length),
+						item = $scope.photos[rnd];
 
-					$('img', photo).load(function() {
-						$(this).parent('.photo').removeClass('loading');
-					});
-					$scope.renderPhoto(photo, item);
+					setTimeout(function() {
+						$('img', photo).load(function() {
+							var parent = $(this).parent('.photo');
+							parent.removeClass('loading');
+							setTimeout(function() {
+								var rnd = Math.round(Math.random() * $scope.photos.length);
+								parent.addClass('loading');
+								setTimeout(function() {
+									$scope.renderPhoto(photo, $scope.photos[rnd]);
+								}, 3000);
+							}, 10000);
+						});
 
+						$scope.renderPhoto(photo, item);
+					}, index * 3000);
 				});
 			};
 
@@ -85,7 +81,6 @@ angular.module('rr')
 					var date = new Date(parseInt(item['gphoto$timestamp']['$t'], 10));
 
 					$(photo).addClass('loading');
-
 					$('img', photo).attr('src', item['media$group']['media$thumbnail'][0].url);
 					$('i', photo).html(item['summary']['$t']);
 					$('span', photo).html((date.getDay() + 1) + '.' + (date.getMonth() + 1) + '. ' + date.getFullYear());
@@ -93,8 +88,6 @@ angular.module('rr')
 					console.error('Unable to render item : ', item, e);
 				}
 			};
-
-			$('body').append('<script src="http://picasaweb.google.com/data/feed/api/user/juhyxx/albumid/5252817473210531713?kind=photo&alt=json-in-script&thumbsize=243c&callback=setData&fields=entry(summary,gphoto:timestamp , media:group/media:thumbnail)"><\/script>');
 
 			$('header, article').css({
 				'min-height': window.innerHeight
@@ -117,6 +110,10 @@ angular.module('rr')
 			}).error(function() {
 				window.console.error('Loading data error');
 			});
+
+			setTimeout(function() {
+				$('body').append('<script src="http://picasaweb.google.com/data/feed/api/user/juhyxx/albumid/5252817473210531713?kind=photo&alt=json-in-script&thumbsize=243c&callback=setData&fields=entry(summary,gphoto:timestamp , media:group/media:thumbnail)"><\/script>');
+			}, 100);
 
 		}
 	]);
