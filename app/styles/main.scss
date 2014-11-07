@@ -51,6 +51,7 @@ body {
         font-size: 0px;
         line-height: 1;
         overflow: hidden;
+        transition: all 3s;
         &:before {
             height: 243px;
             width: 243px;
@@ -58,18 +59,24 @@ body {
             position: absolute;
             box-shadow: inset 0 0 20px black;
             z-index: 100;
+            transition: box-shadow 3s;
         }
         &.loading {
+            &:before {
+                box-shadow: inset 0 0 0 black;
+            }
             img {
                 opacity: 0;
+                filter: blur(20px);
             }
             span, i {
                 opacity: 0;
             }
         }
         img {
-            transition: opacity 5s;
+            transition: opacity 4s, filter 5s, -webkit-filter 5s;
             opacity: 1;
+            filter: blur(0);
         }
         @media screen and (max-width: 1024px) {
             display: inline-block;
@@ -350,7 +357,7 @@ body {
         border-radius: 2px;
         transition: all 1s;
         box-sizing: border-box;
-        border:1px solid #333;
+        border: 1px solid #333;
         img {
             z-index: 2;
             &:hover {
