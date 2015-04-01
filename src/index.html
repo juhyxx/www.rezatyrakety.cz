@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Rezatý Rakety</title>
+		<meta name="description" content="Plzeňská alternativně bigbítová kapela.">
+		<meta name="viewport" content="width=device-width">
+
+		<meta property="og:title" content="Rezatý Rakety" />
+		<meta property="og:url" content="http://www.rezatyrakety.cz" />
+		<meta property="og:site_name" content="Rezatý Rakety" />
+		<meta property="og:image" content="http://www.rezatyrakety.cz/images/logo.png" />
+		<meta property="og:type" content="website" />
+		<meta property="og:description" content="Plzeňská alternativně bigbítová kapela." />
+		<link rel="stylesheet" href="styles/style.min.css">
+		<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+		<script src="scripts/script.min.js"></script>
+
+		<script id="template-koncerty" type="x-tmpl-mustache">
+			{{#koncerts}}
+			<li class="{{#isTrojka}}{{trojkazblues_flag}} {{/isTrojka}}">
+				<span class="date">{{#dateFormat}}{{datum}}{{/dateFormat}}</span>
+				<span class="time"><i class="fa fa-clock-o"></i> {{#timeFormat}}{{datum}}{{/timeFormat}}</span>
+				<span class="club">
+					<span title="{{adresaUlice}}">{{adresaMesto}}</span>,
+					<a target="_blank" href="{{WWW}}" title="Web klubu">{{jmeno}}</a>
+				</span>
+
+				<div class="note">{{{poznamka}}}</div>
+				<div class="links">
+					<a target="_blank" href="http://mapy.cz/?q=Loc:{{linkMapa}}"><i class="fa fa-map-marker"></i></a>
+					<a ng-if="fblink" href="{{fblink}}" class="fa fa-facebook-square" title="Událost na Facebooku"></a>
+				</div>
+			</li>
+			{{/koncerts}}
+		</script>
+
+		<script id="template-koncerty-nearest" type="x-tmpl-mustache">
+			{{#koncerts}}
+			<h1>{{#dateFormat}}{{datum}}{{/dateFormat}}</h1>
+			<h1>{{adresaMesto}}</h1>
+			<img id="logo" src="images/logo.png" alt="logo">
+			<div title="{{adresaUlice}}"><a target="_blank" href="{{WWW}}" title="Web klubu">{{jmeno}}</a></div>
+			<div class="note">{{{poznamka}}}</div>
+			<div class="info">
+				<a ng-if="fblink" href="{{fblink}}" class="fa fa-facebook-square" title="Událost na Facebooku"></a>
+				<a target="_blank" href="http://mapy.cz/?q=Loc:{{linkMapa}}"><i class="fa fa-map-marker"></i></a>
+				<span class="time"><i class="fa fa-clock-o"></i> {{#timeFormat}}{{datum}}{{/timeFormat}}</span>
+			</div>
+			{{/koncerts}}
+		</script>
+	</head>
+
+	<body>
+		<header>
+			<div>
+				<h1>Bigbít s jadernou hlavicí</h1>
+				<img id="logo" src="images/logo.png" alt="logo" />
+			</div>
+		</header>
+		<article id="koncerty">
+			<div>
+				<div class="koncerty-list" id="koncerty-nejblizsi-list"></div>
+
+				<h1>Koncerty</h1>
+				<ul class="koncerty-list" id="koncerty-list"></ul>
+
+				<details class="old" ng-click="loadConcerts();" ng-class="{loading:loading,closed: !opened}">
+					<summary id="odehrane" ng-cloak>Odehrané ({{oldkoncertsCount}})</summary>
+					<ul id="koncerty-list-odehrane" class="koncerty-list"></ul>
+				</details>
+			</div>
+		</article>
+
+		<article id="nahravky">
+			<div>
+				<h1>Nahrávky</h1>
+
+				<section>
+					<h2>(2011) Starý dobrý časy</h2>
+					<details>
+						<summary>Recenze (Petr Korál, Muzikus)</summary>
+						<p>Tahle plzeňská, pouze v&nbsp;nejzákladnějším a nejúspornějším triu kytara-baskytara-bicí hrající skupina rezignovala na jakékoliv hledání a mnohdy pofiderní progresivitu. Naopak se ohlíží do dávné a dostatečně prověřené historie (včetně nejspíš záměrně archaického zvuku kytary Miroslava Juhose) a holduje jadrnému blues rocku v&nbsp;poklidnější i náležitě tvrdé podobě.</p>
+						<p>A dělá to docela dobře, to zase ne že ne! I když něco podobného už tu samozřejmě tisíckrát bylo, počínání téhle party působí přesvědčivě a sympaticky. Co chtít víc? Texty s myšlenkově hlubším obsahem? Na to se v tomhle ranku nikdy moc nehrálo a ani to tu v podstatě nikdo neočekává. Jen by si debutové album Rezatých Raket možná zasloužilo kratší stopáž. Těch skoro sedmdesát minut už je opravdu až zbytečně masivní kláda...</p>
+						<p><b>Zlatý hřeb:</b> Rádio Starý dobrý časy, Láhev rumu od Ježíška</p>
+						<p><b>Zní to jako:</b> tak trochu jako Cream a jiná klasická bluesrocková tria</p>
+					</details>
+
+					<div class="row">
+						<div class="col left">
+							<ol>
+								<li>Rádio Starý dobrý časy</li>
+								<li>Na vlnách MHD</li>
+								<li>Jedna hodně hodná paní</li>
+								<li>Opilec Bedřich</li>
+								<li>Hvězdy</li>
+								<li>Mrakodrap v dešti</li>
+								<li>Bufet Adrie</li>
+								<li>Co šeptá vítr</li>
+								<li>Dveře do léta</li>
+								<li>Láhev rumu od Ježíška</li>
+								<li>Plakát</li>
+								<li>Krize středního věku</li>
+								<li>Jeřáby, jeřáby</li>
+								<li>Lež</li>
+								<li>Dokud</li>
+							</ol>
+						</div>
+						<div class="col right">
+							<a class="cd" href="nahravky/2011-stary-dobry-casy.zip">
+								<em>studiovej snímek, zaznamenanej 4-6. února.
+									<br>
+									<br>
+									<div class="download">Kompletní album ke stažení (66MB).</div>
+								</em>
+								<img src="nahravky/stary-dobry-casy/obal.jpg" alt="Obal" />
+							</a>
+
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h2>(2009) ...a to už dneska nikdo neposlouchá</h2>
+
+					<div class="row">
+						<div class="col left">
+							<ol>
+								<li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/01-blues-na-cesty.mp3">Blues na cesty</a>
+								</li>
+								<li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/02-opilec-bedrich.mp3">Opilec Bedřich</a>
+								</li>
+								<li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/03-panelak.mp3">Panelák</a>
+								</li>
+								<li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/04-bufet-adrie.mp3">Bufet Adrie</a>
+								</li>
+								<li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/05-krise-stredniho-veku.mp3">Krise středního věku</a>
+								</li>
+								<li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/06-nema-to-cenu.mp3">Nemá to cenu</a>
+								</li>
+								<li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/07-plakat.mp3">Plakát</a>
+								</li>
+								<li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/08-jeraby-jeraby.mp3">Jeřáby, jeřáby</a>
+								</li>
+								<li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/09-lez.mp3">Lež</a>
+								</li>
+								<li><a href="nahravky/a-to-uz-dneska-nikdo-neposloucha/10-kapesni-blues.mp3">Kapesní blues</a>
+								</li>
+							</ol>
+						</div>
+						<div class="col right">
+							<a class="cd" href="nahravky/a-to-uz-dneska-nikdo-neposloucha.zip">
+								<em>živej demosnímek, zaznamenán 30.5.2009 na festivalu Kerio MusicFest.
+									<br>
+									<br>
+									<div class="download">Kompletní album ke stažení (44MB).</div>
+								</em>
+								<img src="nahravky/a-to-uz-dneska-nikdo-neposloucha/obal.jpg" alt="Obal">
+							</a>
+
+						</div>
+					</div>
+				</section>
+
+			</div>
+		</article>
+		<article>
+			<div class="texty">@@include('./texty.html')</div>
+		</article>
+		<article id="tri">
+			<div>
+				<h1>Trojka</h1>
+				<ul>
+					<li><b>Trojka</b> je setkání tří autorských kapel v mezích stylů jazz, blues a rocku.</li>
+					<li>Pořádá se pravidelně každou <b>první sobotu v měsíci</b> v klubu <a href="http://www.buenavistaclub.cz">Buena Vista</a> v Plzni.</li>
+					<li>Začátek ve <b>20,00</b>.</li>
+				</ul>
+				<details>
+					<summary>Pro kapely</summary>
+					<ul>
+						<li><b>Ozvučení</b> je zajištěno klubem.</li>
+						<li>Každá z kapel má dohromady na nazvučení a samotný koncert <b>hodinu</b>.</li>
+						<li>Začíná se ve <b>20:00</b>, končí v 23:00. </li>
+						<li><b>Základ bicích</b> dodávají Rezatý Rakety - bubeníci, dovezte si
+							<ul>
+								<li>činely</li>
+								<li>šlapku</li>
+								<li>virbl</li>
+							</ul>
+						</li>
+						<li>Rezatý Rakety taktéž mohou zapůjčit <b>kytarové kombo</b> Vox AC&nbsp;15, popř. <b>basový aparát</b>
+						</li>
+						<li>Z koncertu obvykle pořizujeme jednostopý, zvukový <b>záznam</b>.</li>
+						<li>Máme vlastního fotografa, takže svoje kapesní aparáty klidně nechte doma.</li>
+						<li>Autorská tvorba vítána.</li>
+					</ul>
+					<h3>Proč to děláme?</h3>
+					<ul>
+						<li>Je to realizace naší představy o spolupráci mezi kapelami.</li>
+						<li>Jsme rádi, že poznáváme muzikanty ze všech končin.</li>
+						<li>Jsme rádi, že hrajeme pravidelně každý měsíc.</li>
+						<li>Pokud <b>Rezatý Rakety</b> pozvete na koncert do své domoviny, nebudeme se zlobit.</li>
+					</ul>
+				</details>
+
+				<p>
+					<em>Trojku pořádají od 2009 Rezatý Rakety za laskavé podpory klubu Buena Vista.</em>
+				</p>
+			</div>
+		</article>
+		<article>
+			<div>
+				<h1>Vo Raketách</h1>
+				<ul>
+					<li>první koncert odehráli <b>29. srpna 2008</b>
+					</li>
+					<li><b>23. listopadu 2009</b> vydali vlastníma silama záznam z&nbsp;koncertu</li>
+					<li><b>1. června 2011</b> vydali svoje <a ng-href="##nahravky">první studiový album</a>
+						<li>zakládaj si na <b>vlastním</b>, českým repertoáru</li>
+					</li>
+					<li>mají <a href="http://www.youtube.com/watch?v=oE7gZZuwVnw">videoklip</a>
+					</li>
+					<li>hrajou možná bluesrock, možná hardrock, prostě <b>bigbít</b>, jenže bigbít v Plzni a okolí je výraz pro tancovačku, takže <b>alternativní bigbít</b> a nebo si radši udělejte názor sami
+					</li>
+					<li>pořádaj <a ng-href="##tri">Trojku</a>
+					</li>
+				</ul>
+				<h2>Posádka</h2>
+				<ul>
+					<li><b>Miroslav Juhy Juhos</b> kytara</li>
+					<li><b>Jíra Svatoš</b> bicí</li>
+					<li><b>Jan Hezcko</b> basová kytara</li>
+				</ul>
+				<details>
+					<summary>Technický požadavky</summary>
+					<h2>Jíra (bicí, zpěv)</h2>
+					<ul>
+						<li>standardní nazvučení bicích</li>
+						<li>zpěvový mikrofon</li>
+					</ul>
+					<h2>Honzík (basa, zpěv)</h2>
+					<ul>
+						<li>mikrofon pro basový zesilovač</li>
+						<li>zpěvový mikrofon</li>
+					</ul>
+					<h2>Juhy (kytara, zpěv)</h2>
+					<ul>
+						<li>mikrofon pro kytarový zesilovač <b>Vox AC15</b>
+						</li>
+						<li>zpěvový mikrofon</li>
+					</ul>
+				</details>
+
+			</div>
+		</article>
+
+		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+		<script>
+			(function(i, s, o, g, r, a, m) {
+				i['GoogleAnalyticsObject'] = r;
+				i[r] = i[r] || function() {
+					(i[r].q = i[r].q || []).push(arguments)
+				}, i[r].l = 1 * new Date();
+				a = s.createElement(o),
+					m = s.getElementsByTagName(o)[0];
+				a.async = 1;
+				a.src = g;
+				m.parentNode.insertBefore(a, m)
+			})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+			ga('create', 'UA-601743-5');
+			ga('send', 'pageview');
+		</script>
+
+		<footer>
+			<span><a target="_blank" href="http://www.facebook.com/rezatyrakety"><i class="fa fa-facebook-square"></i> Rezatý Rakety</a>
+			</span>
+			<span>Miroslav Juhy Juhos</span>
+			<span><a href="tel:+420605376741"><i class="fa fa-phone"></i>  605 376 741</a>
+			</span>
+			<span>
+				<script type="text/javascript">
+					var email = 'juhy',
+						domain = 'rezatyrakety.cz',
+						address = email + '@' + domain;
+					document.write('<a class="email" href="mailto:' + address + '"><i class="fa fa-envelope"></i> ' + address + '</a>')
+				</script>
+			</span>
+			<span><i class="fa fa-map-marker"></i> Plzeň</span>
+		</footer>
+
+	</body>
+
+</html>
