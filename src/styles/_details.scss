@@ -1,18 +1,19 @@
 .no-details {
-	
 	summary:first-child ~ * {
 		display: none;
 	}
-	
-	details[open] > * {
-		display: inline-block;
-	}
-	
-	details:before {
-		content: '\25BA';
-	}
-	
-	details[open]:before {
-		content: '\25BC';
+	details {
+		&:before {
+			content: '\25BA';
+			float: left;
+		}
+		&[open] {
+			&> * {
+				display: block;
+			}
+			&:before {
+				content: '\25BC';
+			}
+		}
 	}
 }

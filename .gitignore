@@ -14,5 +14,4 @@ node_modules
 /libpeerconnection.log
 npm-debug.log
 testem.log
-src/nahravky
 .idea/

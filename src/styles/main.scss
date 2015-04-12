@@ -93,7 +93,7 @@ h1 {
 		img {
 			transition: opacity 4s, filter 5s, -webkit-filter 5s;
 			opacity: 1;
-			filter:blur(0);
+			//filter:blur(0);
 		}
 		@media screen and (max-width: 1024px) {
 			display: inline-block;
@@ -192,6 +192,7 @@ h1 {
 			bottom: 100px;
 			top: 100px;
 		}
+		
 		> div {
 			position: relative;
 			.photo:first-child {
@@ -205,6 +206,7 @@ h1 {
 				transform: rotate(-15deg);
 			}
 			padding: 1em;
+			max-width: 800px;
 			@media screen and (min-width: 1024px) {
 				max-width: 800px;
 			}
@@ -212,7 +214,6 @@ h1 {
 				left: auto;
 				right: auto;
 			}
-			;
 		}
 		border: {
 			top: 1px solid lightgray;
@@ -221,27 +222,42 @@ h1 {
 		color: rgba(white, 0.7);
 		&:nth-child(2) {
 			background-color: lighten(desaturate(green, 60%), 20%);
+			h1 {
+				color: lighten(desaturate(green, 60%), 30%);
+			}
 			border-bottom-color: darken(lighten(desaturate(green, 60%), 40%), 20%);
 		}
 		&:nth-child(3) {
 			background-color: lighten(color(2), 10%);
 			background: linear-gradient(transparent, rgba(black, 0.2)) lighten(color(2), 10%);
 			border-bottom-color: darken(lighten(color(2), 10%), 20%);
+			h1 {
+				color: lighten(color(2), 20%);
+			}
 		}
 		&:nth-child(4) {
 			background-color: color(1);
 			background: linear-gradient(transparent, rgba(black, 0.2)) color(1);
 			border-bottom-color: darken(color(1), 20%);
+			h1 {
+				color: lighten(color(1), 20%);
+			}
 		}
 		&:nth-child(5) {
-			background-color: color(4);
+			background-color: darken(color(4), 30%);
 			background: linear-gradient(transparent, rgba(black, 0.2)) darken(color(4), 30%);
 			border-bottom-color: darken(color(4), 20%);
+			h1 {
+				color: darken(color(4), 20%);
+			}
 		}
 		&:nth-child(6) {
 			background-color: lighten(color(2), 10%);
 			background: linear-gradient(transparent, rgba(black, 0.2)) lighten(color(2), 10%);
 			border-bottom-color: darken(lighten(color(2), 10%), 20%);
+			h1 {
+				color: lighten(color(2), 20%);
+			}
 			.photo:last-child {
 				right: -10px;
 				bottom: -105px;
@@ -259,7 +275,7 @@ h1 {
 		}
 	}
 	h1 {
-		text-shadow: 0 -1px 0 rgba(black, 0.8);
+		//text-shadow: 0 -1px 0 rgba(black, 0.8);
 		font-size: 4em;
 		margin: {
 			top: 0.25em;
@@ -305,7 +321,6 @@ h1 {
 			margin: {
 				right: 2em;
 			}
-			;
 		}
 		.date {
 			font-weight: bold;
@@ -333,6 +348,8 @@ h1 {
 			}
 		}
 		ul {
+			padding: 0;
+			
 			li {
 				margin: 0;
 			}
@@ -352,6 +369,7 @@ h1 {
 			margin: 0;
 			font-size: 3em;
 			text-shadow: none;
+			color: white;
 		}
 		h2,
 		li {
@@ -450,6 +468,7 @@ h1 {
 		transition: all 1s;
 		box-sizing: border-box;
 		border: 1px solid #333;
+		backface-visibility: hidden;
 		img {
 			z-index: 2;
 			&:hover {
@@ -462,6 +481,7 @@ h1 {
 			width: 300px;
 			transition: all 0.5s ease-in-out;
 			display: block;
+			backface-visibility: hidden;
 		}
 		box-shadow: 0 0 5px black;
 		cursor: pointer;
@@ -498,10 +518,6 @@ h1 {
 	.trojka {
 		.note {
 			background: url("../images/hand.svg") no-repeat 100% 100%;
-			
-			ul {
-				padding: 0;
-			}
 			min-height: 50px;
 		}
 	}

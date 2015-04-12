@@ -20,8 +20,8 @@
 		<script id="template-koncerty" type="x-tmpl-mustache">
 			{{#koncerts}}
 			<li class="{{#isTrojka}}{{trojkazblues_flag}} {{/isTrojka}}">
-				<span class="date">{{#dateFormat}}{{datum}}{{/dateFormat}}</span>
-				<span class="time"><i class="fa fa-clock-o"></i> {{#timeFormat}}{{datum}}{{/timeFormat}}</span>
+				<span class="date">{{#dateFormat}}{{date}}{{/dateFormat}}</span>
+				<span class="time"><i class="fa fa-clock-o"></i> {{#timeFormat}}{{date}}{{/timeFormat}}</span>
 				<span class="club">
 					<span title="{{adresaUlice}}">{{adresaMesto}}</span>,
 					<a target="_blank" href="{{WWW}}" title="Web klubu">{{jmeno}}</a>
@@ -30,7 +30,7 @@
 				<div class="note">{{{poznamka}}}</div>
 				<div class="links">
 					<a target="_blank" href="http://mapy.cz/?q=Loc:{{linkMapa}}"><i class="fa fa-map-marker"></i></a>
-					<a ng-if="fblink" href="{{fblink}}" class="fa fa-facebook-square" title="Událost na Facebooku"></a>
+					<a href="{{fblink}}" class="fa fa-facebook-square" title="Událost na Facebooku"></a>
 				</div>
 			</li>
 			{{/koncerts}}
@@ -38,15 +38,15 @@
 
 		<script id="template-koncerty-nearest" type="x-tmpl-mustache">
 			{{#koncerts}}
-			<h1>{{#dateFormat}}{{datum}}{{/dateFormat}}</h1>
+			<h1>{{#dateFormat}}{{date}}{{/dateFormat}}</h1>
 			<h1>{{adresaMesto}}</h1>
 			<img id="logo" src="images/logo.png" alt="logo">
 			<div title="{{adresaUlice}}"><a target="_blank" href="{{WWW}}" title="Web klubu">{{jmeno}}</a></div>
 			<div class="note">{{{poznamka}}}</div>
 			<div class="info">
-				<a ng-if="fblink" href="{{fblink}}" class="fa fa-facebook-square" title="Událost na Facebooku"></a>
+				<a href="{{fblink}}" class="fa fa-facebook-square" title="Událost na Facebooku"></a>
 				<a target="_blank" href="http://mapy.cz/?q=Loc:{{linkMapa}}"><i class="fa fa-map-marker"></i></a>
-				<span class="time"><i class="fa fa-clock-o"></i> {{#timeFormat}}{{datum}}{{/timeFormat}}</span>
+				<span class="time"><i class="fa fa-clock-o"></i> {{#timeFormat}}{{date}}{{/timeFormat}}</span>
 			</div>
 			{{/koncerts}}
 		</script>
@@ -66,8 +66,8 @@
 				<h1>Koncerty</h1>
 				<ul class="koncerty-list" id="koncerty-list"></ul>
 
-				<details class="old" ng-click="loadConcerts();" ng-class="{loading:loading,closed: !opened}">
-					<summary id="odehrane" ng-cloak>Odehrané ({{oldkoncertsCount}})</summary>
+				<details class="old">
+					<summary id="odehrane">Odehrané ({{oldkoncertsCount}})</summary>
 					<ul id="koncerty-list-odehrane" class="koncerty-list"></ul>
 				</details>
 			</div>
@@ -90,21 +90,21 @@
 					<div class="row">
 						<div class="col left">
 							<ol>
-								<li>Rádio Starý dobrý časy</li>
-								<li>Na vlnách MHD</li>
-								<li>Jedna hodně hodná paní</li>
-								<li>Opilec Bedřich</li>
-								<li>Hvězdy</li>
-								<li>Mrakodrap v dešti</li>
-								<li>Bufet Adrie</li>
-								<li>Co šeptá vítr</li>
-								<li>Dveře do léta</li>
-								<li>Láhev rumu od Ježíška</li>
-								<li>Plakát</li>
-								<li>Krize středního věku</li>
-								<li>Jeřáby, jeřáby</li>
-								<li>Lež</li>
-								<li>Dokud</li>
+								<li><a href="nahravky/stary-dobry-casy/01-radio-stary-dobry-casy.mp3">Rádio Starý dobrý časy</a></li>
+								<li><a href="nahravky/stary-dobry-casy/02-na-vlnach-mhd.mp3">Na vlnách MHD</a></li>
+								<li><a href="nahravky/stary-dobry-casy/03-jedna-hodne-hodna-pani.mp3">Jedna hodně hodná paní</a></li>
+								<li><a href="nahravky/stary-dobry-casy/04-opilec-bedrich.mp3">Opilec Bedřich</a></li>
+								<li><a href="nahravky/stary-dobry-casy/05-hvezdy.mp3">Hvězdy</a></li>
+								<li><a href="nahravky/stary-dobry-casy/06-mrakodrap-v-desti.mp3">Mrakodrap v dešti</a></li>
+								<li><a href="nahravky/stary-dobry-casy/07-bufet-adrie.mp3">Bufet Adrie</a></li>
+								<li><a href="nahravky/stary-dobry-casy/08-co-septa-vitr.mp3">Co šeptá vítr</a></li>
+								<li><a href="nahravky/stary-dobry-casy/09-dvere-do-leta.mp3">Dveře do léta</a></li>
+								<li><a href="nahravky/stary-dobry-casy/10-lahev-rumu-od-jeziska.mp3">Láhev rumu od Ježíška</a></li>
+								<li><a href="nahravky/stary-dobry-casy/11-plakat.mp3">Plakát</a></li>
+								<li><a href="nahravky/stary-dobry-casy/12-krize-stredniho-veku.mp3">Krize středního věku</a></li>
+								<li><a href="nahravky/stary-dobry-casy/13-jeraby.mp3">Jeřáby, jeřáby</a></li>
+								<li><a href="nahravky/stary-dobry-casy/14-lez.mp3">Lež</a></li>
+								<li><a href="nahravky/stary-dobry-casy/15-dokud.mp3">Dokud</a></li>
 							</ol>
 						</div>
 						<div class="col right">
@@ -216,14 +216,13 @@
 					<li>první koncert odehráli <b>29. srpna 2008</b>
 					</li>
 					<li><b>23. listopadu 2009</b> vydali vlastníma silama záznam z&nbsp;koncertu</li>
-					<li><b>1. června 2011</b> vydali svoje <a ng-href="##nahravky">první studiový album</a>
-						<li>zakládaj si na <b>vlastním</b>, českým repertoáru</li>
-					</li>
+					<li><b>1. června 2011</b> vydali svoje <a href="#nahravky">první studiový album</a></li>
+					<li>zakládaj si na <b>vlastním</b>, českým repertoáru</li>
 					<li>mají <a href="http://www.youtube.com/watch?v=oE7gZZuwVnw">videoklip</a>
 					</li>
 					<li>hrajou možná bluesrock, možná hardrock, prostě <b>bigbít</b>, jenže bigbít v Plzni a okolí je výraz pro tancovačku, takže <b>alternativní bigbít</b> a nebo si radši udělejte názor sami
 					</li>
-					<li>pořádaj <a ng-href="##tri">Trojku</a>
+					<li>pořádaj <a href="#tri">Trojku</a>
 					</li>
 				</ul>
 				<h2>Posádka</h2>

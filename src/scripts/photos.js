@@ -19,7 +19,6 @@ function renderPhoto(photo, item) {
 }
 
 function renderPhotos(data) {
-	console.log('render');
 	var photos = data.feed.entry;
 
 	var imgMarkup = '<div class="photo loading"><img><i></i><span></span></div>';
