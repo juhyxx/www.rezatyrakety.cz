@@ -21,15 +21,14 @@
 			{{#koncerts}}
 			<li class="{{#isTrojka}}{{trojkazblues_flag}} {{/isTrojka}}">
 				<span class="date">{{#dateFormat}}{{date}}{{/dateFormat}}</span>
-				<span class="time"><i class="fa fa-clock-o"></i> {{#timeFormat}}{{date}}{{/timeFormat}}</span>
+				<i><span class="fa fa-clock-o"></span> {{#timeFormat}}{{date}}{{/timeFormat}}</i>
 				<span class="club">
 					<span title="{{adresaUlice}}">{{adresaMesto}}</span>,
 					<a target="_blank" href="{{WWW}}" title="Web klubu">{{jmeno}}</a>
 				</span>
-
 				<div class="note">{{{poznamka}}}</div>
 				<div class="links">
-					<a target="_blank" href="http://mapy.cz/?q=Loc:{{linkMapa}}"><i class="fa fa-map-marker"></i></a>
+					<a target="_blank" href="http://mapy.cz/?q=Loc:{{linkMapa}}" class="fa fa-map-marker"></a>
 					<a href="{{fblink}}" class="fa fa-facebook-square" title="Událost na Facebooku"></a>
 				</div>
 			</li>
@@ -55,13 +54,14 @@
 	<body>
 		<header>
 			<div>
-				<h1>Bigbít s jadernou hlavicí</h1>
 				<img id="logo" src="images/logo.png" alt="logo" />
+				<h1 id="message">Bigbít s jadernou hlavicí</h1>
+
 			</div>
 		</header>
 		<article id="koncerty">
 			<div>
-				<div class="koncerty-list" id="koncerty-nejblizsi-list"></div>
+				<!--div class="koncerty-list" id="koncerty-nejblizsi-list"></div-->
 
 				<h1>Koncerty</h1>
 				<ul class="koncerty-list" id="koncerty-list"></ul>
@@ -165,7 +165,7 @@
 
 			</div>
 		</article>
-		<article>
+		<article id="texty">
 			<div class="texty">@@include('./texty.html')</div>
 		</article>
 		<article id="tri">
@@ -272,20 +272,22 @@
 		</script>
 
 		<footer>
-			<span><a target="_blank" href="http://www.facebook.com/rezatyrakety"><i class="fa fa-facebook-square"></i> Rezatý Rakety</a>
-			</span>
-			<span>Miroslav Juhy Juhos</span>
-			<span><a href="tel:+420605376741"><i class="fa fa-phone"></i>  605 376 741</a>
-			</span>
-			<span>
-				<script type="text/javascript">
-					var email = 'juhy',
-						domain = 'rezatyrakety.cz',
-						address = email + '@' + domain;
-					document.write('<a class="email" href="mailto:' + address + '"><i class="fa fa-envelope"></i> ' + address + '</a>')
-				</script>
-			</span>
-			<span><i class="fa fa-map-marker"></i> Plzeň</span>
+			<ul>
+				<li><a target="_blank" href="http://www.facebook.com/rezatyrakety"><i class="fa fa-facebook-square"></i> Rezatý Rakety</a>
+				</li>
+				<li>Miroslav Juhy Juhos</li>
+				<li><a href="tel:+420605376741"><i class="fa fa-phone"></i>  605 376 741</a>
+				</li>
+				<li>
+					<script type="text/javascript">
+						var email = 'juhy',
+							domain = 'rezatyrakety.cz',
+							address = email + '@' + domain;
+						document.write('<a class="email" href="mailto:' + address + '"><i class="fa fa-envelope"></i> ' + address + '</a>')
+					</script>
+				</li>
+				<li><i class="fa fa-map-marker"></i> Plzeň</li>
+			</ul>
 		</footer>
 
 	</body>

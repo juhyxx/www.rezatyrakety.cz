@@ -60,7 +60,7 @@
  		}))
  		.pipe(concat('style.min.css'))
  		.pipe(autoprefixer({
- 			browsers: ['last 2 versions'],
+ 			browsers: ['last 2 versions', 'last 2 ios versions', ],
  			cascade: false
  		}))
  		.pipe(cssmin())

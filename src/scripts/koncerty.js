@@ -1,7 +1,30 @@
 $(function () {
 
 	var templateKoncerty = $('#template-koncerty').html(),
-		templateKoncertyNejblizsi = $('#template-koncerty-nearest').html();
+		templateKoncertyNejblizsi = $('#template-koncerty-nearest').html(),
+		months = [
+			'leden',
+			'únor',
+			'březen',
+			'duben',
+			'květen',
+			'červen',
+			'červenec',
+			'srpen',
+			'září',
+			'říjen',
+			'listopad',
+			'prosinec'
+		],
+		days = [
+			'pondělí',
+			'úterý',
+			'středa',
+			'čtvrtek',
+			'pátek',
+			'sobota',
+			'neděle'
+		];
 
 	Mustache.parse(templateKoncerty);
 	Mustache.parse(templateKoncertyNejblizsi);
@@ -11,7 +34,7 @@ $(function () {
 			dateFormat: function () {
 				return function (text, render) {
 					var date = new Date(render(text) * 1000);
-					return date.getDate() + '. ' + (date.getMonth() + 1) + '. ' + date.getFullYear();
+					return '<i>' + days[date.getDay() - 1] + '</i> ' + date.getDate() + '. ' + months[date.getMonth()] + ' ' + date.getFullYear();
 
 				};
 			},
@@ -38,9 +61,9 @@ $(function () {
 		success: function (data) {
 			$('#odehrane').html($('#odehrane').html().replace('{{oldkoncertsCount}}', data.result['oldkoncerts-count']));
 			$('#koncerty-list').html(Mustache.render(templateKoncerty, addFormaters(data.result)));
-			$('#koncerty-nejblizsi-list').html(Mustache.render(templateKoncertyNejblizsi, addFormaters({
+			/*$('#koncerty-nejblizsi-list').html(Mustache.render(templateKoncertyNejblizsi, addFormaters({
 				koncerts: data.result.koncerts[0]
-			})));
+			})));*/
 		}
 	});
 

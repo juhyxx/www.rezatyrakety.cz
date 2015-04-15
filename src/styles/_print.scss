@@ -1,0 +1,29 @@
+@media print {
+	a {
+		color: black;
+		text-decoration: none;
+	}
+	article {
+		min-height: 0 !important;
+	}
+	.texty,
+	.photo,
+	#nahravky,
+	#koncerty,
+	#tri,
+	header,
+	.fa-facebook-square {
+		display: none;
+	}
+	footer {
+		line-height: 1.5em;
+		font-size: 2em;
+		span {
+			white-space: nowrap;
+			margin: {
+				right: 1em;
+			}
+			;
+		}
+	}
+}

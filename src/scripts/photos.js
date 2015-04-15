@@ -5,7 +5,10 @@ $(function () {
 
 });
 
-function renderPhoto(photo, item) {
+function renderPhoto(photo, photos) {
+	var rnd = Math.round(Math.random() * photos.length),
+		item = photos[rnd];
+
 	try {
 		var date = new Date(parseInt(item['gphoto$timestamp']['$t'], 10));
 
@@ -18,37 +21,31 @@ function renderPhoto(photo, item) {
 	}
 }
 
-function renderPhotos(data) {
-	var photos = data.feed.entry;
+function renderPhotos(photos) {
+	$('.photo').each(function (index, photoEl) {
+		setTimeout(function () {
+			$('img', photoEl).load(function () {
+				var parent = $(this).parent('.photo');
+				parent.removeClass('loading');
+				setTimeout(function () {
+					parent.addClass('loading');
+					setTimeout(function () {
+						renderPhoto(photoEl, photos);
+					}, 3000);
+				}, 10000);
+			});
+			renderPhoto(photoEl, photos);
+		}, index * 3000);
+	});
+}
 
+function setData(data) {
 	var imgMarkup = '<div class="photo loading"><img><i></i><span></span></div>';
 
 	$('article:not(article:first-child)>div')
 		.append(imgMarkup)
 		.prepend(imgMarkup);
 
-	$('.photo').each(function (index, photo) {
-		var rnd = Math.round(Math.random() * photos.length),
-			item = photos[rnd];
+	renderPhotos(data.feed.entry, true);
 
-		setTimeout(function () {
-			$('img', photo).load(function () {
-				var parent = $(this).parent('.photo');
-				parent.removeClass('loading');
-				setTimeout(function () {
-					var rnd = Math.round(Math.random() * photos.length);
-					parent.addClass('loading');
-					setTimeout(function () {
-						renderPhoto(photo, photos[rnd]);
-					}, 3000);
-				}, 10000);
-			});
-
-			renderPhoto(photo, item);
-		}, index * 3000);
-	});
-}
-
-function setData(data) {
-	renderPhotos(data);
 }
