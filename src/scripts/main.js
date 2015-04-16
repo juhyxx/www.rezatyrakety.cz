@@ -12,6 +12,7 @@ $(function () {
 
 	var messages = [
 			'Bacha!',
+			'Vy! Ano Vy!',
 			'Míříme přímo na vás!',
 			'Ну  Поехали!',
 			'Naše rez do Vašich uší...',
@@ -23,9 +24,9 @@ $(function () {
 			'První kosmický bigbít',
 			'Poslední kosmický bigbít',
 			'Bigbít s jadernou hlavicí',
-			'Pohrobci studené války',
+			'Jsme pohrobci studené války',
 			'Rezatá raketa díru do světa neudělá',
-			'Hudba z třetího šutru od slunce'
+			'Hudba z třetího šutru od slunce',
 		],
 		counter = 0;
 

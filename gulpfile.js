@@ -1,5 +1,3 @@
- "use strict";
-
  var gulp = require('gulp');
  var connect = require('gulp-connect');
  var open = require('gulp-open');
@@ -14,6 +12,9 @@
  var runSequence = require('run-sequence');
  var size = require('gulp-size');
  var fileinclude = require('gulp-file-include');
+ var rev = require('gulp-rev');
+ var revReplace = require('gulp-rev-replace');
+ var path = require('path');
 
  gulp.task('watch', function () {
  	gulp.watch(['./src/styles/*.scss'], ['dist-sass', function () {
@@ -83,7 +84,7 @@
  		.pipe(gulp.dest('./dist/scripts'));
  });
  gulp.task('dist-html', function () {
- 	return gulp.src(['./src/index.html'])
+ 	return gulp.src(['./src/index.html', './src/404.html'])
  		.pipe(fileinclude({
  			prefix: '@@',
  			basepath: '@file'
@@ -102,11 +103,13 @@
  		.pipe(gulp.dest('./dist'));
  });
  gulp.task('dist-images', function () {
- 	return gulp.src(['./src/images/**/*'])
+ 	return gulp.src(['src/images/**/*', 'src/*.png'], {
+ 			base: 'src'
+ 		})
  		.pipe(size({
  			title: 'IMAGES'
  		}))
- 		.pipe(gulp.dest('./dist/images/'));
+ 		.pipe(gulp.dest('dist'));
  });
  gulp.task('serve-dist', function () {
  	return connect.server({
@@ -118,8 +121,35 @@
 
  gulp.task('default', ['dist-sass', 'dist-js', 'serve', 'watch', 'open']);
 
+ gulp.task('rev', function () {
+ 	return gulp.src([
+ 			'dist/images/**/*.*',
+ 			'dist/scripts/**/*.js',
+ 			'dist/styles/**/*.css',
+ 			'dist/*.png'
+ 		], {
+ 			base: path.join(process.cwd(), 'dist')
+ 		})
+ 		.pipe(rev())
+ 		.pipe(gulp.dest('dist'))
+ 		.pipe(rev.manifest())
+ 		.pipe(gulp.dest('dist'));
+ });
+
+ gulp.task('rev-replace', function () {
+ 	var manifest = gulp.src('./dist/rev-manifest.json');
+
+ 	gulp.src('dist/**/*', {
+ 			base: 'dist'
+ 		})
+ 		.pipe(revReplace({
+ 			manifest: manifest
+ 		}))
+ 		.pipe(gulp.dest('dist'));
+ });
+
  gulp.task('build', function (callback) {
- 	runSequence('clean', 'dist-html', 'dist-sass', 'dist-js', 'dist-images', callback);
+ 	runSequence('clean', 'dist-html', 'dist-sass', 'dist-js', 'dist-images', 'rev', 'rev-replace', callback);
  });
 
  gulp.task('test', function (callback) {
