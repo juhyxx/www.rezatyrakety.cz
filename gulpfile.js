@@ -103,7 +103,11 @@
  		.pipe(gulp.dest('./dist'));
  });
  gulp.task('dist-images', function () {
- 	return gulp.src(['src/images/**/*', 'src/*.png'], {
+ 	return gulp.src([
+ 			'src/images/**/*',
+ 			'src/logo/**/*',
+ 			//'src/*.png'
+ 		], {
  			base: 'src'
  		})
  		.pipe(size({
@@ -126,7 +130,7 @@
  			'dist/images/**/*.*',
  			'dist/scripts/**/*.js',
  			'dist/styles/**/*.css',
- 			'dist/*.png'
+ 			//'dist/*.png'
  		], {
  			base: path.join(process.cwd(), 'dist')
  		})

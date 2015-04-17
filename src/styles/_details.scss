@@ -2,6 +2,9 @@
 	summary:first-child ~ * {
 		display: none;
 	}
+	summary {
+		display: block;
+	}
 	details {
 		&:before {
 			content: '\25BA';

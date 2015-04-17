@@ -8,6 +8,9 @@ $(function () {
 		$('header, article').css({
 			'min-height': window.innerHeight
 		});
+		$('header').css({
+			'height': window.innerHeight
+		});
 	});
 
 	var messages = [
@@ -33,6 +36,6 @@ $(function () {
 	setInterval(function () {
 		$('#message').html(messages[counter]);
 		counter = counter > messages.length ? 0 : counter + 1;
-	}, 1500);
+	}, 2000);
 
 });
