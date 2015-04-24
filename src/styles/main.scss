@@ -238,8 +238,13 @@ h1 {
 			}
 			position: relative;
 		}
+		li {
+			list-style-type: none;
+			margin: {
+				bottom: 2em;
+			}
+		}
 		i {
-			//font-size: 0.7em;
 			color: rgba(white, 0.4);
 			font-style: normal;
 			font-weight: normal;
@@ -252,6 +257,13 @@ h1 {
 		}
 		.note {
 			font-size: 2em;
+			ul {
+				padding: 0;
+				
+				li {
+					margin: 0;
+				}
+			}
 		}
 		.links {
 			a {
@@ -261,19 +273,6 @@ h1 {
 				&:hover {
 					opacity: 1;
 				}
-			}
-		}
-		li {
-			list-style-type: none;
-			margin: {
-				bottom: 2em;
-			}
-		}
-		ul {
-			padding: 0;
-			
-			li {
-				margin: 0;
 			}
 		}
 	}
