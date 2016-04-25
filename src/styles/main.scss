@@ -3,224 +3,145 @@
 $color: #9b1915, #33a8ac, #ba9d63, #e2c78e, #444;
 //@include palette($color);
 @import url(http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
-@import url(http://fonts.googleapis.com/css?family=Rammetto+One&subset=latin,latin-ext);
-@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&subset=latin,latin-ext);
+
+@import url(https://fonts.googleapis.com/css?family=Ubuntu&subset=latin,latin-ext);
+
+//@import url(http://fonts.googleapis.com/css?family=Rammetto+One&subset=latin,latin-ext);
+//@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&subset=latin,latin-ext);
+
+@import url(https://fonts.googleapis.com/css?family=Passion+One:900&subset=latin,latin-ext);
 
 @function color($order) {
 	@return nth($color, $order);
 }
 body {
-	font-family: 'Open Sans Condensed', sans-serif;
+	font-family: 'Ubuntu', sans-serif;
+	overflow-x: hidden;
+   	overflow-y: auto;
 }
-h1,
-h2,
-h3,
-summary,
-footer {
-	font-family: 'Open Sans Condensed', sans-serif;
-}
+
 h1 {
-	font-family: 'Rammetto One', serif;
+	font-family: 'Passion One', cursive;
+	text-transform: uppercase;
 	color: white;
+}
+h2 {
+	margin-top: 0;
+	text-transform: uppercase;
+}
+article>section {
+	display: flex;
+	flex-wrap: wrap;
+	section {
+		margin: 0.5em;
+		//width: 40%;
+		flex:1;
+		flex-basis: 30%;
+		background-color: rgba(black, 0.05);
+		border-radius: 1em;
+		padding: 1em;
+		box-shadow: inset 0 0 80px rgba(black, 0.1);
+		h2 {
+			text-align: center;
+		}
+		ul {
+			list-style: none;
+			padding: 0;
+			li {
+				&:before {
+					content: "\f135";
+					font-family: 'FontAwesome';
+					margin-right: 0.5em;
+					opacity: 0.5;
+				}
+			}
+			&.nobullet
+			 {
+				 li {
+					 &:before {
+						 content: '';
+					 }
+				 }
+			 }
+		}
+	}
 }
 @import "print";
 @import "photo";
 
+nav {
+	a {
+		font-family: 'Passion One', cursive;
+		text-transform: uppercase;
+		font-size: 10vw;
+		letter-spacing: 1vw;
+		text-decoration: none;
+		display: block;
+		border: 0;
+		color: rgba(white, 0.5);
+		white-space: nowrap;
+		text-align: right;
+		transition: color 1s, filter 1s, text-shadow 1s;
+		filter: blur(0.5vw);
+		text-shadow: none;
+		&:hover {
+			text-shadow: 0 0 10px rgba(black, 0.5);
+			filter: blur(1px);
+			color: white;
+			cursor: pointer;
+		}
+	}
+}
+h1 {
+	font-family: 'Passion One', cursive;
+	text-transform: uppercase;
+	font-size: 10vw;
+	letter-spacing: 2vw;
+	margin-top: 0;filter: blur(1px);
+	text-shadow: 0 0 10px rgba(black, 0.5);
+}
+ul, ol {
+	li {
+		margin-bottom: 0.5em;
+	}
+}
+
 @media screen {
-	
+
+	article {
+		display: inline-block;
+		width: 100vw;
+		padding: 2em;
+		box-sizing: border-box;
+	}
+
 	body {
-		background-color: #efffff;
+		scroll-behavior:smooth;
+		background-color:  color(1);
 		font-size: 150%;
 		color: rgba(white, 0.6);
-		b {
-			color: rgba(white, 0.8);
-		}
-		header {
-			position: relative;
-			background-color: color(1);
-			background: url("../images/header.png") no-repeat center center fixed, linear-gradient(transparent, rgba(black, 0.5)) color(1);
-			//background: url("../images/paralax-bg.png");
-			background-size: 100%;
-			/*&:before {
-				content: '';
-				position: absolute;
-				height: 100%;
-				width: 100%;
-				background: url("../images/paralax-top.png");
-				background-size: 100%;
-			}*/
-			display: table;
-			width: 100%;
-			div {
-				display: table-cell;
-				height: 100%;
-				vertical-align: bottom;
-				padding: 20px;
-				line-height: 80px;
-			}
-			#logo {
-				float: left;
-				width: auto;
-				opacity: 1;
-				height: 100px;
-			}
-			h1 {
-				float: right;
-				font-size: 3vw;
-				bottom: 20px;
-				opacity: 0.5;
-				right: 20px;
-				@media screen and (max-width: 1000px) {
-					font-size: 20px;
-					font-size: 4vw;
-				}
-			}
-			border-bottom-color: darken(color(4), 20%);
-		}
-		footer {
-			text-align: center;
-			padding: {
-				top: 1em;
-				bottom: 1em;
-			}
-			ul {
-				list-style-type: none;
-				* {
-					color: color(2);
-				}
-				li {
-					margin: {
-						left: 0.5em;
-						right: 0.5em;
-					}
-					display: inline-block;
-				}
-			}
-		}
-		padding: 0;
+		display: flex;
+		width: 600vw;
 		margin: 0;
-	}
-	article {
-		padding: {
-			bottom: 100px;
-			top: 100px;
-		}
-		
-		> div {
-			position: relative;
-			.photo:first-child {
-				right: -100px;
-				top: -20px;
-				@media screen and (max-width: 1000px) {
-					right: 0;
-				}
-				transform: rotate(15deg);
-			}
-			.photo:last-child {
-				left: -10px;
-				bottom: -250px;
-				@media screen and (max-width: 1000px) {
-					left: 0;
-				}
-				transform: rotate(-15deg);
-			}
-			padding: 1em;
-			max-width: 800px;
-			@media screen and (min-width: 1024px) {
-				max-width: 800px;
-			}
-			margin: {
-				left: auto;
-				right: auto;
-			}
-		}
-		border: {
-			top: 1px solid lightgray;
-			bottom: 1px solid gray;
-		}
-		color: rgba(white, 0.7);
-		&:nth-child(2) {
-			background-color: lighten(desaturate(green, 60%), 20%);
-			h1 {
-				color: lighten(desaturate(green, 60%), 30%);
-			}
-			border-bottom-color: darken(lighten(desaturate(green, 60%), 40%), 20%);
-		}
-		&:nth-child(3) {
-			background-color: lighten(color(2), 10%);
-			background: linear-gradient(transparent, rgba(black, 0.2)) lighten(color(2), 10%);
-			border-bottom-color: darken(lighten(color(2), 10%), 20%);
-			h1 {
-				color: lighten(color(2), 20%);
-			}
-		}
-		&:nth-child(4) {
-			background-color: color(1);
-			background: linear-gradient(transparent, rgba(black, 0.2)) color(1);
-			border-bottom-color: darken(color(1), 20%);
-			h1 {
-				color: lighten(color(1),10%);
-			}
-		}
-		&:nth-child(5) {
-			background-color: darken(color(4), 30%);
-			background: linear-gradient(transparent, rgba(black, 0.2)) darken(color(4), 30%);
-			border-bottom-color: darken(color(4), 20%);
-			h1 {
-				color: darken(color(4), 20%);
-			}
-		}
-		&:nth-child(6) {
-			background-color: lighten(color(2), 10%);
-			background: linear-gradient(transparent, rgba(black, 0.2)) lighten(color(2), 10%);
-			border-bottom-color: darken(lighten(color(2), 10%), 20%);
-			h1 {
-				color: lighten(color(2), 20%);
-			}
-			.photo:last-child {
-				right: -10px;
-				bottom: -105px;
-				left: auto;
-				transform: rotate(-15deg);
-			}
+		padding: 0;
+		b {
+			color: rgba(white, 0.9);
 		}
 	}
-	a {
-		color: white;
+		a {
+		color: rgba(white, 0.6);
 		text-decoration: none;
 		border-bottom: 1px solid rgba(white, 0.3);
 		&:hover {
+			color: white;
 			border-color: white;
 		}
 	}
-	h1 {
-		//text-shadow: 0 -1px 0 rgba(black, 0.8);
-		font-size: 4em;
-		margin: {
-			top: 0.25em;
-			bottom: 0.25em;
-		}
-		text-shadow: 0 0 30px rgba(black,0.1);
-		transition: font-size 0.8s;
-		@media screen and (max-width: 700px) {
-			font-size: 2em;
-		}
-	}
-	h2 {
-		color: white;
-		font-weight: bold;
-		opacity: 0.5;
-		//text-shadow: 0 -1px 0 rgba(black, 0.8);
-		margin: {
-			top: 0.25em;
-			bottom: 0.25em;
-		}
-	}
-	ul,
-	ol {
-		margin: {
-			top: 0;
-			bottom: 0;
+
+	#nahravky {
+		img {
+			margin: 1em;
+			margin-right: 0;
 		}
 	}
 	.koncerty-list {
@@ -259,7 +180,7 @@ h1 {
 			font-size: 2em;
 			ul {
 				padding: 0;
-				
+
 				li {
 					margin: 0;
 				}
@@ -269,7 +190,7 @@ h1 {
 			a {
 				border: 0;
 				opacity: 0.5;
-				
+
 				&:hover {
 					opacity: 1;
 				}
@@ -285,11 +206,11 @@ h1 {
 		position: relative;
 		width: 70%;
 		box-shadow: 0 0 20px gray;
-		
+
 		@media screen and (max-width: 700px) {
 			font-size: 10px;
 		}
-		
+
 		h1 {
 			margin: 0;
 			font-size: 2em;
@@ -320,7 +241,7 @@ h1 {
 			span {
 				margin-right: 1em;
 			}
-			
+
 			.fa {
 				font-size: 30px;
 			}
@@ -391,7 +312,8 @@ h1 {
 			max-height: 1.8em;
 		}
 	}
-	.cd {
+
+	/*.cd {
 		border-radius: 2px;
 		transition: all 1s;
 		box-sizing: border-box;
@@ -432,7 +354,7 @@ h1 {
 		&:hover {
 			transform: rotateY(180deg);
 		}
-	}
+	}*/
 	.texty {
 		em,
 		i {
@@ -461,7 +383,7 @@ h1 {
 			width: 48%;
 			position: relative;
 			&.left {
-				
+
 			}
 			&.right {
 				text-align: right;
