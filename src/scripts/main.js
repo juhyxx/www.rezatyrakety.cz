@@ -1,27 +1,34 @@
 $(function() {
 
-  $("nav a ").click(function() {
+  $("nav a ").click(function(e) {
+    e.preventDefault();
     var id = $(this).attr('href'),
-      left = $(id).offset().left;
+      top = $(id).offset().top;
 
 
     $('body').animate({
-      scrollLeft: left
-    }, left / 2);
+      scrollTop: top
+    }, top);
   });
 
-  /*$('header, article').css({
-  	'min-height': window.innerHeight
-  });*/
+  $(document).on('scroll', function(e) {
+    var position = $(document).scrollTop();
+    $('nav a[href=#rakety]').css('left', easing(position));
+    $('nav a[href=#nahravky]').css('left', easing(position));
+    $('nav a[href=#koncerty]').css('right', easing(position));
+    $('nav a[href=#texty]').css('right', easing(position));
 
-  /*$(window).resize(function() {
-    $('header, article').css({
-      'min-height': window.innerHeight
+    $('#logo').css({
+      'transform': 'scale(' + 1 / (easing(position) / 4 + 1) + ')'
     });
-    $('header').css({
-      'height': window.innerHeight
-    });
-});*/
+  });
+
+  function easing(t) {
+    return (t * t * t) / 100000
+  }
+
+
+
 
   var messages = [
       'Bacha!',

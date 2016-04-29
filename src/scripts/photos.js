@@ -1,6 +1,6 @@
 $(function() {
   setTimeout(function() {
-    //	$('body').append('<script src="http://picasaweb.google.com/data/feed/api/user/juhyxx/albumid/5252817473210531713?kind=photo&alt=json-in-script&thumbsize=243c&callback=setData&fields=entry(summary,gphoto:timestamp , media:group/media:thumbnail)"><\/script>');
+    $('body').append('<script src="http://picasaweb.google.com/data/feed/api/user/juhyxx/albumid/5252817473210531713?kind=photo&alt=json-in-script&thumbsize=200c&callback=setData&fields=entry(summary,gphoto:timestamp , media:group/media:thumbnail)"><\/script>');
   }, 100);
 
 });
@@ -27,24 +27,30 @@ function renderPhotos(photos) {
       $('img', photoEl).load(function() {
         var parent = $(this).parent('.photo');
         parent.removeClass('loading');
+      /*setTimeout(function() {
+        parent.addClass('loading');
         setTimeout(function() {
-          parent.addClass('loading');
-          setTimeout(function() {
-            renderPhoto(photoEl, photos);
-          }, 3000);
-        }, 10000);
+          renderPhoto(photoEl, photos);
+        }, 3000);
+	  }, 10000);*/
       });
       renderPhoto(photoEl, photos);
-    }, index * 3000);
+    }, index * 200);
   });
 }
 
 function setData(data) {
   var imgMarkup = '<div class="photo loading"><img><i></i><span></span></div>';
 
-  $('article:not(article:first-child)>div')
-    .append(imgMarkup)
-    .prepend(imgMarkup);
+  var imgHeight = 230;
+
+
+  var count = Math.floor($(document).height() / imgHeight);
+
+  for (var i = 0; i < count - 1; i++) {
+    $('body #photos').append(imgMarkup);
+  }
+
 
   renderPhotos(data.feed.entry, true);
 
