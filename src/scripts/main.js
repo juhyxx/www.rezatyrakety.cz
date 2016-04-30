@@ -8,7 +8,7 @@ $(function() {
 
     $('body').animate({
       scrollTop: top
-    }, top);
+    }, Math.max(top / 2, 1000));
   });
 
   $(document).on('scroll', function(e) {

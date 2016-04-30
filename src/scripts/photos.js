@@ -3,6 +3,14 @@ $(function() {
     $('body').append('<script src="http://picasaweb.google.com/data/feed/api/user/juhyxx/albumid/5252817473210531713?kind=photo&alt=json-in-script&thumbsize=200c&callback=setData&fields=entry(summary,gphoto:timestamp , media:group/media:thumbnail)"><\/script>');
   }, 100);
 
+  $(window).resize(function() {
+    var h = $('body').height();
+
+    console.log(h);
+
+    $('#photos').height(h - 100);
+  })
+
 });
 
 function renderPhoto(photo, photos) {
@@ -41,17 +49,11 @@ function renderPhotos(photos) {
 
 function setData(data) {
   var imgMarkup = '<div class="photo loading"><img><i></i><span></span></div>';
-
-  var imgHeight = 230;
-
-
+  var imgHeight = 200 + 2 * 15;
   var count = Math.floor($(document).height() / imgHeight);
 
   for (var i = 0; i < count - 1; i++) {
     $('body #photos').append(imgMarkup);
   }
-
-
   renderPhotos(data.feed.entry, true);
-
 }
