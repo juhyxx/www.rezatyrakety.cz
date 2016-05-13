@@ -6,8 +6,6 @@ $(function() {
   $(window).resize(function() {
     var h = $('body').height();
 
-    console.log(h);
-
     $('#photos').height(h - 100);
   })
 

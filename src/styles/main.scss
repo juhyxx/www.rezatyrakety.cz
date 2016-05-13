@@ -1,7 +1,7 @@
 $colorBase:#9b1915;
+$colorDark: rgba(darken(black, 25%), 0.05);
 $imageWidth:200px;
 
-@import 'details';
 @import url(//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
 @import url(//fonts.googleapis.com/css?family=Ubuntu&subset=latin,latin-ext);
 @import url(//fonts.googleapis.com/css?family=Passion+One:900&subset=latin,latin-ext);
@@ -11,13 +11,62 @@ body {
 	overflow-y:auto;
 	margin:0;
 	padding:0;
-	font-size:150%;
+	font-size:120%;
 	font-family:'Ubuntu', sans-serif;
+}
+.old-link {
+	margin-left: 1em;
+	:last-child {
+		display:none;
+	}
+	&.open {
+		:first-child {
+			display:none;
+		}
+		:last-child {
+			display:block;
+		}
+	}
 }
 
 @media screen {
+	#floating-nav {
+		position:absolute;
+		right:0.5em;
+		top:105vh;
+		a {
+			width: 2em;
+			text-align:center;
+			display:block;
+			margin-bottom:3em;
+			text-transform:uppercase;
+			font-size:1.5vh;
+		}
+		height:100vh;
+	}
+	#logo-download {
+		ul {
+			display:flex;
+			flex-wrap:wrap;
+			li {
+				flex:1;
+				&:before {
+					content:'';
+				}
+			}
+		}
+	}
+	iframe {
+		opacity:0.5;
+		margin-top:1em;
+		transition:opacity 1s;
+		&:hover {
+			opacity:1;
+		}
+	}
 	@import 'photo';
 	body {
+		background-color:$colorBase;
 		background:url(../images/bg.svg)  repeat-x bottom, linear-gradient(to right ,black,  black $imageWidth + 2*15px,  $colorBase $imageWidth + 2*15px,   $colorBase) no-repeat,  $colorBase;
 		color:rgba(white, 0.4);
 	}
@@ -40,12 +89,12 @@ body {
 	}
 	h2 {
 		margin-top:0;
-		color:rgba(black, 0.5);
+		color:rgba($colorDark, 0.4);
 		text-transform:uppercase;
 		font-size:1em;
 	}
 	h3 {
-		color:rgba(black, 0.3);
+		color:$colorDark;
 	}
 	b {
 		color:rgba(white, 0.3);
@@ -55,66 +104,86 @@ body {
 		right:0;
 		bottom:1em;
 	}
-	footer {
+	body>footer {
 		padding-top:10em;
 		ul {
 			display:flex;
 			justify-content:space-around;
+			flex-wrap:wrap;
 			li {
 				display:block;
+				white-space:normal;
 			}
 		}
 	}
-	#koncerty {
-		section {
-			display:block;
-		}
-	}
+
 	article {
 		min-height:100vh;
+		display:inline-block;
+		box-sizing:border-box;
+		padding:2em;
+		padding-right:3em;
+		width:100vw;
+		& > section {
+			display:flex;
+			padding-left:$imageWidth;
+			flex-wrap:wrap;
+			section {
+
+					border-top:0;
+
+				h2 {
+					text-align:center;
+					margin-bottom:0;
+					background-color:  $colorDark;
+
+					margin: -1em;
+					padding: 1em;
+					margin-bottom: 1em;
+				}
+				margin:0.5em;
+				padding:1em;
+				background-color:rgba(black, 0.1);
+				flex:1;
+				flex-basis:400px;
+				border: {
+					top: 0.5em solid $colorDark;
+					bottom: 0.5em solid $colorDark;
+				}
+
+				ul {
+					padding:0;
+					list-style:none;
+					li {
+						&:before {
+							margin-right:0.5em;
+							color:rgba(black, 0.3);
+							content:'\f135';
+							font-family:'FontAwesome';
+						}
+					}
+					&.user {
+						li {
+							&:before {
+								content:'\f007';
+							}
+						}
+					}
+					&.nobullet {
+						li {
+							&:before {
+								content:'';
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 	p {
 		line-height:1.5em;
 	}
-	article > section {
-		display:flex;
-		padding-left:$imageWidth;
-		flex-wrap:wrap;
-		section {
-			margin:0.5em;
-			padding:1em;
-			background-color:rgba(black, 0.1);
-			flex:1;
-			flex-basis:30vw;
 
-			ul {
-				padding:0;
-				list-style:none;
-				li {
-					&:before {
-						margin-right:0.5em;
-						color:rgba(black, 0.3);
-						content:'\f135';
-						font-family:'FontAwesome';
-					}
-				}
-				&.user {
-					li {
-						&:before {
-							content:'\f007';
-						}
-					}
-				}
-				&.nobullet {
-					li {
-						&:before {
-							content:'';
-						}
-					}
-				}
-			}
-		}
-	}
 
 	nav {
 		a {
@@ -130,7 +199,7 @@ body {
 			letter-spacing:1vw;
 			font-size:10vw;
 			font-family:'Passion One', cursive;
-			filter:blur(0.3vw);
+			filter:blur(3px);
 			transition:color 1s, filter 1s, text-shadow 1s;
 			&:hover {
 				color:white;
@@ -140,22 +209,22 @@ body {
 			}
 		}
 	}
+	a {
+		cursor:pointer;
+	}
 	ul,
 	ol {
 		li {
 			margin-bottom:0.5em;
+			.fa {
+				margin-right:0.5em;
+				color:rgba(black, 0.3);
+			}
 		}
 	}
 
-	article {
-		display:inline-block;
-		box-sizing:border-box;
-		padding:2em;
-		width:100vw;
-	}
-
 	a {
-		border-bottom:1px solid rgba(white, 0.3);
+		//border-bottom:1px solid rgba(white, 0.3);
 		color:rgba(white, 0.6);
 		text-decoration:none;
 		&:hover {
@@ -172,25 +241,16 @@ body {
 		}
 	}
 	.koncerty-list {
-		margin:0;
-		padding:0;
-		@media screen and (max-width: 700px) {
-			font-size:12px;
+		section {
+			border: 0;
+			padding: 0;
+			display: flex;
+			flex-direction: column;
 		}
-		> li {
-			position:relative;
-			padding: {
-				bottom:1em;
-			}
-			border: {
-				bottom:1px solid rgba(white, 0.2);
-			}
-		}
-		li {
-			margin: {
-				bottom:2em;
-			}
-			list-style-type:none;
+		header,
+		footer {
+			background-color: $colorDark;
+			padding: 1em;
 		}
 		i {
 			color:rgba(white, 0.4);
@@ -201,14 +261,13 @@ body {
 			color:rgba(black, 0.5);
 			font-weight:bold;
 		}
-		.club {
-			float:right;
-		}
 		.note {
-			font-size:2em;
+			font-size:1em;
+			padding:  1em;
+			flex: 1;
 			ul {
 				padding:0;
-
+				margin: 0;
 				li {
 					margin:0;
 					&:before {
@@ -217,150 +276,24 @@ body {
 				}
 			}
 		}
-		.links {
-			a {
-				border:0;
-				opacity:0.5;
-
-				&:hover {
-					opacity:1;
-				}
-			}
-		}
-	}
-	/*#koncerty-nejblizsi-list {
-		position:relative;
-		width:70%;
-		border:1px solid white;
-		border:20px solid white;
-		background-color:desaturate($colorBase, 20%);
-		box-shadow:0 0 20px gray;
-		text-align:center;
-		font-size:1em;
-
-
-
-		h1 {
-			margin:0;
-			color:white;
-			text-shadow:none;
-			font-size:2em;
-			i {
-				display:block;
-			}
-		}
-		h2,
-		li {
-			color:white;
-			font-size:2em;
-		}
-		.info {
-			margin: {
-				top:1em;
-			}
-			padding: {
-				top:1em;
-			}
-			background-color:white;
-			line-height:15px;
-			* {
-				color:gray;
-			}
-			a,
-			span {
-				margin-right:1em;
-			}
-
-			.fa {
-				font-size:30px;
-			}
-		}
-	}*/
-	.details {
-		overflow:hidden;
-		//max-height: 1.8em;
-		//transition: max-height 2s;
-		summary {
-			//text-shadow: 1px 1px 1px rgba(black, 0.5);
-			position:relative;
-			display:block;
-			padding: {
-				left:1em;
-			}
-			color:white;
-			font-weight:bold;
-			opacity:0.6;
-			//font-size: 1.5em;
-			cursor:pointer;
-			transition:text-shadow 0.4s, color 1s;
-			&:hover {
-				//    color: darken(color(2), 10%);
-				//    text-shadow: 1px -1px 1px rgba(black, 0.5);
-			}
-			&:before {
-				margin: {
-					right:1em;
-					left:0;
-				}
-				content:'\f0a9';
-				font-family:FontAwesome;
-				transition:transform 1s;
-				transform:rotate(0deg);
-			}
-		}
-		&.open {
-			max-height:1200px;
-			summary {
-				&:before {
-					transform:rotate(90deg) !important;
-				}
-			}
-		}
-	}
-	.old {
-		overflow:hidden;
-		summary {
-			margin: {
-				bottom:1em;
-			}
-			;
-			&:before {
-				transform:rotate(90deg) !important;
-			}
-		}
-		&.loading {
-			summary {
-				&:before {
-					-webkit-animation:spin3d 2s linear infinite;
-					        animation:spin3d 2s linear infinite;
-				}
-			}
-		}
-		&.closed {
-			max-height:1.8em;
-			transform:rotate(0deg) !important;
-		}
 	}
 
 	#texty {
-		em,
-		i {
-			padding: {
-				right:0.5em;
-			}
-			color:rgba(black, 0.5);
+
+		p {
+			padding-left:1em;
+			position: relative;
+		}
+		em {
+			position: absolute;
+			left: 0;
+			top: 1px;
+			text-align: right;
+			color:rgba($colorDark, 0.4)re;
 			font-style:normal;
 		}
 	}
-	.trojka {
-		.note {
-			min-height:50px;
-			background:url('../images/hand.svg') no-repeat 100% 100%;
-			@media screen and (max-width: 700px) {
-				background-size:70% 70%;
-			}
-		}
-	}
+
 	.row {
 		clear:both;
 		margin-right:auto;
@@ -392,3 +325,16 @@ body {
 }
 
 @import 'print';
+
+@media screen and (max-width: 700px) {
+	body {
+		background:url(../images/bg.svg)  repeat-x bottom, linear-gradient(to right ,black,  black 30px,  $colorBase 30px,   $colorBase) no-repeat,  $colorBase;
+	}
+	#photos {
+		display:none;
+	}
+	article > section {
+		flex-direction:column;
+		padding-left:0;
+	}
+}
