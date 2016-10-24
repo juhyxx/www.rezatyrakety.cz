@@ -282,6 +282,15 @@ body {
 	}
 }
 
+table {
+	border-collapse: collapse;
+	td, th {
+		padding:  0.25em;
+		font-size: 0.5em;
+		border-bottom: 1px solid rgba(white, 0.1);
+	}
+}
+
 @import 'print';
 
 @media screen and (max-width: 700px) {
