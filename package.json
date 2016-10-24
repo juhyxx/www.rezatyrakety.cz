@@ -19,7 +19,7 @@
     "css-brunch": "^2.0.0",
     "hoganjs-brunch": "^1.1.1",
     "javascript-brunch": "^2.0.0",
-    "mustache": "^2.2.1",
+    "moment": "^2.15.2",
     "sass-brunch": "^2.7.0",
     "uglify-js-brunch": "^2.0.0"
   }
