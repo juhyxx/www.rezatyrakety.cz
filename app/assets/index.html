@@ -20,15 +20,14 @@
 		<meta name="theme-color" content="#9b1915">
 		<script>require('initialize');</script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.js"></script>
-
-
+		<script src="https://cdn.jsdelivr.net/momentjs/2.15.1/moment.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.2/locale/cs.js"></script>
 		<script id="template-koncerty" type="x-tmpl-mustache">
 			{{#koncerts}}
 				<section class="{{#isTrojka}}{{trojkazblues_flag}} {{/isTrojka}}">
 					<header>
 						{{#fblink}}<a href="{{fblink}}" class="fa fa-facebook-square" title="Událost na Facebooku"></a>{{/fblink}}
 						<span class="date">{{#dateFormat}}{{date}}{{/dateFormat}}</span>
-						<i> {{#timeFormat}}{{date}}{{/timeFormat}}</i>
 					</header>
 					<div class="note">{{{poznamka}}}</div>
 					<footer class="club">

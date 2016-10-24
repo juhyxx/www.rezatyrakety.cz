@@ -59,15 +59,9 @@ document.addEventListener('DOMContentLoaded', function() {
 		$.extend(data, {
 			dateFormat: function() {
 				return function(text, render) {
-					var date = new Date(render(text) * 1000);
-					return '<i>' + days[date.getDay() - 1] + '</i> ' + date.getDate() + '. ' + months[date.getMonth()] + ' ' + date.getFullYear();
+					var date = moment(render(text) * 1000);
 
-				};
-			},
-			timeFormat: function() {
-				return function(text, render) {
-					var date = new Date(render(text) * 1000);
-					return date.getHours() + '. ' + ('0' + date.getMinutes()).slice(-2);
+					return '<i>' + date.format('dddd') + '</i> ' + date.format('D. MMMM YYYY') + ' <i>' + date.format('H:mm') + '</i>';
 				};
 			},
 			isTrojka: function() {
