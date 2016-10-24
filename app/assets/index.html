@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Rezatý Rakety</title>
+		<meta name="description" content="Plzeňská alternativně neprogresivní bigbítová kapela.">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
+		<meta property="og:title" content="Rezatý Rakety" />
+		<meta property="og:url" content="http://www.rezatyrakety.cz" />
+		<meta property="og:site_name" content="Rezatý Rakety" />
+		<meta property="og:image" content="http://www.rezatyrakety.cz/images/logo.png" />
+		<meta property="og:type" content="website" />
+		<meta property="og:description" content="Plzeňská alternativně bigbítová kapela." />
+		 <link rel="stylesheet" href="app.css">
+		<script src="vendor.js"></script>
+  		<script src="app.js"></script>
+		<meta name="theme-color" content="#9b1915">
+		<script>require('initialize');</script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.js"></script>
+		<script src="https://cdn.jsdelivr.net/momentjs/2.15.1/moment.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.2/locale/cs.js"></script>
+		<script id="template-koncerty" type="x-tmpl-mustache">
+			{{#koncerts}}
+				<section class="{{#isTrojka}}{{trojkazblues_flag}} {{/isTrojka}}">
+					<header>
+						{{#fblink}}<a href="{{fblink}}" class="fa fa-facebook-square" title="Událost na Facebooku"></a>{{/fblink}}
+						<span class="date">{{#dateFormat}}{{date}}{{/dateFormat}}</span>
+					</header>
+					<div class="note">{{{poznamka}}}</div>
+					<footer class="club">
+						{{#linkMapa}}<a target="_blank" href="http://mapy.cz/?q=Loc:{{linkMapa}}" class="fa fa-map-marker"></a>{{/linkMapa}}
+						<span title="{{adresaUlice}}">{{adresaMesto}}</span>,
+						<a target="_blank" href="{{WWW}}" title="Web klubu">{{jmeno}}</a>
+					</footer>
+				</section>
+			{{/koncerts}}
+		</script>
+	</head>
+
+	<body>
+		<div id="photos">
+		</div>
+		<article>
+			<nav>
+				<a href="#koncerty">Koncerty</a>
+				<a href="#nahravky">Nahrávky</a>
+				<a href="#rakety">Rezatý Rakety</a>
+				<a href="#texty">Texty</a>
+			</nav>
+			<img id="logo" src="images/logo.png" style="height: 100px;float:right" alt="logo">
+		</article>
+
+		<div id="floating-nav">
+			<a href="#rakety">R<br>a<br>k<br>e<br>t<br>y</a>
+			<a href="#koncerty">K<br>o<br>n<br>c<br>e<br>r<br>t<br>y</a>
+			<a href="#nahravky">N<br>a<br>h<br>r<br>á<br>v<br>k<br>y</a>
+			<a href="#texty">T<br>e<br>x<br>t<br>y</a>
+		</div>
+
+		<article id="koncerty">
+			<h1>Koncerty</h1>
+			<section  class="koncerty-list" id="koncerty-list"></section>
+			</section>
+			<section>
+				<h2>Odehraný Koncerty ({{oldkoncertsCount}})</h2>
+				<a class="old-link"><span>UKAŽ</span><span>SKOVEJ</span></a>
+			</section>
+			<section class="old koncerty-list" id="koncerty-list-odehrane">
+			</section>
+		</article>
+
+
+		<article id="nahravky">
+
+				<h1>Nahrávky</h1>
+				<section style="text-align:center">
+					<section>
+						<h2>(2016)</h2>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/pUEGBv5v9VU?rel=0" frameborder="0" allowfullscreen></iframe>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>(2011) Starý dobrý časy</h2>
+						<em>studiovej snímek, zaznamenanej 4-6. února.</em>
+						<iframe width="100%" height="750" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/221144803&amp;color=000000&amp;auto_play=false&amp;hide_related=false&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;show_reposts=false"></iframe>
+						<br><br><br>
+						<div>
+							<h2>Recenze (Petr Korál, Muzikus)</h2>
+							<p>Tahle plzeňská, pouze v&nbsp;nejzákladnějším a nejúspornějším triu kytara-baskytara-bicí hrající skupina rezignovala na jakékoliv hledání a mnohdy pofiderní progresivitu. Naopak se ohlíží do dávné a dostatečně prověřené historie (včetně nejspíš záměrně archaického zvuku kytary Miroslava Juhose) a holduje jadrnému blues rocku v&nbsp;poklidnější i náležitě tvrdé podobě.</p>
+							<p>A dělá to docela dobře, to zase ne že ne! I když něco podobného už tu samozřejmě tisíckrát bylo, počínání téhle party působí přesvědčivě a sympaticky. Co chtít víc? Texty s myšlenkově hlubším obsahem? Na to se v tomhle ranku nikdy moc nehrálo a ani to tu v podstatě nikdo neočekává. Jen by si debutové album Rezatých Raket možná zasloužilo kratší stopáž. Těch skoro sedmdesát minut už je opravdu až zbytečně masivní kláda...</p>
+							<p><b>Zlatý hřeb:</b> Rádio Starý dobrý časy, Láhev rumu od Ježíška</p>
+							<p><b>Zní to jako:</b> tak trochu jako Cream a jiná klasická bluesrocková tria</p>
+						</div>
+						<iframe width="640" height="360" src="https://www.youtube.com/embed/oE7gZZuwVnw?rel=0" frameborder="0" allowfullscreen></iframe>
+
+					</section>
+
+					<section>
+						<h2>(2009) ...a to už dneska nikdo neposlouchá</h2>
+						<em>živej demosnímek, zaznamenán 30.5.2009 na festivalu Kerio MusicFest.</em>
+						<iframe width="100%" height="600" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/221148286&amp;color=000000&amp;auto_play=false&amp;hide_related=false&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false"></iframe>
+						<iframe width="640" height="360" src="https://www.youtube.com/embed/CFCnQc_mMpo?rel=0" frameborder="0" allowfullscreen></iframe>
+					</section>
+				</section>
+		</article>
+		<article id="texty">
+			<h1>Texty</h1>
+			<section>
+				<section class="song" id="had">
+			        <h2>Had Hadů</h2>
+			        <p>
+			            <em>1</em>Pán pánů, kniha knih
+			            <br>píseň písní, ticho tich.
+			        </p>
+			        <p>
+			            <em>2</em>Král králů, vina vin
+			            <br>čin činů, stínů stín.
+			        </p>
+			        <p>
+			            <em>3</em>Pád pádů, slovo slov
+			            <br>had hadů, socha soch.
+			        </p>
+			    </section>
+				<section class="song">
+					<h2>OPUS 13: Permutationen des Barock Thema</h2>
+					<p><em>1</em> Hier, Hier steht Jan<br>z kamene vytesán</p>
+					<p><em>2</em> Still, schweigsam Jan<br>hier steht allein</p>
+					<p><em>3</em> Wer, Wer kennt diesen Mann<br>gemeißelt in Stein?</p>
+					<p>
+					Kámen se brání<br>
+					síla jej zraní<br>
+					nikdy neulehne do hrobu<br>
+					ten kdo v kameni má podobu
+					</p>
+				</section>
+
+				<section class="song">
+					<h2>Svobodný člověk ve svobodné zemi</h2>
+					<p>
+					<em>1</em> Neučili mě jak žije svobodný člověk ve svobodné zemi<br>
+					neučili mě ani velkou násobilku<br>
+					neřekli mi jestli když jedni odejdou ty druhý můžou něco změnit<br>
+					neřekli mi že mám prožít ze života každou chvilku.
+					</p>
+					<p>
+					<em>2</em>  Řekli mi o vedoucí úloze strany<br>
+					neřekli mi jak se hledá práce<br>
+					řekli mi že bůh na rozdíl od pekla prostě není<br>
+					neřekli mi jak dlouho trvá menstruace.
+					</p>
+					<p>
+					<em>3</em> Řekli mi, že si mám vzít radši startku než spartu<br>
+					neřekli že mám dělat co mě baví<br>
+					neřekli mi že budu bydlet v bytě z umakartu<br>
+					ale řekli mi to hlavní:
+					</p>
+					<p>
+					<em>4</em>
+					Nelez na stromy ani na střechy<br>
+					nikde nesvlíkej se do naha<br>
+					nezapomeň třicet stlačení na dva nádechy<br>
+					a k výbuchu radši lehat nohama.
+					</p>
+				</section>
+				<section class="song">
+					<h2>Opilý koráb</h2>
+					<p>
+						<em>1</em>Opilý koráb na plese snobů<br>
+						Opilý koráb hledá svou brigu<br>
+						neví že přebral,nechce se mu domů<br>
+						pomíchal pití, udělal chybu
+					</p>
+					<p>
+						<em>2</em>Opilý koráb na plese snobů<br>
+						Opilý koráb moc mluví, moc křicí<br>
+						s každým se zná a s každým se baví<br>
+						každýmu vadí, každýmu vadí
+					</p>
+					<p>
+						<em>3</em>Opilý koráb na plese snobů<br>
+						Opilý koráb málo se stydí<br>
+						zpívá a kleje U sta hromů<br>
+						už sotva mluví, už sotva vidí
+					</p>
+				</section>
+
+
+				<section class="song" id="hodinar">
+					<h2>Ozubený hodinář</h2>
+					<p>
+						<em>1</em>I pokažené hodiny ukazují přesný čas - dvakrát denně
+						<br>jenže pokazil se i hodinář neřekl to nikomu ani svojí ženě.
+						<br>Ozubená soukolí ztratila smysl pro měření času
+						<br>ozubený hodinář naslouchá vnitřnímu hlasu.
+					</p>
+					<p>
+						<em>2</em>Hromádka malých nesmyslů a on neví k čemu slouží
+						<br>měl s nimi nějaký úmysl a ten ho nyní nemálo souží.
+						<br>Ozubené prokletí, nenaskáče do stroje samo
+						<br>i kdyby nad tím seděl století už mu asi není dáno.
+					</p>
+					<p>
+						<em>3</em>Rozběhat malé rafie co ukazují přesný čas víc než - dvakrát denně
+						<br>ozubený hodinář na trhu práce jasně klesl v ceně
+						<br>Slzy jak hrách se koulejí po tváři starého pána
+						<br>když uléhá do peří, snad na to ještě přijde zrána.
+					</p>
+
+				</section>
+				<section class="song">
+					<h2>Láska gaučová</h2>
+
+					<p><em>1</em> Běží gauč po poli, peláší<br>
+					co mu nohy dovolí<br>
+					než ho někdo napráší.<br>
+					Už ho prostě nebaví, netěší<br>
+					že lidi na něm dovádí, peleší.</p>
+
+					<p><em>2</em> Najde gauču gaučovou,<br>
+					opačného pohlaví<br>
+					dokud stojí na nohou,<br>
+					tak se spolu pobaví.<br>
+					A tak  běží gauč po poli, upaluje<br>
+					co mu nohy dovolí,  oddychuje.</p>
+
+					<p><em>3</em> Kořen bloud se smíchy chvěje<br>
+					nohám nohy nastaví<br>
+					panebože co se děje<br>
+					vždyť tohle je o zdraví.<br>
+					Gauč bez noh na poli, naříká<br>
+					snad ho to moc nebolí,  zvrhlíka.</p>
+				</section>
+
+				<section class="song">
+					<h2>Havrani</h2>
+
+					<p><em>1</em>  Krá krá krá krá<br>
+					    my černí havrani<br>
+					    s rukama za zády<br>
+					    chodíme po zemi</p>
+
+					<p><em>2</em>  Krá krá krá krá<br>
+					    krafeme zobáky<br>
+					    krá krá krá krá<br>
+					    jsme ptáci nad ptáky</p>
+
+					<p><em>3</em>  Krá krá krá krá<br>
+					    na hlavách lysiny<br>
+					    krá krá krá krá krá<br>
+					    krákáme kraviny</p>
+
+					<p><em>4</em>  Krá krá krá krá<br>
+					    tam někde na náma<br>
+					    krá krá krá ká<br>
+					   souhvězdí havrana</p>
+				</section>
+
+				<section class="song">
+					<h2>Čertovský sobáš</h2>
+					<p><em>1</em>
+						Pozvali si svatebčané nekomerční kapelu<br>
+						aby zvedli úroveň posvatební žranice<br>
+						a v té náhlé změti elektrických kabelů<br>
+						probírají narození budoucího dědice.
+					</p>
+					<p>
+						<em>R</em>
+						Svatební hosté se ujišťují po sté<br>
+						kolik písní hudebníci umí<br>
+						a zda umí známé nebo taky sprosté<br>
+						neboť víc už hudbě nerozumí.
+					</p>
+					<p>
+						A už se parket plní<br>
+						dámy se snaží zapřít pánví<br>
+						páni se kvádrech vlní<br>
+						Co bude dál každý pán ví.
+					<p>
+					<p>
+						<em>2</em>
+						Spustila kapela na netradiční nástroje<br>
+						krásná thereministka pekelný nástroj zapíná<br>
+						Svatební hosté zíraj s otevřenou tlamou<br>
+						drobky jim z hub padají do klína.
+					</p>
+					<p>
+						Nevěsta prádlo spodní<br>
+						předvádí a ukazuje<br>
+						Ženich po tchýni co chvíli<br>
+						nenápadně pokukuje.
+					</p>
+					<p>
+						<em>3</em>
+						Oblečení odpadává jako když se oteplí<br>
+						svatební bál se stává plesem v předpeklí<br>
+						Kolik nám asi zaplatí,<br>
+						když budou tančit všichni rohatí?
+					</p>
+					<p>
+						Bylo to těžké ráno<br>
+						to jsme tomu dali<br>
+						byla to krásná svatba<br>
+						ani jsme se (moc) nepoprali.
+					</p>
+					<p>
+						Po té naší veselce<br>
+						kde já se ze žalu opil<br>
+						A ty sis na noc svatební<br>
+						našla milence.
+					</p>
+				</section>
+
+				<section class="song" id="nova">
+			        <h2>Pan Josef Novák</h2>
+
+			        <p>
+			            <em>1</em>
+			            Tanky jsou v Praze, tanky jsou všude
+			            <br>a malej Pepík, co ještě včera cumlal dudu
+			            <br>sedí na kanapi, poslouchá rádio
+			            <br>a šedý myši pochodujou v ulicích
+			            <br>venku je přímo dopuštění boží
+			            <br>v lidech zbyla jenom naděje
+			            <br>a jinak se tady nic moc neděje.
+			        </p>
+
+			        <p>
+			            <em>2</em>
+			            Tanky jsou v Praze a tanky jsou všude
+			            <br>a Pepek Novák v puse hrdlo pivní lahve
+			            <br>leží na otomanu a čumí na bednu
+			            <br>v noci prijechali bratři v samoljotech
+			            <br>a rozlili se jako povodně
+			            <br>v lidech ztratila se naděje
+			            <br>a jinak se tady nic moc neděje.
+			        </p>
+
+			        <p>
+			            <em>R</em>Pan Josef Novák, čeká že se to změní
+			            <br>že někdo konečně dostane rozum
+			            <br>vždyť pokud z historie neplyne poučení
+			            <br>tak si ji musíme prožít znovu
+			            <br>
+			            <p>
+			                <em>3</em>
+			                Studenti v Praze a tanky nikde
+			                <br>pan Josef Novák popíjí černou kávu
+			                <br>sedí na pohovce, dívá se na telku
+			                <br>nějaký mladý prej dostali po hubě
+			                <br>stvořeny z klíčů bijou zvony
+			                <br>ke slovu dostala se naděje
+			                <br>a jinak se tady nic moc neděje.
+			            </p>
+			            <p>
+			                <em>4</em>
+			                Pan Josef Novák zesnul v pánu
+			                <br>leží na gauči, na stole lahvový
+			                <br>a z obří TíVí kříčí mediální hvězdy
+			                <br>co przní jazyk a snad i myšlení
+			                <br>Pan Josef Novák odešel navždy
+			                <br>přijde to dřív, než jeden se naděje
+			                <br>a jinak se tady nic moc neděje.
+			            </p>
+
+			    </section>
+
+
+			<!--@@include('./texty.html')-->
+			</section>
+
+
+		</article>
+
+		<article id="rakety">
+			<h1>Vo Raketách</h1>
+			<section>
+				<section>
+					<h2>Posádka</h2>
+					<ul class="user">
+						<li><b>Miroslav Juhy Juhos</b> kytara</li>
+						<li><b>Vojta Horák</b> bicí</li>
+						<li><b>Jan Hezcko</b> basová kytara</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Kontakt</h2>
+					<ul class="nobullet">
+						<li><i class="fa fa-user"></i> Miroslav Juhy Juhos</li>
+						<li><i class="fa fa-phone"></i> <a href="tel:+420605376741">605 376 741</a>
+						</li>
+						<li><script type="text/javascript">
+								var email = 'juhy',
+									domain = 'rezatyrakety.cz',
+									address = email + '@' + domain;
+								document.write('<i class="fa fa-envelope"></i> <a class="email" href="mailto:' + address + '"> ' + address + '</a>')
+							</script>
+						</li>
+						<li><i class="fa fa-map-marker"></i> Plzeň</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Technický požadavky (Rider)</h2>
+					<ul>
+						<li>2xzpěvový mikrofon</li>
+						<li>standardní nazvučení bicích</li>
+						<li>mikrofon pro basový zesilovač</li>
+						<li>mikrofon pro kytarový zesilovač <b>Vox AC15</b>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Drby</h2>
+					<ul>
+						<li>první koncert odehráli <b>29. srpna 2008</b>
+						</li>
+						<li><b>23. listopadu 2009</b> vydali vlastníma silama záznam z&nbsp;koncertu</li>
+						<li><b>1 června 2011</b> vydali svoje <a href="#nahravky">první studiový album</a></li>
+						<li>zakládaj si na <b>vlastním</b>, českým repertoáru</li>
+						<li>hrajou možná bluesrock, možná hardrock, prostě <b>bigbít</b>, jenže bigbít v Plzni a okolí je výraz pro tancovačku, takže <b>alternativní bigbít</b> a nebo si radši udělejte názor sami
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Playlist (pro OSA)</h2>
+					<table>
+						<tr><th>Název</th><th>Hudba</th><th>Text</th></tr>
+						<tr><td>Also sprach Zarathustra</td><td>Richard Strauss</td><td></td></tr>
+						<tr><td>Boublehouse</td><td>Medeski, Martin & Wood</td><td></td></tr>
+						<tr><td>Kankan Bourré</td><td>Johann Sebastian Bach, Jacques Offenbach</td><td></td></tr>
+						<tr><td>HadHadů</td><td>Rezatý Rakety</td><td>Miroslav Juhos</td></tr>
+						<tr><td>Čertovský sobáš</td><td>Rezatý Rakety</td><td>Miroslav Juhos</td></tr>
+						<tr><td>Svobodný člověk ve svobodné zemi</td><td>Rezatý Rakety</td><td>Miroslav Juhos</td></tr>
+						<tr><td>Pan Josef Novák</td><td>Rezatý Rakety</td><td>Miroslav Juhos</td></tr>
+						<tr><td>Opilý koráb </td><td>Rezatý Rakety</td><td>Miroslav Juhos</td></tr>
+						<tr><td>Láska Gaučová</td><td>Rezatý Rakety</td><td>Miroslav Juhos</td></tr>
+						<tr><td>Havrani</td><td>Rezatý Rakety</td><td>Miroslav Juhos</td></tr>
+						<tr><td>Opus 1: Requiem</td><td>Rezatý Rakety</td><td></td></tr>
+						<tr><td>Opus 13: Permutationen des Barock Thema</td><td>Rezatý Rakety</td><td>Miroslav Juhos</td></tr>
+
+					</table>
+				</section>
+
+
+
+				<section id="logo-download">
+					<h2><img src="images/logo.png" style="height: 100px;float:right" alt="logo">Logo ke stažení</h2>
+
+						<ul>
+							<li><a href="logo/logo.png" title="PNG"><i class="fa fa-file-image-o"></i> PNG </a></li>
+							<li><a href="logo/logo.svg" title="SVG"><i class="fa fa-file-code-o"></i> SVG </a></li>
+							<li><a href="logo/logo.pdf" title="PDF"><i class="fa fa-file-pdf-o"></i> PDF </a></li>
+						</ul>
+				</section>
+
+			</section>
+		</article>
+
+		<footer>
+			<ul class="nobullet">
+				<li><i class="fa fa-facebook-square"></i> <a target="_blank" href="http://www.facebook.com/rezatyrakety"> Rezatý Rakety</a></li>
+				<li><i class="fa fa-user"></i> Miroslav Juhy Juhos</li>
+				<li><i class="fa fa-phone"></i> <a href="tel:+420605376741">  605 376 741</a>
+				</li>
+				<li>
+					<script type="text/javascript">
+						var email = 'juhy',
+							domain = 'rezatyrakety.cz',
+							address = email + '@' + domain;
+						document.write('<i class="fa fa-envelope"></i> <a class="email" href="mailto:' + address + '"> ' + address + '</a>')
+					</script>
+				</li>
+				<li><i class="fa fa-map-marker"></i> Plzeň</li>
+			</ul>
+		</footer>
+
+		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+		<script>
+			(function(i, s, o, g, r, a, m) {
+				i['GoogleAnalyticsObject'] = r;
+				i[r] = i[r] || function() {
+					(i[r].q = i[r].q || []).push(arguments)
+				}, i[r].l = 1 * new Date();
+				a = s.createElement(o),
+					m = s.getElementsByTagName(o)[0];
+				a.async = 1;
+				a.src = g;
+				m.parentNode.insertBefore(a, m)
+			})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+			ga('create', 'UA-601743-5');
+			ga('send', 'pageview');
+		</script>
+
+
+	</body>
+
+</html>

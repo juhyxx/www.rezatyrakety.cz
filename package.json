@@ -1,34 +1,26 @@
 {
-  "name": "rr",
-  "version": "0.0.0",
-  "dependencies": {
-    "mustache": "2.2.1"
-  },
-  "devDependencies": {
-    "del": "2.2.0",
-    "gulp": "3.9.1",
-    "gulp-autoprefixer": "3.1.0",
-    "gulp-concat": "2.6.0",
-    "gulp-connect": "3.2.2",
-    "gulp-cssmin": "0.1.7",
-    "gulp-file-include": "0.13.7",
-    "gulp-filter": "4.0.0",
-    "gulp-htmlmin": "1.3.0",
-    "gulp-livereload": "3.8.1",
-    "gulp-open": "1.0.0",
-    "gulp-rev": "7.0.0",
-    "gulp-rev-replace": "0.4.3",
-    "gulp-sass": "2.2.0",
-    "gulp-size": "2.1.0",
-    "gulp-sourcemaps": "1.6.0",
-    "gulp-uglify": "1.5.3",
-    "gulp-watch": "4.3.5",
-    "run-sequence": "1.1.5"
-  },
-  "engines": {
-    "node": ">=0.10.0"
+  "name": "brunch-app",
+  "description": "Description",
+  "author": "Your Name",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": ""
   },
   "scripts": {
-    "test": "grunt test"
+    "start": "brunch watch --server",
+    "build": "brunch build --production"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "auto-reload-brunch": "^2.0.0",
+    "brunch": "^2.0.0",
+    "clean-css-brunch": "^2.0.0",
+    "css-brunch": "^2.0.0",
+    "hoganjs-brunch": "^1.1.1",
+    "javascript-brunch": "^2.0.0",
+    "moment": "^2.15.2",
+    "sass-brunch": "^2.7.0",
+    "uglify-js-brunch": "^2.0.0"
   }
 }
