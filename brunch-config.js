@@ -1,14 +1,29 @@
-exports.files = {
-	javascripts: {
-		joinTo: {
-			'vendor.js': /node_modules/,
-			'app.js': /^app/
+module.exports = {
+	files: {
+		javascripts: {
+			joinTo: {
+				'app.js': /node_modules/,
+				'app.js': /^app/
+			}
+		},
+		stylesheets: {
+			joinTo: 'app.css'
+		},
+		templates: {
+			joinTo: 'app.js'
 		}
 	},
-	stylesheets: {
-		joinTo: 'app.css'
-	},
-	templates: {
-		joinTo: 'app.js'
+	plugins: {
+		htmlPages: {},
+		postcss: {
+			processors: [
+				require('autoprefixer')(['last 2 versions'])
+			]
+		},
+		cssnano: {
+			autoprefixer: {
+				add: true
+			}
+		}
 	}
 };
