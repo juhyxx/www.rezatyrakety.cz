@@ -1,10 +1,32 @@
 @media print {
+	*, table td{
+		font-size: 0.9rem;
+		line-height: 1.5em;
+
+	}
+	table {
+		td, th {
+			border-bottom: 1px dotted gray;
+		}
+	}
+	h1 {display: none;}
+	h2 {
+		margin: 0;
+		padding: 0;
+		border-bottom: 1px solid gray;
+	}
 	a {
 		color: black;
 		text-decoration: none;
 	}
 	article {
 		min-height: 0 !important;
+	}
+	article>section {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
 	}
 	.texty,
 	#photos,
@@ -19,6 +41,11 @@
 	#logo-download,
 	.fa-facebook-square {
 		display: none;
+	}
+	#logo {
+		bottom: 0;
+		right: 0;
+		position: absolute;
 	}
 	footer {
 		line-height: 1.5em;

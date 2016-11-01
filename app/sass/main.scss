@@ -6,6 +6,7 @@ $imageWidth:200px;
 @import url(//fonts.googleapis.com/css?family=Ubuntu&subset=latin,latin-ext);
 @import url(//fonts.googleapis.com/css?family=Passion+One:900&subset=latin,latin-ext);
 
+
 body {
 	overflow-x:hidden;
 	overflow-y:auto;
@@ -13,6 +14,7 @@ body {
 	padding:0;
 	font-size:120%;
 	font-family:'Ubuntu', sans-serif;
+
 }
 
 @media screen {
@@ -27,7 +29,13 @@ body {
 	@import 'photo';
 	body {
 		background-color:$colorBase;
-		background:url(../images/bg.svg)  repeat-x bottom, linear-gradient(to right ,black,  black $imageWidth + 2*15px,  $colorBase $imageWidth + 2*15px,   $colorBase) no-repeat,  $colorBase;
+
+		background:
+			url(../images/bg.svg)  repeat-x bottom,
+		 	linear-gradient(to right, black, black $imageWidth + 2*15px,  transparent $imageWidth + 2*15px,  transparent) no-repeat,
+
+			 $colorBase;
+
 		color:rgba(white, 0.4);
 		& > footer {
 			padding-top:10em;
