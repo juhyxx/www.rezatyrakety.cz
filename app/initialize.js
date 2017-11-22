@@ -1,35 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-	$('nav a, #floating-nav a').click(function(e) {
-		e.preventDefault();
-		var id = $(this).attr('href'),
-			top = $(id).offset().top;
-
-		$('body').animate({scrollTop: top}, Math.max(top / 2, 1000));
-	});
-
-	$(document).on('scroll', function(e) {
-		var position = $(document).scrollTop(),
-			scale = 1 / (position / 80 + 1),
-			navTop = $('#koncerty').offset().top;
-
-		$('a[href="#texty"]', 'nav').css('left', easing(position));
-		$('a[href="#nahravky"]', 'nav').css('left', easing(position));
-		$('a[href="#koncerty"]', 'nav').css('right', easing(position));
-		$('a[href="#rakety"]', 'nav').css('right', easing(position));
-		$('#logo').css({'transform': 'scale(' + scale + ')'});
-		$('#floating-nav').css(
-			position > navTop ? {position: 'fixed',top: '1.5em'} : {
-				position: '',
-				top: ''
-			}
-		);
-	});
-
-	function easing(t) {
-		return (t * t * t) / 100000;
-	}
-
 	var months = [
 			'leden',
 			'únor',

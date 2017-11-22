@@ -6,7 +6,9 @@ $imageWidth:200px;
 @import url(//fonts.googleapis.com/css?family=Ubuntu&subset=latin,latin-ext);
 @import url(//fonts.googleapis.com/css?family=Passion+One:900&subset=latin,latin-ext);
 
-
+html {
+	scroll-behavior: smooth;
+}
 body {
 	overflow-x:hidden;
 	overflow-y:auto;
@@ -32,9 +34,7 @@ body {
 
 		background:
 			url(../images/bg.svg)  repeat-x bottom,
-		 	linear-gradient(to right, black, black $imageWidth + 2*15px,  transparent $imageWidth + 2*15px,  transparent) no-repeat,
-
-			 $colorBase;
+		 	linear-gradient(to right, black, black $imageWidth + 2*15px,  transparent $imageWidth + 2*15px,  transparent) no-repeat, $colorBase;
 
 		color:rgba(white, 0.4);
 		& > footer {
@@ -130,8 +130,8 @@ body {
 	}
 	#logo {
 		position:absolute;
-		right:0;
-		bottom:1em;
+		right:2rem;
+		bottom:2em;
 	}
 
 	article {
@@ -140,7 +140,7 @@ body {
 		box-sizing:border-box;
 		padding:2em;
 		padding-right:3em;
-		width:100vw;
+		//width:100vw;
 		& > section {
 			display:flex;
 			padding-left:$imageWidth;
@@ -256,13 +256,13 @@ body {
 			display:block;
 			border:0;
 			color:rgba(white, 0.7);
-			text-align:left;
+			text-align:right;
 			text-decoration:none;
 			text-transform:uppercase;
 			text-shadow:none;
 			white-space:nowrap;
 			letter-spacing:1vw;
-			font-size:10vw;
+			font-size:8vw;
 			font-family:'Passion One', cursive;
 			filter:blur(3px);
 			transition:color 1s, filter 1s, text-shadow 1s;
@@ -275,9 +275,10 @@ body {
 		}
 	}
 	#floating-nav {
-		position:absolute;
-		right:0.5em;
-		top:105vh;
+		position:sticky;
+		top:100px;
+		float: right;
+		margin-right: 0.5rem;
 		a {
 			width:2em;
 			text-align:center;
