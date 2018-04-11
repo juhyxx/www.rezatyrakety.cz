@@ -109,12 +109,6 @@ document.addEventListener('DOMContentLoaded', function() {
 				$('img', photoEl).load(function() {
 					var parent = $(this).parent('.photo');
 					parent.removeClass('loading');
-				/*setTimeout(function() {
-				  parent.addClass('loading');
-				  setTimeout(function() {
-				    renderPhoto(photoEl, photos);
-				  }, 3000);
-				  }, 10000);*/
 				});
 				renderPhoto(photoEl, photos);
 			}, index * 200);
@@ -124,13 +118,13 @@ document.addEventListener('DOMContentLoaded', function() {
 	window.setData = function(data) {
 		var imgMarkup = '<div class="photo loading"><img><i></i><span></span></div>';
 		var imgHeight = 200 + 2 * 15;
-		var count = Math.floor($(document).height() / imgHeight);
+		var count = Math.floor($(document).height() - $("article#landing").outerHeight() - 200) / imgHeight;
+
 
 		for (var i = 0; i < count - 1; i++) {
 			$('body #photos').append(imgMarkup);
 		}
 		renderPhotos(data.feed.entry, true);
 	};
-
 
 });
