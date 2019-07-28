@@ -15,6 +15,11 @@ module.exports = {
 	},
 	plugins: {
 		htmlPages: {},
+
+		 less: {
+		// 	modules: true
+		 },
+		
 		postcss: {
 			processors: [
 				require('autoprefixer')(['last 2 versions'])

@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		});
 		return data;
 	}
+	
 
 	var templateKoncerty = $('#template-koncerty').html();
 	Mustache.parse(templateKoncerty);
@@ -84,7 +85,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 			$('#photos').height(h - 100);
 		});
-
 	});
 
 	function renderPhoto(photo, photos) {
