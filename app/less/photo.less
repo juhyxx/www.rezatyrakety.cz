@@ -1,53 +1,10 @@
 @imageWidth: 200px;
 
 .photo {
-	display    : inline-block;
-	margin     : 15px;
-	height     : auto;
-	line-height: 1;
-	overflow   : hidden;
-	transition : all 3s;
-	position   : relative;
+	margin     :  0.5rem 1rem;
 
-	img {
-		transition: opacity 2s, filter 2s, -webkit-filter 2s;
-		opacity   : 1;
-		height    : @imageWidth;
-		width     : @imageWidth;
-		filter    : grayscale(100%);
-	}
-
-	&.loading {
-		img {
-			opacity: 0;
-			filter : blur(20px);
-		}
-	}
-
-	span,
-	i {
-		position  : absolute;
-		left      : 10px;
-		font-size : 15px;
-		opacity   : 0;
-		max-width : @imageWidth;
-		transition: all 1s;
-		font-style: normal;
-	}
-
-	i {
-		top: 0.5em;
-	}
-
-	span {
-		bottom: 0.5em;
-	}
-
-	&:hover {
-
-		span,
-		i {
-			opacity: 1;
-		}
+	width: @imageWidth;
+	&:first-child {
+		margin-top:0;
 	}
 }
