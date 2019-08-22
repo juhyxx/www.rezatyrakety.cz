@@ -73,12 +73,9 @@ document.addEventListener('DOMContentLoaded', function() {
 			$('#koncerty-list').html(Mustache.render(templateKoncerty, addFormaters(data.result)));
 		}
 	});
-	
-		
-	console.log('onload loading');
-	let photos = [].slice.call(document.querySelectorAll(".photo"))
-	photos.forEach(item=> {
-		let num = ("00000" + (Math.floor(Math.random() * 437) + 1)).slice(-5)
+			
+	[].slice.call(document.querySelectorAll(".photo")).forEach(function(item) {
+		var num = ("00000" + (Math.floor(Math.random() * 437) + 1)).slice(-5)
 		item.src = "photos/" + num + ".jpg";
 	})
 	
