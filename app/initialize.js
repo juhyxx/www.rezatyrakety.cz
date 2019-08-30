@@ -46,6 +46,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	var templateKoncerty = $('#template-koncerty').html();
 	Mustache.parse(templateKoncerty);
+	var templatePhotos = $('#template-photos').html();
+	Mustache.parse(templatePhotos);
 
 
 	$('.old-link').click(function() {
@@ -74,9 +76,8 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 	});
 			
-	[].slice.call(document.querySelectorAll(".photo")).forEach(function(item) {
-		var num = ("00000" + (Math.floor(Math.random() * 437) + 1)).slice(-5)
-		item.src = "photos/" + num + ".jpg";
-	})
+	$('#photos').html(Mustache.render(templatePhotos, {
+		photos: Array(30).fill('00001').map(function(item) {return("00000" + (Math.floor(Math.random() * 437) + 1)).slice(-5)})
+	}));
 	
 });

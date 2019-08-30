@@ -181,7 +181,7 @@ body {
 		display      : block;
 		box-sizing   : border-box;
 		padding      : 2em;
-		padding-right: 3em;
+	
 		
 
 		&>section {
@@ -343,7 +343,7 @@ body {
 		position    : sticky;
 		top         : 100px;
 		float       : right;
-		margin-right: 1rem;
+		margin-right: 0.5rem;
 		a {
 			width         : 1em;
 			text-align    : center;
@@ -352,6 +352,12 @@ body {
 			text-transform: uppercase;
 			font-size     : 1.5vh;
 			word-wrap: break-word;
+			padding: 0.5rem 0.5rem;
+			background-color: transparent;
+			transition: background-color 0.5s;
+			&:hover {
+				background-color: black;
+			}
 		}
 		height:100vh;
 	}
