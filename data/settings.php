@@ -13,14 +13,6 @@ class Settings {
 	const MYSQL_USER = 'root';
 	const MYSQL_PASSWORD = '';
 	const MY_DATABASE = 'main-rezatyrak';*/
-
-	
-	const DOMAIN = 'http://www.rezatyrakety.cz';
-	const MYSQL_HOST = 'localhost';
-	const MYSQL_USER = 'main-rezatyrak';
-	const MYSQL_PASSWORD = '2nh4hdf5';
-	const MY_DATABASE = 'main-rezatyrak';
-	 
 	
 	const DEBUG = false;
 	const SHOWQUERY = false;

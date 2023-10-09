@@ -1,0 +1,34 @@
+<html xmlns:ng="http://angularjs.org" ng-app="GP" lang="cs">
+
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <title>Texty pro Guitar Pro 6</title>
+
+        <script src="resources/js/script.min.js"></script>  
+
+        <link href="resources/css/style.css" rel="stylesheet" type="text/css" charset="utf-8"/>
+        <!--script src="resources/lib/Hyphenator 4.2.0/Hyphenator.js"></script>
+        <script src="resources/lib/Hyphenator 4.2.0/patterns/cs.js"></script>
+        <script src="resources/lib/angular-1.2.0-rc.3/angular.js"></script>
+        <script src="resources/lib/angular-1.2.0-rc.3/angular-sanitize.js"></script>
+        <script src="resources/js/GP.js"></script-->
+    </head>
+
+    <body ng-controller="Lyrics">
+        <table border="0">
+            <tr>
+                <td valign=top>
+                    <textarea placeholder="Sem vlož svoje umělecké dílo..." ng-change="update()" ng-model="lyrics"></textarea>
+                </td>
+                <td valign=top>
+                    <div>
+                        <em ng-hide="lyrics.length>0">...a zde  objeví  se nemilosrdně rozsekáno do slabik.</em>
+                        <div ng-bind-html="updatedLyrics"></div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </body>
+
+</html>

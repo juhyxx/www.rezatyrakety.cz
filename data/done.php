@@ -1,4 +1,6 @@
 <?php
+    header("Access-Control-Allow-Origin: *");
+    header('Content-Type: application/json');
     require_once('settings.php');
 
 	$output = array(
@@ -14,7 +16,7 @@
 	mysql_query("SET CHARACTER SET utf8");
 
 	$result = mysql_query("SELECT * FROM view_koncerty WHERE datum < now() ORDER BY datum DESC");
-	
+
 	while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
 	    array_push($output['result'], $row);
 	}

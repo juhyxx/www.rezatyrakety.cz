@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html ng-app="harmony" lang="en">
+	<head>
+		<title>fillHarmony (beta2)</title>
+		<meta charset="UTF-8">
+		<link href="resources/css/style.css" rel="stylesheet" type="text/css" charset="utf-8">
+		<script src="resources/javascript/fillHarmony.min.js"></script>
+		
+		
+	</head>
+	<body class="theme-glossy" ng-controller="fillHarmony">
+		<div class="switch" title="Change theme"><div class="rider"></div></div>
+		<div id="circle" ng-controller="circle">
+
+			
+			<ul id="text" >
+				<li ng-repeat="text in texts">
+					<div class="note">
+						<span ng-bind-html-unsafe="text.bes"></span>
+						<span  ng-bind-html-unsafe="text.sharp"></span>
+					</div>
+				</li>
+			</ul>
+
+			<ul id="labels" >
+				<li ng-repeat="label in labels">
+					<span>{{label.name}}</span>
+				</li>
+			</ul>
+
+			<ul id="type-labels" >
+				<li ng-repeat="label in labels">
+					<span ng-bind-html-unsafe="label.chord"></span>
+				</li>
+			</ul>
+
+			<div id="labels-bg"></div>
+			<div id="container">
+				<div id="center">
+					<div id="center-inside">
+						<div id="center-small"></div>
+					</div>
+				</div>
+				<ul id="background" >
+					<li ng-repeat="label in labels">
+						<div ng-class="label.name.toLowerCase().replace(' ', '')">
+							<span></span>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="line" ng-controller="line">
+			<ul id="bg" >
+				<li ng-repeat="hlabel in hlabels" title="{{hlabel.name}}" class="{{hlabel.name.toLowerCase().replace(' ', '')}}">
+					<div ng-bind-html-unsafe="hlabel.chord"></div>
+				</li>
+			</ul>
+
+			<ul id="line-labels">
+				<li ng-repeat="text in labels">
+					<div class="note">
+						<span ng-bind-html-unsafe="text.bes"></span>
+						<span  ng-bind-html-unsafe="text.sharp"></span>
+					</div>
+					{{ update($last) }}
+				</li>
+			</ul>
+
+		</div>
+		<div id="selector" >
+			<div id="slider"><div class="rider"></div></div>
+
+			<ul ng-controller="selector">
+				<li ng-repeat="scale in scales">
+					<input ng-model="selected" ng-click="onSelect(scale)" id="{{scale.id}}" type="radio" name="select" checked="{{scale.selected}}" value="{{scale.id}}">
+					<label for="{{scale.id}}">{{scale.name}}</label>
+				</li>
+			</ul>
+
+		</div>
+
+		<div class="logo">fillHarmony</div>
+
+		<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-601743-7', 'rezatyrakety.cz');
+  ga('send', 'pageview');
+
+</script>
+	</body>
+</html>
