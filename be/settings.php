@@ -8,11 +8,11 @@ class Settings {
 	const ADMIN_MAIL = 'juhy@rezatyrakety.cz';
 	const ENABLE_STATS = false;
 
-	/*const DOMAIN = 'http://localhost/www.rezatyrakety.cz';
-	const MYSQL_HOST = 'localhost';
-	const MYSQL_USER = 'root';
-	const MYSQL_PASSWORD = '';
-	const MY_DATABASE = 'main-rezatyrak';*/
+	const DOMAIN = 'db';
+	const MYSQL_HOST = 'db';
+	const MYSQL_USER = 'user';
+	const MYSQL_PASSWORD = 'password';
+	const MY_DATABASE = 'db';
 	
 	const DEBUG = false;
 	const SHOWQUERY = false;

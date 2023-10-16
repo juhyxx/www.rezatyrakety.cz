@@ -4,8 +4,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
     document.querySelector("#intro").addEventListener("mouseup", toggle);
     document.querySelector("#intro").addEventListener("touchstart", toggle);
     document.querySelector("#intro").addEventListener("touchend", toggle);
-    fetch("https://www.rezatyrakety.cz/data/current.php").then(response => response.json()).then(data => data["result"]["koncerts"]).then(render)
-    fetch("https://www.rezatyrakety.cz/data/done.php").then(response => response.json()).then(data => data["result"]).then(render2)
+    fetch("/be/be.php").then(response => response.json()).then(data => {
+        render(data["result"]["koncerts"]);
+        render2(data["result"]["oldkoncerts"], data["result"]["oldkoncerts-count"]);
+    })
 });
 
 function toggle() {
@@ -58,8 +60,8 @@ function render(data) {
     }
 }
 
-function render2(data) {
-    document.querySelector("#count").innerHTML = data.length; 
+function render2(data, count) {
+    document.querySelector("#count").innerHTML = count; 
     html =  data.map((element,index )=> {
         let date = new Date(element["date"]*1000)
         element["date"] = date

@@ -3,8 +3,34 @@ version: '3.8'
 
 services:
   web:
-    image: php:7.4-apache
+
+    build: .
     ports:
        - 8080:80
     volumes:
       - ./:/var/www/html
+
+  db:
+    image: mysql:5.7
+    platform:  linux/amd64
+    environment:
+      MYSQL_DATABASE: 'db'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - '3306:3306'
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    restart: always
+    ports:
+      - 8081:80
