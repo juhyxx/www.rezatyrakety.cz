@@ -16,6 +16,7 @@
 	if ($mysqli->connect_error) {
 		die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
 	}
+	$mysqli->query("SET CHARACTER SET utf8");
 	$result = $mysqli->query("SELECT * FROM view_koncerty WHERE datum >= now() ORDER BY datum ASC LIMIT 0 , 10");
 	while($row = $result->fetch_array(MYSQLI_ASSOC)) {
 		array_push($output['result']['koncerts'], $row);
