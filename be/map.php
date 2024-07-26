@@ -11,17 +11,22 @@
 	}
 	$mysqli->query("SET CHARACTER SET utf8");
 	$result = $mysqli->query("SELECT 
-		COUNT(*) as count, 
+		COUNT(koncerty.datum) as count, 
 		MAX(jmeno) as jmeno,
+		MAX(festival) as festival,
 		MAX(linkMapa) as linkMapa,
 		MAX(adresaMesto) as adresaMesto,
 		MAX(adresaUlice) as adresaUlice,MAX(WWW) as WWW, 
-		max(datum) as datum 
-		FROM koncerty 
-		LEFT JOIN `kluby` 
+		MAX(note) as note,
+		max(datum) as datum,
+		(CASE WHEN MAX(datum) < DATE_SUB(CURDATE(), INTERVAL 10 YEAR) THEN 1 ELSE 0 END) as is_old,
+		(CASE WHEN MAX(datum) > CURDATE() THEN 1 ELSE 0 END) as is_current
+		FROM kluby 
+		LEFT OUTER JOIN koncerty
 		ON kluby.id=koncerty.klub_id 
-		WHERE kluby.linkMapa is not null AND koncerty.soukromaAkce_flag=0 group by klub_id"
-	);
+		WHERE linkMapa is not null
+		GROUP BY kluby.id;
+	");
 	while($row = $result->fetch_array(MYSQLI_ASSOC)) {
 		array_push($output, $row);
 	}

@@ -3,77 +3,23 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Značky na Mapy.cz</title>
-    <style>
-        #mapa {
-            width: 100vw;
-            height: 100vh;
-        }
-    </style>
-    <script src="https://api.mapy.cz/loader.js"></script>
-    <script>Loader.load();</script>
+    <title>Koncerty RR</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="map.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+</head>
 </head>
 
 <body>
     <div id="mapa"></div>
-    <script>
-        // Inicializace mapy
-        Loader.async = true;
-        Loader.load(null, null, function () {
-            var stred = SMap.Coords.fromWGS84(13.3771, 49.7461);
-            var mapa = new SMap(JAK.gel("mapa"), stred, 12);
-            mapa.addDefaultLayer(SMap.DEF_BASE).enable();
-            mapa.addDefaultControls();
-
-
-            var layer = new SMap.Layer.Marker();
-            mapa.addLayer(layer);
-            layer.enable();
-
-            var znacky = [
-                { nazev: "Značka 1", lat: 50.08804, lon: 14.42076 }];
-
-            fetch("../be/map.php").then((response) => {
-                return response.json()
-            }).then((data) => {
-                console.log(data)
-                znacky = data.map((item) => {
-                    gps = item.linkMapa.split(",")
-                    return {
-                        nazev: item.jmeno,
-                        datum: item.datum,
-                        adresaMesto: item.adresaMesto,
-                        adresaUlice: item.adresaUlice,
-                        WWW: item.WWW,
-                        linkMapa: item.linkMapa,
-                        count: item.count,
-                        lat: gps[0],
-                        lon: gps[1]
-                    }
-                })
-                znacky.forEach(function (z) {
-                    var souradnice = SMap.Coords.fromWGS84(z.lon, z.lat);
-                    var marker = new SMap.Marker(souradnice, z.nazev);
-                    var card = new SMap.Card();
-                    marker.decorate(SMap.Marker.Feature.Card, card);
-
-                    var content = "<strong>" + (z.nazev || "N/A") + "</strong><br>" +
-                        "<strong>koncertů:</strong> " + (z.count || "N/A") + "<br>" +
-                        "<strong>poslední koncert:</strong> " + (z.datum || "N/A") + "<br>" +
-                        "<strong>Adresa město:</strong> " + (z.adresaMesto || "N/A") + "<br>" +
-                        "<strong>Adresa ulice:</strong> " + (z.adresaUlice || "N/A") + "<br>" +
-                        "<strong>WWW:</strong> " + (z.WWW ? "<a href='" + z.WWW + "' target='_blank'>" + z.WWW + "</a>" : "N/A") + "<br>" +
-                        "<strong>Souřadnice:</strong> " + z.linkMapa;
-                    card.getBody().innerHTML = content;
-
-
-
-                    layer.addMarker(marker);
-                });
-            })
-
-        });
-    </script>
+    <div>
+        <input range type="range" list="values" id="range" step="-1"> <output></output>
+        <datalist id="values">
+            <option value="2019" label="2019"></option>
+        </datalist>
+    </div>
+    <script src="map.js"></script>
+</body>
 </body>
 
 </html>

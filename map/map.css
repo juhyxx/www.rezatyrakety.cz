@@ -1,0 +1,48 @@
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: sans-serif;
+}
+
+#mapa {
+    flex: 2;
+    width: 100vw;
+    min-height: 90vh;
+}
+
+datalist {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    width: 60vw;
+    writing-mode: vertical-lr;
+}
+
+option {
+    padding: 0;
+}
+
+input[type="range"] {
+    margin: 0;
+    width: 60vw;
+}
+
+.legend {
+    border-radius: 1rem;
+    background-color: white;
+    padding: 1rem 1rem;
+    color: #555;
+    line-height: 18px;
+}
+
+.legend i {
+    float: left;
+    opacity: 0.7;
+    margin-right: 8px;
+    width: 18px;
+    height: 18px;
+}
