@@ -3,14 +3,38 @@ body {
     flex-direction: column;
     margin: 0;
     padding: 0;
-    height: 100vh;
     font-family: sans-serif;
 }
 
+#container {
+    display: flex;
+    flex-direction: row;
+
+    div {
+        margin-bottom: 0.5rem;
+    }
+}
+
 #mapa {
-    flex: 2;
+    flex: 4;
     width: 100vw;
     min-height: 90vh;
+}
+
+#kluby {
+    flex: 1;
+    cursor: pointer;
+
+    max-height: 90vh;
+    overflow: scroll;
+
+    div {
+        padding: 0.5rem;
+    }
+
+    div:hover {
+        background-color: lightblue;
+    }
 }
 
 datalist {

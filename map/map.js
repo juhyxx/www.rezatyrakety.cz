@@ -4,6 +4,7 @@ const datalist = document.getElementById('values');
 const ICON_BASE_PATH = 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-';
 const rangeInput = document.getElementById('range');
 const output = document.querySelector('output');
+const klubyList = document.getElementById('kluby');
 
 datalist.innerHTML = '';
 
@@ -71,6 +72,16 @@ function renderMarks(marks) {
     });
 }
 
+
+function renderList(marks) {
+    let content = marks.filter(mark => !mark.datum).map((mark) => {
+        const { lat, lon } = convertGPS(mark.linkMapa);
+        return `<div onclick="map.setView([${lat}, ${lon}], 14)"><b>${mark.nazev}</b> ${mark.adresaMesto}</div>`
+    })
+
+    klubyList.innerHTML = klubyList.innerHTML + content.join("");
+
+}
 
 function getMarkerIcon(mark) {
     const iconOptions = {
@@ -163,4 +174,5 @@ fetch("../be/map.php").then((response) => {
     window.marks = marks;
 
     renderMarks(marks)
+    renderList(marks)
 })
