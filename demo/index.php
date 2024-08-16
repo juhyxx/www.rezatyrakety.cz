@@ -3,6 +3,7 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name= "viewport" content= "width = device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
         <style>
             body {
                 font-family: sans-serif;
@@ -10,33 +11,43 @@
                 flex-wrap: wrap;
                 background: #9b1915;
                 counter-reset: css-counter 0; 
+                flex-direction: column;
+                padding:1rem;
+                margin: 0;
             }
             div.item {
                 margin: 0.5em;
-                flex-basis: 20vw;
                 background-color: white;
                 padding: 0.5em;
                 border-radius: 1em;
                 border: 1px solid black;
+               
+                &:not(.old) {
+                    counter-increment: css-counter 1;
+                }
+                &.old {
+                    background-color: gray;
+                }
+                &.collapsed ul {
+                    height:0rem;
+                    overflow: hidden;
+                }
+                cursor: pointer;
             }
-            div.item:not(.old) {
-                counter-increment: css-counter 1;
-            }
-            div.item.old {
-                background-color: gray;
-            }
+         
             h2 {
                 font-size: 1rem;
-                text-align:center;
+                text-align: left;
                 padding:0;
+                padding-left:1rem;
                 margin:0;
                 text-transform: uppercase;
                 color: #9b1915;
-       
+                &:before {
+                    content: counter(css-counter) ". "; 
+                }
             }
-            h2:before {
-                content: counter(css-counter) ". "; 
-            }
+            
             div.item.old h2:before {
                content: "";
             }
@@ -52,25 +63,27 @@
                 border-radius: 1em;
                 text-align:center;
                 border: 1px solid #DEDEDE;
+                border: 1px solid rgba(0,0,0, 0.5);
+                a {
+                    padding: 0.5em;
+                    text-decoration: none;
+                    display:block;
+                    min-width: 4em;
+                    color: #0e4d74;
+                }
                
             }
             li:hover {
                 background-color:white;
                 box-shadow: 0px 0px 7px 0px rgba(0,0,0, 0.2);
-                border: 1px solid rgba(0,0,0, 0.5);
-  
+               
             }
-            li a {
-                padding: 0.5em;
-                text-decoration: none;
-                display:block;
-                min-width: 4em;
-                color: #0e4d74;
-            }
+          
             .fa {
                 font-size: 2em;
             }
         </style>
+
     </head>
 
     <body>
@@ -91,14 +104,7 @@ foreach ($data as $item) {
        
         $ext = pathinfo($item, PATHINFO_EXTENSION);
 
-        if ($ext == "old") {
-            echo "<div class='item old'>";
-        }
-        else {
-            echo "<div class='item'>";
-        }
-
-        echo "<h2>".str_replace ("_", " ", $item)."</h2>";
+        echo "<div class='item" . ($ext == "old" ? " old" : "") . " collapsed' onclick=\"toggle(this)\">";        echo "<h2>".str_replace ("_", " ", $item)."</h2>";
         
         $itemdata =  array_diff(scandir("data/".$item), array('..', '.', '.DS_Store'));
         echo "\t<ul>\n";
@@ -115,6 +121,10 @@ foreach ($data as $item) {
 
 }
 ?>
-
+<script>
+function toggle(el) {
+    el.classList.toggle("collapsed")
+}
+</script>
 </body>
 </html>

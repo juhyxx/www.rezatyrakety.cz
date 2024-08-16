@@ -41,11 +41,13 @@ function convertGPS(input) {
     }
 }
 function escapeHtml(unsafe = "") {
+    console.log(unsafe)
     return (unsafe || "")
         .replace(/&/g, "&")
         .replace(/</g, "<")
         .replace(/>/g, ">")
-        .replace(/'/g, "'");
+        .replace(/'/g, "'")
+        .replace(/\n/g, "<br>");
 }
 
 
@@ -76,7 +78,10 @@ function renderMarks(marks) {
 function renderList(marks) {
     let content = marks.filter(mark => !mark.datum).map((mark) => {
         const { lat, lon } = convertGPS(mark.linkMapa);
-        return `<div onclick="map.setView([${lat}, ${lon}], 14)"><b>${mark.nazev}</b> ${mark.adresaMesto}</div>`
+        return `<div onclick="map.setView([${lat}, ${lon}], 14)">
+            <div><b>${mark.nazev}</b> ${mark.adresaMesto}</div>
+            <pre>${mark.note}</pre>
+        </div>`
     })
 
     klubyList.innerHTML = klubyList.innerHTML + content.join("");
@@ -85,7 +90,7 @@ function renderList(marks) {
 
 function getMarkerIcon(mark) {
     const iconOptions = {
-        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
         iconSize: [25, 41],
         iconAnchor: [12, 41],
         popupAnchor: [1, -34],

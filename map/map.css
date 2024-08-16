@@ -23,18 +23,42 @@ body {
 
 #kluby {
     flex: 1;
+    counter-reset: css-counter 0;
     cursor: pointer;
+
 
     max-height: 90vh;
     overflow: scroll;
 
-    div {
-        padding: 0.5rem;
+    &>div {
+
+        counter-increment: css-counter 1;
+        background: rgb(232, 232, 232);
+        background: linear-gradient(180deg, rgba(249, 249, 249, 1) 0%, rgba(0, 0, 0, 0.07326680672268904) 100%);
+        padding: 0.25rem 0.5rem;
+
+
+
+        div {
+            margin: 0;
+
+            &:before {
+                content: counter(css-counter) ". ";
+            }
+        }
+
+        &:hover {
+            background-color: lightblue;
+        }
+
+        pre {
+            margin: 0;
+            padding: 0;
+        }
+
     }
 
-    div:hover {
-        background-color: lightblue;
-    }
+
 }
 
 datalist {
