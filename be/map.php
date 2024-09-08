@@ -19,6 +19,7 @@
 		MAX(adresaUlice) as adresaUlice,MAX(WWW) as WWW, 
 		MAX(note) as note,
 		max(datum) as datum,
+		max(status) as status,
 		(CASE WHEN MAX(datum) < DATE_SUB(CURDATE(), INTERVAL 10 YEAR) THEN 1 ELSE 0 END) as is_old,
 		(CASE WHEN MAX(datum) > CURDATE() THEN 1 ELSE 0 END) as is_current
 		FROM kluby 

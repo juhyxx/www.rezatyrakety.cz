@@ -1,7 +1,17 @@
+const ICON_BASE_PATH = 'https://cdn.jsdelivr.net/npm/leaflet-awesome-markers@2.0.5/dist/images/markers/'
+
+function createAwesomeMarker(color, icon, iconColor = "white") {
+    return L.AwesomeMarkers.icon({
+        icon: icon,
+        markerColor: color,
+        prefix: 'fa',
+        iconColor: iconColor
+    })
+}
 
 const currentYear = new Date().getFullYear();
 const datalist = document.getElementById('values');
-const ICON_BASE_PATH = 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-';
+//const ICON_BASE_PATH = 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-';
 const rangeInput = document.getElementById('range');
 const output = document.querySelector('output');
 const klubyList = document.getElementById('kluby');
@@ -41,7 +51,6 @@ function convertGPS(input) {
     }
 }
 function escapeHtml(unsafe = "") {
-    console.log(unsafe)
     return (unsafe || "")
         .replace(/&/g, "&")
         .replace(/</g, "<")
@@ -59,9 +68,9 @@ function renderMarks(marks) {
     });
 
     marks.forEach(function (mark) {
-        var marker = L.marker([mark.lat, mark.lon], {
-            icon: getMarkerIcon(mark)
-        }).addTo(map);
+
+        var marker = L.marker([mark.lat, mark.lon], { icon: getMarkerIcon(mark) }).addTo(map);
+
         var content = `<strong>${escapeHtml(mark.nazev) || "N/A"}</strong><hr>
             ${mark.count ? `<strong>Koncertů:</strong> ${mark.count}<br>` : ''}
             ${mark.datum ? `<strong>Poslední koncert:</strong> ${mark.datum.toLocaleDateString()}<br>` : ''}            
@@ -89,25 +98,35 @@ function renderList(marks) {
 }
 
 function getMarkerIcon(mark) {
-    const iconOptions = {
-        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
-        iconSize: [25, 41],
-        iconAnchor: [12, 41],
-        popupAnchor: [1, -34],
-        shadowSize: [41, 41]
-    };
+    color = "gray"
+    icon = mark.festival ? "repeat" : "coffee";
+    iconColor = "white"
 
-    if (!mark.datum) {
-        iconOptions.iconUrl = `${ICON_BASE_PATH}yellow.png`;
-    } else if (mark.festival) {
-        iconOptions.iconUrl = `${ICON_BASE_PATH}green.png`;
-    } else if (mark.current) {
-        iconOptions.iconUrl = `${ICON_BASE_PATH}red.png`;
-    } else {
-        iconOptions.iconUrl = `${ICON_BASE_PATH}blue.png`;
+    try {
+        switch (mark.status) {
+            case "WAITING":
+                color = "blue"
+                break;
+            case "CONTACT":
+                color = "orange"
+                break;
+            case "CANCELED":
+                color = "lightgray"
+                iconColor = "gray"
+                break;
+            default:
+                break;
+        }
+    } catch (e) {
     }
 
-    return L.icon(iconOptions);
+
+    if (mark.current) {
+        color = "green"
+    }
+
+    const marker = createAwesomeMarker(color, icon, iconColor);
+    return marker;
 }
 
 
@@ -125,28 +144,9 @@ document.getElementById("range").addEventListener("input", rangeChanged)
 
 var map = L.map('mapa').setView([49.7461, 13.3771], 12);
 // Add this code after the map is initialized
-var legend = L.control({ position: 'bottomright' });
 
 
 
-legend.onAdd = function (map) {
-    var div = L.DomUtil.create('div', 'info legend');
-    var grades = ["Klub", "Festival", "Nehráli", "Aktuální"];
-    var labels = [
-        ICON_BASE_PATH + "blue.png",
-        ICON_BASE_PATH + "green.png",
-        ICON_BASE_PATH + "yellow.png",
-        ICON_BASE_PATH + "red.png"
-    ];
-
-    for (var i = 0; i < grades.length; i++) {
-        div.innerHTML +=
-            '<i style="background-image: url(' + labels[i] + '); background-size: cover;"></i> ' + grades[i] + '<br>';
-    }
-    return div;
-};
-
-legend.addTo(map);
 
 var marks = [];
 
@@ -173,11 +173,12 @@ fetch("../be/map.php").then((response) => {
             old: item.is_old == "1",
             current: item.is_current == "1",
             festival: item.festival == "1",
-            note: item.note
+            note: item.note,
+            status: item.status,
         }
     })
     window.marks = marks;
 
     renderMarks(marks)
-    renderList(marks)
+    //renderList(marks)
 })

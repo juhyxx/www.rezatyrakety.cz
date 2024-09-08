@@ -11,7 +11,7 @@ class Settings {
 	const DOMAIN = 'db';
 	const MYSQL_HOST = 'db';
 	const MYSQL_USER = 'user';
-	const MYSQL_PASSWORD = 'password';
+	const MYSQL_PASSWORD = 'pass';
 	const MY_DATABASE = 'db';
 	
 	const DEBUG = false;
