@@ -27,14 +27,12 @@
                 margin: 0.5em;
                 background-color: white;
                 padding: 0.5em;
+                padding: 0.5em;
                 border-radius: 0.5em;
                 border: 1px solid gray;
                 box-shadow: 0px 0px 7px 0px rgba(0,0,0, 0.2);
 
-                &.selected {
-                background-color: lightblue ;
-       
-            }
+           
 
                 @media screen and (min-width: 800px) {
                   width: 44rem;
@@ -47,9 +45,16 @@
                 &.old {
                     background-color: gray;
                 }
-                &.collapsed ul {
+                &.collapsed {
+                    background-color: #D7D7D7;
+                    ul {
                     height:0rem;
                     overflow: hidden;
+                    
+                }}
+                &.selected {
+                    background-color: lightblue ;
+       
                 }
                 cursor: pointer;
             }
