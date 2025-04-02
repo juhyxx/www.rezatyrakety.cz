@@ -25,5 +25,5 @@ jobs:
           sudo apt-get install -y lftp
           for file in $CHANGED_FILES; do
             echo "Uploading $file"
-            lftp -e "set ssl:verify-certificate no; -c "open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }}; put -O /remote-folder/ $file"
+            lftp -e "set ssl:verify-certificate no; -c open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }}; put -O /remote-folder/ $file"
           done
