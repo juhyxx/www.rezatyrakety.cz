@@ -3,7 +3,7 @@ name: Deploy changed files to FTP
 on:
   push:
     branches:
-      - main  # Nebo jiná větev
+      - master
 
 jobs:
   ftp-deploy:
