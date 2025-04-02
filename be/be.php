@@ -28,7 +28,7 @@
 	    $output['result']['oldkoncerts-count'] = $row["count"];
 	}
 
-	$result = $mysqli->query("SELECT * FROM view_koncerty WHERE datum < now() ORDER BY datum DESC limit 100");
+	$result = $mysqli->query("SELECT * FROM view_koncerty WHERE datum < now() ORDER BY datum DESC limit 200");
 	while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
 	    array_push($output['result']['oldkoncerts'], $row);
 	}

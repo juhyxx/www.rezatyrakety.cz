@@ -78,8 +78,11 @@ function renderMarks(marks) {
             ${mark.adresaUlice ? `${escapeHtml(mark.adresaUlice)}` : ''}
             <br>
             ${mark.WWW ? `<strong>WWW:</strong> <a href='${escapeHtml(mark.WWW)}' target='_blank'>${escapeHtml(mark.WWW)}</a><br>` : ''}
-            ${mark.linkMapa ? `<strong>Souřadnice:</strong> <a target="_blank" href="https://en.mapy.cz/zakladni?q=${mark.linkMapa}">${mark.linkMapa}</a>` : ''}
-            ${mark.note ? `<hr><strong>Poznámka:</strong> ${escapeHtml(mark.note)}` : ''}`; marker.bindPopup(content);
+            ${mark.linkMapa ? `<strong>Souřadnice:</strong> <a target="_blank" href="https://en.mapy.cz/zakladni?q=${mark.linkMapa}">${mark.linkMapa}</a><br>` : ''}
+            ${mark.status ? `<strong>Status:</strong> ${mark.status}<br>` : ''}
+            ${mark.note ? `<hr><strong>Poznámka:</strong> ${escapeHtml(mark.note)}` : ''}`;
+        marker.bindPopup(content);
+
     });
 }
 

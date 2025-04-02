@@ -69,7 +69,7 @@ function render2(data, count) {
         element["datumParsed"] = ('00' + date.getDate()).slice(-2) + '. ' + ('00' + (date.getMonth() + 1)).slice(-2) + ' ' + date.getFullYear();
         return element
     }).filter((item, index) => {
-        return index < 25
+        return index < 100
     }).map(item => {
         item["adresaUlice"] = item["adresaUlice"] || "";
         return item;

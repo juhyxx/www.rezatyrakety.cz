@@ -11,9 +11,9 @@
     <meta property="og:type" content="website" />
     <meta property="og:description" content="Plzeňská alternativně bigbítová kapela." />
     <meta name="theme-color" content="#9b1915">
-    <link rel="stylesheet" type="text/css" href="style.css?6" />
+    <link rel="stylesheet" type="text/css" href="style.css?9" />
     <script src="https://use.fontawesome.com/8a57eaf791.js"></script>
-    <script src="script.js?5"></script>
+    <script src="script.js?8"></script>
 </head>
 
 <body>
@@ -31,11 +31,14 @@
             <h1>Rezatý Rakety</h1>
         </article>
 
-        <article>
+        <article id="koncerty-container">
             <h2 id=koncerty>Koncerty</h2>
             <section id=koncert-list>Momento ...</section>
             <h3 id=koncerty>Odehrané (<span id=count></span>)</h3>
-            <section id=koncert-old-list>Momento ...</section>
+            <section id=koncert-old-list>Momento ...
+
+            </section>
+            <div class="decoration"></div>
         </article>
 
         <article>
@@ -79,11 +82,11 @@
             </ul>
             <h3>Posádka</h3>
             <ul>
-                <li><b>Petr Jelínek</b> bicí</li>
                 <li><b>Martin Stocek</b> zpěv</li>
                 <li><b>Vanad</b> basová kytara</li>
                 <li><b>Miroslav Juhy Juhos</b> kytara, zpěv</li>
             </ul>
+            <div class="decoration"></div>
         </article>
 
 
@@ -145,29 +148,31 @@
                         <summary>Krise středního věku&nbsp;<i class="fa fa-youtube"></i></summary>
                     </a></li>
             </ul>
-
+            <div class="decoration"></div>
         </article>
 
         <article class="printable">
             <h2 id=poradatele class="non-printable">Pro pořadatele</h2>
+
+            <h3>Technický požadavky (Rider)</h3>
+            <ul>
+                <li>2 x zpěvový mikrofon</li>
+                <li>standardní nazvučení bicích</li>
+                <li>mikrofon pro basový zesilovač</li>
+                <li>2 x mikrofon pro kytarový zesilovač <b>Vox AC10</b> (stereo)
+            </ul>
+
+            <h3>Stage plan</h3>
+            <img style="width: 100%;" src="images/stageplan.svg?1">
+
             <h3 class="non-printable">Logo ke stažení</h3>
-            <img src="logo/logo.svg" style="height: 200px;float:right" alt="logo">
+            <img src="logo/logo.svg" style="height: 200px;" alt="logo">
 
             <ul class="non-printable">
                 <li><a href="logo/logo.png" title="PNG"><i class="fa fa-file-image-o"></i> PNG </a></li>
                 <li><a href="logo/logo.svg" title="SVG"><i class="fa fa-file-code-o"></i> SVG </a></li>
                 <li><a href="logo/logo.pdf" title="PDF"><i class="fa fa-file-pdf-o"></i> PDF </a></li>
             </ul>
-            <h3>Technický požadavky (Rider)</h3>
-            <ul>
-                <li>2xzpěvový mikrofon</li>
-                <li>standardní nazvučení bicích</li>
-                <li>mikrofon pro basový zesilovač</li>
-                <li>2xmikrofon pro kytarový zesilovač <b>Vox AC15</b> a <b>Vox AC10</b> (stereo)
-            </ul>
-
-            <h3>Stage plan</h3>
-            <img style="width: 100%;" src="images/stageplan.svg">
 
             <ul id=kontakt>
                 <li><i class="fa fa-facebook-square"></i> <a target="_blank"
@@ -184,12 +189,9 @@
                 </li>
                 <li><i class="fa fa-map-marker"></i> Plzeň</li>
             </ul>
-
+            <div class="decoration"></div>
         </article>
     </main>
-
-
-
     <footer>
 
     </footer>
