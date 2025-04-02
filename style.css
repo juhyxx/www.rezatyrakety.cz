@@ -81,13 +81,9 @@ main {
         transform: rotate(90deg) translateX(3rem) translateY(-2rem);
         transform-origin: 0 0;
         margin-top: -5rem;
-
-
         color: rgba(255, 255, 255, 0.2);
         font-size: 4rem;
-
         text-shadow: none;
-
     }
 
     h3 {
