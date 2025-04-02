@@ -27,7 +27,7 @@
                 margin: 0.5em;
                 background-color: white;
                 padding: 0.5em;
-                border-radius: 1em;
+                border-radius: 0.5em;
                 border: 1px solid black;
 
                 &.selected {
@@ -78,7 +78,7 @@
             li {
                 background-color: rgba(0,0,0, 0.1);
                 margin: 0.5em;
-                border-radius: 1em;
+                border-radius: 0.5em;
                 text-align:center;
                 border: 1px solid #DEDEDE;
                 border: 1px solid rgba(0,0,0, 0.5);
