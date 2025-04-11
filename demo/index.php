@@ -33,8 +33,6 @@
                 box-shadow: 0px 0px 7px 0px rgba(0,0,0, 0.2);
                 text-shadow: 0px 0px 7px 0px rgba(0,0,0, 0.2);
 
-           
-
                 @media screen and (min-width: 800px) {
                   width: 44rem;
                     
@@ -91,11 +89,11 @@
                 margin: 0.5em;
                 border-radius: 0.5em;
                 text-align:center;
-                border: 1px solid #DEDEDE;
-                border: 1px solid rgba(0,0,0, 0.5);
+              
                 a {
                     padding: 0.5em;
                     text-decoration: none;
+                    text-shadow: 0px -1px 0px rgba(0,0,0, 0.2);
                     display:block;
                     min-width: 4em;
                     color: #0e4d74;
@@ -105,6 +103,9 @@
             li:hover {
                 background-color:white;
                 box-shadow: 0px 0px 7px 0px rgba(0,0,0, 0.2);
+                a {
+                    text-shadow: 0px 1px 0px rgba(0,0,0, 0.2);
+                }
                
             }
           
