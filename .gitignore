@@ -1,4 +1,5 @@
-demo/data
+demo/data/*
+!demo/data/kabaty.new/
 mp3
 musicmuse
 nahravky/blues-na-cesty
