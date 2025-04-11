@@ -23,4 +23,4 @@ Mám kabáty pro vás pro obě
 5. Až budu psát testament zmíním co mám v almaře  
 Dva kabáty, minulost a budoucnost, oba bez tváře  
 Až budeš mi pokládat kytku na hrobě  
-Nezapomeň měl jsem kabáty pro vás pro obě  
+Nezapomeň měl jsem kabáty pro vás pro obě   
