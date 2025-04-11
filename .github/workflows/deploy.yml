@@ -21,13 +21,23 @@ jobs:
           # Detect changed or added files
           CHANGED_FILES=$(git diff --name-only HEAD^ HEAD)
           ADDED_FILES=$(git ls-files --others --exclude-standard)
-
+          
+          # Debugging: output the results of each command
+          echo "Changed files: $CHANGED_FILES"
+          echo "Added files: $ADDED_FILES"
+          
           # Combine changed and added files
           ALL_FILES=$(echo "$CHANGED_FILES $ADDED_FILES" | tr '\n' ' ')
 
+          # Debugging: check the value of ALL_FILES
+          echo "All files: $ALL_FILES"
+          
           # Remove files that start with a dot (e.g. .git, .github)
           ALL_FILES=$(echo "$ALL_FILES" | grep -v '^\.')
 
+          # Debugging: check the value after removing dot files
+          echo "Files after filtering: $ALL_FILES"
+          
           # Check if there are any files to deploy
           if [ -z "$ALL_FILES" ]; then
             echo "No files to deploy, exiting."
@@ -36,7 +46,7 @@ jobs:
 
           # Export the list of files to deploy
           echo "CHANGED_FILES=$ALL_FILES" >> $GITHUB_ENV
-
+          
       - name: Upload changed files via FTP
         run: |
           sudo apt-get install -y lftp
