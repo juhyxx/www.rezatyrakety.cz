@@ -33,7 +33,7 @@ jobs:
             # Ensure the file exists before attempting to upload
             if [ -f "$file" ]; then
               echo "Uploading $file"
-              # Upload the file to the same folder structure on the FTP server
-              lftp -c "open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }}; put -O /remote-folder/ $file"
+              # Upload the file to the FTP server without verifying the certificate
+              lftp -c "open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} -e 'set ssl:verify-certificate no; put -O /remote-folder/ $file; quit' ${{ secrets.FTP_SERVER }}"
             fi
           done
