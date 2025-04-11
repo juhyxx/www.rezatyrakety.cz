@@ -62,6 +62,6 @@ jobs:
               fi
               echo "Uploading $file"
               
-              lftp -c "open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} -e 'set ssl:verify-certificate no; put -O $dir_path $file; quit' ${{ secrets.FTP_SERVER }}"
+              lftp -c "open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} -e 'set ssl:verify-certificate no; put -O \"$dir_path\" \"$file\"; quit' ${{ secrets.FTP_SERVER }}"
             fi
           done
