@@ -37,29 +37,22 @@ jobs:
             exit 0
           fi
 
-          # Loop through each file and export it to GITHUB_ENV
-          IFS=$'\n'
-          for file in $ALL_FILES; do
-            # Remove leading/trailing whitespace
-            file=$(echo $file | xargs)
-            # Ensure the file is not empty
-            if [ -n "$file" ]; then
-              echo "CHANGED_FILE=$file" >> $GITHUB_ENV
-            fi
-          done
+          # Save the list of files to a file (e.g., changed_files.txt)
+          echo "$ALL_FILES" > changed_files.txt
 
       - name: Upload changed files via FTP
         run: |
           sudo apt-get install -y lftp
           
-          # Debugging: check the environment variable CHANGED_FILE
-          echo "Files to upload: ${{ env.CHANGED_FILE }}"
+          # Debugging: check the content of changed_files.txt
+          echo "Files to upload:"
+          cat changed_files.txt
           
           # Open FTP connection
           lftp -c "open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }}; quit"
 
-          # Loop through each file and upload
-          for file in ${{ env.CHANGED_FILE }}; do
+          # Loop through each file from changed_files.txt and upload
+          while IFS= read -r file; do
             # Ensure the file exists before attempting to upload
             if [ -f "$file" ]; then
               # Skip files starting with a dot (hidden files)
@@ -74,4 +67,4 @@ jobs:
               echo "Creating directories for $dir_path if necessary"
               lftp -c "open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} -e 'set ssl:verify-certificate no; mkdir -p $dir_path; put -O $dir_path $file; quit' ${{ secrets.FTP_SERVER }}"
             fi
-          done
+          done < changed_files.txt
