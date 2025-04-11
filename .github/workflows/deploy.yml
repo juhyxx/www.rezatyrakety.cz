@@ -22,16 +22,9 @@ jobs:
           CHANGED_FILES=$(git diff --name-only HEAD^ HEAD)
           ADDED_FILES=$(git ls-files --others --exclude-standard)
           
-          # Debugging: output the results of each command
-          echo "Changed files: $CHANGED_FILES"
-          echo "Added files: $ADDED_FILES"
-          
           # Combine changed and added files
           ALL_FILES=$(echo "$CHANGED_FILES $ADDED_FILES" | tr '\n' ' ')
 
-          # Debugging: check the value of ALL_FILES
-          echo "All files: $ALL_FILES"
-          
           # Remove files that start with a dot (e.g. .git, .github)
           ALL_FILES=$(echo "$ALL_FILES" | grep -v '^\.')
 
@@ -54,7 +47,7 @@ jobs:
           # Debugging: check the environment variable CHANGED_FILES
           echo "Files to upload: ${{ env.CHANGED_FILES }}"
 
-          # Upload files
+          # Iterate over each file and upload
           for file in ${{ env.CHANGED_FILES }}; do
             # Ensure the file exists before attempting to upload
             if [ -f "$file" ]; then
@@ -62,3 +55,9 @@ jobs:
               if [[ "$file" == .* ]]; then
                 echo "Skipping hidden file or directory: $file"
                 continue
+              fi
+              echo "Uploading $file"
+              # Upload the file to the FTP server without verifying the certificate
+              lftp -c "open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} -e 'set ssl:verify-certificate no; put -O /remote-folder/ $file; quit' ${{ secrets.FTP_SERVER }}"
+            fi
+          done
