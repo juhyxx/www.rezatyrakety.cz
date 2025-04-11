@@ -60,7 +60,10 @@ jobs:
                 continue
               fi
               echo "Uploading $file"
-              # Upload the file to the root of the FTP server
-              lftp -c "open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} -e 'set ssl:verify-certificate no; put -O / $file; quit' ${{ secrets.FTP_SERVER }}"
+              
+              # Create corresponding directories on the FTP server if needed
+              dir_path=$(dirname "$file")
+              echo "Creating directories for $dir_path if necessary"
+              lftp -c "open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} -e 'set ssl:verify-certificate no; mkdir -p $dir_path; put -O $dir_path $file; quit' ${{ secrets.FTP_SERVER }}"
             fi
           done

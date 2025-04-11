@@ -124,35 +124,34 @@
 
     <body>      
         <div id="event">Načítání...</div>
-    <script>
-       
+        <script>
+        
+            const API_KEY = "AIzaSyBxSP7qbnpzphJzT3yeRoc0XmreUx9DM2I"; // Nahraď vlastním API klíčem
+            const CALENDAR_ID = "48jdqagdt2v2uhhd8afgcn2fc8@group.calendar.google.com"; 
+            const URL = `https://www.googleapis.com/calendar/v3/calendars/${CALENDAR_ID}/events?key=${API_KEY}&timeMin=${new Date().toISOString()}&maxResults=1&singleEvents=true&orderBy=startTime`;
 
-        const API_KEY = "AIzaSyBxSP7qbnpzphJzT3yeRoc0XmreUx9DM2I"; // Nahraď vlastním API klíčem
-        const CALENDAR_ID = "48jdqagdt2v2uhhd8afgcn2fc8@group.calendar.google.com"; 
-        const URL = `https://www.googleapis.com/calendar/v3/calendars/${CALENDAR_ID}/events?key=${API_KEY}&timeMin=${new Date().toISOString()}&maxResults=1&singleEvents=true&orderBy=startTime`;
+            function loadCalendar() {
+                fetch(URL)
+                    .then(response => response.json())
+                    .then(data => {
+                        const event = data.items ? data.items[0] : null;
+                        if (event) {
+                            const title = event.summary;
+                            const when = event.start.dateTime || event.start.date;
+                            document.getElementById("event").innerHTML = `<i class="fa fa-solid fa-calendar"></i> <b>${title}</b>  ${new Date(when).toLocaleString()}  <a href="https://calendar.google.com/calendar/u/0/embed?src=48jdqagdt2v2uhhd8afgcn2fc8@group.calendar.google.com&ctz=Europe/Prague">Kalendář</a>`;
+                        } else {
+                            document.getElementById("event").innerHTML = "Žádné nadcházející události.";
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Chyba při načítání kalendáře:", error);
+                        document.getElementById("event").innerHTML = "Chyba při načítání dat.";
+                    });
+            }
 
-        function loadCalendar() {
-            fetch(URL)
-                .then(response => response.json())
-                .then(data => {
-                    const event = data.items ? data.items[0] : null;
-                    if (event) {
-                        const title = event.summary;
-                        const when = event.start.dateTime || event.start.date;
-                        document.getElementById("event").innerHTML = `<i class="fa fa-solid fa-calendar"></i> <b>${title}</b>  ${new Date(when).toLocaleString()}  <a href="https://calendar.google.com/calendar/u/0/embed?src=48jdqagdt2v2uhhd8afgcn2fc8@group.calendar.google.com&ctz=Europe/Prague">Kalendář</a>`;
-                    } else {
-                        document.getElementById("event").innerHTML = "Žádné nadcházející události.";
-                    }
-                })
-                .catch(error => {
-                    console.error("Chyba při načítání kalendáře:", error);
-                    document.getElementById("event").innerHTML = "Chyba při načítání dat.";
-                });
-        }
-
-        loadCalendar();
-    </script>
-    <div class="list">
+            loadCalendar();
+        </script>
+        <div class="list">
 <? 
 
 $data =  array_diff(scandir("data"), array('..', '.', '.DS_Store'));
