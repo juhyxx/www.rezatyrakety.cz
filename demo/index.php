@@ -42,9 +42,7 @@
                 &:not(.old) {
                     counter-increment: css-counter 1;
                 }
-                &.old {
-                    background-color: gray;
-                }
+              
                 &.collapsed {
                     background-color: #D7D7D7;
                     ul {
@@ -52,6 +50,12 @@
                     overflow: hidden;
                     
                 }}
+                &.old {
+                    background-color: gray;
+                }
+                &.new {
+                    background-color: lightgreen;
+                }
                 &.selected {
                     background-color: lightblue ;
        
@@ -156,10 +160,15 @@ $data =  array_diff(scandir("data"), array('..', '.', '.DS_Store'));
 
 $icons = array(
     "pdf" => "fa-file-pdf-o",
-    "html" => "fa-file-text-o",
+    "md" => "fa-file-text-o",
     "mp3" => "fa-volume-up"
 );
 
+function sortByExtension($a, $b) {
+    $extA = pathinfo($a, PATHINFO_EXTENSION);
+    $extB = pathinfo($b, PATHINFO_EXTENSION);
+    return strcmp($extA, $extB);
+}
 
 foreach ($data as $item) {
     if ($item != "." || $item != "..") {
@@ -168,15 +177,24 @@ foreach ($data as $item) {
         if ($ext == "old") {
             continue;
         }
-        echo "<div class='item" . ($ext == "old" ? " old" : "") . " collapsed' onclick=\"toggle(this)\">";        echo "<h2>".str_replace ("_", " ", $item)."</h2>";
+        echo "<div class='item" . ($ext == "new" ? " new" : "") . " collapsed' onclick=\"toggle(this)\">";        echo "<h2>".str_replace ("_", " ", $item)."</h2>";
         
         $itemdata =  array_diff(scandir("data/".$item), array('..', '.', '.DS_Store'));
+       
+        
+        uasort($itemdata, 'sortByExtension');
         echo "\t<ul>\n";
         foreach ($itemdata as $itemitem) {  
             $ext = pathinfo($itemitem, PATHINFO_EXTENSION);
             $fileName = pathinfo($itemitem, PATHINFO_FILENAME);
             echo "\t\t<li>";
-            echo "<a href=\"data/$item/$itemitem\">";
+            if ($ext == "md") {
+                echo "<a href=\"text.html?song=$item\">";
+            }
+            else {
+                echo "<a href=\"data/$item/$itemitem\">";
+            }
+           
             echo "<i class='fa " . $icons[$ext] . "'></i><br>";
             echo "$fileName</a></li>\n";
         }

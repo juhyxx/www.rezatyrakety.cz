@@ -3,6 +3,7 @@ version: '3.8'
 services:
   web:
     build: .
+    image: rr:latest
     ports:
       - 8080:80
     volumes:
@@ -10,7 +11,6 @@ services:
 
   db:
     image: mariadb:5.5
-    platform: linux/amd64
     environment:
       MYSQL_DATABASE: 'db'
       MYSQL_USER: 'user'
@@ -22,7 +22,7 @@ services:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - '3306:3306'
-    command: [ 'mysqld', '--character-set-server=utf8', '--collation-server=utf8_czech_ci' ]
+    command: [ 'mysqld', '--character-set-server=utf8', '--c  ollation-server=utf8_czech_ci' ]
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin

@@ -18,12 +18,22 @@ jobs:
       - name: Get changed files
         id: changed-files
         run: |
-          echo "CHANGED_FILES=$(git diff --name-only HEAD^ HEAD | tr '\n' ' ')" >> $GITHUB_ENV
+          # Detect changed or added files
+          CHANGED_FILES=$(git diff --name-only HEAD^ HEAD)
+          ADDED_FILES=$(git ls-files --others --exclude-standard)
+          
+          # Combine changed and added files
+          ALL_FILES=$(echo "$CHANGED_FILES $ADDED_FILES" | tr '\n' ' ')
+          echo "CHANGED_FILES=$ALL_FILES" >> $GITHUB_ENV
 
       - name: Upload changed files via FTP
         run: |
           sudo apt-get install -y lftp
           for file in $CHANGED_FILES; do
-            echo "Uploading $file"
-            lftp -e "set ssl:verify-certificate no; open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }}; put -O /remote-folder/ $file"
+            # Ensure the file exists before attempting to upload
+            if [ -f "$file" ]; then
+              echo "Uploading $file"
+              # Upload the file to the same folder structure on the FTP server
+              lftp -c "open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }}; put -O /remote-folder/ $file"
+            fi
           done

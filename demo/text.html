@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<html>
+
+<head>
+    <title>Balada o rezaté raketě</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            color: slategray;
+            line-height: 1.2;
+            font-family: Arial, sans-serif;
+        }
+
+        #text {
+            strong {
+                color: #9b1915;
+            }
+
+            h1 {
+                margin: 0;
+                background-color: #9b1915;
+
+                padding: 1rem;
+                color: white;
+                font-size: 1em;
+                text-align: center;
+                text-transform: uppercase;
+                white-space: nowrap;
+            }
+
+            li::marker {
+                color: #9b1915;
+                font-weight: bold;
+            }
+
+            p {
+                margin: 0.25rem;
+            }
+        }
+    </style>
+
+<body>
+    <div id="text"></div>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <script>
+        console.log("Loading markdown.js");
+
+        const song = window.location.search.replace("?", "").split("=")[1];
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch(`data/${song}/text.md`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Network response was not ok");
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    const html = marked.parse(data);
+                    document.getElementById("text").innerHTML = html;
+                    document.title = "TEXT: " + document.querySelector("h1").innerHTML
+                })
+                .catch(error => {
+                    console.error("There was a problem with the fetch operation:", error);
+                });
+        });
+
+    </script>
+
+</body>
+
+</html>
