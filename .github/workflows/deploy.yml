@@ -47,6 +47,9 @@ jobs:
           # Debugging: check the environment variable CHANGED_FILES
           echo "Files to upload: ${{ env.CHANGED_FILES }}"
           
+          # Open FTP connection
+          lftp -c "open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }}; quit"
+
           # Loop through each file and upload
           for file in ${{ env.CHANGED_FILES }}; do
             # Ensure the file exists before attempting to upload
@@ -57,7 +60,7 @@ jobs:
                 continue
               fi
               echo "Uploading $file"
-              # Upload the file to the FTP server without verifying the certificate
-              lftp -c "open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} -e 'set ssl:verify-certificate no; put -O /remote-folder/ $file; quit' ${{ secrets.FTP_SERVER }}"
+              # Upload the file to the root of the FTP server
+              lftp -c "open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} -e 'set ssl:verify-certificate no; put -O / $file; quit' ${{ secrets.FTP_SERVER }}"
             fi
           done
