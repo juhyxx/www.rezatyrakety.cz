@@ -52,7 +52,7 @@ jobs:
           # Open FTP connection
           lftp -c "open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }}; quit"
           # Loop through each file and upload
-          for file in ${{ env.CHANGED_FILES }}; do
+          for file in ${{ env.ALL_FILES }}; do
             # Ensure the file exists before attempting to upload
             if [ -f "$file" ]; then
               # Skip files starting with a dot (hidden files)
