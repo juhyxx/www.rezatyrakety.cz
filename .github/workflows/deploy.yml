@@ -46,20 +46,19 @@ jobs:
 
           # Export the list of files to deploy
           echo "CHANGED_FILES=$ALL_FILES" >> $GITHUB_ENV
-          
+
       - name: Upload changed files via FTP
         run: |
           sudo apt-get install -y lftp
-          for file in $CHANGED_FILES; do
+          
+          # Debugging: check the environment variable CHANGED_FILES
+          echo "Files to upload: ${{ env.CHANGED_FILES }}"
+
+          # Upload files
+          for file in ${{ env.CHANGED_FILES }}; do
             # Ensure the file exists before attempting to upload
             if [ -f "$file" ]; then
               # Skip files starting with a dot (hidden files)
               if [[ "$file" == .* ]]; then
                 echo "Skipping hidden file or directory: $file"
                 continue
-              fi
-              echo "Uploading $file"
-              # Upload the file to the FTP server without verifying the certificate
-              lftp -c "open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} -e 'set ssl:verify-certificate no; put -O /remote-folder/ $file; quit' ${{ secrets.FTP_SERVER }}"
-            fi
-          done
