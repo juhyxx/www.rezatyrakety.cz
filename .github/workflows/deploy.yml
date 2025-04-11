@@ -37,21 +37,23 @@ jobs:
             exit 0
           fi
 
-          # Export the list of files to deploy
-          echo "CHANGED_FILES=$ALL_FILES" >> $GITHUB_ENV
+          # Loop through each file and export it to GITHUB_ENV
+          for file in $ALL_FILES; do
+            echo "CHANGED_FILE=$file" >> $GITHUB_ENV
+          done
 
       - name: Upload changed files via FTP
         run: |
           sudo apt-get install -y lftp
           
-          # Debugging: check the environment variable CHANGED_FILES
-          echo "Files to upload: ${{ env.CHANGED_FILES }}"
+          # Debugging: check the environment variable CHANGED_FILE
+          echo "Files to upload: ${{ env.CHANGED_FILE }}"
           
           # Open FTP connection
           lftp -c "open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }}; quit"
 
           # Loop through each file and upload
-          for file in ${{ env.CHANGED_FILES }}; do
+          for file in ${{ env.CHANGED_FILE }}; do
             # Ensure the file exists before attempting to upload
             if [ -f "$file" ]; then
               # Skip files starting with a dot (hidden files)
