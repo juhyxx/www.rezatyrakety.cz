@@ -35,7 +35,7 @@ jobs:
           fi
 
           # Export the list of files to deploy
-
+          ALL_FILES=$(echo "$ALL_FILES" | tr '\n' ' ')
           echo "ALL_FILES=$ALL_FILES" >> $GITHUB_ENV
 
           echo "CHANGED_FILES: $CHANGED_FILES"
