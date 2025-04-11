@@ -31,6 +31,7 @@
                 border-radius: 0.5em;
                 border: 1px solid gray;
                 box-shadow: 0px 0px 7px 0px rgba(0,0,0, 0.2);
+                text-shadow: 0px 0px 7px 0px rgba(0,0,0, 0.2);
 
            
 

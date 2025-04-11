@@ -21,13 +21,20 @@ jobs:
           # Detect changed or added files
           CHANGED_FILES=$(git diff --name-only HEAD^ HEAD)
           ADDED_FILES=$(git ls-files --others --exclude-standard)
-          
+
           # Combine changed and added files
           ALL_FILES=$(echo "$CHANGED_FILES $ADDED_FILES" | tr '\n' ' ')
-          
+
           # Remove files that start with a dot (e.g. .git, .github)
           ALL_FILES=$(echo "$ALL_FILES" | grep -v '^\.')
 
+          # Check if there are any files to deploy
+          if [ -z "$ALL_FILES" ]; then
+            echo "No files to deploy, exiting."
+            exit 0
+          fi
+
+          # Export the list of files to deploy
           echo "CHANGED_FILES=$ALL_FILES" >> $GITHUB_ENV
 
       - name: Upload changed files via FTP
