@@ -37,9 +37,9 @@ jobs:
           # Export the list of files to deploy
    
 
-          echo "CHANGED_FILES:\n $CHANGED_FILES"
-          echo "ADDED_FILES:\n $ADDED_FILES"
-          echo "ALL_FILES:\n $ALL_FILES"
+          echo "CHANGED_FILES: $CHANGED_FILES"
+          echo "ADDED_FILES: $ADDED_FILES"
+          echo "ALL_FILES: $ALL_FILES"
 
       - name: Upload changed files via FTP
         run: |
