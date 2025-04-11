@@ -34,3 +34,5 @@ Porazíme strom, připomíná naše činy
 Porazíme strom, připomíná naše viny  
 
 
+
+
