@@ -21,7 +21,7 @@ jobs:
           # Detect changed or added files
           CHANGED_FILES=$(git diff --name-only HEAD^ HEAD)
           ADDED_FILES=$(git ls-files --others --exclude-standard)
-          
+
           # Combine changed and added files into one variable
           ALL_FILES="$CHANGED_FILES $ADDED_FILES"
           
@@ -38,8 +38,14 @@ jobs:
           fi
 
           # Loop through each file and export it to GITHUB_ENV
+          IFS=$'\n'
           for file in $ALL_FILES; do
-            echo "CHANGED_FILE=$file" >> $GITHUB_ENV
+            # Remove leading/trailing whitespace
+            file=$(echo $file | xargs)
+            # Ensure the file is not empty
+            if [ -n "$file" ]; then
+              echo "CHANGED_FILE=$file" >> $GITHUB_ENV
+            fi
           done
 
       - name: Upload changed files via FTP
