@@ -31,5 +31,4 @@ nenechá ryk zbraní doznít.
 Porazíme strom, připomíná naše činy  
 Porazíme strom, připomíná naše viny  
 Porazíme strom, připomíná naše činy  
-Porazíme strom, připomíná naše viny  
-
+Porazíme strom, připomíná naše viny

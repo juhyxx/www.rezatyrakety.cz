@@ -121,7 +121,6 @@
         </style>
 
     </head>
-
     <body>      
         <div id="event">Načítání...</div>
         <script>

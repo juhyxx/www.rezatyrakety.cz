@@ -24,5 +24,4 @@ Někdy jdeme správným směrem, někdy bloudíme
 Nechceme od sebe  
 a nechceme k sobě  
 nechceme do nebe  
-A nechcem skončit v hrobě  
-
+A nechcem skončit v hrobě 
