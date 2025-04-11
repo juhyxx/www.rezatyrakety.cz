@@ -37,6 +37,11 @@ jobs:
           fi
           # Export the list of files to deploy
           echo "CHANGED_FILES=$ALL_FILES" >> $GITHUB_ENV
+
+          echo "CHANGED_FILES: $CHANGED_FILES"
+          echo "ADDED_FILES: $ADDED_FILES"
+          echo "ALL_FILES: $ALL_FILES"
+
       - name: Upload changed files via FTP
         run: |
           sudo apt-get install -y lftp
