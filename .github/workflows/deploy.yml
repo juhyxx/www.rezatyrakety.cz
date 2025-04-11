@@ -22,13 +22,13 @@ jobs:
           CHANGED_FILES=$(git diff --name-only HEAD^ HEAD)
           ADDED_FILES=$(git ls-files --others --exclude-standard)
           
-          # Combine changed and added files
-          ALL_FILES=$(echo "$CHANGED_FILES $ADDED_FILES" | tr '\n' ' ')
-
+          # Combine changed and added files into one variable
+          ALL_FILES="$CHANGED_FILES $ADDED_FILES"
+          
           # Remove files that start with a dot (e.g. .git, .github)
           ALL_FILES=$(echo "$ALL_FILES" | grep -v '^\.')
 
-          # Debugging: check the value after removing dot files
+          # Debugging: print the filtered files
           echo "Files after filtering: $ALL_FILES"
           
           # Check if there are any files to deploy
@@ -46,8 +46,8 @@ jobs:
           
           # Debugging: check the environment variable CHANGED_FILES
           echo "Files to upload: ${{ env.CHANGED_FILES }}"
-
-          # Iterate over each file and upload
+          
+          # Loop through each file and upload
           for file in ${{ env.CHANGED_FILES }}; do
             # Ensure the file exists before attempting to upload
             if [ -f "$file" ]; then
