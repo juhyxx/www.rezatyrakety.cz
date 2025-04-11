@@ -23,7 +23,7 @@ jobs:
           ADDED_FILES=$(git ls-files --others --exclude-standard)
           
           # Combine changed and added files into one variable
-          ALL_FILES="$CHANGED_FILES\n$ADDED_FILES"
+          ALL_FILES="$CHANGED_FILES $ADDED_FILES"
           
           # Remove files that start with a dot (e.g. .git, .github)
           ALL_FILES=$(echo "$ALL_FILES" | grep -v '^\.')
@@ -35,7 +35,7 @@ jobs:
           fi
 
           # Export the list of files to deploy
-          echo "CHANGED_FILES=$ALL_FILES" >> $GITHUB_ENV
+   
 
           echo "CHANGED_FILES:\n $CHANGED_FILES"
           echo "ADDED_FILES:\n $ADDED_FILES"
@@ -51,7 +51,7 @@ jobs:
           # Open FTP connection
           lftp -c "open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }}; quit"
           # Loop through each file and upload
-          for file in ${{ env.ALL_FILES }}; do
+          for file in ${{ env.CHANGED_FILES }}; do
             # Ensure the file exists before attempting to upload
             if [ -f "$file" ]; then
               # Skip files starting with a dot (hidden files)

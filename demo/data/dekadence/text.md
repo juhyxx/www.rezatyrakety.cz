@@ -25,3 +25,4 @@ Nechceme od sebe
 a nechceme k sobě  
 nechceme do nebe  
 A nechcem skončit v hrobě  
+
