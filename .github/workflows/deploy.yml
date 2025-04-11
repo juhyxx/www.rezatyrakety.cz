@@ -21,13 +21,12 @@ jobs:
           # Detect changed or added files
           CHANGED_FILES=$(git diff --name-only HEAD^ HEAD)
           ADDED_FILES=$(git ls-files --others --exclude-standard)
-
+          
           # Combine changed and added files into one variable
           ALL_FILES="$CHANGED_FILES $ADDED_FILES"
           
           # Remove files that start with a dot (e.g. .git, .github)
           ALL_FILES=$(echo "$ALL_FILES" | grep -v '^\.')
-
           # Debugging: print the filtered files
           echo "Files after filtering: $ALL_FILES"
           
@@ -36,23 +35,19 @@ jobs:
             echo "No files to deploy, exiting."
             exit 0
           fi
-
-          # Save the list of files to a file (e.g., changed_files.txt)
-          echo "$ALL_FILES" > changed_files.txt
-
+          # Export the list of files to deploy
+          echo "CHANGED_FILES=$ALL_FILES" >> $GITHUB_ENV
       - name: Upload changed files via FTP
         run: |
           sudo apt-get install -y lftp
           
-          # Debugging: check the content of changed_files.txt
-          echo "Files to upload:"
-          cat changed_files.txt
+          # Debugging: check the environment variable CHANGED_FILES
+          echo "Files to upload: ${{ env.CHANGED_FILES }}"
           
           # Open FTP connection
           lftp -c "open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }}; quit"
-
-          # Loop through each file from changed_files.txt and upload
-          while IFS= read -r file; do
+          # Loop through each file and upload
+          for file in ${{ env.CHANGED_FILES }}; do
             # Ensure the file exists before attempting to upload
             if [ -f "$file" ]; then
               # Skip files starting with a dot (hidden files)
@@ -67,4 +62,4 @@ jobs:
               echo "Creating directories for $dir_path if necessary"
               lftp -c "open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} -e 'set ssl:verify-certificate no; mkdir -p $dir_path; put -O $dir_path $file; quit' ${{ secrets.FTP_SERVER }}"
             fi
-          done < changed_files.txt
+          done
