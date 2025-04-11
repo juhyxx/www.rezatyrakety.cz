@@ -23,24 +23,23 @@ jobs:
           ADDED_FILES=$(git ls-files --others --exclude-standard)
           
           # Combine changed and added files into one variable
-          ALL_FILES="$CHANGED_FILES $ADDED_FILES"
+          ALL_FILES="$CHANGED_FILES\n$ADDED_FILES"
           
           # Remove files that start with a dot (e.g. .git, .github)
           ALL_FILES=$(echo "$ALL_FILES" | grep -v '^\.')
-          # Debugging: print the filtered files
-          echo "Files after filtering: $ALL_FILES"
           
           # Check if there are any files to deploy
           if [ -z "$ALL_FILES" ]; then
             echo "No files to deploy, exiting."
             exit 0
           fi
+
           # Export the list of files to deploy
           echo "CHANGED_FILES=$ALL_FILES" >> $GITHUB_ENV
 
-          echo "CHANGED_FILES: $CHANGED_FILES"
-          echo "ADDED_FILES: $ADDED_FILES"
-          echo "ALL_FILES: $ALL_FILES"
+          echo "CHANGED_FILES:\n $CHANGED_FILES"
+          echo "ADDED_FILES:\n $ADDED_FILES"
+          echo "ALL_FILES:\n $ALL_FILES"
 
       - name: Upload changed files via FTP
         run: |
