@@ -45,6 +45,6 @@ jobs:
           lftp -c "
             set ssl:verify-certificate no;
             open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }};
-            mirror --reverse --delete --verbose ./ ./;
+            mirror --reverse --only-newer --delete --verbose ./ ./;
             bye;
           "
