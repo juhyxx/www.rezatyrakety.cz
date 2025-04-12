@@ -1,4 +1,4 @@
-name: Deploy changed files to FTP
+name: Upload full site to FTP
 
 on:
   push:
@@ -8,60 +8,43 @@ on:
 jobs:
   ftp-deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Fetch full history
-        run: git fetch --prune --unshallow
+      - name: Install lftp
+        run: sudo apt-get install -y lftp
 
-      - name: Get changed files
-        id: changed-files
+      - name: Generate settings.php
         run: |
-          # Detect changed or added files
-          CHANGED_FILES=$(git diff --name-only HEAD^ HEAD)
-          ADDED_FILES=$(git ls-files --others --exclude-standard)
-          
-          # Combine changed and added files into one variable
-          ALL_FILES="$CHANGED_FILES $ADDED_FILES"
-          
-          # Remove files that start with a dot (e.g. .git, .github)
-          ALL_FILES=$(echo "$ALL_FILES" | grep -v '^\.')
-          
-          # Check if there are any files to deploy
-          if [ -z "$ALL_FILES" ]; then
-            echo "No files to deploy, exiting."
-            exit 0
-          fi
+          cat <<EOF > settings.php
+<?php
+class Settings {
 
-          # Export the list of files to deploy
-          ALL_FILES=$(echo "$ALL_FILES" | tr '\n' ' ')
-          echo "ALL_FILES=$ALL_FILES" >> $GITHUB_ENV
+  const TITLE = 'Rezatý Rakety';
+  const DESCRIPTION = 'Oficiální stránky kapely Rezatý Rakety.';
+  const KEYWORDS = 'rusty rocket, rock, rock music, kapela, rezatý rakety, rezaty rakety, rezaty, rakety, rusty, rock band, rock band cz, rock band sk';
 
-          echo "CHANGED_FILES: $CHANGED_FILES"
-          echo "ADDED_FILES: $ADDED_FILES"
-          echo "ALL_FILES: $ALL_FILES"
+  const ADMIN_MAIL = 'juhy@rezatyrakety.cz';
+  const ENABLE_STATS = false;
 
-      - name: Upload changed files via FTP
+  const DOMAIN = '${{ secrets.DOMAIN }}';
+  const MYSQL_HOST = '${{ secrets.MYSQL_HOST }}';
+  const MYSQL_USER = '${{ secrets.MYSQL_USER }}';
+  const MYSQL_PASSWORD = '${{ secrets.MYSQL_PASSWORD }}';
+  const MY_DATABASE = '${{ secrets.MY_DATABASE }}';
+  
+	const DEBUG = false;
+	const SHOWQUERY = false;
+}
+?>
+EOF
+      - name: Upload everything via FTP
         run: |
-          sudo apt-get install -y lftp
-          
-          # Debugging: check the environment variable CHANGED_FILES
-          echo "Files to upload: ${{ env.ALL_FILES }}"
-          
-          # Open FTP connection
-          lftp -c "open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }}; quit"
-          # Loop through each file and upload
-          for file in ${{ env.ALL_FILES }}; do
-            # Ensure the file exists before attempting to upload
-            if [ -f "$file" ]; then
-              # Skip files starting with a dot (hidden files)
-              if [[ "$file" == .* ]]; then
-                echo "Skipping hidden file or directory: $file"
-                continue
-              fi
-              echo "Uploading $file"
-              
-              lftp -c "open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} -e 'set ssl:verify-certificate no; put -O \"$dir_path\" \"$file\"; quit' ${{ secrets.FTP_SERVER }}"
-            fi
-          done
+          lftp -c "
+            set ssl:verify-certificate no;
+            open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }};
+            mirror --reverse --delete --verbose ./ ./;
+            bye;
+          "
