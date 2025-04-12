@@ -1,7 +1,7 @@
 <?php
     header("Access-Control-Allow-Origin: *");
     header('Content-Type: application/json');
-    require_once('settings.php');
+    require_once('../settings.php');
 
 	$output = array(
 	    'jsonrpc' => "2.0",
