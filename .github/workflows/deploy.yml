@@ -19,27 +19,27 @@ jobs:
       - name: Generate settings.php
         run: |
           cat <<EOF > settings.php
-<?php
-class Settings {
+          <?php
+          class Settings {
 
-  const TITLE = 'Rezatý Rakety';
-  const DESCRIPTION = 'Oficiální stránky kapely Rezatý Rakety.';
-  const KEYWORDS = 'rusty rocket, rock, rock music, kapela, rezatý rakety, rezaty rakety, rezaty, rakety, rusty, rock band, rock band cz, rock band sk';
+            const TITLE = 'Rezatý Rakety';
+            const DESCRIPTION = 'Oficiální stránky kapely Rezatý Rakety.';
+            const KEYWORDS = 'rusty rocket, rock, rock music, kapela, rezatý rakety, rezaty rakety, rezaty, rakety, rusty, rock band, rock band cz, rock band sk';
 
-  const ADMIN_MAIL = 'juhy@rezatyrakety.cz';
-  const ENABLE_STATS = false;
+            const ADMIN_MAIL = 'juhy@rezatyrakety.cz';
+            const ENABLE_STATS = false;
 
-  const DOMAIN = '${{ secrets.DOMAIN }}';
-  const MYSQL_HOST = '${{ secrets.MYSQL_HOST }}';
-  const MYSQL_USER = '${{ secrets.MYSQL_USER }}';
-  const MYSQL_PASSWORD = '${{ secrets.MYSQL_PASSWORD }}';
-  const MY_DATABASE = '${{ secrets.MY_DATABASE }}';
-  
-	const DEBUG = false;
-	const SHOWQUERY = false;
-}
-?>
-EOF
+            const DOMAIN = '${{ secrets.DOMAIN }}';
+            const MYSQL_HOST = '${{ secrets.MYSQL_HOST }}';
+            const MYSQL_USER = '${{ secrets.MYSQL_USER }}';
+            const MYSQL_PASSWORD = '${{ secrets.MYSQL_PASSWORD }}';
+            const MY_DATABASE = '${{ secrets.MY_DATABASE }}';
+            
+            const DEBUG = false;
+            const SHOWQUERY = false;
+          }
+          ?>
+          EOF
       - name: Upload everything via FTP
         run: |
           lftp -c "
