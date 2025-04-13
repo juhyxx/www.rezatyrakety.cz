@@ -6,11 +6,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name= "viewport" content= "width = device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
         <style>
+            @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Oswald:wght@200;700&display=swap');
+
+
             body {
-                font-family: sans-serif;
+         
                 background: #9b1915;
                 padding:0rem;
                 margin: 0;
+                font-family: 'Oswald', sans-serif;
+        
             }
             .list {
                 display: flex;
@@ -39,7 +44,6 @@
                     counter-increment: css-counter 1;
                 }
                 &.collapsed {
-                  
                     ul {
                         max-height:0;
                         overflow: hidden;
@@ -65,6 +69,7 @@
                 margin:0;
                 text-transform: uppercase;
                 color: #9b1915;
+                font-family: 'Montserrat', sans-serif;
                 &:before {
                     content: "◢ " counter(css-counter) ". " ; 
                 }
