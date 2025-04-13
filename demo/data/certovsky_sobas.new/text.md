@@ -5,7 +5,7 @@ aby zvedli úroveň posvatební žranice
 a v té náhlé změti elektrických kabelů  
 probírají narození budoucího dědice.  
 
-*Ref:*  
+**Ref:**  
 Svatební hosté se ujišťují po sté kolik písní hudebníci umí  
 a zda umí  známé nebo taky sprosté neboť víc už hudbě nerozumí.    
 
@@ -25,7 +25,8 @@ svatební bál se stává  plesem v předpeklí
 Kolik nám asi zaplatí,   
 když budou tančit všichni rohatí?   
 
+**Recitativ**:  
 Bylo to těžké ráno, to jsme tomu dali  
 byla to krásná svatba, ani jsme se (moc) nepoprali.  
 Po té naší veselce, kde já se ze žalu opil  
-A ty sis na noc svatební - našla milence.  
+A ty sis na noc svatební - našla milence.*
