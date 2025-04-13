@@ -30,8 +30,8 @@
             div.item {
                 margin: 0.1em;
                 background-color: white;
-                padding: 0.5em;
-                border-radius: 0.5em;
+                padding:  0.5rem 0 0.5rem 0;
+                border-radius: 3px
                 border: 1px solid gray;
                 box-shadow: 0px 0px 7px 0px rgba(0,0,0, 0.2);
                 text-shadow: 0px 0px 7px 0px rgba(0,0,0, 0.2);
@@ -59,23 +59,26 @@
        
                 }
                 cursor: pointer;
+                box-shadow: inset 0px 0px 4px 0px rgba(0,0,0, 0.6);
             }
          
             h2 {
                 font-size: 1rem;
                 text-align: left;
                 padding:0;
-                padding-left:1rem;
+                padding-left:0.5rem;
                 margin:0;
                 text-transform: uppercase;
                 color: #9b1915;
                 font-family: 'Montserrat', sans-serif;
+               
                 &:before {
                     content: "◢ " counter(css-counter) ". " ; 
                 }
                 .collapsed &:before  {
                     content: "▷ " counter(css-counter) ". " ; 
                 }
+             
             }
             
        
@@ -100,7 +103,14 @@
                     text-shadow: 0px -1px 0px rgba(0,0,0, 0.2);
                     display:block;
                     min-width: 4em;
-                    color: #0e4d74;
+                    color:rgb(107, 107, 107);
+                }
+                &.audio {
+                    a {  color:rgb(21, 61, 155);}
+                }
+                &.pdf {
+                    a {  color: #9b1915;}
+                
                 }
                
             }
@@ -164,6 +174,11 @@ $icons = array(
     "md" => "fa-file-text-o",
     "mp3" => "fa-volume-up"
 );
+$clss = array(
+    "pdf" => "pdf",
+    "md" => "text",
+    "mp3" => "audio"
+);
 
 function sortByExtension($a, $b) {
     $extA = pathinfo($a, PATHINFO_EXTENSION);
@@ -188,7 +203,7 @@ foreach ($data as $item) {
         foreach ($itemdata as $itemitem) {  
             $ext = pathinfo($itemitem, PATHINFO_EXTENSION);
             $fileName = pathinfo($itemitem, PATHINFO_FILENAME);
-            echo "\t\t<li>";
+            echo "\t\t<li class='$clss[$ext]'>";
             if ($ext == "md") {
                 echo "<a href=\"text.html?song=$item\">";
             }
