@@ -16,39 +16,34 @@
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: center;
-                padding: 1rem;
+                padding: 0rem;
                 flex-direction: column;
                 @media screen and (min-width: 800px) {
                     flex-direction: row;
-                    
                 }
             }
             div.item {
-                margin: 0.5em;
+                margin: 0.1em;
                 background-color: white;
-                padding: 0.5em;
                 padding: 0.5em;
                 border-radius: 0.5em;
                 border: 1px solid gray;
                 box-shadow: 0px 0px 7px 0px rgba(0,0,0, 0.2);
                 text-shadow: 0px 0px 7px 0px rgba(0,0,0, 0.2);
-
+               
                 @media screen and (min-width: 800px) {
                   width: 44rem;
-                    
                 }
                
                 &:not(.old) {
                     counter-increment: css-counter 1;
                 }
-              
                 &.collapsed {
-                    background-color: #D7D7D7;
+                  
                     ul {
-                    height:0rem;
-                    overflow: hidden;
-                    
-                }}
+                        max-height:0;
+                        overflow: hidden;
+                    }}
                 &.old {
                     background-color: gray;
                 }
@@ -71,18 +66,22 @@
                 text-transform: uppercase;
                 color: #9b1915;
                 &:before {
-                    content: counter(css-counter) ". "; 
+                    content: "◢ " counter(css-counter) ". " ; 
+                }
+                .collapsed &:before  {
+                    content: "▷ " counter(css-counter) ". " ; 
                 }
             }
             
-            div.item.old h2:before {
-               content: "";
-            }
+       
             ul {
                 padding:0;
                 margin:0;  
                 list-style-type: none;
                 display:flex;
+                flex-wrap: wrap;
+                transition: max-height 1s ease;
+                max-height: 400px;
             }
             li {
                 background-color: rgba(0,0,0, 0.1);
@@ -110,7 +109,7 @@
             }
           
             .fa {
-                font-size: 2em;
+                font-size: 40px;
             }
             #event {
                 background-color: white;
