@@ -70,7 +70,8 @@
                 margin:0;
                 text-transform: uppercase;
                 color: #9b1915;
-                font-family: 'Montserrat', sans-serif;
+                text-shadow: 0px 1px 0px  rgba(0,0,0, 0.4);
+              
                
                 &:before {
                     content: "◢ " counter(css-counter) ". " ; 
@@ -81,7 +82,6 @@
              
             }
             
-       
             ul {
                 padding:0;
                 margin:0;  
@@ -89,13 +89,14 @@
                 display:flex;
                 flex-wrap: wrap;
                 transition: max-height 1s ease;
-                max-height: 400px;
+                max-height: 200px;
             }
             li {
                 background-color: rgba(0,0,0, 0.1);
                 margin: 0.5em;
                 border-radius: 0.5em;
                 text-align:center;
+               
               
                 a {
                     padding: 0.5em;

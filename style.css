@@ -84,10 +84,12 @@ main {
         color: rgba(255, 255, 255, 0.2);
         font-size: 4rem;
         text-shadow: none;
+        white-space: nowrap;
     }
 
     h3 {
         margin-top: 1rem;
+        margin-bottom: 1rem;
     }
 
     h3:nth-of-type(1) {
@@ -104,7 +106,7 @@ main {
         border-radius: 1rem;
         background-color: var(--base-color);
         padding: 3rem;
-        padding-bottom: 5rem;
+        padding-bottom: 2rem;
         min-height: 93%;
         color: rgba(255, 255, 255, 0.7);
         font-size: 1rem;
@@ -510,8 +512,7 @@ ul#kontakt {
         background-position: center center;
         background-size: contain;
         background-repeat: no-repeat;
-        width: 220px;
-
+        width: 40vw;
     }
 
     .format {
