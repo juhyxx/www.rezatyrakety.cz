@@ -80,8 +80,9 @@ main {
     h2 {
         transform: rotate(90deg) translateX(3rem) translateY(-2rem);
         transform-origin: 0 0;
+        filter: drop-shadow(0 -1px 1px black);
         margin-top: -5rem;
-        color: rgba(255, 255, 255, 0.2);
+        color: rgba(255, 255, 255, 0.153);
         font-size: 4rem;
         text-shadow: none;
         white-space: nowrap;
@@ -98,6 +99,7 @@ main {
 
     article {
         position: relative;
+        backdrop-filter: blur(3px);
         box-sizing: border-box;
         margin-top: 2rem;
 
@@ -107,11 +109,10 @@ main {
         background-color: var(--base-color);
         padding: 3rem;
         padding-bottom: 2rem;
-        min-height: 93%;
+        min-height: max(30rem, calc(100vh - 8rem));
+
         color: rgba(255, 255, 255, 0.7);
         font-size: 1rem;
-
-
 
         &:before {
             display: block;
@@ -133,6 +134,7 @@ main {
             &:after {
                 display: block;
                 position: absolute;
+
                 bottom: 0.5rem;
                 box-shadow: 1px 1px 1px black, 0 0 10px rgba(255, 255, 255, 0.4);
                 border-radius: 50%;
@@ -168,11 +170,11 @@ main {
             color: white;
         }
 
-        &:nth-child(odd) {
+        &:nth-of-type(odd) {
             background-color: #000000AA;
         }
 
-        &:first-child {
+        &:first-of-type {
             background-color: black;
         }
 
@@ -183,17 +185,14 @@ main {
 
             cursor: pointer;
             margin-top: 0rem;
-            border-radius: 0;
+
             background-image: url(./images/rr.jpg);
             background-position: 20% center;
             background-size: contain;
             background-repeat: no-repeat;
-            min-height: 100%;
-            user-select: none;
 
-            &:after {
-                content: none;
-            }
+
+            user-select: none;
 
             h1 {
                 visibility: hidden;
@@ -208,8 +207,8 @@ main {
                 display: block;
                 position: absolute;
                 top: auto;
-                right: 1rem;
-                bottom: -1rem;
+                bottom: -0rem;
+                left: calc(50% - 71px);
                 box-shadow: none;
                 border-radius: 0 !important;
                 background-image: url(../logo/logo.svg);
@@ -331,8 +330,6 @@ main {
 
 }
 
-
-
 #koncert-old-list #koncerty-list {
     margin-top: 0rem;
 }
@@ -341,20 +338,29 @@ main {
     padding-bottom: 0rem !important;
 }
 
-
-
 nav {
+    display: block;
+    position: relative;
+    top: 5px;
+    justify-content: space-between;
     margin: auto;
-    max-width: 600px;
-    color: white;
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    background-color: #00000050;
+
+    padding: 1rem 2rem 0 2rem;
+
+    /* background: url(./images/bg.jpg); */
+    color: transparent;
     font-weight: 700;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-family: 'Oswald', sans-serif;
 
     a {
-        display: inline-block;
-        transition: transform 0.2s;
+        transition: text-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+
         border: 0;
+        text-shadow: 1px 0px 8px #00000080;
 
         &:hover {
             transform: scale(1.2);
