@@ -44,9 +44,11 @@ a {
 
 ul {
     margin-top: 0;
+    padding: 0;
+    padding-left: 1rem;
 
     &>li {
-        padding-bottom: 1rem;
+        padding-bottom: 0.5rem;
     }
 }
 
@@ -239,7 +241,7 @@ main {
                 margin: 0;
                 margin-bottom: 1rem;
                 padding: 0;
-                width: 142px;
+
                 list-style: none;
 
                 &:last-child {
@@ -356,18 +358,6 @@ nav {
     font-size: 1.5rem;
     font-family: 'Oswald', sans-serif;
 
-    a {
-        transition: text-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
-
-        border: 0;
-        text-shadow: 1px 0px 8px #00000080;
-
-        &:hover {
-            transform: scale(1.2);
-            border: 0;
-            text-shadow: 1px 0px 8px #ffffffcb;
-        }
-    }
 
     ul {
         display: flex;
@@ -377,12 +367,12 @@ nav {
         padding: 0;
 
         @media only screen and (max-width: 600px) {
-            flex-direction: column;
+            justify-content: center;
             font-size: 1.1rem;
-            font-family: 'Montserrat', sans-serif;
 
             li {
-                padding-bottom: 0.5rem;
+                padding: 0.5rem;
+
             }
         }
 
@@ -392,6 +382,19 @@ nav {
             list-style: none;
             text-shadow: 1px 0px 10px #00000090;
             text-transform: uppercase;
+
+            a {
+                transition: text-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+
+                border: 0;
+                text-shadow: 1px 0px 8px #00000080;
+
+                &:hover {
+                    transform: scale(1.2);
+                    border: 0;
+                    text-shadow: 1px 0px 8px #ffffffcb;
+                }
+            }
         }
     }
 }
