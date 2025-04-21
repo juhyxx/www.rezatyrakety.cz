@@ -92,7 +92,7 @@
                 max-height: 200px;
             }
             li {
-                background-color: rgba(0,0,0, 0.1);
+             
                 margin: 0.5em;
                 border-radius: 0.5em;
                 text-align:center;
@@ -103,8 +103,12 @@
                     text-decoration: none;
                     text-shadow: 0px -1px 0px rgba(0,0,0, 0.2);
                     display:block;
-                    min-width: 4em;
+                    min-width: 3em;
+                    min-width: 3em;
                     color:rgb(107, 107, 107);
+                    i.fa {
+                        font-size: 1.5em;
+                    }
                 }
                 &.audio {
                     a {  color:rgb(21, 61, 155);}
