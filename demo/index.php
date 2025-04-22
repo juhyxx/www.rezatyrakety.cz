@@ -93,22 +93,23 @@
             }
             li {
              
-                margin: 0.5em;
+                margin: 0.25em;
                 border-radius: 0.5em;
                 text-align:center;
                
               
                 a {
-                    padding: 0.5em;
+                    padding: 0.25em;
                     text-decoration: none;
                     text-shadow: 0px -1px 0px rgba(0,0,0, 0.2);
                     display:block;
-                    min-width: 3em;
-                    min-width: 3em;
+                    min-width: 2em;
+                    min-width: 2em;
                     color:rgb(107, 107, 107);
                     i.fa {
                         font-size: 1.5em;
                     }
+                
                 }
                 &.audio {
                     a {  color:rgb(21, 61, 155);}
@@ -117,20 +118,18 @@
                     a {  color: #9b1915;}
                 
                 }
-               
-            }
-            li:hover {
-                background-color:white;
-                box-shadow: 0px 0px 7px 0px rgba(0,0,0, 0.2);
-                a {
-                    text-shadow: 0px 1px 0px rgba(0,0,0, 0.2);
+                &:hover {
+                    background-color:white;
+                    box-shadow: 0px 0px 7px 0px rgba(0,0,0, 0.2);
+                    a {
+                        text-shadow: 0px 1px 0px rgba(0,0,0, 0.2);
+                    }
                 }
                
             }
+      
           
-            .fa {
-                font-size: 40px;
-            }
+          
             #event {
                 background-color: white;
                 padding:1rem;  
