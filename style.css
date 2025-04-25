@@ -107,8 +107,8 @@ main {
 
         margin-bottom: 5rem;
         box-shadow: 0 0 10px black;
-         border-radius: 1rem;
-        background-color: var(--base-color); 
+        border-radius: 1rem;
+        background-color: var(--base-color);
         padding: 3rem;
         padding-bottom: 2rem;
         min-height: max(30rem, calc(100vh - 8rem));
@@ -180,7 +180,7 @@ main {
 
         &:nth-of-type(odd) {
             background-color: #000000AA;
-          
+
             /* border-image-source: url("./images/bg-black.svg"); */
         }
 
@@ -524,13 +524,17 @@ ul#kontakt {
     display: inline-flex;
     flex-direction: row;
     border: 1px solid white;
+    border-radius: 1rem;
+    overflow: hidden;
+
 
     #logo-container {
+
         background-image: url(logo/logo.svg);
         background-position: center center;
         background-size: contain;
         background-repeat: no-repeat;
-        width: 40vw;
+        width: 200px;
     }
 
     .format {
@@ -541,11 +545,34 @@ ul#kontakt {
         padding: 0;
 
         li {
-            border: 1px solid white;
-
-            padding: 1rem;
+            padding: 0;
 
             list-style: none;
+            margin-top: 1px;
+
+            &:first-child {
+                margin-top: 0;
+            }
+
+            a {
+                display: block;
+
+                background-color: white;
+                white-space: nowrap;
+
+                color: black;
+                text-decoration: none;
+                padding: 0.5rem;
+                border: 0 !important;
+
+                &:hover {
+                    background-color: var(--base-color);
+                    color: white;
+                }
+
+
+
+            }
         }
     }
 
