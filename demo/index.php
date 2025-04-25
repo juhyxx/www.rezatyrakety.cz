@@ -188,6 +188,39 @@ function sortByExtension($a, $b) {
     return strcmp($extA, $extB);
 }
 
+function getMP3Duration($filename) {
+    $fp = fopen($filename, "rb");
+    if (!$fp) return false;
+
+    $header = fread($fp, 10000); // načteme prvních pár kB
+    fclose($fp);
+
+    // Najdi pozici "Xing" nebo "Info"
+    $xingPos = strpos($header, 'Xing');
+    if ($xingPos === false) $xingPos = strpos($header, 'Info');
+    if ($xingPos === false) return false;
+
+    $frames = unpack("N", substr($header, $xingPos + 8, 4))[1];
+
+    // bitrate odhadneme z hlavičky (hledáme první platnou frame)
+    preg_match('/\xFF[\xE0-\xFF][\x00-\xFF]{2}/', $header, $match, PREG_OFFSET_CAPTURE);
+    if (!$match) return false;
+
+    $offset = $match[0][1];
+    $byte2 = ord($header[$offset + 2]);
+    $bitrateIndex = ($byte2 & 0xF0) >> 4;
+
+    $bitrates = [0, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320];
+    if (!isset($bitrates[$bitrateIndex])) return false;
+    $bitrate = $bitrates[$bitrateIndex] * 1000;
+
+    // Každý frame = 1152 vzorků
+    $duration = ($frames * 1152) / 44100;
+
+    return gmdate("i:s", $duration);
+}
+
+
 foreach ($data as $item) {
     if ($item != "." || $item != "..") {
         $ext = pathinfo($item, PATHINFO_EXTENSION);
@@ -202,13 +235,8 @@ foreach ($data as $item) {
             $ext = pathinfo($itemitem, PATHINFO_EXTENSION);
             $fileName = pathinfo($itemitem, PATHINFO_FILENAME);
             if ($ext == "mp3" && $fileName == "demo") {
-                $filePath = "./data/$item/$itemitem";
-      
-                $fileInfo = $getID3->analyze($filePath);
-                print_r($fileInfo);
-                if (isset($fileInfo['playtime_string'])) {
-                    $playtime = $fileInfo['playtime_string'] ;
-                }
+                $filePath = "data/$item/$itemitem";
+                $playtime =  getMP3Duration($filePath);
             }
         }
         
