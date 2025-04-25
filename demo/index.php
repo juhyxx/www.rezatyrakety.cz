@@ -166,7 +166,7 @@
         </script>
         <div class="list">
 <? 
-require_once 'getid3/getid3.php';
+require_once './getid3/getid3.php';
 $data =  array_diff(scandir("data"), array('..', '.', '.DS_Store'));
 
 $icons = array(
