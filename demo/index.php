@@ -202,7 +202,7 @@ foreach ($data as $item) {
             $ext = pathinfo($itemitem, PATHINFO_EXTENSION);
             $fileName = pathinfo($itemitem, PATHINFO_FILENAME);
             if ($ext == "mp3" && $fileName == "demo") {
-                $filePath = "data/$item/$itemitem";
+                $filePath = "./data/$item/$itemitem";
                 $fileInfo = $getID3->analyze($filePath);
                 if (isset($fileInfo['playtime_string'])) {
                     $playtime = $fileInfo['playtime_string'] ;
