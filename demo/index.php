@@ -125,17 +125,13 @@
                         text-shadow: 0px 1px 0px rgba(0,0,0, 0.2);
                     }
                 }
-               
             }
-      
-          
-          
             #event {
                 background-color: white;
                 padding:1rem;  
                 box-shadow: 4px 0px 7px 0px rgba(0,0,0, 0.2);  
             }
-           
+
         </style>
 
     </head>
@@ -170,7 +166,7 @@
         </script>
         <div class="list">
 <? 
-
+require_once 'getid3/getid3.php';
 $data =  array_diff(scandir("data"), array('..', '.', '.DS_Store'));
 
 $icons = array(
@@ -184,6 +180,8 @@ $clss = array(
     "mp3" => "audio"
 );
 
+$getID3 = new getID3;
+
 function sortByExtension($a, $b) {
     $extA = pathinfo($a, PATHINFO_EXTENSION);
     $extB = pathinfo($b, PATHINFO_EXTENSION);
@@ -192,15 +190,28 @@ function sortByExtension($a, $b) {
 
 foreach ($data as $item) {
     if ($item != "." || $item != "..") {
-       
         $ext = pathinfo($item, PATHINFO_EXTENSION);
         if ($ext == "old") {
             continue;
         }
-        echo "<div class='item" . ($ext == "new" ? " new" : "") . " collapsed' onclick=\"toggle(this)\">";        echo "<h2>".str_replace ("_", " ", $item)."</h2>";
-        
+
         $itemdata =  array_diff(scandir("data/".$item), array('..', '.', '.DS_Store'));
-       
+        $playtime = "";
+
+        foreach ($itemdata as $itemitem) { 
+            $ext = pathinfo($itemitem, PATHINFO_EXTENSION);
+            $fileName = pathinfo($itemitem, PATHINFO_FILENAME);
+            if ($ext == "mp3" && $fileName == "demo") {
+                $filePath = "data/$item/$itemitem";
+                $fileInfo = $getID3->analyze($filePath);
+                if (isset($fileInfo['playtime_string'])) {
+                    $playtime = $fileInfo['playtime_string'] ;
+                }
+            }
+        }
+        
+        echo "<div class='item" . ($ext == "new" ? " new" : "") . " collapsed' onclick=\"toggle(this)\">";
+        echo "<h2>".str_replace ("_", " ", $item)."  $playtime </h2>";
         
         uasort($itemdata, 'sortByExtension');
         echo "\t<ul>\n";
@@ -214,7 +225,6 @@ foreach ($data as $item) {
             else {
                 echo "<a href=\"data/$item/$itemitem\">";
             }
-           
             echo "<i class='fa " . $icons[$ext] . "'></i><br>";
             echo "$fileName</a></li>\n";
         }
@@ -224,7 +234,6 @@ foreach ($data as $item) {
 
 foreach ($data as $item) {
     if ($item != "." || $item != "..") {
-       
         $ext = pathinfo($item, PATHINFO_EXTENSION);
         if ($ext != "old") {
             continue;
@@ -247,8 +256,6 @@ foreach ($data as $item) {
 ?>
 </div>
 <script>
-
-console.log();
 
 window.location.search.replace("?","").split("&").forEach(function (item) {
    let [param, values] = item.split("=");
