@@ -166,7 +166,7 @@
         </script>
         <div class="list">
 <? 
-require_once './getid3/getid3.php';
+
 $data =  array_diff(scandir("data"), array('..', '.', '.DS_Store'));
 
 $icons = array(
@@ -180,7 +180,7 @@ $clss = array(
     "mp3" => "audio"
 );
 
-$getID3 = new getID3;
+
 
 function sortByExtension($a, $b) {
     $extA = pathinfo($a, PATHINFO_EXTENSION);
@@ -222,7 +222,7 @@ function getMP3Duration($filename) {
     // Každý frame = 1152 vzorků, vzorkovací frekvence = 44100 Hz
     $duration = ($frames * 1152) / 44100;
 
-    return gmdate("H:i:s", $duration);
+    return gmdate("i:s", $duration);
 }
 
 
