@@ -215,7 +215,7 @@ function getMP3Duration($filename) {
     $byte2 = ord($header[$offset + 2]);
     $bitrateIndex = ($byte2 & 0xF0) >> 4;
 
-    $bitrates = [0, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320];
+    $bitrates = array(0, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320);
     if (!isset($bitrates[$bitrateIndex])) return false;
     $bitrate = $bitrates[$bitrateIndex] * 1000;
 
