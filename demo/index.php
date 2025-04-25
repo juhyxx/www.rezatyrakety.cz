@@ -192,7 +192,7 @@ function getMP3Duration($filename) {
     $fp = fopen($filename, "rb");
     if (!$fp) return false;
 
-    $header = fread($fp, 10000); // načteme prvních pár kB
+    $header = fread($fp, 10000); // načteme začátek souboru
     fclose($fp);
 
     // Najdi pozici "Xing" nebo "Info"
@@ -200,11 +200,16 @@ function getMP3Duration($filename) {
     if ($xingPos === false) $xingPos = strpos($header, 'Info');
     if ($xingPos === false) return false;
 
-    $frames = unpack("N", substr($header, $xingPos + 8, 4))[1];
+    // Načti počet rámců (frames)
+    $data = unpack("Nframes", substr($header, $xingPos + 8, 4));
+    if (!$data || !isset($data['frames'])) return false;
 
-    // bitrate odhadneme z hlavičky (hledáme první platnou frame)
-    preg_match('/\xFF[\xE0-\xFF][\x00-\xFF]{2}/', $header, $match, PREG_OFFSET_CAPTURE);
-    if (!$match) return false;
+    $frames = $data['frames'];
+
+    // Najdi první MP3 frame pro zjištění bitrate
+    if (!preg_match('/\xFF[\xE0-\xFF][\x00-\xFF]{2}/', $header, $match, PREG_OFFSET_CAPTURE)) {
+        return false;
+    }
 
     $offset = $match[0][1];
     $byte2 = ord($header[$offset + 2]);
@@ -214,10 +219,10 @@ function getMP3Duration($filename) {
     if (!isset($bitrates[$bitrateIndex])) return false;
     $bitrate = $bitrates[$bitrateIndex] * 1000;
 
-    // Každý frame = 1152 vzorků
+    // Každý frame = 1152 vzorků, vzorkovací frekvence = 44100 Hz
     $duration = ($frames * 1152) / 44100;
 
-    return gmdate("i:s", $duration);
+    return gmdate("H:i:s", $duration);
 }
 
 
