@@ -71,15 +71,22 @@
                 text-transform: uppercase;
                 color: #9b1915;
                 text-shadow: 0px 1px 0px  rgba(0,0,0, 0.4);
-              
-               
+                display: flex ;   justify-content: space-between;
+ 
+                padding-right: 1rem ;
+                .container {
+                    flex:1;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
                 &:before {
                     content: "◢ " counter(css-counter) ". " ; 
                 }
                 .collapsed &:before  {
                     content: "▷ " counter(css-counter) ". " ; 
                 }
-             
+
             }
             
             ul {
@@ -246,7 +253,7 @@ foreach ($data as $item) {
         }
         
         echo "<div class='item" . ($ext == "new" ? " new" : "") . " collapsed' onclick=\"toggle(this)\">";
-        echo "<h2>".str_replace ("_", " ", $item)."  $playtime </h2>";
+        echo "<h2><div class='container'><div>".str_replace ("_", " ", $item)."</div><div>$playtime</div></div></h2>";
         
         uasort($itemdata, 'sortByExtension');
         echo "\t<ul>\n";
