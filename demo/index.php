@@ -265,29 +265,30 @@
         );
         $songs = array();
         $folder =  array_diff(scandir("data"), array('..', '.', '.DS_Store'));
+
         foreach ($folder as $item) {
+            $song = array();
+            $song['name'] = str_replace("_", " ", $item);
+            $song['path'] = "$item";
+            $song['playtime'] = "";
+            $song["extension"] = pathinfo($song['name'], PATHINFO_EXTENSION);
+            $song["isOld"] =  pathinfo($item, PATHINFO_EXTENSION) == "old";
+            $song["isNew"] =  pathinfo($item, PATHINFO_EXTENSION) == "new";
+            $song["files"] = array();
             $files = array_diff(scandir("data/" . $item), array('..', '.', '.DS_Store'));
-            $song = array(
-                'name' => str_replace("_", " ", $item),
-                'path' => $item,
-                'playtime' => "",
-                'extension' => pathinfo($item, PATHINFO_EXTENSION),
-                'isOld' => pathinfo($item, PATHINFO_EXTENSION) == "old",
-                'isNew' => pathinfo($item, PATHINFO_EXTENSION) == "new",
-                'files' => array_map(function ($file) use ($item, $icons, &$song) {
-                    $fileData = array(
-                        "extension" => pathinfo($file, PATHINFO_EXTENSION),
-                        "icon" => $icons[pathinfo($file, PATHINFO_EXTENSION)],
-                        "name" => pathinfo($file, PATHINFO_FILENAME)
-                    );
-                    if ($fileData["extension"] == "mp3" && $fileData["name"] == "demo") {
-                        $song['playtime'] = getMP3Duration("data/$item/$file");
-                    }
-                    return $fileData;
-                }, $files)
-            );
+            foreach ($files as $file) {
+                $fileData = array();
+                $fileData["extension"] = pathinfo($file, PATHINFO_EXTENSION);
+                $fileData["icon"] = $icons[$fileData["extension"]];
+                $fileData["name"] = pathinfo($file, PATHINFO_FILENAME);
+                if ($fileData["extension"] == "mp3" && $fileData["name"]  == "demo") {
+                    $filePath = "data/$item/$file";
+                    $song['playtime'] =  getMP3Duration($filePath);
+                }
+                array_push($song["files"], $fileData);
+            }
             uasort($song["files"], 'sortByExtension');
-            $songs[] = $song;
+            array_push($songs, $song);
         }
         uasort($songs, 'sortByName');
 
@@ -299,7 +300,7 @@
                 $href = $file["extension"] === "md"
                     ? "text.html?song={$song["path"]}"
                     : "data/{$song["path"]}/{$file["name"]}.{$file["extension"]}";
-
+                    
                 echo "<li class='{$clss[$file["extension"]]}'><a href='{$href}'>" .
                     "<i class='fa {$file["icon"]}'></i><br>{$file["name"]}</a>" .
                     "</li>";
