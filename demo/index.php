@@ -59,7 +59,7 @@
             }
 
             &.new {
-                background-color: lightgreen;
+                background-color:rgb(235, 252, 232);
             }
 
             &.selected {
