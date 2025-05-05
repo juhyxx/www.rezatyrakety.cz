@@ -11,12 +11,10 @@
 
 
         body {
-
             background: #9b1915;
             padding: 0rem;
             margin: 0;
             font-family: 'Oswald', sans-serif;
-
         }
 
         .list {
@@ -59,12 +57,25 @@
             }
 
             &.new {
-                background-color:rgb(235, 252, 232);
+                h2 {
+                    .container {
+                        div:first-child:after {
+                            content: "Nové";
+                            background-color: #9b1915;
+                            color: white;
+                            font-size: 0.5rem;
+                            padding: 0.25rem;
+                            margin-left: 1rem;
+                            position: absolute;
+                            transform: rotate(-25deg);
+                            box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
+                        }
+                    }
+                }
             }
 
-            &.selected {
-                background-color: lightblue;
-
+            &.progress {
+                background-color:rgb(232, 254, 255);
             }
 
             cursor: pointer;
@@ -95,6 +106,7 @@
                     color: gray;
                 }
             }
+
 
             &:before {
                 content: "◢ " counter(css-counter) ". ";
@@ -246,7 +258,7 @@
         }
         function sortByName($a, $b)
         {
-            $e = strcmp($a["isOld"], $b["isOld"]);
+            $e = strcmp($a["old"], $b["old"]);
             if ($e != 0) {
                 return $e;
             }
@@ -272,11 +284,18 @@
             $song['path'] = "$item";
             $song['playtime'] = "";
             $song["extension"] = pathinfo($song['name'], PATHINFO_EXTENSION);
-            $song["isOld"] =  pathinfo($item, PATHINFO_EXTENSION) == "old";
-            $song["isNew"] =  pathinfo($item, PATHINFO_EXTENSION) == "new";
+            // $song["old"] =  pathinfo($item, PATHINFO_EXTENSION) == "old";
             $song["files"] = array();
             $files = array_diff(scandir("data/" . $item), array('..', '.', '.DS_Store'));
             foreach ($files as $file) {
+                if ($file == "manifest.json") {
+                    $string = file_get_contents("data/$item/$file");
+                    $manifest = json_decode($string, true);
+                    foreach ($manifest as $prop => $value) {
+                        $song[$prop] = $value;
+                    }
+                    continue;
+                }
                 $fileData = array();
                 $fileData["extension"] = pathinfo($file, PATHINFO_EXTENSION);
                 $fileData["icon"] = $icons[$fileData["extension"]];
@@ -293,14 +312,14 @@
         uasort($songs, 'sortByName');
 
         foreach ($songs as $song) {
-            echo "<div class='item {$song["extension"]} collapsed' onclick='toggle(this)'>";
+            echo "<div class='item {$song["extension"]} " . ($song["progress"] ? "progress" : "") . " " . ($song["new"] ? "new" : "") . " " . ($song["old"] ? "old" : "") . "  collapsed' onclick='toggle(this)'>";
             echo "<h2><div class='container'><div>{$song["name"]}</div><div>{$song["playtime"]}</div></div></h2>";
             echo "<ul>";
             foreach ($song["files"] as $file) {
                 $href = $file["extension"] === "md"
                     ? "text.html?song={$song["path"]}"
                     : "data/{$song["path"]}/{$file["name"]}.{$file["extension"]}";
-                    
+
                 echo "<li class='{$clss[$file["extension"]]}'><a href='{$href}'>" .
                     "<i class='fa {$file["icon"]}'></i><br>{$file["name"]}</a>" .
                     "</li>";
