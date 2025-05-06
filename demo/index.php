@@ -61,7 +61,7 @@
                     .container {
                         div:first-child:after {
                             content: "Nové";
-                            background-color: #9b1915;
+                            background-color:rgb(230, 212, 18);
                             color: white;
                             font-size: 0.5rem;
                             padding: 0.25rem;
@@ -69,6 +69,7 @@
                             position: absolute;
                             transform: rotate(-25deg);
                             box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
+                            border-radius: 0.5rem;
                         }
                     }
                 }
