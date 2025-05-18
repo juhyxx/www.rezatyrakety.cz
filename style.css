@@ -7,7 +7,8 @@
 }
 
 html {
-    background: linear-gradient(90deg, #000000EE 0%, transparent 20%, transparent 80%, #000000EE 100%), url(./images/bg.jpg);
+    background: linear-gradient(90deg, #000000EE 0%, transparent 20%, transparent 80%, #000000EE 100%), url(./images/pioneer.svg) no-repeat , url(./images/bg.jpg);
+    background-size: auto, 250%, 25%;
     background-color: #8f8f8f;
     scroll-behavior: smooth;
 }
@@ -426,6 +427,7 @@ ul#kontakt {
     margin-top: 4rem;
     padding: 0;
 
+    
     li {
         align-content: center;
         font-size: 1rem;
