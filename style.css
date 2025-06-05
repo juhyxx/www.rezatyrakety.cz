@@ -7,7 +7,7 @@
 }
 
 html {
-    background: linear-gradient(90deg, #000000EE 0%, transparent 20%, transparent 80%, #000000EE 100%), url(./images/pioneer.svg) no-repeat , url(./images/bg.jpg);
+    background: linear-gradient(90deg, #000000EE 0%, transparent 20%, transparent 80%, #000000EE 100%), url(./images/pioneer.svg) no-repeat, url(./images/bg.jpg);
     background-size: auto, 250%, 25%;
     background-color: #8f8f8f;
     scroll-behavior: smooth;
@@ -245,73 +245,43 @@ main {
                 content: none;
             }
 
-            ul {
+            div {
                 display: flex;
                 justify-content: space-between;
-                margin: 0;
-                margin-bottom: 1rem;
-                padding: 0;
-
-                list-style: none;
-
-                &:last-child {
-                    margin-bottom: 0rem;
-                }
-
-                @media only screen and (max-width: 660px) {
-                    & {
-                        flex-direction: column;
-                    }
-
-                    & img {
-                        width: 80vw;
+                gap: 1rem;
+                @media only screen and (max-width: 600px) {
+                    display: block;
+                    & > a {
+                        margin-bottom: 1rem;
+                        height: 10rem;
                     }
                 }
+            }
 
-                li {
-                    flex: 1;
-                    min-width: 315px;
+            a {
+                display: block;
+                height: 20rem;
+                flex: 1;
+                background-size: cover;
+                position: relative;
+                filter: grayscale(0.5);
+                opacity: 0.6;
+                transition: filter 0.2s ease-in-out, opacity 0.2s ease-in-out;
+                border-radius: 0.5rem;
 
-                    a {
-                        display: block;
-                        position: relative;
-                        border: 0 !important;
-                    }
-
-
-                    summary {
-                        position: absolute;
-                        bottom: 1.5rem;
-                        left: 1.5rem;
-                        width: 300px;
-                        text-shadow: 0px -1px 0px black;
-
-                        @media only screen and (min-width: 600px) {
-                            width: 14rem;
-                        }
-                    }
-
-                    img {
-                        width: 8rem;
-                        height: 8rem;
-
-                        @media only screen and (min-width: 600px) {
-                            width: 15rem;
-                            height: 15rem;
-                        }
-
-                        display: block;
-                        margin: 1rem;
-                        box-shadow: 0 0 4px black;
-                        border-radius: 3px;
-                        background-color: black;
-
-                        &:hover {
-                            box-shadow: rgba(0, 0, 0, 0.82) 0px 5px 15px -5px, rgba(19, 26, 32, 0.08) 0px 5px 10px -15px;
-                        }
-                    }
-
-
+                div {
+            
+                    text-shadow: 1px 0px 1px #00000080;
+                    position: absolute;
+                    bottom: 0;
+                    padding: 1rem;
+                    background-color: rgba(0, 0, 0, 0.5);
+                    
+                }
+                &:hover {
+                    filter: grayscale(0);
+                    border: 0;
+                    opacity: 1;
                 }
             }
 
@@ -427,7 +397,7 @@ ul#kontakt {
     margin-top: 4rem;
     padding: 0;
 
-    
+
     li {
         align-content: center;
         font-size: 1rem;
