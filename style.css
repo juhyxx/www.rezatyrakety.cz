@@ -195,11 +195,11 @@ main {
             -webkit-user-select: none;
             position: relative;
 
-            cursor: pointer;
+            /* cursor: pointer; */
             margin-top: 0rem;
 
             background-image: url(./images/rakety.png);
-            background-position: 20% center;
+            background-position: center center;
             background-size: contain;
             background-repeat: no-repeat;
 
