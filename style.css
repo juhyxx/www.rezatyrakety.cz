@@ -198,7 +198,7 @@ main {
             cursor: pointer;
             margin-top: 0rem;
 
-            background-image: url(./images/rr.jpg);
+            background-image: url(./images/rakety.png);
             background-position: 20% center;
             background-size: contain;
             background-repeat: no-repeat;
@@ -211,9 +211,9 @@ main {
                 margin: 0;
             }
 
-            &.active {
+            /* &.active {
                 background-image: url(./images/rr1.jpg);
-            }
+            } */
 
             &:before {
                 display: block;
@@ -249,9 +249,11 @@ main {
                 display: flex;
                 justify-content: space-between;
                 gap: 1rem;
+
                 @media only screen and (max-width: 600px) {
                     display: block;
-                    & > a {
+
+                    &>a {
                         margin-bottom: 1rem;
                         height: 10rem;
                     }
@@ -270,14 +272,15 @@ main {
                 border-radius: 0.5rem;
 
                 div {
-            
+
                     text-shadow: 1px 0px 1px #00000080;
                     position: absolute;
                     bottom: 0;
                     padding: 1rem;
                     background-color: rgba(0, 0, 0, 0.5);
-                    
+
                 }
+
                 &:hover {
                     filter: grayscale(0);
                     border: 0;
@@ -292,7 +295,7 @@ main {
 }
 
 #stageplan {
-    background-image: url(./images/stageplan.svg);
+    background-image: url(./images/stageplan?2.svg);
     background-size: contain;
     background-repeat: no-repeat;
     width: 100%;
