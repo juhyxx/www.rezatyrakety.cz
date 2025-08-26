@@ -12,8 +12,8 @@
 
 3. Lebka nahá bez čelisti  
    Mnoho toho nenamluví  
-   Těžko lze pak nějak zjistit  
-   kde se toulaj její nohy
+   Nemá vůli, nemá smysly  
+   nemá prostor na nesmysly.
 
 4. Kdo tě majznul po lebeni  
    Ptá se chlapík mazaně  
@@ -23,4 +23,4 @@
 5. Lebka si však myslí svoje  
    zubí se mu do tváře  
    Lebka však ví jak to skončí  
-   Že stejně všichni spočinou v almaře
+   Že stejně oba spočinou v almaře
