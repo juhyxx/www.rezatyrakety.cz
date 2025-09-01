@@ -20,7 +20,7 @@
    Že se tu teď na mne křeníš  
    že se mi vejdeš do dlaně
 
-5. Lebka si však myslí svoje  
-   zubí se mu do tváře  
-   Lebka však ví jak to skončí  
-   Že stejně oba spočinou v almaře
+5. Lebka si však myslí svoje
+   zubí se mu do tváře
+   Ona už ví jak sto skončí
+   Že oba spočinou v almaře
