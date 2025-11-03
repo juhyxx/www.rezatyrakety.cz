@@ -7,8 +7,8 @@
 }
 
 html {
-    background: linear-gradient(90deg, #000000EE 0%, transparent 20%, transparent 80%, #000000EE 100%), url(./images/pioneer.svg) no-repeat, url(./images/bg.jpg);
-    background-size: auto, 250%, 25%;
+    background: linear-gradient(90deg, #000000EE 5%, transparent 40%, transparent 60%, #000000EE 95%), url(./images/bg.jpg);
+    background-size: auto, 100%;
     background-color: #8f8f8f;
     scroll-behavior: smooth;
 }
@@ -180,7 +180,7 @@ main {
         }
 
         &:nth-of-type(odd) {
-            background-color: #000000AA;
+            background-color: #00000088;
 
             /* border-image-source: url("./images/bg-black.svg"); */
         }
