@@ -17,5 +17,5 @@ tak se pořád musím ptát - mám teda dát to prádlo prát
 
 4. moje sladký tajemství,  co fakt nerad bych probíral  
 mám zamčený ve skříni a zatím jsem ho nevypral  
-o nevypraným textilu každou noc se mi musí zdát  
+o nevypraným textilu nechce se mi přestat zdát
 tak se pořád musím ptát - mám teda dát to prádlo prát  
