@@ -15,7 +15,7 @@
    není panna a není sama, zrozená je v kozorohu  
    jé, je moje třinácté znamení
 
-4. Je pracná jak loď ve flašce, jak vyndat z tužky tuhu
+4. Je pracná jak loď ve flašce, jak vyndat z tužky tuhu  
    je můj smích i soužení  
    zdá se že je poslední, poslední svého druhu  
    jé, je moje třinácté znamení
