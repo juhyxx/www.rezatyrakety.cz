@@ -17,6 +17,5 @@
 
 4. Je pracná jak loď ve flašce, jak vyndat z tužky tuhu
    je můj smích i soužení  
-   gordický uzel, nebo útěk z vězení
-   zdá se že je poslední, poslední svého druhu
+   zdá se že je poslední, poslední svého druhu  
    jé, je moje třinácté znamení
