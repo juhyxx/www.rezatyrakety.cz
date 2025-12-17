@@ -12,7 +12,7 @@
 
 3. Ji pochopit je jak chtít chytit - za konec duhu  
    jak nestát se sloupem - co zkamení  
-   není panna a není sama, je mimo meze zvěrokruhu
+   není panna a není sama, je mimo meze zvěrokruhu  
    jé, je moje třinácté znamení
 
 4. Je pracná jako loď ve flašce, jak vyndat z tužky tuhu  
