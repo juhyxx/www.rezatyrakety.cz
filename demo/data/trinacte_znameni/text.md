@@ -7,15 +7,15 @@
 
 2. Je složitá jak trisekce úhlu, jak kvadratura kruhu  
    je prostá úloha co nemá řešení  
-   je mojí poslední - bublinou vzduchu ve vakuu  
+   je mojí poslední - bublinou ve vakuu  
    jé, je moje třinácté znamení
 
-3. Pochopit ji je jak chtít chytit - za konec duhu  
+3. Ji pochopit je jak chtít chytit - za konec duhu  
    jak nestát se sloupem - co zkamení  
-   není panna a není sama, zrozená je v kozorohu  
+   není panna a není sama, je mimo meze zvěrokruhu
    jé, je moje třinácté znamení
 
-4. Je pracná jak loď ve flašce, jak vyndat z tužky tuhu  
+4. Je pracná jako loď ve flašce, jak vyndat z tužky tuhu  
    je můj smích i soužení  
    zdá se že je poslední, poslední svého druhu  
    jé, je moje třinácté znamení
