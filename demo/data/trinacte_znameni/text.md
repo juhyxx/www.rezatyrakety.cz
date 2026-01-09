@@ -15,7 +15,7 @@
    není panna _a není sama_, je mimo meze zvěrokruhu  
    _jé, je moje třinácté znamení_
 
-4. Je pracná jako loď ve flašce, jak vyndat z tužky tuhu  
-   je můj smích i soužení  
+4. Je složitá jak mechanika nebes, jako původ druhů  
+   jak síla co drží křídla nad zemí  
    zdá se že je poslední, poslední svého druhu  
    _jé, je moje třinácté znamení_

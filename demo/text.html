@@ -53,11 +53,31 @@
             em {
                 color: #999;
             }
-          
+      
+            @media print {
+                .audio-player {
+                    display: none;
+            }
     </style>
 
 <body>
-    <div id="text"></div>
+        <div id="text"></div>
+        <template id="audio-player-template">
+            <div class="audio-player">
+                <span class="demo-label">Demo </span>
+                <audio class="audio-demo">
+                    <source class="source-demo" type="audio/mpeg">
+                </audio>
+                <button class="demo-play" title="Play">&#9654;</button>
+                <button class="demo-stop" title="Stop">&#9632;</button>
+                <span class="live-label">Live </span>
+                <audio class="audio-live">
+                    <source class="source-live" type="audio/mpeg">
+                </audio>
+                <button class="live-play" title="Play">&#9654;</button>
+                <button class="live-stop" title="Stop">&#9632;</button>
+            </div>
+        </template>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
     <script>
@@ -75,7 +95,39 @@
                 .then(data => {
                     const html = marked.parse(data);
                     document.getElementById("text").innerHTML = html;
-                    document.title = "TEXT: " + document.querySelector("h1").innerHTML
+                    document.title = "TEXT: " + document.querySelector("h1").innerHTML;
+                    
+                    
+                    // Use template for audio player
+                    const template = document.getElementById("audio-player-template");
+                    const audioFragment = template.content.cloneNode(true);
+                    audioFragment.querySelector(".source-demo").src = `data/${song}/demo.mp3`;
+                    audioFragment.querySelector(".source-live").src = `data/${song}/live.mp3`;
+
+                    // Add custom controls functionality
+                    const audioDemo = audioFragment.querySelector(".audio-demo");
+                    const demoPlay = audioFragment.querySelector(".demo-play");
+                    const demoStop = audioFragment.querySelector(".demo-stop");
+                    demoPlay.addEventListener("click", () => {
+                        audioDemo.play();
+                    });
+                    demoStop.addEventListener("click", () => {
+                        audioDemo.pause();
+                        audioDemo.currentTime = 0;
+                    });
+
+                    const audioLive = audioFragment.querySelector(".audio-live");
+                    const livePlay = audioFragment.querySelector(".live-play");
+                    const liveStop = audioFragment.querySelector(".live-stop");
+                    livePlay.addEventListener("click", () => {
+                        audioLive.play();
+                    });
+                    liveStop.addEventListener("click", () => {
+                        audioLive.pause();
+                        audioLive.currentTime = 0;
+                    });
+
+                    document.querySelector("h1").appendChild(audioFragment);
                 })
                 .catch(error => {
                     console.error("There was a problem with the fetch operation:", error);
