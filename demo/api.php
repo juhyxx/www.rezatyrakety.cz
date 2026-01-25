@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 header('Content-Type: application/json; charset=utf-8');
 header('Access-Control-Allow-Origin: *');
 
@@ -26,7 +24,7 @@ try {
     ];
 
     echo json_encode($response, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
-} catch (Throwable $e) {
+} catch (Exception $e) {
     http_response_code(500);
     echo json_encode([
         'status' => 'error',
@@ -35,7 +33,7 @@ try {
     ]);
 }
 
-function buildSongCollection(string $baseDir): array
+function buildSongCollection($baseDir)
 {
     $directories = scandir($baseDir);
     if ($directories === false) {
@@ -56,7 +54,7 @@ function buildSongCollection(string $baseDir): array
         $songs[] = buildSongPayload($songDir, $entry);
     }
 
-    usort($songs, function (array $a, array $b): int {
+    usort($songs, function ($a, $b) {
         if ($a['status']['archive'] !== $b['status']['archive']) {
             return $a['status']['archive'] <=> $b['status']['archive'];
         }
@@ -67,7 +65,7 @@ function buildSongCollection(string $baseDir): array
     return $songs;
 }
 
-function buildSongPayload(string $songDir, string $folderName): array
+function buildSongPayload($songDir, $folderName)
 {
     $relativeDir = basename($folderName);
     $manifest = readManifest($songDir . '/manifest.json');
@@ -109,7 +107,7 @@ function buildSongPayload(string $songDir, string $folderName): array
         $files[] = $file;
     }
 
-    usort($files, function (array $a, array $b): int {
+    usort($files, function ($a, $b) {
         return strcmp($a['extension'], $b['extension']);
     });
 
@@ -130,7 +128,7 @@ function buildSongPayload(string $songDir, string $folderName): array
     ];
 }
 
-function readManifest(string $path): array
+function readManifest($path)
 {
     if (!is_file($path)) {
         return [];
@@ -145,7 +143,7 @@ function readManifest(string $path): array
     return is_array($decoded) ? $decoded : [];
 }
 
-function buildFileEntry(string $relativeDir, string $entry, string $fullPath): array
+function buildFileEntry($relativeDir, $entry, $fullPath)
 {
     $extension = strtolower(pathinfo($entry, PATHINFO_EXTENSION));
     $filename = pathinfo($entry, PATHINFO_FILENAME);
@@ -159,7 +157,7 @@ function buildFileEntry(string $relativeDir, string $entry, string $fullPath): a
     ];
 }
 
-function determineFileType(string $extension): string
+function determineFileType($extension)
 {
     switch ($extension) {
         case 'mp3':
@@ -177,7 +175,7 @@ function determineFileType(string $extension): string
     }
 }
 
-function buildStatusPayload(array $manifest): array
+function buildStatusPayload($manifest)
 {
     $value = determineStatusValue($manifest);
 
@@ -190,7 +188,7 @@ function buildStatusPayload(array $manifest): array
     ];
 }
 
-function determineStatusValue(array $manifest): string
+function determineStatusValue($manifest)
 {
     $raw = $manifest['status'] ?? null;
     $normalized = normalizeStatusValue(is_string($raw) ? $raw : null);
@@ -220,7 +218,7 @@ function determineStatusValue(array $manifest): string
     return 'archive';
 }
 
-function normalizeStatusValue(?string $value): ?string
+function normalizeStatusValue($value)
 {
     if ($value === null) {
         return null;
@@ -236,7 +234,7 @@ function normalizeStatusValue(?string $value): ?string
     return in_array($normalized, $allowed, true) ? $normalized : null;
 }
 
-function truthy($value): bool
+function truthy($value)
 {
     if (is_bool($value)) {
         return $value;
@@ -251,7 +249,7 @@ function truthy($value): bool
     return (bool) $value;
 }
 
-function deriveTitleFromLyrics(?string $path): ?string
+function deriveTitleFromLyrics($path)
 {
     if ($path === null || !is_readable($path)) {
         return null;
@@ -278,7 +276,7 @@ function deriveTitleFromLyrics(?string $path): ?string
     return trim(html_entity_decode($title, ENT_QUOTES | ENT_HTML5, 'UTF-8')) ?: null;
 }
 
-function titleFromMarkdown(string $contents): ?string
+function titleFromMarkdown($contents)
 {
     if (preg_match('/^\s{0,3}#+\s*(.+)$/m', $contents, $matches)) {
         return trim($matches[1]);
@@ -287,7 +285,7 @@ function titleFromMarkdown(string $contents): ?string
     return firstNonEmptyLine($contents);
 }
 
-function titleFromHtml(string $contents): ?string
+function titleFromHtml($contents)
 {
     if (preg_match('/<h1[^>]*>(.*?)<\/h1>/is', $contents, $matches)) {
         return trim(strip_tags($matches[1]));
@@ -301,7 +299,7 @@ function titleFromHtml(string $contents): ?string
     return firstNonEmptyLine($text);
 }
 
-function firstNonEmptyLine(string $text): ?string
+function firstNonEmptyLine($text)
 {
     $lines = preg_split('/\R/u', $text) ?: [];
     foreach ($lines as $line) {
@@ -314,14 +312,14 @@ function firstNonEmptyLine(string $text): ?string
     return null;
 }
 
-function displayNameFromFolder(string $folder): string
+function displayNameFromFolder($folder)
 {
     $name = str_replace('_', ' ', $folder);
     $name = preg_replace('/\s+/', ' ', $name ?? '');
     return trim($name) ?: $folder;
 }
 
-function buildMp3Duration(string $filePath): ?string
+function buildMp3Duration($filePath)
 {
     if (!is_readable($filePath)) {
         return null;
