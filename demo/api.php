@@ -56,7 +56,12 @@ function buildSongCollection($baseDir)
 
     usort($songs, function ($a, $b) {
         if ($a['status']['archive'] !== $b['status']['archive']) {
-            return $a['status']['archive'] <=> $b['status']['archive'];
+            if ($a['status']['archive'] && !$b['status']['archive']) {
+                return 1;
+            }
+            if (!$a['status']['archive'] && $b['status']['archive']) {
+                return -1;
+            }
         }
 
         return strcasecmp($a['title'], $b['title']);
@@ -111,7 +116,10 @@ function buildSongPayload($songDir, $folderName)
         return strcmp($a['extension'], $b['extension']);
     });
 
-    $title = deriveTitleFromLyrics($lyricsPath) ?? displayNameFromFolder($relativeDir);
+    $title = deriveTitleFromLyrics($lyricsPath);
+    if ($title === null) {
+        $title = displayNameFromFolder($relativeDir);
+    }
     $status = buildStatusPayload($manifest);
 
     return [
@@ -190,7 +198,7 @@ function buildStatusPayload($manifest)
 
 function determineStatusValue($manifest)
 {
-    $raw = $manifest['status'] ?? null;
+    $raw = isset($manifest['status']) ? $manifest['status'] : null;
     $normalized = normalizeStatusValue(is_string($raw) ? $raw : null);
     if ($normalized !== null) {
         return $normalized;
@@ -315,7 +323,7 @@ function firstNonEmptyLine($text)
 function displayNameFromFolder($folder)
 {
     $name = str_replace('_', ' ', $folder);
-    $name = preg_replace('/\s+/', ' ', $name ?? '');
+    $name = preg_replace('/\s+/', ' ', $name);
     return trim($name) ?: $folder;
 }
 
