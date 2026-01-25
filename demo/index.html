@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rezaté Rakety · Písně</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>
+        window.tailwind = window.tailwind || {};
+        window.tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: '#9b1915'
+                    },
+                    fontFamily: {
+                        display: ['Oswald', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-gray-400 font-display text-slate-900 antialiased">
+    <div class="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-4 pb-10 pt-6">
+        <header class="rounded-3xl border border-white/15 bg-white/70 p-4 text-brand shadow-xl shadow-black/30 backdrop-blur">
+            <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                <div id="event"
+                    class="flex-1 min-w-[280px] rounded-2xl bg-white/95 px-4 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-brand shadow-inner shadow-black/10">
+                    Načítání...
+                </div>
+                <button id="playlist-button" type="button"
+                    class="inline-flex items-center gap-3 rounded-full bg-white px-5 py-3 text-[0.65rem] font-semibold uppercase tracking-[0.4em] text-brand shadow-lg shadow-black/20 transition hover:bg-amber-50 hover:shadow-xl disabled:cursor-not-allowed disabled:bg-white/50 disabled:text-brand/40 disabled:shadow-none">
+                    <i class="fa fa-list-ol"></i>
+                    Generovat playlist
+                </button>
+            </div>
+        </header>
+        <main class="mt-6 flex-1">
+            <song-book id="song-list" data-source="./api.php" aria-live="polite"
+                class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4"></song-book>
+        </main>
+    </div>
+
+    <lyrics-viewer id="lyrics-viewer" hidden></lyrics-viewer>
+    <playlist-viewer id="playlist-viewer" hidden></playlist-viewer>
+
+    <template id="song-card-template">
+        <article class="song-card relative flex h-full flex-col rounded-2xl border border-brand/20 bg-white/95 shadow-inner shadow-black/20 transition"
+            data-collapsed="true">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-brand/15 px-4 py-3">
+                <div class="flex flex-col">
+                    <span class="title text-sm font-semibold uppercase tracking-[0.2em] text-brand"></span>
+                    <div class="badge-row mt-1 flex flex-wrap gap-2 text-[0.6rem] font-semibold"></div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="duration text-xs text-slate-500"></span>
+                    <button type="button" data-audio-toggle aria-pressed="false"
+                        class="audio-button inline-flex h-9 w-9 items-center justify-center rounded-full border border-brand/30 text-brand transition hover:bg-brand hover:text-white">
+                        <span class="sr-only">Přehrát demo</span>
+                        <i class="fa fa-play"></i>
+                    </button>
+                    <button type="button" data-toggle aria-expanded="false"
+                        class="toggle-button inline-flex h-9 w-9 items-center justify-center rounded-full border border-brand/30 text-brand transition hover:bg-brand hover:text-white">
+                        <span class="sr-only">Přepnout soubory</span>
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <ul class="file-list flex flex-wrap gap-2 overflow-hidden px-4 py-3 transition-all duration-300 ease-in-out max-h-0 opacity-0 pointer-events-none"
+                data-files></ul>
+        </article>
+    </template>
+
+    <script type="module" src="./app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;600&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Oswald', sans-serif;
+    background-color: #9b1915;
+    color: #333;
+}
+
+#event {
+    background-color: #ffffff;
+    padding: 1rem;
+    box-shadow: 0 4px 7px rgba(0, 0, 0, 0.2);
+    margin: 0;
+}
+
+#event a {
+    color: #9b1915;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+main {
+    padding: 0.5rem;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0 auto;
+    counter-reset: css-counter;
+    max-width: 1200px;
+}
+
+song-card {
+    display: block;
+}
+
+@media screen and (min-width: 800px) {
+    .list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+.item {
+    margin: 0.5rem;
+    background-color: #ffffff;
+    padding: 0.5rem 0;
+    border-radius: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    min-width: 280px;
+    max-width: 44rem;
+    flex: 1 1 360px;
+}
+
+.item:not(.old) {
+    counter-increment: css-counter 1;
+}
+
+.item.new .title::after {
+    content: 'Nové';
+    background-color: rgb(230, 212, 18);
+    color: #ffffff;
+    font-size: 0.5rem;
+    padding: 0.25rem;
+    margin-left: 1rem;
+    position: absolute;
+    transform: rotate(-25deg);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+}
+
+.item.progress {
+    background-color: rgb(232, 254, 255);
+}
+
+.item.old {
+    background-color: #f0f0f0;
+    opacity: 0.8;
+}
+
+h2 {
+    font-size: 1rem;
+    text-align: left;
+    padding: 0 1rem;
+    margin: 0;
+    text-transform: uppercase;
+    color: #9b1915;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+h2 .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    position: relative;
+}
+
+.duration {
+    color: gray;
+}
+
+.item h2::before {
+    content: '◢ ' counter(css-counter) '. ';
+}
+
+.item.collapsed h2::before {
+    content: '▷ ' counter(css-counter) '. ';
+}
+
+.file-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    transition: max-height 1s ease;
+    max-height: 400px;
+}
+
+.item.collapsed .file-list {
+    max-height: 0;
+    overflow: hidden;
+}
+
+.file-list li {
+    margin: 0.25em;
+    border-radius: 0.5em;
+    text-align: center;
+    min-width: 4.5rem;
+}
+
+.file-list li a {
+    padding: 0.25em;
+    text-decoration: none;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+    display: block;
+    color: rgb(107, 107, 107);
+}
+
+.file-list li a i.fa {
+    font-size: 1.5em;
+    display: block;
+}
+
+.file-list li.audio a {
+    color: rgb(21, 61, 155);
+}
+
+.file-list li.pdf a {
+    color: #9b1915;
+}
+
+.file-list li:hover {
+    background-color: #ffffff;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.2);
+}
+
+.file-list li:hover a {
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.state-message {
+    text-align: center;
+    color: #ffffff;
+    padding: 2rem;
+}
