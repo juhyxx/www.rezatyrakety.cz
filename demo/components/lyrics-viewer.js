@@ -31,8 +31,13 @@ const LEGACY_STYLES = `
     margin: 0.75rem 0;
 }
 @media (prefers-color-scheme: dark) {
-    .lyrics-content {
+    [data-overlay] {
+        background: #000 !important;
+    }
+    .lyrics-content,
+    article {
         color: #e0e0e0;
+        background: #000 !important;
     }
     .lyrics-content strong,
     .lyrics-content li::marker {
@@ -54,30 +59,50 @@ const LEGACY_STYLES = `
         color: #ccc;
     }
 }
+
+/* Numbered verses for lyrics lists */
+.lyrics-content ol {
+    counter-reset: verse;
+    list-style: none;
+    padding-left: 1.5em;
+}
+.lyrics-content ol > li {
+    counter-increment: verse;
+    position: relative;
+    margin-bottom: 0.5em;
+}
+.lyrics-content ol > li::before {
+    content: counter(verse) ". ";
+    position: absolute;
+    left: -1.5em;
+    color: #9b1915;
+    font-weight: 600;
+}
 `;
 
 const TEMPLATE = `
-<div data-overlay class="flex min-h-screen w-full items-stretch justify-center bg-black/80 px-0 py-0 md:px-6 md:py-10 overflow-y-auto">
-    <article class="relative flex w-full min-h-screen max-h-screen flex-col overflow-y-auto bg-white p-6 text-slate-800 shadow-2xl shadow-black/40 md:my-4 md:max-w-4xl md:min-h-0 md:max-h-[90vh] md:rounded-3xl">
-        <button type="button" data-close class="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full border border-brand/30 text-brand transition hover:bg-brand hover:text-white" aria-label="Zavřít text">
+<div data-overlay class="flex min-h-screen w-full items-stretch justify-center bg-black/80 dark:bg-black px-0 py-0 md:px-6 md:py-10 overflow-y-auto">
+    <article class="relative flex w-full min-h-screen max-h-screen flex-col overflow-y-auto bg-white dark:bg-slate-900 p-6 text-slate-800 dark:text-slate-100 shadow-2xl shadow-black/40 md:my-4 md:max-w-4xl md:min-h-0 md:max-h-[90vh] md:rounded-3xl">
+        <button type="button" data-close class="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full border border-brand/30 text-brand dark:text-slate-100 transition hover:bg-brand hover:text-white dark:hover:bg-slate-700 dark:hover:text-brand" aria-label="Zavřít text">
             <i class="fa fa-times"></i>
         </button>
-        <p data-meta class="text-xs font-semibold uppercase tracking-[0.3em] text-brand/60">Text skladby</p>
+        <p data-meta class="text-xs font-semibold uppercase tracking-[0.3em] text-brand/60 dark:text-slate-300">Text skladby</p>
         <div class="flex items-center justify-between gap-4">
-            <h1 data-title class="mt-1 text-2xl font-semibold uppercase tracking-[0.2em] text-brand"></h1>
+            <h1 data-title class="mt-1 text-2xl font-semibold uppercase tracking-[0.2em] text-brand dark:text-slate-100"></h1>
             <div data-audio-wrapper class="hidden items-center gap-3 rounded-2xl  bg-brand/5 px-4 py-3">
-                <button type="button" data-audio-toggle class="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em]  shadow">
+                <button type="button" data-audio-toggle class="inline-flex items-center gap-2 rounded-full bg-brand dark:bg-slate-700 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em]  shadow text-brand dark:text-brand">
                     <i class="fa fa-play"></i>
-                    DEMO
+                      Demo
                 </button>
                 <audio data-audio-player class="hidden">
                     <source type="audio/mpeg" />
+                  
                 </audio>
             </div>
         </div>
-        <p data-subtitle class="text-[0.65rem] uppercase tracking-[0.4em] text-slate-400"></p>
-        <div data-status class="mt-6 text-center text-xs uppercase tracking-[0.3em] text-slate-400"></div>
-        <div data-body class="lyrics-body lyrics-content  flex-1 min-h-0 overflow-y-auto pr-1 text-base leading-relaxed text-slate-800"></div>
+        <p data-subtitle class="text-[0.65rem] uppercase tracking-[0.4em] text-slate-400 dark:text-slate-300"></p>
+        <div data-status class="mt-6 text-center text-xs uppercase tracking-[0.3em] text-slate-400 dark:text-slate-300"></div>
+        <div data-body class="lyrics-body lyrics-content  flex-1 min-h-0 overflow-y-auto pr-1 text-base leading-relaxed text-slate-800 dark:text-slate-100"></div>
     </article>
 </div>
 `;
@@ -151,7 +176,7 @@ class LyricsViewer extends HTMLElement {
         this.file = file;
         this.titleEl.textContent = song.title ?? song.id;
         this.subtitleEl.textContent = song.meta?.manifest?.author || '';
-        this.metaEl.textContent = 'Text skladby';
+        this.metaEl.textContent = '';
         this.bodyEl.innerHTML = '';
         this.setStatus('Načítám text...');
         this.setupAudio();

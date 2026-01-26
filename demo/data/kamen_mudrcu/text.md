@@ -1,9 +1,3 @@
-
-<!DOCTYPE html>
-<meta charset="utf-8">
-<html>
-<pre>
-
 # Kámen mudrců
 
 1. Co je to bílé na ptačím hovínku
@@ -31,4 +25,3 @@ Odpověď hledám ušitou na míru
 nikoliv konfekci koupenou ve frcu
 co je ta největší otázka vesmíru
 kde jen najde se kámen mudrců
-</pre>

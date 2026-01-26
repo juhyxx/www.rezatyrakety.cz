@@ -114,7 +114,7 @@ class PlaylistViewer extends HTMLElement {
             const item = document.createElement('li');
             item.className = 'flex items-center justify-between rounded-2xl bg-brand/5 px-4 py-3';
             const titleWrapper = document.createElement('div');
-            titleWrapper.className = 'flex gap-1 text-brand';
+            titleWrapper.className = 'flex gap-1 text-brand dark:text-white';
             const title = document.createElement('div');
             title.className = 'text-sm font-semibold uppercase tracking-[0.2em]';
             title.textContent = `${index + 1}. ${entry.title}`;

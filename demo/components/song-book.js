@@ -54,7 +54,7 @@ class SongBook extends HTMLElement {
             if (song.status?.archive && !archiveSpacerInserted) {
                 archiveSpacerInserted = true;
                 const spacer = document.createElement('div');
-                spacer.className = 'w-full h-8 md:h-10';
+                spacer.className = 'w-full h-16 md:h-10';
                 spacer.setAttribute('aria-hidden', 'true');
                 fragment.appendChild(spacer);
             }

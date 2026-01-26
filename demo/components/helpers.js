@@ -4,7 +4,7 @@ const ICON_CLASSES = {
     mp3: { icon: 'fa-volume-up', cls: 'bg-brand/10 text-brand border-brand/30' },
     md: { icon: 'fa-file-text-o', cls: 'bg-slate-900 text-white border-slate-800' },
     markdown: { icon: 'fa-file-text-o', cls: 'bg-slate-900 text-white border-slate-800' },
-    pdf: { icon: 'fa-file-pdf-o', cls: 'bg-red-50 text-red-700 border-red-200' },
+    pdf: { icon: 'fa-file-pdf-o', cls: 'bg-red-900 text-white border-red-900' },
     html: { icon: 'fa-file-text-o', cls: 'bg-amber-50 text-amber-700 border-amber-200' },
     htm: { icon: 'fa-file-text-o', cls: 'bg-amber-50 text-amber-700 border-amber-200' },
 };
@@ -21,7 +21,7 @@ function createFileItem(song, file, index) {
     const ext = (file.extension || '').toLowerCase();
     const meta = ICON_CLASSES[ext] || { icon: 'fa-file-o', cls: DEFAULT_FILE_STYLE };
     const li = document.createElement('li');
-    li.className = `flex flex-col items-center justify-center gap-2 w-20 h-20 text-center rounded-2xl border shadow-inner shadow-black/10 text-[0.6rem] font-semibold tracking-[0.2em] uppercase ${meta.cls}`;
+    li.className = `flex flex-col items-center justify-center gap-2 w-20 h-20 text-center rounded-2xl border shadow-inner shadow-black/10 text-[0.6rem] font-semibold tracking-[0.2em] uppercase ${meta.cls} mb-2`;
 
     const link = document.createElement('a');
     link.href = resolveFileHref(song, file);

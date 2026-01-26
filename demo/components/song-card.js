@@ -70,7 +70,7 @@ class SongCard extends HTMLElement {
         durationEl.textContent = this._data.duration ?? '';
         const listId = this.buildFileListId();
         fileList.id = listId;
-        toggleButton.setAttribute('aria-controls', listId);
+        // aria-controls removed
 
         fileList.innerHTML = '';
         fileList.appendChild(createFileList(this._data, this._data.files));
@@ -125,6 +125,12 @@ class SongCard extends HTMLElement {
         this.fileList = fileList;
         this.toggleButton = toggleButton;
         this.toggleIcon = toggleIcon;
+        // Force lighter background in dark mode
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            article.style.backgroundColor = '#e5e7eb'; // Tailwind slate-200
+        } else {
+            article.style.backgroundColor = '';
+        }
         this.updateCollapsedState(true);
         this.appendChild(clone);
     }
@@ -159,7 +165,7 @@ class SongCard extends HTMLElement {
         }
         const isCollapsed = !this.expanded;
         this.article.dataset.collapsed = String(isCollapsed);
-        this.fileList.setAttribute('aria-hidden', String(isCollapsed));
+        // aria-hidden removed
 
         if (isCollapsed) {
             this.fileList.style.maxHeight = '0px';
@@ -178,7 +184,7 @@ class SongCard extends HTMLElement {
             });
         }
         if (this.toggleButton) {
-            this.toggleButton.setAttribute('aria-expanded', String(!isCollapsed));
+            // aria-expanded removed
             this.toggleButton.setAttribute('title', this.expanded ? 'Skrýt soubory' : 'Zobrazit soubory');
         }
         if (this.toggleIcon) {
@@ -244,9 +250,7 @@ class SongCard extends HTMLElement {
         this.audio.removeEventListener('ended', this.handleAudioEnded);
         this.audio.pause();
         this.audio = null;
-        if (this.audioButton) {
-            this.audioButton.setAttribute('aria-pressed', 'false');
-        }
+        // aria-pressed removed
         if (this.audioIcon) {
             this.audioIcon.className = 'fa fa-play';
         }
@@ -260,18 +264,14 @@ class SongCard extends HTMLElement {
     }
 
     handleAudioPlay() {
-        if (this.audioButton) {
-            this.audioButton.setAttribute('aria-pressed', 'true');
-        }
+        // aria-pressed removed
         if (this.audioIcon) {
             this.audioIcon.className = 'fa fa-stop';
         }
     }
 
     handleAudioPause() {
-        if (this.audioButton) {
-            this.audioButton.setAttribute('aria-pressed', 'false');
-        }
+        // aria-pressed removed
         if (this.audioIcon) {
             this.audioIcon.className = 'fa fa-play';
         }

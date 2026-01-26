@@ -1,9 +1,3 @@
-
-<!DOCTYPE html>
-<meta charset="utf-8">
-<html>
-<pre>
-
 # Have A Cigar
 
 Come in here, dear boy, have a cigar
@@ -35,5 +29,3 @@ If we all pull together as a team
 
 And did we tell you the name of the game, boy?
 We call it Riding the Gravy Train
-    
-</pre>

@@ -14,13 +14,6 @@
     Nebudeme čekat  
     Až se ucho utrhne  
 
-**Bridge:**  
-    Nebudem se hádat  
-    Prosit, fňukat, žádat  
-    Až nás osud zavrhne  
-    Nebudeme čekat  
-    Až se ucho utrhne  
-
   3. Nebudeme mlčet  
     Ale ani skučet  
     Až nám židli potrhne    
@@ -30,5 +23,13 @@
   4. Nebudem se trýznit  
     Ani mučit žízní  
     Až se flaška převrhne  
+    Nebudeme čekat  
+    Až se ucho utrhne  
+
+
+**Bridge:**  
+    Nebudem se hádat  
+    Prosit, fňukat, žádat  
+    Až nás osud zavrhne  
     Nebudeme čekat  
     Až se ucho utrhne  

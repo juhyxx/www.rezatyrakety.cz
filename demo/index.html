@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Rezaté Rakety · Písně</title>
+    <title>Rezaté Rakety · Demo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;600&display=swap" rel="stylesheet">
@@ -27,16 +27,16 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="min-h-screen bg-gray-400 font-display text-slate-900 antialiased">
+<body class="min-h-screen bg-gray-400 dark:bg-black font-display text-slate-900 antialiased">
     <div class="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-4 pb-10 pt-6">
-        <header class="rounded-3xl border border-white/15 bg-white/70 p-4 text-brand shadow-xl shadow-black/30 backdrop-blur">
+        <header class="rounded-3xl border border-white/15 bg-white/70 dark:bg-slate-950 p-4 text-brand dark:text-slate-100 shadow-xl shadow-black/30 backdrop-blur">
             <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                 <div id="event"
-                    class="flex-1 min-w-[280px] rounded-2xl bg-white/95 px-4 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-brand shadow-inner shadow-black/10">
+                    class="flex-1 min-w-[280px] rounded-2xl bg-white/95 dark:bg-slate-900 px-4 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-brand dark:text-slate-100 shadow-inner shadow-black/10">
                     Načítání...
                 </div>
                 <button id="playlist-button" type="button"
-                    class="inline-flex items-center gap-3 rounded-full bg-white px-5 py-3 text-[0.65rem] font-semibold uppercase tracking-[0.4em] text-brand shadow-lg shadow-black/20 transition hover:bg-amber-50 hover:shadow-xl disabled:cursor-not-allowed disabled:bg-white/50 disabled:text-brand/40 disabled:shadow-none">
+                    class="inline-flex items-center gap-3 rounded-full bg-white dark:bg-slate-950 px-5 py-3 text-[0.65rem] font-semibold uppercase tracking-[0.4em] text-brand dark:text-slate-100 shadow-lg shadow-black/20 transition hover:bg-amber-50 hover:shadow-xl dark:hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-white/50 disabled:text-brand/40 disabled:shadow-none">
                     <i class="fa fa-list-ol"></i>
                     Playlist
                 </button>
@@ -44,7 +44,7 @@
         </header>
         <main class="mt-6 flex-1">
             <song-book id="song-list" data-source="./api.php" aria-live="polite"
-                class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4"></song-book>
+                class="grid gap-2 xl:grid-cols-2"></song-book>
         </main>
     </div>
 
@@ -52,9 +52,9 @@
     <playlist-viewer id="playlist-viewer" hidden></playlist-viewer>
 
     <template id="song-card-template">
-        <article class="song-card relative flex h-full flex-col rounded-2xl border border-brand/20 bg-white/95 shadow-inner shadow-black/20 transition"
+        <article class="song-card relative flex h-full flex-col rounded-2xl border border-slate-500 dark:border-slate-900/30 bg-white/95 dark:bg-white/80 shadow-inner shadow-black/20 transition"
             data-collapsed="true">
-            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-brand/15 px-4 py-3">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-brand/15 px-4 py-3">
                 <div class="flex flex-col">
                     <span class="title text-sm font-semibold uppercase tracking-[0.2em] text-brand"></span>
                     <div class="badge-row mt-1 flex flex-wrap gap-2 text-[0.6rem] font-semibold"></div>
@@ -73,7 +73,7 @@
                     </button>
                 </div>
             </div>
-            <ul class="file-list flex flex-wrap gap-2 overflow-hidden px-4 py-3 transition-all duration-300 ease-in-out max-h-0 opacity-0 pointer-events-none"
+            <ul class="file-list flex flex-wrap gap-2 overflow-hidden px-4 transition-all duration-300 ease-in-out max-h-0 opacity-0 pointer-events-none"
                 data-files></ul>
         </article>
     </template>
