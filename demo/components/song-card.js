@@ -5,7 +5,7 @@ const CARD_TEMPLATE = document.getElementById('song-card-template');
 const STATUS_STYLES = {
     new: { label: 'NOVINKA', classes: 'bg-emerald-600 text-white' },
     progress: { label: 'ROZPRACOVÁNO', classes: 'bg-amber-400 text-slate-900' },
-    ready: { label: 'PŘIPRAVENO', classes: 'bg-brand text-white' },
+    ready: { label: 'PŘIPRAVENO', classes: 'bg-sky-500/30 text-white' },
     archive: { label: 'ARCHIV', classes: 'bg-slate-700 text-white' },
 };
 
@@ -143,18 +143,24 @@ class SongCard extends HTMLElement {
                 return;
             }
             const badge = document.createElement('span');
-            badge.className = `px-2 py-0.5 rounded-full text-[0.55rem] tracking-[0.2em] ${meta.classes}`;
+            badge.className = `px-2 py-0.5 rounded text-[0.55rem] tracking-[0.2em] ${meta.classes}`;
             badge.textContent = meta.label;
             container.appendChild(badge);
         });
     }
 
     toggle() {
+        if (!this.expanded) {
+            this.dispatchEvent(new CustomEvent('song-card-expand', { bubbles: true, composed: true }));
+        }
         this.expanded = !this.expanded;
         this.updateCollapsedState();
     }
 
     expand() {
+        if (!this.expanded) {
+            this.dispatchEvent(new CustomEvent('song-card-expand', { bubbles: true, composed: true }));
+        }
         this.expanded = true;
         this.updateCollapsedState();
     }

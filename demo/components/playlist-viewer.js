@@ -1,7 +1,7 @@
 const TEMPLATE = `
 <div data-overlay class="flex min-h-screen w-full items-stretch justify-center bg-black/80 px-0 py-0 md:px-6 md:py-10 overflow-y-auto">
-    <article class="relative flex w-full min-h-screen max-h-screen flex-col overflow-y-auto bg-white p-6 text-slate-800 shadow-2xl shadow-black/40 md:my-4 md:max-w-4xl md:min-h-0 md:max-h-[90vh] md:rounded-3xl md:overflow-y-auto">
-        <button type="button" data-close class="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full border border-brand/30 text-brand transition hover:bg-brand hover:text-white" aria-label="Zavřít playlist">
+    <article class="relative flex w-full min-h-screen max-h-screen flex-col overflow-y-auto bg-white p-6 text-slate-800 shadow-2xl shadow-black/40 md:my-4 md:max-w-4xl md:min-h-0 md:max-h-[90vh] md:rounded-xl md:overflow-y-auto">
+        <button type="button" data-close class="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-lg border border-brand/30 text-brand transition hover:bg-brand hover:text-white" aria-label="Zavřít playlist">
             <i class="fa fa-times"></i>
         </button>
         <div class="flex flex-wrap justify-start items-center gap-4">
@@ -112,7 +112,7 @@ class PlaylistViewer extends HTMLElement {
         this.listEl.innerHTML = '';
         playlist.forEach((entry, index) => {
             const item = document.createElement('li');
-            item.className = 'flex items-center justify-between rounded-2xl bg-brand/5 px-4 py-3';
+            item.className = 'flex items-center justify-between rounded-xl bg-brand/5 px-4 py-3';
             const titleWrapper = document.createElement('div');
             titleWrapper.className = 'flex gap-1 text-brand dark:text-white';
             const title = document.createElement('div');
@@ -181,10 +181,10 @@ class PlaylistViewer extends HTMLElement {
     buildStatusBadges(song) {
         const badges = [];
         if (this.isNew(song)) {
-            badges.push(this.createBadge('Novinka', 'bg-emerald-600 text-white px-2 py-0.5 rounded-full tracking-[0.2em]'));
+            badges.push(this.createBadge('Novinka', 'bg-emerald-600 text-white px-2 py-0.5 rounded tracking-[0.2em]'));
         }
         if (this.isProgress(song)) {
-            badges.push(this.createBadge('Rozpracováno', 'bg-amber-300 text-slate-900 px-2 py-0.5 rounded-full tracking-[0.2em]'));
+            badges.push(this.createBadge('Rozpracováno', 'bg-amber-300 text-slate-900 px-2 py-0.5 rounded tracking-[0.2em]'));
         }
         return badges;
     }

@@ -82,15 +82,15 @@ const LEGACY_STYLES = `
 
 const TEMPLATE = `
 <div data-overlay class="flex min-h-screen w-full items-stretch justify-center bg-black/80 dark:bg-black px-0 py-0 md:px-6 md:py-10 overflow-y-auto">
-    <article class="relative flex w-full min-h-screen max-h-screen flex-col overflow-y-auto bg-white dark:bg-slate-900 p-6 text-slate-800 dark:text-slate-100 shadow-2xl shadow-black/40 md:my-4 md:max-w-4xl md:min-h-0 md:max-h-[90vh] md:rounded-3xl">
-        <button type="button" data-close class="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full border border-brand/30 text-brand dark:text-slate-100 transition hover:bg-brand hover:text-white dark:hover:bg-slate-700 dark:hover:text-brand" aria-label="Zavřít text">
+    <article class="relative flex w-full min-h-screen max-h-screen flex-col overflow-y-auto bg-white dark:bg-slate-900 p-6 text-slate-800 dark:text-slate-100 shadow-2xl shadow-black/40 md:my-4 md:max-w-4xl md:min-h-0 md:max-h-[90vh] md:rounded-xl">
+        <button type="button" data-close class="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-lg border border-brand/30 text-brand dark:text-slate-100 transition hover:bg-brand hover:text-white dark:hover:bg-slate-700 dark:hover:text-brand" aria-label="Zavřít text">
             <i class="fa fa-times"></i>
         </button>
         <p data-meta class="text-xs font-semibold uppercase tracking-[0.3em] text-brand/60 dark:text-slate-300">Text skladby</p>
         <div class="flex items-center justify-between gap-4">
             <h1 data-title class="mt-1 text-2xl font-semibold uppercase tracking-[0.2em] text-brand dark:text-slate-100"></h1>
-            <div data-audio-wrapper class="hidden items-center gap-3 rounded-2xl  bg-brand/5 px-4 py-3">
-                <button type="button" data-audio-toggle class="inline-flex items-center gap-2 rounded-full bg-brand dark:bg-slate-700 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em]  shadow text-brand dark:text-brand">
+            <div data-audio-wrapper class="hidden items-center gap-3 rounded-xl  bg-brand/5 px-4 py-3">
+                <button type="button" data-audio-toggle class="inline-flex items-center gap-2 rounded bg-brand dark:bg-slate-700 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em]  shadow text-brand dark:text-brand">
                     <i class="fa fa-play"></i>
                       Demo
                 </button>

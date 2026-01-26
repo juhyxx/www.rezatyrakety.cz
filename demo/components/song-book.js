@@ -15,6 +15,15 @@ class SongBook extends HTMLElement {
         this.source = this.dataset.source || DEFAULT_API;
         this.setState('Načítám skladby...');
         this.loadSongs();
+        this.addEventListener('song-card-expand', (event) => {
+            const cards = Array.from(this.querySelectorAll('song-card'));
+            cards.forEach(card => {
+                if (card !== event.target && card.expanded && typeof card.toggle === 'function') {
+                    card.expanded = false;
+                    card.updateCollapsedState();
+                }
+            });
+        });
     }
 
     async loadSongs() {
@@ -57,6 +66,12 @@ class SongBook extends HTMLElement {
                 spacer.className = 'w-full h-16 md:h-10';
                 spacer.setAttribute('aria-hidden', 'true');
                 fragment.appendChild(spacer);
+
+                // Add archive title
+                const archiveTitle = document.createElement('div');
+                archiveTitle.className = 'w-full text-center text-xs uppercase tracking-[0.3em] text-slate-400 mb-2';
+                archiveTitle.textContent = 'Archiv';
+                fragment.appendChild(archiveTitle);
             }
             fragment.appendChild(card);
         });

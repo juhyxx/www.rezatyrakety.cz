@@ -21,7 +21,7 @@ function createFileItem(song, file, index) {
     const ext = (file.extension || '').toLowerCase();
     const meta = ICON_CLASSES[ext] || { icon: 'fa-file-o', cls: DEFAULT_FILE_STYLE };
     const li = document.createElement('li');
-    li.className = `flex flex-col items-center justify-center gap-2 w-20 h-20 text-center rounded-2xl border shadow-inner shadow-black/10 text-[0.6rem] font-semibold tracking-[0.2em] uppercase ${meta.cls} mb-2`;
+    li.className = `flex flex-col items-center justify-center gap-2 w-20 h-20 text-center rounded-xl border shadow-inner shadow-black/10 text-[0.6rem] font-semibold tracking-[0.2em] uppercase ${meta.cls} mb-2`;
 
     const link = document.createElement('a');
     link.href = resolveFileHref(song, file);
