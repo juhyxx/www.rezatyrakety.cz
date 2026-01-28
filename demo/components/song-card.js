@@ -147,6 +147,18 @@ class SongCard extends HTMLElement {
             badge.textContent = meta.label;
             container.appendChild(badge);
         });
+        // Add lyrics state badge if present
+        const lyricsState = this._data?.lyricsState || this._data?.lyrics;
+        if (lyricsState === 'progress' || lyricsState === 'ready') {
+            const badge = document.createElement('span');
+            badge.className =
+                'ml-2 px-2 py-0.5 rounded text-[0.55rem] tracking-[0.2em] bg-white border font-semibold ' +
+                (lyricsState === 'progress'
+                    ? 'border-yellow-400 text-yellow-700'
+                    : 'border-green-500 text-green-700');
+            badge.textContent = lyricsState === 'progress' ? 'TEXT: ROZPRACOVÁNO' : 'TEXT: NAUČENO';
+            container.appendChild(badge);
+        }
     }
 
     toggle() {

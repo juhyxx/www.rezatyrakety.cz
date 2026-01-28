@@ -122,12 +122,15 @@ function buildSongPayload($songDir, $folderName)
     }
     $status = buildStatusPayload($manifest);
 
+    // Expose lyrics state (progress/read) from manifest as top-level property
+    $lyricsState = isset($manifest['lyrics']) ? $manifest['lyrics'] : null;
     return [
         'id' => $relativeDir,
         'title' => $title,
         'status' => $status,
         'duration' => $duration,
         'lyrics' => $lyrics,
+        'lyricsState' => $lyricsState,
         'files' => $files,
         'meta' => [
             'path' => 'data/' . $relativeDir,
