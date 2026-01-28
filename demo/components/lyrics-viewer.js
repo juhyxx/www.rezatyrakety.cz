@@ -2,64 +2,67 @@ import { marked } from 'https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js';
 
 const LEGACY_STYLE_ID = 'lyrics-viewer-legacy-styles';
 const LEGACY_STYLES = `
-
-.lyrics-content h1,
-.lyrics-content h2,
-.lyrics-content h3 {
-    display: none;
+.lyrics-content {
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #7c4700;
+    background: #fffbe6;
+    border-radius: 0.5rem;
+    padding: 1.2rem 1.5rem;
+    margin: 0.5rem 0;
+    box-shadow: 0 2px 8px 0 rgba(124,71,0,0.04);
 }
-
 .lyrics-content p {
-    border-bottom: 1px dotted rgba(0, 0, 0, 0.15);
+    margin: 0.5em 0;
+    border-bottom: 1px dotted #ffe0a3;
+    padding-bottom: 0.2em;
 }
 .lyrics-content ul,
 .lyrics-content ol {
-    margin: 0.35rem 0 0.35rem 1.5rem;
-    padding-left: 0.5rem;
+    margin: 0.5em 0 0.5em 1.5em;
+    padding-left: 0.5em;
 }
 .lyrics-content li::marker {
-    color: #9b1915;
+    color: #eab308;
     font-weight: 600;
 }
 .lyrics-content em {
-    color: #777;
+    color: #bfa76a;
 }
 .lyrics-content blockquote {
-    border-left: 3px solid #9b1915;
+    border-left: 3px solid #eab308;
     padding-left: 1rem;
-    color: #555;
+    color: #bfa76a;
     margin: 0.75rem 0;
+    background: #fff8d6;
+    border-radius: 0.25rem;
+}
+.lyrics-content strong {
+    color: #b45309;
 }
 @media (prefers-color-scheme: dark) {
-    [data-overlay] {
-        background: #000 !important;
-    }
-    .lyrics-content,
-    article {
-        color: #e0e0e0;
-        background: #000 !important;
+    .lyrics-content {
+        color: #ffe0a3;
+        background: #1a1400;
+        box-shadow: 0 2px 8px 0 rgba(234,179,8,0.08);
     }
     .lyrics-content strong,
     .lyrics-content li::marker {
-        color: #ff6f61;
+        color: #ffe066;
     }
     .lyrics-content p {
-        border-bottom-color: rgba(255, 255, 255, 0.2);
-    }
-    .lyrics-content h1,
-    .lyrics-content h2,
-    .lyrics-content h3 {
-        background-color: #222;
+        border-bottom-color: #bfa76a;
     }
     .lyrics-content em {
-        color: #bbb;
+        color: #ffe0a3;
     }
     .lyrics-content blockquote {
-        border-left-color: #ff6f61;
-        color: #ccc;
+        border-left-color: #ffe066;
+        color: #ffe0a3;
+        background: #2a2100;
     }
 }
-
 /* Numbered verses for lyrics lists */
 .lyrics-content ol {
     counter-reset: verse;
@@ -75,7 +78,7 @@ const LEGACY_STYLES = `
     content: counter(verse) ". ";
     position: absolute;
     left: -1.5em;
-    color: #9b1915;
+    color: #eab308;
     font-weight: 600;
 }
 `;

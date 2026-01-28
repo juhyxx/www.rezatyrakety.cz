@@ -2,6 +2,7 @@ import './components/song-card.js';
 import './components/song-book.js';
 import './components/lyrics-viewer.js';
 import './components/playlist-viewer.js';
+import './components/lyrics-progress-viewer.js';
 
 const CALENDAR_ID = '48jdqagdt2v2uhhd8afgcn2fc8@group.calendar.google.com';
 const CALENDAR_KEY = 'AIzaSyBxSP7qbnpzphJzT3yeRoc0XmreUx9DM2I';
@@ -15,15 +16,27 @@ document.addEventListener('DOMContentLoaded', () => {
         playlistButton.disabled = true;
         playlistButton.addEventListener('click', () => openPlaylist());
     }
+    const lyricsProgressButton = document.getElementById('lyrics-progress-button');
+    if (lyricsProgressButton) {
+        lyricsProgressButton.addEventListener('click', () => openLyricsProgressViewer());
+    };
+    document.addEventListener('lyrics-requested', (event) => {
+        const viewer = document.querySelector('lyrics-viewer');
+        if (!viewer || typeof viewer.open !== 'function') {
+            return;
+        }
+        viewer.open(event.detail.song, event.detail.file);
+    });
 });
 
-document.addEventListener('lyrics-requested', (event) => {
-    const viewer = document.querySelector('lyrics-viewer');
-    if (!viewer || typeof viewer.open !== 'function') {
-        return;
-    }
-    viewer.open(event.detail.song, event.detail.file);
-});
+function openLyricsProgressViewer() {
+    const viewer = document.querySelector('lyrics-progress-viewer');
+    if (!viewer || typeof viewer.open !== 'function') return;
+    const progressSongs = (cachedSongs || []).filter(song => (song.lyricsState || song.lyrics) === 'progress');
+    viewer.open(progressSongs);
+}
+
+
 
 document.addEventListener('songs-loaded', (event) => {
     cachedSongs = event.detail?.songs ?? [];
