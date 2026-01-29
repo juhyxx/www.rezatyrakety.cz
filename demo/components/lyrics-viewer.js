@@ -3,19 +3,16 @@ import { marked } from 'https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js';
 const LEGACY_STYLE_ID = 'lyrics-viewer-legacy-styles';
 const LEGACY_STYLES = `
 .lyrics-content {
-    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
     font-size: 1.05rem;
     line-height: 1.7;
-    color: #7c4700;
-    background: #fffbe6;
     border-radius: 0.5rem;
-    padding: 1.2rem 1.5rem;
+   
     margin: 0.5rem 0;
     box-shadow: 0 2px 8px 0 rgba(124,71,0,0.04);
 }
 .lyrics-content p {
     margin: 0.5em 0;
-    border-bottom: 1px dotted #ffe0a3;
+    border-bottom: 1px dotted #9b1915DD;
     padding-bottom: 0.2em;
 }
 .lyrics-content ul,
@@ -24,14 +21,12 @@ const LEGACY_STYLES = `
     padding-left: 0.5em;
 }
 .lyrics-content li::marker {
-    color: #eab308;
+    color: #9b1915DD;
     font-weight: 600;
 }
-.lyrics-content em {
-    color: #bfa76a;
-}
+
 .lyrics-content blockquote {
-    border-left: 3px solid #eab308;
+    border-left: 3px solid #9b1915DD;
     padding-left: 1rem;
     color: #bfa76a;
     margin: 0.75rem 0;
@@ -43,23 +38,17 @@ const LEGACY_STYLES = `
 }
 @media (prefers-color-scheme: dark) {
     .lyrics-content {
-        color: #ffe0a3;
+        color: #9b1915DD;
         background: #1a1400;
         box-shadow: 0 2px 8px 0 rgba(234,179,8,0.08);
     }
-    .lyrics-content strong,
-    .lyrics-content li::marker {
-        color: #ffe066;
-    }
-    .lyrics-content p {
-        border-bottom-color: #bfa76a;
-    }
+  
     .lyrics-content em {
-        color: #ffe0a3;
+        color: #9b1915DD;
     }
     .lyrics-content blockquote {
-        border-left-color: #ffe066;
-        color: #ffe0a3;
+
+        color: #9b1915DD;
         background: #2a2100;
     }
 }
@@ -72,15 +61,24 @@ const LEGACY_STYLES = `
 .lyrics-content ol > li {
     counter-increment: verse;
     position: relative;
-    margin-bottom: 0.5em;
+ 
 }
 .lyrics-content ol > li::before {
     content: counter(verse) ". ";
     position: absolute;
     left: -1.5em;
-    color: #eab308;
+    color: #9b1915DD;
     font-weight: 600;
 }
+    h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+         padding:0;
+         letter-spacing: 0.2em;
+    }
+
 `;
 
 const TEMPLATE = `
