@@ -9,12 +9,30 @@
     box-sizing: border-box;
 }
 
-
-
 .item h2::before {
     content: '◢ ' counter(css-counter) '. ';
 }
 
 .item.collapsed h2::before {
     content: '▷ ' counter(css-counter) '. ';
+}
+
+/* Unified color scheme for both lyrics viewers - light mode */
+:root {
+    --lyrics-primary: #9b1915;
+    --lyrics-primary-dark: #7d1510;
+    --lyrics-secondary: #b45309;
+    --lyrics-accent: #bfa76a;
+    --lyrics-light-bg: #fff8d6;
+}
+
+/* Unified color scheme for both lyrics viewers - dark mode */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --lyrics-primary: #fbbf24;
+        --lyrics-primary-dark: #f59e0b;
+        --lyrics-secondary: #fbbf24;
+        --lyrics-accent: #f59e0b;
+        --lyrics-light-bg: rgba(251, 191, 36, 0.08);
+    }
 }

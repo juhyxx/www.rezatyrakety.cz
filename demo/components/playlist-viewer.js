@@ -1,21 +1,21 @@
 const TEMPLATE = `
-<div data-overlay class="flex min-h-screen w-full items-stretch justify-center bg-black/80 px-0 py-0 md:px-6 md:py-10 overflow-y-auto">
-    <article class="relative flex w-full min-h-screen max-h-screen flex-col overflow-y-auto bg-white p-6 text-slate-800 shadow-2xl shadow-black/40 md:my-4 md:max-w-4xl md:min-h-0 md:max-h-[90vh] md:rounded-xl md:overflow-y-auto">
-        <button type="button" data-close class="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-lg border border-brand/30 text-brand transition hover:bg-brand hover:text-white" aria-label="Zavřít playlist">
+<div data-overlay class="flex min-h-screen w-full items-stretch justify-center bg-black/80 dark:bg-black px-0 py-0 md:px-6 md:py-10 overflow-y-auto">
+    <article class="relative flex w-full min-h-screen max-h-screen flex-col overflow-y-auto bg-white dark:bg-slate-800 p-6 text-slate-800 dark:text-slate-100 shadow-2xl shadow-black/40 md:my-4 md:max-w-4xl md:min-h-0 md:max-h-[90vh] md:rounded-xl md:overflow-y-auto">
+        <button type="button" data-close class="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-lg border border-amber-700/30 dark:border-amber-500/30 text-amber-800 dark:text-amber-400 transition hover:bg-amber-700 hover:text-white dark:hover:bg-amber-700/20 dark:hover:text-amber-300" aria-label="Zavřít playlist">
             <i class="fa fa-times"></i>
         </button>
         <div class="flex flex-wrap justify-start items-center gap-4">
-            <h1 class="text-2xl font-semibold uppercase tracking-[0.2em] text-brand">Playlist</h1>
-            <label class=" inline-flex items-center gap-2 text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-slate-500">
-                <input type="checkbox" data-include-nonready class="h-4 w-4 rounded border-brand text-brand focus:ring-brand" />
+            <h1 class="text-2xl font-semibold uppercase tracking-[0.2em] text-amber-800 dark:text-amber-400">Playlist</h1>
+            <label class="inline-flex items-center gap-2 text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">
+                <input type="checkbox" data-include-nonready class="h-4 w-4 rounded border-amber-700 dark:border-amber-500 text-amber-700 dark:text-amber-500 focus:ring-amber-600 dark:focus:ring-amber-500" />
                 <span>Zahrnout NOVINKA / ROZPRAC.</span>
             </label>
         </div>
         <ol data-list class="mt-6 space-y-3"></ol>
-        <p data-empty class="mt-6 text-center text-xs uppercase tracking-[0.3em] text-slate-400 hidden">Žádné skladby se statusem READY.</p>
-        <div class="flex border-t border-dashed border-black items-center justify-between bg-brand/5 px-4 py-3  ">
-                <p data-count class="text-sm font-semibold"></p>
-                <p data-duration class="text-xs uppercase text-slate-400"></p>
+        <p data-empty class="mt-6 text-center text-xs uppercase tracking-[0.3em] text-slate-400 dark:text-slate-500 hidden">Žádné skladby se statusem READY.</p>
+        <div class="flex border-t border-dashed border-amber-700/30 dark:border-amber-500/30 items-center justify-between bg-amber-50 dark:bg-slate-700/50 px-4 py-3">
+                <p data-count class="text-sm font-semibold text-slate-800 dark:text-slate-100"></p>
+                <p data-duration class="text-xs uppercase text-slate-500 dark:text-slate-400"></p>
             </div>
     </article>
 </div>

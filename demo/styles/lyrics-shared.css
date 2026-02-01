@@ -1,0 +1,160 @@
+/* Shared styles for lyrics viewers */
+.lyrics-content {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    border-radius: 0.5rem;
+    margin: 0.5rem 0;
+    color: #000000;
+    background: transparent;
+}
+
+.lyrics-content p {
+    margin: 0.5em 0;
+    border-bottom: 1px dotted #d4a574;
+    padding-bottom: 0.2em;
+}
+
+.lyrics-content ul,
+.lyrics-content ol {
+    margin: 0.5em 0 0.5em 1.5em;
+    padding-left: 0.5em;
+}
+
+.lyrics-content li::marker {
+    color: #9b1915;
+    font-weight: 600;
+}
+
+.lyrics-content blockquote {
+    border-left: 3px solid #9b1915;
+    padding-left: 1rem;
+    color: #333333;
+    margin: 0.75rem 0;
+    background: rgba(155, 25, 21, 0.08);
+    border-radius: 0.25rem;
+}
+
+.lyrics-content strong {
+    color: #000000;
+    font-weight: 700;
+}
+
+.lyrics-content em {
+    color: #333333;
+    font-style: italic;
+}
+
+/* Numbered verses for lyrics lists */
+.lyrics-content ol {
+    counter-reset: verse;
+    list-style: none;
+    padding-left: 1.5em;
+}
+
+.lyrics-content ol>li {
+    counter-increment: verse;
+    position: relative;
+}
+
+.lyrics-content ol>li::before {
+    content: counter(verse) ". ";
+    position: absolute;
+    left: -1.5em;
+    color: #9b1915;
+    font-weight: 600;
+}
+
+@media (prefers-color-scheme: dark) {
+    .lyrics-content {
+        color: #e5e7eb;
+        background: transparent;
+    }
+
+    .lyrics-content p {
+        border-bottom-color: #f59e0b;
+    }
+
+    .lyrics-content li::marker {
+        color: #f59e0b;
+    }
+
+    .lyrics-content blockquote {
+        border-left-color: #f59e0b;
+        background: rgba(251, 191, 36, 0.1);
+        color: #e5e7eb;
+    }
+
+    .lyrics-content strong {
+        color: #fbbf24;
+    }
+
+    .lyrics-content em {
+        color: #e5e7eb;
+    }
+
+    .lyrics-content ol>li::before {
+        color: #f59e0b;
+    }
+}
+
+/* Progress viewer specific styles */
+.lyrics-progress-item {
+    border-bottom: 1px solid rgba(155, 25, 21, 0.2);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    background: transparent;
+}
+
+.lyrics-progress-item:last-child {
+    border-bottom: none;
+}
+
+.lyrics-progress-item-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.lyrics-progress-item-play-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.375rem;
+    background-color: #9b1915;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 0.75rem;
+    transition: background-color 0.2s;
+}
+
+.lyrics-progress-item-play-btn:hover {
+    background-color: #7d1510;
+}
+
+@media (prefers-color-scheme: dark) {
+    .lyrics-progress-item {
+        border-bottom-color: rgba(251, 191, 36, 0.2);
+        background: rgba(30, 41, 59, 0.5);
+        border-radius: 0.5rem;
+    }
+
+    .lyrics-progress-item-title {
+        color: #fbbf24;
+    }
+
+    .lyrics-progress-item-play-btn {
+        background-color: #f59e0b;
+        color: #1a1400;
+    }
+
+    .lyrics-progress-item-play-btn:hover {
+        background-color: #fbbf24;
+    }
+}

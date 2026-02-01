@@ -125,9 +125,9 @@ class SongCard extends HTMLElement {
         this.fileList = fileList;
         this.toggleButton = toggleButton;
         this.toggleIcon = toggleIcon;
-        // Force lighter background in dark mode
+        // Apply appropriate background color for dark/light mode
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            article.style.backgroundColor = '#e5e7eb'; // Tailwind slate-200
+            article.style.backgroundColor = '#1e293b'; // Tailwind slate-800
         } else {
             article.style.backgroundColor = '';
         }
