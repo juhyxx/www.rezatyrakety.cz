@@ -2,12 +2,12 @@ import { marked } from 'https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js';
 
 const TEMPLATE = `
 <div data-overlay class="flex min-h-screen w-full items-stretch justify-center bg-black/80 dark:bg-black px-0 py-0 md:px-6 md:py-10 overflow-y-auto">
-    <article class=\"relative flex w-full min-h-screen max-h-screen flex-col overflow-y-auto bg-white dark:bg-slate-800 p-6 text-slate-800 dark:text-slate-100 shadow-2xl shadow-black/40 md:my-4 md:max-w-4xl md:min-h-0 md:max-h-[90vh] md:rounded-xl\">
+    <article class=\"relative flex w-full min-h-screen max-h-screen flex-col overflow-y-auto bg-white dark:bg-slate-800 p-1 text-slate-800 dark:text-slate-100 shadow-2xl shadow-black/40 md:my-4 md:max-w-4xl md:min-h-0 md:max-h-[90vh] md:rounded-xl\">
         <button type="button" data-close class="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-lg border border-amber-700/30 dark:border-amber-500/30 text-amber-800 dark:text-amber-400 transition hover:bg-amber-700 hover:text-white dark:hover:bg-amber-700/20 dark:hover:text-amber-300" aria-label="Zavřít texty">
             <i class="fa fa-times"></i>
         </button>
         <p class="text-xs font-semibold uppercase tracking-[0.3em] text-amber-700 dark:text-amber-400 mb-2">Rozpracované texty</p>
-        <h2 class="text-2xl font-semibold uppercase tracking-[0.2em] mb-6 text-amber-800 dark:text-amber-400">Rozpracované texty</h2>
+        <h2 class="text-2xl font-semibold uppercase tracking-[0.2em] mb-6 text-amber-800 dark:text-amber-400 hidden">Rozpracované texty</h2>
         <ul data-list class="flex-1 overflow-y-auto pr-2"></ul>
         <p data-empty class="text-center py-8 text-slate-500 dark:text-slate-400">Žádné rozpracované texty.</p>
     </article>

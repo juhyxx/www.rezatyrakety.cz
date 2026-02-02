@@ -1,23 +1,29 @@
 /* Shared styles for lyrics viewers */
 .lyrics-content {
-    font-size: 1.05rem;
+    font-size: 1.0rem;
     line-height: 1.7;
     border-radius: 0.5rem;
     margin: 0.5rem 0;
     color: #000000;
     background: transparent;
+
+}
+
+.lyrics-content h1 {
+    display: none;
 }
 
 .lyrics-content p {
-    margin: 0.5em 0;
+    margin: 0.45em 0;
+    border-bottom: none;
     border-bottom: 1px dotted #d4a574;
-    padding-bottom: 0.2em;
+    padding-bottom: 0.12em;
 }
 
 .lyrics-content ul,
 .lyrics-content ol {
-    margin: 0.5em 0 0.5em 1.5em;
-    padding-left: 0.5em;
+    margin: 0;
+    padding-left: 0em;
 }
 
 .lyrics-content li::marker {
@@ -26,8 +32,8 @@
 }
 
 .lyrics-content blockquote {
-    border-left: 3px solid #9b1915;
-    padding-left: 1rem;
+    border-left: 1px solid rgba(155, 25, 21, 0.45);
+    padding-left: 0.75rem;
     color: #333333;
     margin: 0.75rem 0;
     background: rgba(155, 25, 21, 0.08);
@@ -48,7 +54,7 @@
 .lyrics-content ol {
     counter-reset: verse;
     list-style: none;
-    padding-left: 1.5em;
+    padding-left: 0em;
 }
 
 .lyrics-content ol>li {
@@ -57,11 +63,15 @@
 }
 
 .lyrics-content ol>li::before {
-    content: counter(verse) ". ";
     position: absolute;
-    left: -1.5em;
+    content: counter(verse) "";
+    position: absolute;
+    right: 0em;
     color: #9b1915;
     font-weight: 600;
+    font-size: 6rem;
+    opacity: 0.1;
+    top: 0;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -99,10 +109,11 @@
 
 /* Progress viewer specific styles */
 .lyrics-progress-item {
-    border-bottom: 1px solid rgba(155, 25, 21, 0.2);
-    padding: 1.5rem;
+    border-bottom: none;
+    padding: 1.25rem;
     border-radius: 0.5rem;
     background: transparent;
+    margin-bottom: 5rem;
 }
 
 .lyrics-progress-item:last-child {
@@ -156,5 +167,42 @@
 
     .lyrics-progress-item-play-btn:hover {
         background-color: #fbbf24;
+    }
+}
+
+/* Mobile optimizations: slightly larger text, reduced padding/margins */
+@media (max-width: 600px) {
+    .lyrics-content {
+        font-size: 1.25rem;
+        line-height: 1.5;
+        margin: 0.25rem 0;
+        padding: 0.2rem;
+    }
+
+    .lyrics-content p {
+        margin: 0.25em 0;
+        padding-bottom: 0.15em;
+        border-bottom-width: 1px;
+    }
+
+    .lyrics-content ul,
+    .lyrics-content ol {
+        margin: 0;
+        padding-left: 0em;
+    }
+
+    .lyrics-progress-item {
+        padding: 0.5rem;
+    }
+
+    .lyrics-progress-item-title {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .lyrics-progress-item-play-btn {
+        width: 2rem;
+        height: 2rem;
+        font-size: 0.9rem;
     }
 }
