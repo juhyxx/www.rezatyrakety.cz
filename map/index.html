@@ -1,38 +1,124 @@
 <!DOCTYPE html>
-<html>
+<html class="scroll-smooth" data-theme="light">
 
 <head>
     <meta charset="utf-8">
-    <title>Koncerty RR</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koncerty RR – Mapa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        function initDarkMode() {
+            const html = document.documentElement;
+            const isDark = localStorage.getItem('theme') === 'dark' || 
+                          (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            if (isDark) {
+                html.classList.add('dark');
+                html.dataset.theme = 'dark';
+            }
+        }
+        initDarkMode();
+    </script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <link rel="stylesheet" href="map.css" />
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"
         integrity="sha512-cUoWMYmv4H9TGP4hbm1mIjYo90WzIQFo/5jj+P5tQcDTf+iVR59RyIj/a9fRsBxzxt5Dnv/Ex7MzRIxcDwaOLw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.min.js"
         integrity="sha512-8BqQ2RH4L4sQhV41ZB24fUc1nGcjmrTA6DILV/aTPYuUzo+wBdYdp0fvQ76Sxgf36p787CXF7TktWlcxu/zyOg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css">
-</head>
+    <link rel="stylesheet" href="map.css" />
 </head>
 
-<body>
-    <div id="container">
-        <div id="mapa"></div>
-        <!-- <div id="kluby">
-            <h1>Místa k dobytí</h1>
-        </div>-->
+<body class="bg-white dark:bg-gray-900 transition-colors">
+    <div class="flex flex-col h-screen">
+        <!-- Header -->
+        <header class="bg-white dark:bg-gray-800 shadow-md border-b border-gray-200 dark:border-gray-700 p-4">
+            <div class="max-w-7xl mx-auto flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold text-amber-900 dark:text-amber-400">Koncerty Rezaté Rakety</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Interaktivní mapa míst k dobytí</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="flex flex-1 overflow-hidden">
+            <!-- Map Container -->
+            <div class="flex-1 flex flex-col">
+                <div id="mapa" class="flex-1 w-full"></div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="w-96 bg-white dark:bg-gray-800 shadow-lg overflow-y-auto flex flex-col border-l border-gray-200 dark:border-gray-700">
+                <!-- Controls Panel -->
+                <div class="p-4 border-b border-gray-200 dark:border-gray-700">
+                    <h2 class="text-xl font-bold text-gray-800 dark:text-white mb-4">Ovládání</h2>
+
+                    <!-- Year Selector -->
+                    <div class="mb-4">
+                        <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Rok koncertů</label>
+                        <div class="flex gap-2">
+                            <select id="yearSelect" class="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500">
+                                <option value="all">Všechny roky</option>
+                            </select>
+                            <button id="clearFilterBtn" class="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition font-medium">Reset</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Legend Panel -->
+                <div class="p-4 border-b border-gray-200 dark:border-gray-700">
+                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-3">Legenda</h3>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex items-center gap-3">
+                            <div class="w-6 h-6 bg-green-500 rounded-full border-2 border-green-700"></div>
+                            <span class="text-gray-700 dark:text-gray-300"><strong>Zelená</strong> – Aktuální/předchozí rok</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-6 h-6 bg-blue-500 rounded-full border-2 border-blue-700"></div>
+                            <span class="text-gray-700 dark:text-gray-300"><strong>Modrá</strong> – Čekám na potvrzení</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-6 h-6 bg-orange-500 rounded-full border-2 border-orange-700"></div>
+                            <span class="text-gray-700 dark:text-gray-300"><strong>Oranžová</strong> – Potřebuji kontaktovat</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-6 h-6 bg-gray-400 rounded-full border-2 border-gray-600"></div>
+                            <span class="text-gray-700 dark:text-gray-300"><strong>Šedá</strong> – Zrušeno/archiv</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-6 h-6 bg-gray-500 rounded-full border-2 border-gray-700"></div>
+                            <span class="text-gray-700 dark:text-gray-300"><strong>Tmavě šedá</strong> – Minulá vystoupení</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Status Filter Panel -->
+                <div class="p-4 border-b border-gray-200 dark:border-gray-700">
+                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-3">Místa k řešení</h3>
+                    <div class="flex gap-2 mb-3">
+                        <button id="filterWaiting" class="flex-1 px-3 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition font-medium text-sm">Čekám (0)</button>
+                        <button id="filterContact" class="flex-1 px-3 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition font-medium text-sm">Kontakt (0)</button>
+                        <button id="filterAll" class="flex-1 px-3 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition font-medium text-sm">Všechna (0)</button>
+                    </div>
+                </div>
+
+                <!-- Venues List -->
+                <div class="flex-1 overflow-y-auto p-4">
+                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-3">Místa</h3>
+                    <div id="venuesList" class="space-y-3">
+                        <p class="text-gray-500 dark:text-gray-400 text-sm">Načítám data...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div>
-        <input range type="range" list="values" id="range" step="-1"> <output></output>
-        <datalist id="values">
-            <option value="2019" label="2019"></option>
-        </datalist>
-    </div>
+
+    <script src="components/venue-card.js"></script>
+    <script src="components/venues-list.js"></script>
     <script src="map.js"></script>
-</body>
 </body>
 
 </html>

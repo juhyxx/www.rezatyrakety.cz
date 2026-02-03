@@ -1,37 +1,24 @@
 const ICON_BASE_PATH = 'https://cdn.jsdelivr.net/npm/leaflet-awesome-markers@2.0.5/dist/images/markers/'
 
-function createAwesomeMarker(color, icon, iconColor = "white") {
-    return L.AwesomeMarkers.icon({
-        icon: icon,
-        markerColor: color,
-        prefix: 'fa',
-        iconColor: iconColor
-    })
-}
-
 const currentYear = new Date().getFullYear();
-const datalist = document.getElementById('values');
-//const ICON_BASE_PATH = 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-';
-const rangeInput = document.getElementById('range');
-const output = document.querySelector('output');
-const klubyList = document.getElementById('kluby');
+let window_marks = [];
+let currentFilter = 'all';
 
-datalist.innerHTML = '';
+// DOM Elements
+const yearSelect = document.getElementById('yearSelect');
+const clearFilterBtn = document.getElementById('clearFilterBtn');
+const venuesListContainer = document.getElementById('venuesList');
+const filterWaitingBtn = document.getElementById('filterWaiting');
+const filterContactBtn = document.getElementById('filterContact');
+const filterAllBtn = document.getElementById('filterAll');
 
-for (let year = 2005; year <= currentYear; year++) {
-    const option = document.createElement('option');
-    option.value = year;
-    option.label = year.toString();
-    datalist.appendChild(option);
+// Get or create venues-list component
+let venuesList = venuesListContainer.querySelector('venues-list');
+if (!venuesList) {
+    venuesList = document.createElement('venues-list');
+    venuesListContainer.innerHTML = '';
+    venuesListContainer.appendChild(venuesList);
 }
-
-rangeInput.min = "2005";
-rangeInput.max = currentYear.toString();
-rangeInput.value = currentYear.toString();
-output.textContent = rangeInput.min + "-" + currentYear.toString();
-rangeInput.addEventListener('input', function () {
-    output.textContent = this.value;
-});
 
 function convertToDecimal(coord) {
     if (coord.includes('°')) {
@@ -46,17 +33,67 @@ function convertGPS(input) {
         const parts = input.split(',');
         const decimalLat = convertToDecimal(parts[0].trim().replace('N', ''));
         const decimalLon = convertToDecimal(parts[1].trim().replace('E', ''));
-
         return { lat: decimalLat, lon: decimalLon };
     }
 }
-function escapeHtml(unsafe = "") {
-    return (unsafe || "")
-        .replace(/&/g, "&")
-        .replace(/</g, "<")
-        .replace(/>/g, ">")
-        .replace(/'/g, "'")
-        .replace(/\n/g, "<br>");
+
+function getStatusColor(status) {
+    const colors = {
+        'WAITING': 'text-blue-600',
+        'CONTACT': 'text-orange-600',
+        'CANCELED': 'text-gray-500'
+    };
+    return colors[status] || 'text-gray-600';
+}
+
+function createAwesomeMarker(color, icon, iconColor = "white") {
+    return L.AwesomeMarkers.icon({
+        icon: icon,
+        markerColor: color,
+        prefix: 'fa',
+        iconColor: iconColor
+    })
+}
+
+// Initialize year selector
+function initYearSelector() {
+    for (let year = currentYear; year >= 2005; year--) {
+        const option = document.createElement('option');
+        option.value = year;
+        option.textContent = year.toString();
+        yearSelect.appendChild(option);
+    }
+    yearSelect.value = 'all';
+}
+
+function getMarkerIcon(mark) {
+    let color = "gray";
+    let icon = mark.festival ? "repeat" : "coffee";
+    let iconColor = "white";
+
+    try {
+        switch (mark.status) {
+            case "WAITING":
+                color = "blue";
+                break;
+            case "CONTACT":
+                color = "orange";
+                break;
+            case "CANCELED":
+                color = "lightgray";
+                iconColor = "gray";
+                break;
+            default:
+                break;
+        }
+    } catch (e) {
+    }
+
+    if (mark.current) {
+        color = "green";
+    }
+
+    return createAwesomeMarker(color, icon, iconColor);
 }
 
 
@@ -68,90 +105,112 @@ function renderMarks(marks) {
     });
 
     marks.forEach(function (mark) {
+        const marker = L.marker([mark.lat, mark.lon], { icon: getMarkerIcon(mark) }).addTo(map);
 
-        var marker = L.marker([mark.lat, mark.lon], { icon: getMarkerIcon(mark) }).addTo(map);
-
-        var content = `<strong>${escapeHtml(mark.nazev) || "N/A"}</strong><hr>
-            ${mark.count ? `<strong>Koncertů:</strong> ${mark.count}<br>` : ''}
-            ${mark.datum ? `<strong>Poslední koncert:</strong> ${mark.datum.toLocaleDateString()}<br>` : ''}            
-            ${mark.adresaMesto ? `<strong>Adresa:</strong> ${escapeHtml(mark.adresaMesto)} ` : ''}
-            ${mark.adresaUlice ? `${escapeHtml(mark.adresaUlice)}` : ''}
-            <br>
-            ${mark.WWW ? `<strong>WWW:</strong> <a href='${escapeHtml(mark.WWW)}' target='_blank'>${escapeHtml(mark.WWW)}</a><br>` : ''}
-            ${mark.linkMapa ? `<strong>Souřadnice:</strong> <a target="_blank" href="https://en.mapy.cz/zakladni?q=${mark.linkMapa}">${mark.linkMapa}</a><br>` : ''}
-            ${mark.status ? `<strong>Status:</strong> ${mark.status}<br>` : ''}
-            ${mark.note ? `<hr><strong>Poznámka:</strong> ${escapeHtml(mark.note)}` : ''}`;
+        const content = `
+            <div class="font-semibold text-lg text-amber-900 mb-2">${escapeHtml(mark.nazev) || "N/A"}</div>
+            <div class="text-sm text-gray-700 space-y-1">
+                ${mark.count ? `<div><strong>Koncertů:</strong> ${mark.count}</div>` : ''}
+                ${mark.datum ? `<div><strong>Poslední:</strong> ${mark.datum.toLocaleDateString('cs-CZ')}</div>` : ''}            
+                ${mark.adresaMesto ? `<div><strong>Adresa:</strong> ${escapeHtml(mark.adresaMesto)} ${mark.adresaUlice ? escapeHtml(mark.adresaUlice) : ''}</div>` : ''}
+                ${mark.WWW ? `<div><strong>WWW:</strong> <a href='${escapeHtml(mark.WWW)}' target='_blank' class="text-blue-600 hover:underline">${escapeHtml(mark.WWW)}</a></div>` : ''}
+                ${mark.linkMapa ? `<div><strong>Mapy:</strong> <a target="_blank" href="https://en.mapy.cz/zakladni?q=${mark.linkMapa}" class="text-blue-600 hover:underline">${mark.linkMapa}</a></div>` : ''}
+                ${mark.status ? `<div><strong>Status:</strong> <span class="font-semibold ${getStatusColor(mark.status)}">${mark.status}</span></div>` : ''}
+                ${mark.note ? `<div class="mt-2 pt-2 border-t border-gray-300"><strong>Poznámka:</strong> ${escapeHtml(mark.note)}</div>` : ''}
+            </div>
+        `;
         marker.bindPopup(content);
-
     });
 }
 
 
-function renderList(marks) {
-    let content = marks.filter(mark => !mark.datum).map((mark) => {
-        const { lat, lon } = convertGPS(mark.linkMapa);
-        return `<div onclick="map.setView([${lat}, ${lon}], 14)">
-            <div><b>${mark.nazev}</b> ${mark.adresaMesto}</div>
-            <pre>${mark.note}</pre>
-        </div>`
-    })
-
-    klubyList.innerHTML = klubyList.innerHTML + content.join("");
-
+function getStatusColor(status) {
+    const colors = {
+        'WAITING': 'text-blue-600',
+        'CONTACT': 'text-orange-600',
+        'CANCELED': 'text-gray-500'
+    };
+    return colors[status] || 'text-gray-600';
 }
 
-function getMarkerIcon(mark) {
-    color = "gray"
-    icon = mark.festival ? "repeat" : "coffee";
-    iconColor = "white"
+function updateStatusCounts() {
+    const waitingCount = window_marks.filter(m => m.status === 'WAITING').length;
+    const contactCount = window_marks.filter(m => m.status === 'CONTACT').length;
+    const totalFiltered = window_marks.filter(m => m.status === 'WAITING' || m.status === 'CONTACT').length;
 
-    try {
-        switch (mark.status) {
-            case "WAITING":
-                color = "blue"
-                break;
-            case "CONTACT":
-                color = "orange"
-                break;
-            case "CANCELED":
-                color = "lightgray"
-                iconColor = "gray"
-                break;
-            default:
-                break;
-        }
-    } catch (e) {
+    filterWaitingBtn.textContent = `Čekám (${waitingCount})`;
+    filterContactBtn.textContent = `Kontakt (${contactCount})`;
+    filterAllBtn.textContent = `Všechna (${totalFiltered})`;
+}
+
+function renderVenuesList(marks, filterStatus = null) {
+    let filteredMarks = marks;
+    if (filterStatus) {
+        filteredMarks = marks.filter(m => m.status === filterStatus);
+    } else {
+        filteredMarks = marks.filter(m => m.status === 'WAITING' || m.status === 'CONTACT');
     }
 
+    venuesList.setVenues(filteredMarks);
+}
 
-    if (mark.current) {
-        color = "green"
+function applyFilters() {
+    let filtered = window_marks;
+
+    // Year filter
+    const selectedYear = yearSelect.value;
+    if (selectedYear !== 'all') {
+        const year = parseInt(selectedYear);
+        filtered = filtered.filter(mark => mark.datum && mark.datum.getFullYear() === year);
+    } else {
+        // Show all if year is "all"
+        filtered = window_marks;
     }
 
-    const marker = createAwesomeMarker(color, icon, iconColor);
-    return marker;
+    renderMarks(filtered);
+    renderVenuesList(filtered, currentFilter === 'all' ? null : currentFilter);
 }
 
+// Event Listeners
+yearSelect.addEventListener('change', applyFilters);
 
-function rangeChanged(e) {
-    let year = parseInt(e.target.value)
-    document.querySelector("output").innerHTML = year
+clearFilterBtn.addEventListener('click', () => {
+    yearSelect.value = 'all';
+    currentFilter = 'all';
+    applyFilters();
+    filterAllBtn.classList.add('bg-gray-600', 'hover:bg-gray-700');
+    filterWaitingBtn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+    filterContactBtn.classList.remove('bg-orange-600', 'hover:bg-orange-700');
+});
 
-    filteredMarks = window.marks.filter(mark =>
-        mark.datum && mark.datum.getFullYear() == year
-    );
-    renderMarks(filteredMarks)
-}
+filterWaitingBtn.addEventListener('click', () => {
+    currentFilter = 'WAITING';
+    filterWaitingBtn.classList.add('ring-2', 'ring-offset-2', 'ring-blue-400');
+    filterContactBtn.classList.remove('ring-2', 'ring-offset-2', 'ring-orange-400');
+    filterAllBtn.classList.remove('ring-2', 'ring-offset-2', 'ring-gray-400');
+    renderVenuesList(window_marks, 'WAITING');
+});
 
-document.getElementById("range").addEventListener("input", rangeChanged)
+filterContactBtn.addEventListener('click', () => {
+    currentFilter = 'CONTACT';
+    filterContactBtn.classList.add('ring-2', 'ring-offset-2', 'ring-orange-400');
+    filterWaitingBtn.classList.remove('ring-2', 'ring-offset-2', 'ring-blue-400');
+    filterAllBtn.classList.remove('ring-2', 'ring-offset-2', 'ring-gray-400');
+    renderVenuesList(window_marks, 'CONTACT');
+});
+
+filterAllBtn.addEventListener('click', () => {
+    currentFilter = 'all';
+    filterAllBtn.classList.add('ring-2', 'ring-offset-2', 'ring-gray-400');
+    filterWaitingBtn.classList.remove('ring-2', 'ring-offset-2', 'ring-blue-400');
+    filterContactBtn.classList.remove('ring-2', 'ring-offset-2', 'ring-orange-400');
+    renderVenuesList(window_marks);
+});
+
+// Initialize
+initYearSelector();
 
 var map = L.map('mapa').setView([49.7461, 13.3771], 12);
-// Add this code after the map is initialized
-
-
-
-
-var marks = [];
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -160,7 +219,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 fetch("../be/map.php").then((response) => {
     return response.json()
 }).then((data) => {
-    marks = data.map((item) => {
+    window_marks = data.map((item) => {
         const gps = convertGPS(item.linkMapa);
 
         return {
@@ -180,8 +239,11 @@ fetch("../be/map.php").then((response) => {
             status: item.status,
         }
     })
-    window.marks = marks;
 
-    renderMarks(marks)
-    //renderList(marks)
-})
+    renderMarks(window_marks);
+    updateStatusCounts();
+    renderVenuesList(window_marks);
+}).catch(err => {
+    console.error('Chyba při načítání dat:', err);
+    venuesList.innerHTML = '<p class="text-red-600 text-sm">Chyba při načítání míst</p>';
+});

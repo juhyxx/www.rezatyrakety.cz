@@ -28,7 +28,7 @@ services:
       [
         "mysqld",
         "--character-set-server=utf8",
-        "--c  ollation-server=utf8_czech_ci",
+        "--collation-server=utf8_czech_ci",
       ]
 
   phpmyadmin:

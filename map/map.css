@@ -1,96 +1,59 @@
-body {
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-}
-
-#container {
-    display: flex;
-    flex-direction: row;
-
-    div {
-        margin-bottom: 0.5rem;
-    }
-}
-
+/* Leaflet map override */
 #mapa {
-    flex: 4;
-    width: 100vw;
-    min-height: 90vh;
+    width: 100%;
+    height: 100%;
 }
 
-#kluby {
-    flex: 1;
-    counter-reset: css-counter 0;
-    cursor: pointer;
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {}
 
+/* Venue card styling */
+.venue-card {
+    @apply bg-white dark:bg-gray-700 p-3 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-md transition cursor-pointer;
+}
 
-    max-height: 90vh;
-    overflow: scroll;
+.venue-card:hover {
+    @apply border-amber-400 dark:border-amber-500 shadow-md;
+}
 
-    &>div {
+.venue-card-title {
+    @apply font-semibold text-gray-900 dark:text-white text-sm;
+}
 
-        counter-increment: css-counter 1;
-        background: rgb(232, 232, 232);
-        background: linear-gradient(180deg, rgba(249, 249, 249, 1) 0%, rgba(0, 0, 0, 0.07326680672268904) 100%);
-        padding: 0.25rem 0.5rem;
+.venue-card-meta {
+    @apply text-xs text-gray-600 dark:text-gray-300 mt-1;
+}
 
+.status-badge {
+    @apply inline-block text-xs font-bold px-2 py-1 rounded mt-2;
+}
 
+.status-badge-waiting {
+    @apply bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100;
+}
 
-        div {
-            margin: 0;
+.status-badge-contact {
+    @apply bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-100;
+}
 
-            &:before {
-                content: counter(css-counter) ". ";
-            }
-        }
+.status-badge-canceled {
+    @apply bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300;
+}
 
-        &:hover {
-            background-color: lightblue;
-        }
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    body {
+        overflow: hidden;
+    }
+}
 
-        pre {
-            margin: 0;
-            padding: 0;
-        }
-
+@media (max-width: 768px) {
+    .flex-1 {
+        min-width: 0;
     }
 
-
-}
-
-datalist {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-    width: 60vw;
-    writing-mode: vertical-lr;
-}
-
-option {
-    padding: 0;
-}
-
-input[type="range"] {
-    margin: 0;
-    width: 60vw;
-}
-
-.legend {
-    border-radius: 1rem;
-    background-color: white;
-    padding: 1rem 1rem;
-    color: #555;
-    line-height: 18px;
-}
-
-.legend i {
-    float: left;
-    opacity: 0.7;
-    margin-right: 8px;
-    width: 18px;
-    height: 18px;
+    .w-96 {
+        width: 100%;
+        max-height: 50vh;
+    }
 }

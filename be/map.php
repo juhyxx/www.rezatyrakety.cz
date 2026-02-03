@@ -1,16 +1,18 @@
 <?php
-    header("Access-Control-Allow-Origin: *");
-    header('Content-Type: application/json');
-    require_once('../settings.php');
+header("Access-Control-Allow-Origin: *");
+header('Content-Type: application/json');
+require_once('../settings.php');
 
-    $output = array();
+$output = array();
 
-    $mysqli =  new mysqli(Settings::MYSQL_HOST, Settings::MYSQL_USER, Settings::MYSQL_PASSWORD, Settings::MY_DATABASE);
-	if ($mysqli->connect_error) {
-		die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
-	}
-	$mysqli->query("SET CHARACTER SET utf8");
-	$result = $mysqli->query("SELECT 
+// Allow overriding DB host with environment variable (useful in Docker Compose)
+$dbHost = getenv('MYSQL_HOST') ?: Settings::MYSQL_HOST;
+$mysqli =  new mysqli($dbHost, Settings::MYSQL_USER, Settings::MYSQL_PASSWORD, Settings::MY_DATABASE);
+if ($mysqli->connect_error) {
+    die('Error : (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error . ' - host=' . $dbHost);
+}
+$mysqli->query("SET CHARACTER SET utf8");
+$result = $mysqli->query("SELECT 
 		COUNT(koncerty.datum) as count, 
 		MAX(jmeno) as jmeno,
 		MAX(festival) as festival,
@@ -28,9 +30,9 @@
 		WHERE linkMapa is not null
 		GROUP BY kluby.id;
 	");
-	while($row = $result->fetch_array(MYSQLI_ASSOC)) {
-		array_push($output, $row);
-	}
+while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+    array_push($output, $row);
+}
 
-    echo json_encode($output);
-	$mysqli->close();
+echo json_encode($output);
+$mysqli->close();

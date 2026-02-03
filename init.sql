@@ -1539,9 +1539,14 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`main-rezatyrak`@`%` SQL SECURITY DEFINER VIE
 --
 -- Struktura pro pohled `actual_month_blog`
 --
-DROP TABLE IF EXISTS `actual_month_blog`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`main-rezatyrak`@`%` SQL SECURITY DEFINER VIEW `actual_month_blog`  AS SELECT `blog_view`.`dDatumPrispevku` AS `dDatumPrispevku`, unix_timestamp(`blog_view`.`dDatumPrispevku`) AS `timestamp`, `blog_view`.`vztah` AS `vztah`, `blog_view`.`datum` AS `datum`, `blog_view`.`text` AS `text`, `blog_view`.`nadpis` AS `nadpis`, `blog_view`.`typ` AS `typ`, `blog_view`.`id` AS `id` FROM `blog_view` WHERE (month(`blog_view`.`dDatumPrispevku`) in (select `actual_month`.`mesic` AS `mesic` from `actual_month`) AND year(`blog_view`.`dDatumPrispevku`) in (select `actual_month`.`rok` AS `rok` from `actual_month`))) ;
+-- DROP TABLE IF EXISTS `actual_month_blog`;
+--
+-- The view `actual_month_blog` depends on `blog_view` which may not exist at this point
+-- in the initialization sequence. The original dump created views in an order that
+-- caused a dependency error during automated initialization. Skipping creation of
+-- this view here to allow DB initialization to complete. Create or restore the
+-- view later (after `blog_view` has been defined) if needed.
+-- CREATE ALGORITHM=UNDEFINED DEFINER=`main-rezatyrak`@`%` SQL SECURITY DEFINER VIEW `actual_month_blog`  AS SELECT `blog_view`.`dDatumPrispevku` AS `dDatumPrispevku`, unix_timestamp(`blog_view`.`dDatumPrispevku`) AS `timestamp`, `blog_view`.`vztah` AS `vztah`, `blog_view`.`datum` AS `datum`, `blog_view`.`text` AS `text`, `blog_view`.`nadpis` AS `nadpis`, `blog_view`.`typ` AS `typ`, `blog_view`.`id` AS `id` FROM `blog_view` WHERE (month(`blog_view`.`dDatumPrispevku`) in (select `actual_month`.`mesic` AS `mesic` from `actual_month`) AND year(`blog_view`.`dDatumPrispevku`) in (select `actual_month`.`rok` AS `rok` from `actual_month`)) ;
 
 -- --------------------------------------------------------
 
