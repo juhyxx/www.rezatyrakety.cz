@@ -206,3 +206,40 @@
         font-size: 0.9rem;
     }
 }
+
+/* Print styles for lyrics viewer */
+@media print {
+    .lyrics-content {
+        color: #000000;
+        background: transparent;
+        margin: 0;
+        font-size: 1rem;
+    }
+
+    .lyrics-content p {
+        border-bottom-color: #d4a574;
+        color: #000000;
+    }
+
+    .lyrics-content li::marker {
+        color: #9b1915;
+    }
+
+    .lyrics-content blockquote {
+        border-left-color: rgba(155, 25, 21, 0.45);
+        background: rgba(155, 25, 21, 0.08);
+        color: #333333;
+    }
+
+    .lyrics-content strong {
+        color: #000000;
+    }
+
+    .lyrics-content em {
+        color: #333333;
+    }
+
+    .lyrics-content ol>li::before {
+        color: #9b1915;
+    }
+}

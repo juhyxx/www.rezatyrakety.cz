@@ -5,6 +5,7 @@ const TEMPLATE = `
             <i class="fa fa-times"></i>
         </button>
         <div class="flex flex-wrap justify-start items-center gap-4">
+            <img src="../logo/logo.svg" alt="Rezaty rakety logo" class="h-8 w-auto" />
             <h1 class="text-2xl font-semibold uppercase tracking-[0.2em] text-amber-800 dark:text-amber-400">Playlist</h1>
             <label class="inline-flex items-center gap-2 text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">
                 <input type="checkbox" data-include-nonready class="h-4 w-4 rounded border-amber-700 dark:border-amber-500 text-amber-700 dark:text-amber-500 focus:ring-amber-600 dark:focus:ring-amber-500" />
