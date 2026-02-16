@@ -15,7 +15,7 @@
    nemá prostor na nesmysly.  
    Kdo tě majznul po lebeni  
    Ptá se chlapík mazaně  
-   Že se tu teď na mne křeníš  
+   Že se tu teď na mne zubíš  
    že se mi vejdeš do dlaně.
 
 3. Stojí chlapík v ruce lebku  

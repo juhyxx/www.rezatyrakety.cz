@@ -152,7 +152,7 @@ class SongCard extends HTMLElement {
         if (lyricsState === 'progress' || lyricsState === 'ready') {
             const badge = document.createElement('span');
             badge.className =
-                'ml-2 px-2 py-0.5 rounded text-[0.55rem] tracking-[0.2em] bg-white border font-semibold ' +
+                'ml-2 px-2 py-0.5 rounded text-[0.55rem] tracking-[0.2em]  font-semibold ' +
                 (lyricsState === 'progress'
                     ? 'border-yellow-400 text-yellow-700'
                     : 'border-green-500 text-green-700');

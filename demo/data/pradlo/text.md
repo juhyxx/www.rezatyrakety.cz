@@ -1,4 +1,4 @@
-# mám teda dát to prádlo prát
+# Mám teda dát to prádlo prát
 
 1. ve skříni mám kostlivce a taky prachy špinavý  
    mám pořád černý svědomí a už mě to dál nebaví  
@@ -15,7 +15,7 @@
    nežil jsem jak světice, a musel jsem i občas lhát  
    _a tak se pořád musím ptát - mám teda dát to prádlo prát_
 
-4. moje sladký tajemství, co fakt nerad bych probíral  
+4. moje sladký tajemství, co fakt nerad bych propíral  
    mám zamčený ve skříni a zatím jsem ho nevypral  
    o nevypraným textilu nechce se mi přestat zdát  
    _a tak se pořád musím ptát - mám teda dát to prádlo prát_
