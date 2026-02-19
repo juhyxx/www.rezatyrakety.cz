@@ -34,6 +34,19 @@
 
         <article id="koncerty-container">
             <h2 id=koncerty>Koncerty</h2>
+            <template id="tmpl-upcoming">
+                <li>
+                    <span class="date"></span>
+                    <div><b class="jmeno"></b> <span class="adresaUlice"></span> <b class="adresaMesto"></b></div>
+                    <div class="poznamka"></div>
+                </li>
+            </template>
+
+            <template id="tmpl-past">
+                <li>
+                    <div><span class="date-old"></span> <b class="adresaMesto"></b> <span class="jmeno"></span></div>
+                </li>
+            </template>
             <section id=koncert-list>Momento ...</section>
             <h3 id=koncerty>Odehrané (<span id=count></span>)</h3>
             <section id=koncert-old-list>Momento ...
@@ -88,7 +101,7 @@
             <ul>
                 <li><b>Vanad</b> basová kytara</li>
                 <li><b>Miroslav Juhy Juhos</b> kytara, zpěv</li>
-                <li><b>???</b> bicí</li>
+                <li><b>Jan Holota</b> bicí</li>
             </ul>
             <div class="decoration"></div>
         </article>
