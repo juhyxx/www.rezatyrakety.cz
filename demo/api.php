@@ -166,7 +166,7 @@ function buildFileEntry($relativeDir, $entry, $fullPath)
 {
     $extension = strtolower(pathinfo($entry, PATHINFO_EXTENSION));
     $filename = pathinfo($entry, PATHINFO_FILENAME);
-    
+
     // Read file modification time directly from filesystem
     $modifiedTimestamp = filemtime($fullPath) ?: time();
 
