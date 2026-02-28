@@ -35,16 +35,23 @@
                     class="flex-1 min-w-[280px] rounded-xl bg-white/95 dark:bg-slate-900 px-4 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-brand dark:text-slate-100 shadow-inner shadow-black/10">
                     Načítání...
                 </div>
-                <button id="playlist-button" type="button"
-                    class="inline-flex items-center gap-3 rounded-full bg-white dark:bg-slate-950 px-5 py-3 text-[0.65rem] font-semibold uppercase tracking-[0.4em] text-brand dark:text-slate-100 shadow-lg shadow-black/20 transition hover:bg-amber-50 hover:shadow-xl dark:hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-white/50 disabled:text-brand/40 disabled:shadow-none">
-                    <i class="fa fa-list-ol"></i>
-                    Playlist
-                </button>
-                <button id="lyrics-progress-button" type="button"
-                    class="inline-flex items-center gap-3 rounded-full bg-white dark:bg-slate-950 px-5 py-3 text-[0.65rem] font-semibold uppercase tracking-[0.4em] text-brand dark:text-slate-100 shadow-lg shadow-black/20 transition hover:bg-amber-50 hover:shadow-xl dark:hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-white/50 disabled:text-brand/40 disabled:shadow-none">
-                    <i class="fa fa-list-ol"></i>
-                    Texty
-                </button>
+                <div class="flex flex-wrap gap-2">
+                    <button id="recent-button" type="button"
+                        class="inline-flex items-center gap-3 rounded-full bg-white dark:bg-slate-950 px-5 py-3 text-[0.65rem] font-semibold uppercase tracking-[0.4em] text-brand dark:text-slate-100 shadow-lg shadow-black/20 transition hover:bg-amber-50 hover:shadow-xl dark:hover:bg-slate-800">
+                        <i class="fa fa-clock-o"></i>
+                        Co je nového
+                    </button>
+                    <button id="playlist-button" type="button"
+                        class="inline-flex items-center gap-3 rounded-full bg-white dark:bg-slate-950 px-5 py-3 text-[0.65rem] font-semibold uppercase tracking-[0.4em] text-brand dark:text-slate-100 shadow-lg shadow-black/20 transition hover:bg-amber-50 hover:shadow-xl dark:hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-white/50 disabled:text-brand/40 disabled:shadow-none">
+                        <i class="fa fa-list-ol"></i>
+                        Playlist
+                    </button>
+                    <button id="lyrics-progress-button" type="button"
+                        class="inline-flex items-center gap-3 rounded-full bg-white dark:bg-slate-950 px-5 py-3 text-[0.65rem] font-semibold uppercase tracking-[0.4em] text-brand dark:text-slate-100 shadow-lg shadow-black/20 transition hover:bg-amber-50 hover:shadow-xl dark:hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-white/50 disabled:text-brand/40 disabled:shadow-none">
+                        <i class="fa fa-list-ol"></i>
+                        Texty
+                    </button>
+                </div>
             </div>
         </header>
         <main class="mt-6 flex-1">
@@ -56,6 +63,7 @@
     <lyrics-viewer id="lyrics-viewer" hidden></lyrics-viewer>
     <playlist-viewer id="playlist-viewer" hidden></playlist-viewer>
     <lyrics-progress-viewer id="lyrics-progress-viewer" hidden></lyrics-progress-viewer>
+    <recent-files-viewer id="recent-files-viewer" hidden></recent-files-viewer>
 
     <template id="song-card-template">
         <article class="song-card relative flex h-full flex-col rounded-xl border border-slate-500 dark:border-slate-700 bg-white/95 dark:bg-slate-800 shadow-inner shadow-black/20 transition"

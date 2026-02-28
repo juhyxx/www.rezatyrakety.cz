@@ -79,6 +79,7 @@ function buildSongPayload($songDir, $folderName)
     $lyrics = null;
     $lyricsPath = null;
     $duration = null;
+    $mostRecentTimestamp = 0;
 
     $entries = scandir($songDir);
     if ($entries === false) {
@@ -96,6 +97,10 @@ function buildSongPayload($songDir, $folderName)
         }
 
         $file = buildFileEntry($relativeDir, $entry, $fullPath);
+        if ($file['modifiedAtTimestamp'] > $mostRecentTimestamp) {
+            $mostRecentTimestamp = $file['modifiedAtTimestamp'];
+        }
+
         if ($file['type'] === 'lyrics' && $lyrics === null) {
             $lyrics = [
                 'format' => $file['extension'],
@@ -132,6 +137,8 @@ function buildSongPayload($songDir, $folderName)
         'lyrics' => $lyrics,
         'lyricsState' => $lyricsState,
         'files' => $files,
+        'modifiedAt' => gmdate(DATE_ATOM, $mostRecentTimestamp ?: time()),
+        'modifiedAtTimestamp' => $mostRecentTimestamp ?: time(),
         'meta' => [
             'path' => 'data/' . $relativeDir,
             'manifest' => $manifest,
@@ -165,6 +172,8 @@ function buildFileEntry($relativeDir, $entry, $fullPath)
         'type' => determineFileType($extension),
         'url' => sprintf('data/%s/%s', rawurlencode($relativeDir), rawurlencode($entry)),
         'sizeBytes' => filesize($fullPath) ?: null,
+        'modifiedAt' => gmdate(DATE_ATOM, filemtime($fullPath) ?: time()),
+        'modifiedAtTimestamp' => filemtime($fullPath) ?: time(),
     ];
 }
 
