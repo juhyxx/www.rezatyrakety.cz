@@ -4,6 +4,7 @@ header('Content-Type: application/json; charset=utf-8');
 header('Access-Control-Allow-Origin: *');
 
 $baseDir = __DIR__ . '/data';
+
 if (!is_dir($baseDir)) {
     http_response_code(500);
     echo json_encode([
@@ -165,6 +166,9 @@ function buildFileEntry($relativeDir, $entry, $fullPath)
 {
     $extension = strtolower(pathinfo($entry, PATHINFO_EXTENSION));
     $filename = pathinfo($entry, PATHINFO_FILENAME);
+    
+    // Read file modification time directly from filesystem
+    $modifiedTimestamp = filemtime($fullPath) ?: time();
 
     return [
         'filename' => $filename,
@@ -172,8 +176,8 @@ function buildFileEntry($relativeDir, $entry, $fullPath)
         'type' => determineFileType($extension),
         'url' => sprintf('data/%s/%s', rawurlencode($relativeDir), rawurlencode($entry)),
         'sizeBytes' => filesize($fullPath) ?: null,
-        'modifiedAt' => gmdate(DATE_ATOM, filemtime($fullPath) ?: time()),
-        'modifiedAtTimestamp' => filemtime($fullPath) ?: time(),
+        'modifiedAt' => gmdate(DATE_ATOM, $modifiedTimestamp),
+        'modifiedAtTimestamp' => $modifiedTimestamp,
     ];
 }
 
