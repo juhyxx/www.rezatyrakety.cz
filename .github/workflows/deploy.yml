@@ -44,7 +44,8 @@ jobs:
         run: |
           lftp -c "
             set ssl:verify-certificate no;
+            set ftp:use-mdtm-overloaded true
             open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }};
-            mirror --reverse --only-newer --use-all-mods --parallel=2 --delete --exclude-glob .git/ --exclude-glob --verbose ./ ./;
+            mirror --reverse --only-newer --parallel=2 --delete --exclude-glob .git/ --exclude-glob --verbose ./ ./;
             bye;
           "
