@@ -39,6 +39,12 @@ class RecentFilesViewer extends HTMLElement {
         super();
         this._initialized = false;
         this.handleKeyDown = this.handleKeyDown.bind(this);
+        this.currentAudio = null;
+        this.currentPlayButton = null;
+        this.handleExternalPlay = this.handleExternalPlay.bind(this);
+        this.handleAudioPlay = this.handleAudioPlay.bind(this);
+        this.handleAudioPause = this.handleAudioPause.bind(this);
+        this.handleAudioEnded = this.handleAudioEnded.bind(this);
     }
 
     connectedCallback() {
@@ -48,10 +54,13 @@ class RecentFilesViewer extends HTMLElement {
         this._initialized = true;
         this.renderBase();
         document.addEventListener('keydown', this.handleKeyDown);
+        window.addEventListener('song-card-play', this.handleExternalPlay);
     }
 
     disconnectedCallback() {
         document.removeEventListener('keydown', this.handleKeyDown);
+        window.removeEventListener('song-card-play', this.handleExternalPlay);
+        this.stopAudio();
     }
 
     renderBase() {
@@ -85,6 +94,7 @@ class RecentFilesViewer extends HTMLElement {
         this.classList.add('hidden');
         this.setAttribute('aria-hidden', 'true');
         this.listEl.innerHTML = '';
+        this.stopAudio();
         if ('recentScrollLock' in document.body.dataset) {
             document.body.style.overflow = document.body.dataset.recentScrollLock;
             delete document.body.dataset.recentScrollLock;
@@ -211,7 +221,7 @@ class RecentFilesViewer extends HTMLElement {
             playButton.classList.remove('hidden');
             playButton.classList.add('flex');
             playButton.addEventListener('click', () => {
-                this.dispatchPlayAudio(song, file);
+                this.dispatchPlayAudio(song, file, playButton);
             });
         }
 
@@ -253,17 +263,74 @@ class RecentFilesViewer extends HTMLElement {
         document.dispatchEvent(event);
     }
 
-    dispatchPlayAudio(song, file) {
-        // Create a temporary song-like object for audio playback
-        const audioSong = {
-            ...song,
-            audioFile: file,
-        };
+    dispatchPlayAudio(song, file, playButton) {
+        // If this button is already playing, toggle pause
+        if (this.currentPlayButton === playButton && this.currentAudio && !this.currentAudio.paused) {
+            this.pauseAudio();
+            return;
+        }
 
-        const event = new CustomEvent('audio-play-requested', {
-            detail: { song: audioSong, file }
+        // Stop current audio if playing
+        if (this.currentAudio && !this.currentAudio.paused) {
+            this.stopAudio();
+        }
+
+        // Create new audio element
+        if (!this.currentAudio || this.currentAudio.src !== file.url) {
+            this.currentAudio = new Audio(file.url);
+            this.currentAudio.preload = 'none';
+            this.currentAudio.addEventListener('play', this.handleAudioPlay);
+            this.currentAudio.addEventListener('pause', this.handleAudioPause);
+            this.currentAudio.addEventListener('ended', this.handleAudioEnded);
+        }
+
+        this.currentPlayButton = playButton;
+        window.dispatchEvent(new CustomEvent('song-card-play', { detail: { id: song.id } }));
+        this.currentAudio.play().catch(err => {
+            console.error('Failed to play audio:', err);
         });
-        document.dispatchEvent(event);
+    }
+
+    pauseAudio() {
+        if (this.currentAudio && !this.currentAudio.paused) {
+            this.currentAudio.pause();
+        }
+    }
+
+    stopAudio() {
+        if (this.currentAudio && !this.currentAudio.paused) {
+            this.currentAudio.pause();
+            this.currentAudio.currentTime = 0;
+        }
+    }
+
+    handleExternalPlay() {
+        this.stopAudio();
+    }
+
+    handleAudioPlay() {
+        if (this.currentPlayButton) {
+            const icon = this.currentPlayButton.querySelector('.fa');
+            if (icon) {
+                icon.className = 'fa fa-pause text-xs';
+            }
+        }
+    }
+
+    handleAudioPause() {
+        if (this.currentPlayButton) {
+            const icon = this.currentPlayButton.querySelector('.fa');
+            if (icon) {
+                icon.className = 'fa fa-play text-xs';
+            }
+        }
+    }
+
+    handleAudioEnded() {
+        if (this.currentAudio) {
+            this.currentAudio.currentTime = 0;
+        }
+        this.handleAudioPause();
     }
 
     handleKeyDown(event) {
