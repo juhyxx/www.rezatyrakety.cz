@@ -1,4 +1,5 @@
 import { marked } from 'https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js';
+import { wakeLockManager } from './wake-lock.js';
 
 const LEGACY_STYLE_ID = 'lyrics-viewer-legacy-styles';
 
@@ -134,6 +135,9 @@ class LyricsViewer extends HTMLElement {
         document.body.style.overflow = 'hidden';
         this.loadToken = (this.loadToken || 0) + 1;
         this.loadLyrics(this.loadToken);
+
+        // Request screen wake lock to keep display on
+        wakeLockManager.requestWakeLock('lyrics-viewer');
     }
 
     close() {
@@ -148,6 +152,9 @@ class LyricsViewer extends HTMLElement {
         } else {
             document.body.style.overflow = '';
         }
+
+        // Release screen wake lock
+        wakeLockManager.releaseWakeLock('lyrics-viewer');
     }
 
     async loadLyrics(token) {

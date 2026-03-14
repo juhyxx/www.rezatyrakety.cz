@@ -1,4 +1,5 @@
 import { marked } from 'https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js';
+import { wakeLockManager } from './wake-lock.js';
 
 const TEMPLATE = `
 <div data-overlay class="flex min-h-screen w-full items-stretch justify-center bg-black/80 dark:bg-black px-0 py-0 md:px-6 md:py-10 overflow-y-auto">
@@ -71,6 +72,9 @@ class LyricsProgressViewer extends HTMLElement {
         this.setAttribute('aria-hidden', 'false');
         document.body.dataset.lyricsProgressScrollLock = document.body.style.overflow || '';
         document.body.style.overflow = 'hidden';
+
+        // Request screen wake lock to keep display on
+        wakeLockManager.requestWakeLock('lyrics-progress-viewer');
     }
 
     close() {
@@ -83,6 +87,9 @@ class LyricsProgressViewer extends HTMLElement {
         } else {
             document.body.style.overflow = '';
         }
+
+        // Release screen wake lock
+        wakeLockManager.releaseWakeLock('lyrics-progress-viewer');
     }
 
     async renderListAsync(songs) {
