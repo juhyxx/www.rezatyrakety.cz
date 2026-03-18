@@ -12,7 +12,7 @@
 
 3. Je složitá jak trisekce úhlu, jak kvadratura kruhu  
    je prostá úloha co nemá řešení  
-   je mojí poslední - bublinou ve vakuu  
+   je mojí poslední - bublinou vzduchu ve vakuu  
    _jé, je moje třinácté znamení_
 
 4. Je složitá jak mechanika nebes, jako původ druhů  
