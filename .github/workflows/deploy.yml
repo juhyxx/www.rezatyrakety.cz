@@ -13,6 +13,12 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      - name: Fix file timestamps
+        run: |
+          git ls-files -z | while IFS= read -r -d '' file; do
+            touch -d "$(git log -1 --format=%cd --date=iso-strict "$file")" "$file"
+          done
+
       - name: Install lftp
         run: sudo apt-get install -y lftp
 
@@ -48,6 +54,6 @@ jobs:
             set ftp:use-mdtm true;
             set ftp:use-mdtm-overloaded true;
             open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }};
-            mirror --reverse --only-newer --parallel=2 --delete --exclude-glob .git/ --verbose ./ ./;
+            mirror --reverse --only-newer --parallel=2 --delete --exclude-glob .git/ --verbose  --preserve ./ ./;
             bye;
           "
