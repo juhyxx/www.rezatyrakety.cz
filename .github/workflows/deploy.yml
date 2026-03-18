@@ -54,6 +54,6 @@ jobs:
             set ftp:use-mdtm true;
             set ftp:use-mdtm-overloaded true;
             open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }};
-            mirror --reverse --only-newer --parallel=2 --delete --exclude-glob .git/ --verbose  --preserve ./ ./;
+            mirror --reverse --only-newer --parallel=2 --delete --exclude-glob .git/ --verbose ./ ./;
             bye;
           "
