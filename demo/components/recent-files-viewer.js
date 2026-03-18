@@ -106,21 +106,20 @@ class RecentFilesViewer extends HTMLElement {
     renderRecentFiles() {
         this.listEl.innerHTML = '';
 
-        // Build flat list of all files with song info, prefer seenAtTimestamp when present
+        // Build flat list of all files with song info
         const allFiles = [];
         (this.songs || []).forEach(song => {
             (song.files || []).forEach(file => {
-                const timestamp = file.seenAtTimestamp || file.modifiedAtTimestamp || 0;
                 allFiles.push({
                     file,
                     song,
-                    timestamp,
+                    modifiedAtTimestamp: file.modifiedAtTimestamp || 0,
                 });
             });
         });
 
-        // Sort by detection/upload time (newest first) and take first 20
-        allFiles.sort((a, b) => b.timestamp - a.timestamp);
+        // Sort by modification time (newest first) and take last 20
+        allFiles.sort((a, b) => b.modifiedAtTimestamp - a.modifiedAtTimestamp);
         const recentFiles = allFiles.slice(0, 20);
 
         if (recentFiles.length === 0) {
@@ -158,8 +157,7 @@ class RecentFilesViewer extends HTMLElement {
         today.setHours(0, 0, 0, 0);
 
         items.forEach(item => {
-            const dateStr = item.file.seenAt || item.file.modifiedAt;
-            const date = new Date(dateStr);
+            const date = new Date(item.file.modifiedAt);
             date.setHours(0, 0, 0, 0);
             const key = date.toISOString().split('T')[0];
 
@@ -205,8 +203,7 @@ class RecentFilesViewer extends HTMLElement {
         li.querySelector('[data-song-title]').textContent = song.title || song.id;
         li.querySelector('[data-file-name]').textContent = `${file.filename}.${file.extension}`;
 
-        const dateStr = file.seenAt || file.modifiedAt;
-        const date = new Date(dateStr);
+        const date = new Date(file.modifiedAt);
         const friendlyDate = date.toLocaleString('cs-CZ', {
             year: 'numeric',
             month: 'numeric',

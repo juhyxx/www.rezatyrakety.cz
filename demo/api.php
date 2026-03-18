@@ -5,11 +5,6 @@ header('Access-Control-Allow-Origin: *');
 
 $baseDir = __DIR__ . '/data';
 
-// Toggle file-state based upload detection (useful when FTP preserves mtime)
-$useFileState = true;
-$stateFile = __DIR__ . '/../.file-state.json';
-$fileState = $useFileState ? loadFileState($stateFile) : [];
-
 if (!is_dir($baseDir)) {
     http_response_code(500);
     echo json_encode([
@@ -21,10 +16,6 @@ if (!is_dir($baseDir)) {
 
 try {
     $songs = buildSongCollection($baseDir);
-
-    if (!empty($useFileState)) {
-        saveFileState($stateFile, $fileState);
-    }
 
     $response = [
         'status' => 'ok',
@@ -107,10 +98,6 @@ function buildSongPayload($songDir, $folderName)
         }
 
         $file = buildFileEntry($relativeDir, $entry, $fullPath);
-        // Update seen/upload state if enabled (adds seenAt/seenAtTimestamp)
-        if (function_exists('updateSeenIfChanged')) {
-            updateSeenIfChanged($file, $fullPath);
-        }
         if ($file['modifiedAtTimestamp'] > $mostRecentTimestamp) {
             $mostRecentTimestamp = $file['modifiedAtTimestamp'];
         }
@@ -188,7 +175,6 @@ function buildFileEntry($relativeDir, $entry, $fullPath)
         'extension' => $extension,
         'type' => determineFileType($extension),
         'url' => sprintf('data/%s/%s', rawurlencode($relativeDir), rawurlencode($entry)),
-        'relativePath' => sprintf('data/%s/%s', $relativeDir, $entry),
         'sizeBytes' => filesize($fullPath) ?: null,
         'modifiedAt' => gmdate(DATE_ATOM, $modifiedTimestamp),
         'modifiedAtTimestamp' => $modifiedTimestamp,
@@ -411,103 +397,4 @@ function buildMp3Duration($filePath)
     $durationSeconds = ($frames * 1152) / 44100;
 
     return gmdate('i:s', (int) $durationSeconds);
-}
-
-// -------------------------
-// File-state helpers
-// -------------------------
-
-function loadFileState($path)
-{
-    if (!is_file($path)) {
-        return [];
-    }
-
-    $contents = @file_get_contents($path);
-    if ($contents === false) {
-        return [];
-    }
-
-    $decoded = json_decode($contents, true);
-    return is_array($decoded) ? $decoded : [];
-}
-
-function saveFileState($path, array $state)
-{
-    $tmp = $path . '.tmp';
-    $encoded = json_encode($state, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-    if ($encoded === false) {
-        return;
-    }
-
-    // Write atomically
-    @file_put_contents($tmp, $encoded, LOCK_EX);
-    @rename($tmp, $path);
-}
-
-function computePartialHash($path)
-{
-    if (!is_readable($path)) {
-        return null;
-    }
-
-    $handle = @fopen($path, 'rb');
-    if ($handle === false) {
-        return null;
-    }
-
-    $data = fread($handle, 65536);
-    fclose($handle);
-    if ($data === false) {
-        return null;
-    }
-
-    $size = filesize($path) ?: 0;
-    return sha1($data . '|' . $size);
-}
-
-function updateSeenIfChanged(array &$fileEntry, $fullPath)
-{
-    global $useFileState, $fileState;
-    if (empty($useFileState)) {
-        return;
-    }
-
-    $key = isset($fileEntry['relativePath']) ? $fileEntry['relativePath'] : ($fileEntry['url'] ?? null);
-    if ($key === null) {
-        return;
-    }
-
-    $size = isset($fileEntry['sizeBytes']) && $fileEntry['sizeBytes'] !== null ? $fileEntry['sizeBytes'] : (filesize($fullPath) ?: 0);
-    $partial = computePartialHash($fullPath);
-
-    $stored = isset($fileState[$key]) ? $fileState[$key] : null;
-    $now = time();
-    $changed = false;
-
-    if ($stored === null) {
-        $changed = true;
-    } else {
-        if (!array_key_exists('size', $stored) || (int) $stored['size'] !== (int) $size) {
-            $changed = true;
-        }
-        if (!array_key_exists('partial', $stored) || (string) $stored['partial'] !== (string) $partial) {
-            $changed = true;
-        }
-    }
-
-    if ($changed) {
-        $fileState[$key] = [
-            'size' => $size,
-            'partial' => $partial,
-            'seenAt' => $now,
-        ];
-
-        $fileEntry['seenAtTimestamp'] = $now;
-        $fileEntry['seenAt'] = gmdate(DATE_ATOM, $now);
-    } else {
-        $seen = isset($stored['seenAt']) ? $stored['seenAt'] : $now;
-        $fileEntry['seenAtTimestamp'] = $seen;
-        $fileEntry['seenAt'] = gmdate(DATE_ATOM, $seen);
-    }
 }
