@@ -198,10 +198,10 @@ main {
             /* cursor: pointer; */
             margin-top: 0rem;
 
-            background-image: url(./images/rakety.png);
+            /* background-image: url(./images/promo.jpg);
             background-position: center center;
             background-size: contain;
-            background-repeat: no-repeat;
+            background-repeat: no-repeat; */
 
 
             user-select: none;
@@ -220,7 +220,7 @@ main {
                 position: absolute;
                 top: auto;
                 bottom: -0rem;
-                left: calc(50% - 71px);
+                right: 10px;
                 box-shadow: none;
                 border-radius: 0 !important;
                 background-image: url(../logo/logo.svg);
