@@ -189,10 +189,7 @@ main {
             -webkit-user-select: none;
             position: relative;
 
-            box-shadow: none;
-            background-color: transparent;
-            backdrop-filter: none;
-            border: none;
+
 
             /* cursor: pointer; */
             margin-top: 0rem;
