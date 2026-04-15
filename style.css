@@ -223,7 +223,7 @@ main {
                 bottom: -0rem;
                 right: 50%;
                 box-shadow: none;
-                filter: drop-shadow(0 5px 10px #00000090);
+                filter: drop-shadow(0 5px 20px #000000e5);
                 border-radius: 0 !important;
                 background-image: url(../logo/logo.svg);
                 width: 142px;
@@ -480,12 +480,13 @@ main {
     height: 100%;
     display: block;
     opacity: 0.9;
-    filter: drop-shadow(0 5px 10px #00000090);
+
 }
 
 .promo-piece {
     transition: transform 900ms cubic-bezier(.2, .8, .2, 1), opacity 600ms;
-    will-change: transform, opacity
+    will-change: transform, opacity;
+    filter: drop-shadow(0 5px 10px #000000cb);
 }
 
 .promo-p0 {
