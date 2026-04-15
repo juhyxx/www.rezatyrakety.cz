@@ -189,6 +189,11 @@ main {
             -webkit-user-select: none;
             position: relative;
 
+            box-shadow: none;
+            background-color: transparent;
+            backdrop-filter: none;
+            border: none;
+
             /* cursor: pointer; */
             margin-top: 0rem;
 
@@ -216,13 +221,15 @@ main {
                 position: absolute;
                 top: auto;
                 bottom: -0rem;
-                right: 10px;
+                right: 50%;
                 box-shadow: none;
+                filter: drop-shadow(0 5px 10px #00000090);
                 border-radius: 0 !important;
                 background-image: url(../logo/logo.svg);
                 width: 142px;
                 height: 200px;
                 content: "";
+
 
                 @media only screen and (max-width: 600px) {
                     width: 114px;
@@ -303,6 +310,8 @@ main {
 
     min-width: 18rem;
     max-width: calc(100% - 4rem);
+
+
 }
 
 #next-show-countdown.hidden {
@@ -363,6 +372,7 @@ main {
     perspective: 300px;
     --bg: rgba(0, 0, 0, 0.8);
     overflow: hidden;
+
 }
 
 .flip-card .top,
@@ -468,7 +478,9 @@ main {
 .promo-split-stage svg {
     width: 100%;
     height: 100%;
-    display: block
+    display: block;
+    opacity: 0.9;
+    filter: drop-shadow(0 5px 10px #00000090);
 }
 
 .promo-piece {
