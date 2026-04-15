@@ -117,13 +117,7 @@ main {
 
         color: rgba(255, 255, 255, 0.7);
         font-size: 1rem;
-        /* border-image-slice: 153 95 153 95 fill;
-        border-image-width: 150px 95px 150px 95px;
-        border-image-outset: 20px 20px 20px 20px;
-        border-image-repeat: stretch round;
-        border-image-source: url("./images/bg-red.svg");
-     border-style: solid;
-        border-image-width: 50px; */
+
 
         &:before {
             display: block;
@@ -186,7 +180,7 @@ main {
         }
 
         &:first-of-type {
-            background-color: black;
+
             border-image-source: none;
         }
 
