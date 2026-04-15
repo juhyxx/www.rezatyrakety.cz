@@ -3,7 +3,9 @@
 <svg width="100%" height="100%" viewBox="0 0 550 271" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <rect x="127" y="9.2" width="258.4" height="74.4" style="fill:white;fill-opacity:0.73;"/>
     <rect x="6.9" y="257.6" width="532.8" height="30.3" style="fill:white;fill-opacity:0.73;"/>
-    <path d="M385.7,83.7L127.4,83.3L6.7,257.6L540.3,257.6L385.7,83.7Z" style="fill:white;fill-opacity:0.35;fill-rule:nonzero;"/>
+    <g transform="matrix(1,0,0,1,-1.62513,-0.418152)">
+        <path d="M385.7,83.7L127.4,83.3L6.7,257.6L540.3,257.6L385.7,83.7Z" style="fill:white;fill-opacity:0.35;fill-rule:nonzero;"/>
+    </g>
     <g>
         <path d="M239.6,102.9L239.6,99.6C238.9,98.4 238.4,97 237.9,95.6L237.9,106.3L239.6,102.9Z" style="fill:rgb(109,109,109);fill-rule:nonzero;"/>
         <path d="M239.6,72.6L239.6,69.5L237.9,69.5L237.9,76.4C238.3,75.2 238.9,73.9 239.6,72.6Z" style="fill:rgb(109,109,109);fill-rule:nonzero;"/>
@@ -150,18 +152,30 @@
     </g>
     <g transform="matrix(1,0,0,1,106.078,234.427)">
         <text x="0px" y="0px" style="font-family:'HelveticaNeue-CondensedBlack', 'Helvetica Neue';font-weight:900;font-stretch:condensed;font-size:24px;">JUHY</text>
+        <text x="0px" y="0px" style="font-family:'HelveticaNeue-CondensedBlack', 'Helvetica Neue';font-weight:900;font-stretch:condensed;font-size:24px;">JUHY</text>
+        <g transform="matrix(1,0,0,1,195.61,-192.881)">
+            <g transform="matrix(24,0,0,24,66.216,0)">
+            </g>
+            <text x="0px" y="0px" style="font-family:'HelveticaNeue-CondensedBlack', 'Helvetica Neue';font-weight:900;font-stretch:condensed;font-size:24px;">HONZA</text>
+        </g>
     </g>
-    <g transform="matrix(1,0,0,1,106.078,248.827)">
-        <text x="0px" y="0px" style="font-family:'HelveticaNeue-CondensedBlack', 'Helvetica Neue';font-weight:900;font-stretch:condensed;font-size:12px;">kytara,<tspan x="34.236px 37.356px " y="0px 0px "> z</tspan>pěv</text>
+    <g transform="matrix(1,0,0,1,115.059,247.388)">
+        <g>
+            <g transform="matrix(12,0,0,12,31.56,0)">
+            </g>
+            <text x="0px" y="0px" style="font-family:'HelveticaNeue-CondensedBlack', 'Helvetica Neue';font-weight:900;font-stretch:condensed;font-size:12px;">kytara</text>
+        </g>
     </g>
     <g transform="matrix(1,0,0,1,348.375,234.427)">
-        <text x="0px" y="0px" style="font-family:'HelveticaNeue-CondensedBlack', 'Helvetica Neue';font-weight:900;font-stretch:condensed;font-size:24px;">V<tspan x="11.592px 24.936px " y="0px 0px ">AN</tspan>AD</text>
+        <g>
+            <text x="0px" y="0px" style="font-family:'HelveticaNeue-CondensedBlack', 'Helvetica Neue';font-weight:900;font-stretch:condensed;font-size:24px;">V</text>
+            <g transform="matrix(1,0,0,1,11.592,0)">
+                <text x="0px" y="0px" style="font-family:'HelveticaNeue-CondensedBlack', 'Helvetica Neue';font-weight:900;font-stretch:condensed;font-size:24px;">ANAD</text>
+            </g>
+        </g>
     </g>
-    <g transform="matrix(1,0,0,1,348.375,246.427)">
+    <g transform="matrix(1,0,0,1,368.212,245.041)">
         <text x="0px" y="0px" style="font-family:'HelveticaNeue-CondensedBlack', 'Helvetica Neue';font-weight:900;font-stretch:condensed;font-size:10px;">basa</text>
-    </g>
-    <g transform="matrix(1,0,0,1,372.488,245.835)">
-        <text x="0px" y="0px" style="font-family:'HelveticaNeue-CondensedBlack', 'Helvetica Neue';font-weight:900;font-stretch:condensed;font-size:10px;">zpěv</text>
     </g>
     <g transform="matrix(1,0,0,1,312.632,52.3114)">
         <text x="0px" y="0px" style="font-family:'HelveticaNeue-CondensedBlack', 'Helvetica Neue';font-weight:900;font-stretch:condensed;font-size:10px;">bicí</text>

@@ -15,21 +15,7 @@
         <meta name="theme-color" content="#9b1915">
         <link rel="stylesheet" type="text/css" href="style.css?17" />
         <script src="https://use.fontawesome.com/8a57eaf791.js"></script>
-        <script src="script.js?8"></script>
-        <style>
-    /* Promo split SVG styles (scoped by class names) */
-    .promo-split-stage{position:absolute;inset:0;margin:0;padding:0;width:100%;height:100%}
-    .promo-split-stage svg{width:100%;height:100%;display:block}
-    .promo-piece{transition:transform 900ms cubic-bezier(.2,.8,.2,1),opacity 600ms;will-change:transform,opacity}
-    .promo-p0{transform:translate(-1920px,-105px);opacity:0}
-    .promo-p1{transform:translate(0,-1261px);opacity:0}
-    .promo-p2{transform:translate(1920px,-105px);opacity:0}
-    .promo-assembled .promo-piece{transform:none;opacity:1}
-    .promo-assembled .promo-p0{transition-delay:120ms}
-    .promo-assembled .promo-p1{transition-delay:240ms}
-    .promo-assembled .promo-p2{transition-delay:360ms}
-    .promo-split-stage .hint{color:#ddd;font-size:13px;text-align:center;position:absolute;left:0;right:0;bottom:8px;margin:0}
-    </style>
+        <script src="script.js?9"></script>
     </head>
 
     <body>
@@ -46,6 +32,7 @@
 
             <article id="intro">
                 <h1>Rezatý Rakety</h1>
+
                 <div class="promo-split-stage" id="promo-stage">
                     <svg viewBox="0 0 1600 1051"
                         xmlns="http://www.w3.org/2000/svg" aria-hidden="false">
@@ -76,6 +63,56 @@
                         </g>
                     </svg>
 
+                    <div id="next-show-countdown" class="flip-countdown hidden"
+                        aria-live="polite">
+                        <div class="next-show-inner">
+                            <div class="next-show-label">Odpočítávání do dalšího
+                                startu</div>
+
+                            <div class="flip-wrapper">
+                                <div class="flip-unit" data-unit="days">
+                                    <div class="unit-label">dny</div>
+                                    <div class="flip-card" data-value="00">
+                                        <div class="top">00</div>
+
+                                        <div class="flip-top"></div>
+
+                                    </div>
+                                </div>
+
+                                <div class="flip-unit" data-unit="hours">
+                                    <div class="unit-label">hh</div>
+                                    <div class="flip-card" data-value="00">
+                                        <div class="top">00</div>
+
+                                        <div class="flip-top"></div>
+                                        <div class="flip-bottom"></div>
+                                    </div>
+                                </div>
+
+                                <div class="flip-unit" data-unit="minutes">
+                                    <div class="unit-label">mm</div>
+                                    <div class="flip-card" data-value="00">
+                                        <div class="top">00</div>
+                                        <div class="flip-top"></div>
+
+                                    </div>
+                                </div>
+
+                                <div class="flip-unit" data-unit="seconds">
+                                    <div class="unit-label">ss</div>
+                                    <div class="flip-card" data-value="00">
+                                        <div class="top">00</div>
+
+                                        <div class="flip-top"></div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
                 <script>
                             (function(){
@@ -89,7 +126,10 @@
                                     setTimeout(()=>stage.classList.add('promo-assembled'),80);
                                 });
                             })();
+
+                            
                         </script>
+
             </article>
 
             <article id="koncerty-container">
