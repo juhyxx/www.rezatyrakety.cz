@@ -13,8 +13,11 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      - name: Install git-restore-mtime
+        run: pip install git+https://github.com/MestreLion/git-tools.git
+
       - name: Fix file timestamps
-        run: pip install git-restore-mtime
+        run: git restore-mtime
 
       - name: Install lftp
         run: sudo apt-get install -y lftp
