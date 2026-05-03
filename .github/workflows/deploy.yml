@@ -13,17 +13,6 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Install lftp and git-restore-mtime
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y lftp git-restore-mtime
-
-      - name: Restore timestamps
-        run: git restore-mtime
-
-      - name: Install lftp
-        run: sudo apt-get install -y lftp
-
       - name: Generate settings.php
         run: |
           cat <<EOF > settings.php
