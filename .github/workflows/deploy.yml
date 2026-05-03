@@ -14,7 +14,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install git-restore-mtime
-        run: pip install git+https://github.com/MestreLion/git-tools.git
+        run: |
+          curl -L https://raw.githubusercontent.com/MestreLion/git-tools/master/git-restore-mtime.py -o /usr/local/bin/git-restore-mtime
+          chmod +x /usr/local/bin/git-restore-mtime
 
       - name: Fix file timestamps
         run: git restore-mtime
