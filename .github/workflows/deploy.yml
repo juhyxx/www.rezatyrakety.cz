@@ -13,14 +13,6 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Install git-restore-mtime
-        run: |
-          curl -L https://raw.githubusercontent.com/MestreLion/git-tools/master/git-restore-mtime.py -o /usr/local/bin/git-restore-mtime
-          chmod +x /usr/local/bin/git-restore-mtime
-
-      - name: Fix file timestamps
-        run: git restore-mtime
-
       - name: Install lftp
         run: sudo apt-get install -y lftp
 
@@ -56,6 +48,6 @@ jobs:
             set ftp:use-mdtm true;
             set ftp:use-mdtm-overloaded true;
             open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }};
-            mirror --reverse --only-newer --parallel=2 --delete --exclude-glob .git/ --verbose ./ ./;
+            mirror --reverse --parallel=2 --delete --checksum --exclude-glob .git/ --verbose ./ ./;
             bye;
           "
