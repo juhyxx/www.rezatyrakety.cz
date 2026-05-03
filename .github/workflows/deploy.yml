@@ -48,14 +48,12 @@ jobs:
           }
           ?>
           EOF
-      - name: Upload everything via FTP
-        run: |
-          lftp -c "
-            set ssl:verify-certificate no;
-            set ftp:use-site-utime true;
-            set ftp:use-mdtm true;
-            set ftp:use-mdtm-overloaded true;
-            open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }};
-            mirror --reverse --only-newer --parallel=2 --delete --exclude-glob .git/ --verbose ./ ./;
-            bye;
-          "
+      - name: 🚀 FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftp       
+          dangerous-clean-slate: false 
+          security: loose 
