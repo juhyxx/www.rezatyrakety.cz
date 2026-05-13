@@ -21,5 +21,5 @@
    prodal svoji kytaru, prodal svoji duši!
 
 **Ref:**  
-Kytara mu v koutě trouchniví a hnije  
+Kytara mu v koutě plesniví a hnije  
 Punk je mrtvej, Pičus žije

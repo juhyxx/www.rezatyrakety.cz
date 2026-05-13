@@ -14,8 +14,8 @@
    Nemá vůli, nemá smysly  
    nemá prostor na nesmysly.  
    Kdo tě majznul po lebeni  
-   Ptá se chlapík mazaně  
-   Že se tu teď na mne zubíš  
+   Ptá se chlapík naštvaně  
+   Že se tu teď na mne křeníš  
    že se mi vejdeš do dlaně.
 
 3. Stojí chlapík v ruce lebku  
