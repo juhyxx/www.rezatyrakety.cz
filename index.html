@@ -1,7 +1,7 @@
-<html>
-    <meta charset="utf-8">
-
+<!DOCTYPE html>
+<html lang="cs">
     <head>
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Rezatý Rakety</title>
         <meta property="og:title" content="Rezatý Rakety" />
@@ -13,9 +13,9 @@
         <meta property="og:description"
             content="Plzeňská alternativně bigbítová kapela." />
         <meta name="theme-color" content="#9b1915">
-        <link rel="stylesheet" type="text/css" href="style.css?17" />
-        <script src="https://use.fontawesome.com/8a57eaf791.js"></script>
-        <script src="script.js?9"></script>
+        <link rel="stylesheet" href="style.css?17">
+        <script src="https://use.fontawesome.com/8a57eaf791.js" defer></script>
+        <script src="script.js?9" defer></script>
     </head>
 
     <body>
@@ -131,7 +131,7 @@
             </article>
 
             <article id="koncerty-container">
-                <h2 id=koncerty>Koncerty</h2>
+                <h2 id="koncerty">Koncerty</h2>
                 <template id="tmpl-upcoming">
                     <li>
                         <span class="date"></span>
@@ -149,16 +149,16 @@
                                 class="jmeno"></span></div>
                     </li>
                 </template>
-                <section id=koncert-list>Momento ...</section>
-                <h3 id=koncerty>Odehrané (<span id=count></span>)</h3>
-                <section id=koncert-old-list>Momento ...
+                <section id="koncert-list">Momento ...</section>
+                <h3>Odehrané (<span id="count"></span>)</h3>
+                <section id="koncert-old-list">Momento ...
 
                 </section>
                 <div class="decoration"></div>
             </article>
 
             <article>
-                <h2 id=rakety>O&nbsp;Raketách</h2>
+                <h2 id="rakety">O&nbsp;Raketách</h2>
                 <p>Rezatý Rakety je autorský rockový chameleon z Plzně založený
                     v roce 2008. Po koketování s blues, přešly
                     Rakety k rocku s odkazem k tradici k českému bigbítu.
@@ -227,8 +227,8 @@
                 <div class="decoration"></div>
             </article>
 
-            <article class=nahravky>
-                <h2 id=nahravky>Nahrávky</h2>
+            <article class="nahravky">
+                <h2 id="nahravky">Nahrávky</h2>
                 <h3>2023</h3>
                 <div>
                     <a href=https://www.youtube.com/watch?v=cHKHotgEZDE
@@ -306,7 +306,7 @@
             </article>
 
             <article class="printable">
-                <h2 id=poradatele class="non-printable">Pro pořadatele</h2>
+                <h2 id="poradatele" class="non-printable">Pro pořadatele</h2>
 
                 <h3>Technický požadavky (Rider)</h3>
                 <ul>
@@ -323,7 +323,7 @@
                     <h3 class="non-printable">Logo ke stažení</h3>
                     <div id="logo-download" class="non-printable">
                         <div id="logo-container"></div>
-                        <ul class=" format">
+                        <ul class="format">
                             <li><a href="logo/logo.png" title="PNG"><i
                                         class="fa fa-file-image-o"></i> PNG
                                 </a></li>
@@ -336,7 +336,7 @@
                         </ul>
                     </div>
 
-                    <ul id=kontakt>
+                    <ul id="kontakt">
                         <li><i class="fa fa-facebook-square"></i> <a
                                 target="_blank"
                                 href="http://www.facebook.com/rezatyrakety">Rezatý
@@ -349,12 +349,10 @@
                         <li><i class="fa fa-phone"></i> <a
                                 href="tel:+420605376741"> 605 376 741</a></li>
                         <li>
-                            <script type="text/javascript">
-                        var email = 'juhy',
-                            domain = 'rezatyrakety.cz',
-                            address = email + '@' + domain;
-                        document.write('<i class="fa fa-envelope"></i> <a class="email" href="mailto:' + address + '"> ' + address + '</a>')
-                    </script>
+                            <script>
+                            const _e='juhy',_d='rezatyrakety.cz',_a=_e+'@'+_d;
+                            document.currentScript.insertAdjacentHTML('afterend','<i class="fa fa-envelope"></i> <a class="email" href="mailto:'+_a+'"> '+_a+'</a>');
+                        </script>
                         </li>
                         <li><i class="fa fa-map-marker"></i> Plzeň</li>
                     </ul>

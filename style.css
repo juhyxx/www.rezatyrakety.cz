@@ -188,17 +188,7 @@ main {
             -webkit-tap-highlight-color: transparent;
             -webkit-user-select: none;
             position: relative;
-
-
-
-            /* cursor: pointer; */
             margin-top: 0rem;
-
-            /* background-image: url(./images/promo.jpg);
-            background-position: center center;
-            background-size: contain;
-            background-repeat: no-repeat; */
-
 
             user-select: none;
 
@@ -206,12 +196,6 @@ main {
                 visibility: hidden;
                 margin: 0;
             }
-
-            /* &.active {
-                background-image: url(./images/rr1.jpg);
-            } */
-
-
 
             &:before {
                 display: block;
@@ -308,136 +292,104 @@ main {
     min-width: 18rem;
     max-width: calc(100% - 4rem);
 
+    &.hidden {
+        display: none;
+    }
 
-}
+    .next-show-inner {
+        color: white;
+    }
 
-#next-show-countdown.hidden {
-    display: none;
-}
+    /* Flip clock styles */
+    .flip-wrapper {
+        display: flex;
+        gap: 0.6rem;
+        justify-content: center;
+        align-items: end;
+    }
 
-.next-show-inner {
-    color: white;
-}
+    .flip-unit {
+        text-align: center;
+        min-width: 3.25rem;
+    }
 
-.next-show-label {
-    font-size: 0.9rem;
-    opacity: 0.9;
-    margin-bottom: 0.25rem;
-    text-transform: uppercase;
-}
+    .flip-card {
+        position: relative;
+        width: 3.25rem;
+        height: 3.25rem;
+        perspective: 300px;
+        --bg: rgba(0, 0, 0, 0.8);
+        overflow: hidden;
 
-.next-show-title {
-    font-weight: 700;
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
-    color: #ffd;
-}
+        .top,
+        .bottom,
+        .flip-top,
+        .flip-bottom {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 50%;
+            display: flex;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            color: #ffd;
+            background: var(--bg);
+            border-radius: 0.35rem;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.6) inset;
+            overflow: hidden;
+        }
 
-.next-show-timer {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-    letter-spacing: 0.04em;
-    font-size: 2.25rem;
-    color: #ffd;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
-}
+        .top {
+            top: 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+            align-items: flex-end;
+            padding-bottom: 0.08rem;
+            z-index: 1;
+        }
 
-/* Flip clock styles */
-.flip-wrapper {
-    display: flex;
-    gap: 0.6rem;
-    justify-content: center;
-    align-items: end;
-}
+        .bottom {
+            bottom: 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            align-items: flex-start;
+            padding-top: 0.08rem;
+            z-index: 1;
+        }
 
-.flip-unit {
-    text-align: center;
-    min-width: 3.25rem;
-}
+        .flip-top,
+        .flip-bottom {
+            backface-visibility: hidden;
+            transform-origin: center top;
+            overflow: hidden;
+            visibility: hidden;
+            z-index: 5;
+        }
 
-.unit-label {
-    font-size: 0.7rem;
-    opacity: 0.9;
-    margin-bottom: 0.35rem;
-    text-transform: uppercase;
-}
+        .flip-top {
+            top: 0;
+            height: 50%;
+            align-items: flex-end;
+        }
 
-.flip-card {
-    position: relative;
-    width: 3.25rem;
-    height: 3.25rem;
-    perspective: 300px;
-    --bg: rgba(0, 0, 0, 0.8);
-    overflow: hidden;
+        .flip-bottom {
+            bottom: 0;
+            height: 50%;
+            transform-origin: center bottom;
+            align-items: flex-start;
+        }
 
-}
+        &.flip {
+            .flip-top {
+                visibility: visible;
+                animation: flipTop 450ms ease-in forwards;
+            }
 
-.flip-card .top,
-.flip-card .bottom,
-.flip-card .flip-top,
-.flip-card .flip-bottom {
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 50%;
-    display: flex;
-    justify-content: center;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-    color: #ffd;
-    background: var(--bg);
-    border-radius: 0.35rem;
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.6) inset;
-    overflow: hidden;
-}
-
-.flip-card .top {
-    top: 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-    align-items: flex-end;
-    padding-bottom: 0.08rem;
-    z-index: 1;
-}
-
-.flip-card .bottom {
-    bottom: 0;
-    transform: translateY(0);
-    border-top: 1px solid rgba(255, 255, 255, 0.03);
-    align-items: flex-start;
-    padding-top: 0.08rem;
-    z-index: 1;
-}
-
-.flip-card .flip-top,
-.flip-card .flip-bottom {
-    backface-visibility: hidden;
-    transform-origin: center top;
-    overflow: hidden;
-    visibility: hidden;
-    z-index: 5;
-}
-
-.flip-card .flip-top {
-    top: 0;
-    height: 50%;
-    align-items: flex-end;
-}
-
-.flip-card .flip-bottom {
-    bottom: 0;
-    height: 50%;
-    transform-origin: center bottom;
-    align-items: flex-start;
-}
-
-.flip-card.flip .flip-top {
-    visibility: visible;
-    animation: flipTop 450ms ease-in forwards;
-}
-
-.flip-card.flip .flip-bottom {
-    visibility: visible;
-    animation: flipBottom 450ms 200ms ease-out forwards;
+            .flip-bottom {
+                visibility: visible;
+                animation: flipBottom 450ms 200ms ease-out forwards;
+            }
+        }
+    }
 }
 
 @keyframes flipTop {
@@ -450,17 +402,18 @@ main {
     }
 }
 
-
-
-@media only screen and (max-width: 600px) {
-    .next-show-timer {
-        font-size: 1.6rem;
+@keyframes flipBottom {
+    0% {
+        transform: rotateX(95deg);
     }
 
-    .next-show-title {
-        font-size: 1rem;
+    100% {
+        transform: rotateX(0deg);
     }
 }
+
+
+
 
 /* Promo split SVG styles moved from index.html */
 .promo-split-stage {
@@ -469,68 +422,69 @@ main {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%
-}
-
-.promo-split-stage svg {
-    width: 100%;
     height: 100%;
-    display: block;
-    opacity: 0.9;
 
-}
+    svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+        opacity: 0.9;
+    }
 
-.promo-piece {
-    transition: transform 900ms cubic-bezier(.2, .8, .2, 1), opacity 600ms;
-    will-change: transform, opacity;
-    filter: drop-shadow(0 5px 10px #000000cb);
-}
+    .promo-piece {
+        transition: transform 900ms cubic-bezier(.2, .8, .2, 1), opacity 600ms;
+        will-change: transform, opacity;
+        filter: drop-shadow(0 5px 10px #000000cb);
+    }
 
-.promo-p0 {
-    transform: translate(-1920px, -105px);
-    opacity: 0
-}
+    .promo-p0 {
+        transform: translate(-1920px, -105px);
+        opacity: 0;
+    }
 
-.promo-p1 {
-    transform: translate(0, -1261px);
-    opacity: 0
-}
+    .promo-p1 {
+        transform: translate(0, -1261px);
+        opacity: 0;
+    }
 
-.promo-p2 {
-    transform: translate(1920px, -105px);
-    opacity: 0
-}
+    .promo-p2 {
+        transform: translate(1920px, -105px);
+        opacity: 0;
+    }
 
-.promo-assembled .promo-piece {
-    transform: none;
-    opacity: 1
-}
+    &.promo-assembled {
+        .promo-piece {
+            transform: none;
+            opacity: 1;
+        }
 
-.promo-assembled .promo-p0 {
-    transition-delay: 120ms
-}
+        .promo-p0 {
+            transition-delay: 120ms;
+        }
 
-.promo-assembled .promo-p1 {
-    transition-delay: 240ms
-}
+        .promo-p1 {
+            transition-delay: 240ms;
+        }
 
-.promo-assembled .promo-p2 {
-    transition-delay: 360ms
-}
+        .promo-p2 {
+            transition-delay: 360ms;
+        }
+    }
 
-.promo-split-stage .hint {
-    color: #ddd;
-    font-size: 13px;
-    text-align: center;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 8px;
-    margin: 0
+    .hint {
+        color: #ddd;
+        font-size: 13px;
+        text-align: center;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 8px;
+        margin: 0;
+    }
 }
 
 #stageplan {
-    background-image: url(./images/stageplan?2.svg);
+    background-image: url(./images/stageplan.svg);
     background-size: contain;
     background-repeat: no-repeat;
     width: 100%;
@@ -681,25 +635,7 @@ ul#kontakt {
     text-align: center;
 }
 
-/*
-.date {
-    color: #9b1915;
-    display: flex;
-    background-color: white;
-    flex-direction: column;
-    width: 6rem;
-    align-items:stretch;
-    border-radius: 1rem;
-    text-align: center;
-    * {
-        flex:1;
-    }
-    i {
-        opacity: 1!important;
-        color: white;
-        background-color: #9b1915;
-    }
-}*/
+
 #koncerty-container {
     padding-bottom: 1rem;
 
