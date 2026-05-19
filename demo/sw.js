@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v1';
+const CACHE_VERSION = 'v2';
 const CACHE_NAME = `rezaty-rakety-demo-${CACHE_VERSION}`;
 const ASSETS_TO_CACHE = [
     '/demo/',
@@ -82,7 +82,29 @@ self.addEventListener('fetch', (event) => {
         return;
     }
 
-    // Handle static assets with cache-first strategy
+    // Handle app files (JS, CSS, HTML) with network-first strategy so updates are picked up
+    const isAppFile = /\.(js|css|html)$/.test(url.pathname) || url.pathname === '/demo/' || url.pathname.endsWith('/demo');
+    if (isAppFile) {
+        event.respondWith(
+            fetch(request)
+                .then((response) => {
+                    if (response && response.status === 200) {
+                        const responseToCache = response.clone();
+                        caches.open(CACHE_NAME).then((cache) => {
+                            cache.put(request, responseToCache);
+                        });
+                    }
+                    return response;
+                })
+                .catch(() => {
+                    // Fall back to cache when offline
+                    return caches.match(request).then((cached) => cached || caches.match('/demo/index.html'));
+                })
+        );
+        return;
+    }
+
+    // Handle other static assets (images, fonts, data files) with cache-first strategy
     event.respondWith(
         caches.match(request)
             .then((response) => {
@@ -92,7 +114,6 @@ self.addEventListener('fetch', (event) => {
 
                 return fetch(request)
                     .then((response) => {
-                        // Cache successful responses for static assets
                         if (response && response.status === 200) {
                             const responseToCache = response.clone();
                             caches.open(CACHE_NAME).then((cache) => {
@@ -103,7 +124,6 @@ self.addEventListener('fetch', (event) => {
                     });
             })
             .catch(() => {
-                // Return a offline page if available
                 return caches.match('/demo/index.html');
             })
     );
