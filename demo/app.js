@@ -37,7 +37,10 @@ document.addEventListener('DOMContentLoaded', () => {
 function openLyricsProgressViewer() {
     const viewer = document.querySelector('lyrics-progress-viewer');
     if (!viewer || typeof viewer.open !== 'function') return;
-    const progressSongs = (cachedSongs || []).filter(song => (song.lyricsState || song.lyrics) === 'progress');
+    const progressSongs = (cachedSongs || []).filter((song) => {
+        const lyricsState = song?.lyricsState || song?.lyrics;
+        return lyricsState === 'progress' || lyricsState === 'ready';
+    });
     viewer.open(progressSongs);
 }
 

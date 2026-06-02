@@ -7,7 +7,13 @@ const TEMPLATE = `
         <button type="button" data-close class="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-lg border border-amber-700/30 dark:border-amber-500/30 text-amber-800 dark:text-amber-400 transition hover:bg-amber-700 hover:text-white dark:hover:bg-amber-700/20 dark:hover:text-amber-300" aria-label="Zavřít texty">
             <i class="fa fa-times"></i>
         </button>
-        <p class="text-xs font-semibold uppercase tracking-[0.3em] text-amber-700 dark:text-amber-400 mb-2">Rozpracované texty</p>
+        <div class="mb-4 flex flex-wrap items-center gap-3 pr-12">
+            <p class="text-xs font-semibold uppercase tracking-[0.3em] text-amber-700 dark:text-amber-400">Rozpracované texty</p>
+            <label class="inline-flex items-center gap-2 text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">
+                <input type="checkbox" data-include-all-lyrics class="h-4 w-4 rounded border-amber-700 dark:border-amber-500 text-amber-700 dark:text-amber-500 focus:ring-amber-600 dark:focus:ring-amber-500" />
+                <span>Všechny texty</span>
+            </label>
+        </div>
         <h2 class="text-2xl font-semibold uppercase tracking-[0.2em] mb-6 text-amber-800 dark:text-amber-400 hidden">Rozpracované texty</h2>
         <ul data-list class="flex-1 overflow-y-auto pr-2"></ul>
         <p data-empty class="text-center py-8 text-slate-500 dark:text-slate-400">Žádné rozpracované texty.</p>
@@ -20,6 +26,8 @@ class LyricsProgressViewer extends HTMLElement {
     constructor() {
         super();
         this._initialized = false;
+        this.songs = [];
+        this.includeAllLyrics = false;
         this.handleKeyDown = this.handleKeyDown.bind(this);
     }
 
@@ -43,6 +51,7 @@ class LyricsProgressViewer extends HTMLElement {
         this.closeButton = this.querySelector('[data-close]');
         this.listEl = this.querySelector('[data-list]');
         this.emptyEl = this.querySelector('[data-empty]');
+        this.includeAllLyricsToggle = this.querySelector('[data-include-all-lyrics]');
 
         this.overlay.addEventListener('click', (event) => {
             if (event.target === this.overlay) {
@@ -50,6 +59,10 @@ class LyricsProgressViewer extends HTMLElement {
             }
         });
         this.closeButton.addEventListener('click', () => this.close());
+        this.includeAllLyricsToggle.addEventListener('change', (event) => {
+            this.includeAllLyrics = event.target.checked;
+            this.renderListAsync();
+        });
     }
 
     ensureLegacyStyles() {
@@ -66,7 +79,8 @@ class LyricsProgressViewer extends HTMLElement {
     }
 
     open(songs = []) {
-        this.renderListAsync(songs);
+        this.songs = songs;
+        this.renderListAsync();
         this.classList.remove('hidden');
         this.removeAttribute('hidden');
         this.setAttribute('aria-hidden', 'false');
@@ -81,6 +95,10 @@ class LyricsProgressViewer extends HTMLElement {
         this.classList.add('hidden');
         this.setAttribute('aria-hidden', 'true');
         this.listEl.innerHTML = '';
+        this.includeAllLyrics = false;
+        if (this.includeAllLyricsToggle) {
+            this.includeAllLyricsToggle.checked = false;
+        }
         if ('lyricsProgressScrollLock' in document.body.dataset) {
             document.body.style.overflow = document.body.dataset.lyricsProgressScrollLock;
             delete document.body.dataset.lyricsProgressScrollLock;
@@ -92,7 +110,8 @@ class LyricsProgressViewer extends HTMLElement {
         wakeLockManager.releaseWakeLock('lyrics-progress-viewer');
     }
 
-    async renderListAsync(songs) {
+    async renderListAsync() {
+        const songs = this.getVisibleSongs();
         this.listEl.innerHTML = '';
         if (!songs.length) {
             this.emptyEl.classList.remove('hidden');
@@ -187,6 +206,16 @@ class LyricsProgressViewer extends HTMLElement {
             }
             this.listEl.appendChild(li);
         }
+    }
+
+    getVisibleSongs() {
+        return (this.songs || []).filter((song) => {
+            const lyricsState = song?.lyricsState || song?.lyrics;
+            if (this.includeAllLyrics) {
+                return lyricsState === 'progress' || lyricsState === 'ready';
+            }
+            return lyricsState === 'progress';
+        });
     }
 
     handleKeyDown(event) {

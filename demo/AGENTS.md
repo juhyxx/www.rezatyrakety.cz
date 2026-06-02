@@ -1,4 +1,4 @@
-# APP for displaying songs
+# Song catalogue PWA for displaying and managing songs
 
 ## BE
 - Sources live under `data/<song>` and contain `manifest.json`, audio (mp3), lyrics (md/html), charts (pdf) etc.
