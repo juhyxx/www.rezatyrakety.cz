@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-
 env:
   ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: 'true'
 
@@ -41,7 +40,7 @@ jobs:
           ?>
           EOF
       - name: 🚀 FTP Deploy
-        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
