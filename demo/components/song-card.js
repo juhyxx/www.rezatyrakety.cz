@@ -54,6 +54,7 @@ class SongCard extends HTMLElement {
         const article = clone.querySelector('.song-card');
         const title = clone.querySelector('.title');
         const durationEl = clone.querySelector('.duration');
+        const tempoEl = clone.querySelector('.tempo');
         const fileList = clone.querySelector('[data-files]');
         const badgeRow = clone.querySelector('.badge-row');
         const toggleButton = clone.querySelector('[data-toggle]');
@@ -68,6 +69,8 @@ class SongCard extends HTMLElement {
         this.dataset.songId = this._data.id;
         title.textContent = this._data.title ?? this._data.id;
         durationEl.textContent = this._data.duration ?? '';
+        tempoEl.textContent = this._data.tempo ? `♩ = ${this._data.tempo}` : '';
+        tempoEl.classList.toggle('hidden', !this._data.tempo);
         const listId = this.buildFileListId();
         fileList.id = listId;
         // aria-controls removed
