@@ -15,7 +15,8 @@ if (!is_dir($baseDir)) {
 }
 
 try {
-    $songs = buildSongCollection($baseDir);
+    $tempoReference = loadTempoReference($baseDir . '/tempo-reference.json');
+    $songs = buildSongCollection($baseDir, $tempoReference);
 
     $response = [
         'status' => 'ok',
@@ -34,7 +35,7 @@ try {
     ]);
 }
 
-function buildSongCollection($baseDir)
+function buildSongCollection($baseDir, $tempoReference)
 {
     $directories = scandir($baseDir);
     if ($directories === false) {
@@ -52,7 +53,7 @@ function buildSongCollection($baseDir)
             continue;
         }
 
-        $songs[] = buildSongPayload($songDir, $entry);
+        $songs[] = buildSongPayload($songDir, $entry, $tempoReference);
     }
 
     usort($songs, function ($a, $b) {
@@ -71,7 +72,7 @@ function buildSongCollection($baseDir)
     return $songs;
 }
 
-function buildSongPayload($songDir, $folderName)
+function buildSongPayload($songDir, $folderName, $tempoReference)
 {
     $relativeDir = basename($folderName);
     $manifest = readManifest($songDir . '/manifest.json');
@@ -131,12 +132,14 @@ function buildSongPayload($songDir, $folderName)
     // Expose lyrics state (progress/read) from manifest as top-level property
     $lyricsState = isset($manifest['lyrics']) ? $manifest['lyrics'] : null;
     $tempo = isset($manifest['tempo']) && is_numeric($manifest['tempo']) ? (int) $manifest['tempo'] : null;
+    $tempoReferenceMatches = $tempo !== null ? findNearestTempoReferences($tempo, $tempoReference) : [];
     return [
         'id' => $relativeDir,
         'title' => $title,
         'status' => $status,
         'duration' => $duration,
         'tempo' => $tempo,
+        'tempoReferences' => $tempoReferenceMatches,
         'lyrics' => $lyrics,
         'lyricsState' => $lyricsState,
         'files' => $files,
@@ -147,6 +150,49 @@ function buildSongPayload($songDir, $folderName)
             'manifest' => $manifest,
         ],
     ];
+}
+
+function loadTempoReference($path)
+{
+    if (!is_file($path)) {
+        return [];
+    }
+
+    $contents = file_get_contents($path);
+    if ($contents === false) {
+        return [];
+    }
+
+    $decoded = json_decode($contents, true);
+    return is_array($decoded) ? $decoded : [];
+}
+
+function findNearestTempoReferences($tempo, $tempoReference, $maxResults = 3, $maxDiff = 10)
+{
+    $candidates = [];
+    foreach ($tempoReference as $entry) {
+        if (!isset($entry['bpm']) || !is_numeric($entry['bpm'])) {
+            continue;
+        }
+
+        $diff = abs((int) $entry['bpm'] - $tempo);
+        if ($diff > $maxDiff) {
+            continue;
+        }
+
+        $candidates[] = [
+            'artist' => $entry['artist'],
+            'title' => $entry['title'],
+            'bpm' => (int) $entry['bpm'],
+            'diff' => $diff,
+        ];
+    }
+
+    usort($candidates, function ($a, $b) {
+        return $a['diff'] <=> $b['diff'];
+    });
+
+    return array_slice($candidates, 0, $maxResults);
 }
 
 function readManifest($path)

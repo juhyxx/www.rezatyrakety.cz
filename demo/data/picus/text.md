@@ -1,4 +1,4 @@
-# Balada o prodané duši
+# O prodané duši (Píčus)
 
 1. Starej pankáč Pičus, prej rozpustil kapelu,  
    prej ho bolí záda, a krev mu teče z uší  
