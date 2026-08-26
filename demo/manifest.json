@@ -1,7 +1,7 @@
 {
   "name": "Rezaté Rakety • Demo",
   "short_name": "RR Demo",
-  "version": "5",
+  "version": "6",
   "description": "Song library and lyrics viewer for Rezaté Rakety band",
   "start_url": "/demo/",
   "scope": "/demo/",
