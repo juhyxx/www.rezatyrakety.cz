@@ -211,6 +211,7 @@ main {
             background-position: center center;
             background-size: contain;
             box-shadow: none !important;
+            background-repeat: no-repeat;
             border: 0;
 
             &::before {
