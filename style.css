@@ -127,6 +127,8 @@ main {
         line-height: 1.6;
 
 
+
+
         &:before {
             display: block;
             position: absolute;
@@ -202,6 +204,19 @@ main {
             margin-top: 0rem;
 
             user-select: none;
+
+
+            background-image: url(/images/hero.png);
+            background-color: transparent !important;
+            background-position: center center;
+            background-size: contain;
+            box-shadow: none !important;
+            border: 0;
+
+            &::before {
+                content: none;
+            }
+
 
             h1 {
                 visibility: hidden;
