@@ -31,102 +31,12 @@
             </nav>
 
             <article id="intro">
+                <div class="decoration"></div>
                 <h1>Rezatý Rakety</h1>
 
                 <div class="promo-split-stage" id="promo-stage">
-                    <svg viewBox="0 0 1600 1051"
-                        xmlns="http://www.w3.org/2000/svg" aria-hidden="false">
-                        <defs>
-                            <clippath id="c0"><polygon
-                                    points="904.96,20.96 420.88,38.99 29.92,492.92 29.92,1014.95 77.92,1014.95" /></clippath>
-                            <clippath id="c1"><polygon
-                                    points="1432,27.96 949.92,27.96 122.88,1014.95 605.92,1014.95" /></clippath>
-                            <clippath id="c2"><polygon
-                                    points="1566.88,27.96 1477.92,27.96 652,1014.95 1137.92,1011.9 1566.88,500.91" /></clippath>
-                        </defs>
-                        <g id="pieces">
-                            <g class="promo-piece promo-p0"><image
-                                    href="images/promo.jpg" x="0" y="0"
-                                    width="1600" height="1051"
-                                    clip-path="url(#c0)"
-                                    preserveAspectRatio="xMidYMid slice" /></g>
-                            <g class="promo-piece promo-p1"><image
-                                    href="images/promo.jpg" x="0" y="0"
-                                    width="1600" height="1051"
-                                    clip-path="url(#c1)"
-                                    preserveAspectRatio="xMidYMid slice" /></g>
-                            <g class="promo-piece promo-p2"><image
-                                    href="images/promo.jpg" x="0" y="0"
-                                    width="1600" height="1051"
-                                    clip-path="url(#c2)"
-                                    preserveAspectRatio="xMidYMid slice" /></g>
-                        </g>
-                    </svg>
-
-                    <div id="next-show-countdown" class="flip-countdown hidden"
-                        aria-live="polite">
-                        <div class="next-show-inner">
-
-                            <div class="flip-wrapper">
-                                <div class="flip-unit" data-unit="days">
-
-                                    <div class="flip-card" data-value="00">
-                                        <div class="top">00</div>
-
-                                        <div class="flip-top"></div>
-
-                                    </div>
-                                </div>
-
-                                <div class="flip-unit" data-unit="hours">
-
-                                    <div class="flip-card" data-value="00">
-                                        <div class="top">00</div>
-
-                                        <div class="flip-top"></div>
-                                        <div class="flip-bottom"></div>
-                                    </div>
-                                </div>
-
-                                <div class="flip-unit" data-unit="minutes">
-
-                                    <div class="flip-card" data-value="00">
-                                        <div class="top">00</div>
-                                        <div class="flip-top"></div>
-
-                                    </div>
-                                </div>
-
-                                <div class="flip-unit" data-unit="seconds">
-
-                                    <div class="flip-card" data-value="00">
-                                        <div class="top">00</div>
-
-                                        <div class="flip-top"></div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
+                    <img src="images/hero.png" alt="" />
                 </div>
-                <script>
-                            (function(){
-                                const stage = document.getElementById('promo-stage');
-                                window.addEventListener('load', ()=>{
-                                    requestAnimationFrame(()=>setTimeout(()=>stage.classList.add('promo-assembled'),60));
-                                });
-                                stage.addEventListener('click', ()=>{
-                                    stage.classList.remove('promo-assembled');
-                                    void stage.offsetWidth;
-                                    setTimeout(()=>stage.classList.add('promo-assembled'),80);
-                                });
-                            })();
-
-                            
-                        </script>
 
             </article>
 
