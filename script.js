@@ -24,6 +24,58 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 });
 
+(function initRocketCursor() {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const hasFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (prefersReducedMotion || !hasFinePointer) return;
+
+    const rocket = document.getElementById('rocket-cursor');
+    if (!rocket) return;
+
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let x = mouseX;
+    let y = mouseY;
+    let angle = -90;
+    let targetAngle = -90;
+    let revealed = false;
+
+    window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        if (!revealed) {
+            x = mouseX;
+            y = mouseY;
+            revealed = true;
+            rocket.style.opacity = '1';
+        }
+    }, { passive: true });
+
+    document.addEventListener('mouseleave', () => { rocket.style.opacity = '0'; });
+    document.addEventListener('mouseenter', () => { if (revealed) rocket.style.opacity = '1'; });
+
+    function animate() {
+        const dx = mouseX - x;
+        const dy = mouseY - y;
+        x += dx * 0.06;
+        y += dy * 0.06;
+
+        const dist = Math.hypot(dx, dy);
+        if (dist > 1.5) {
+            targetAngle = Math.atan2(dy, dx) * 180 / Math.PI;
+        }
+        let diff = ((targetAngle - angle + 540) % 360) - 180;
+        angle += diff * 0.12;
+
+        rocket.style.transform = `translate(${x - 20}px, ${y - 31}px) rotate(${angle + 90}deg)`;
+        rocket.classList.toggle('thrust', dist > 5);
+
+        requestAnimationFrame(animate);
+    }
+
+    requestAnimationFrame(animate);
+})();
+
 function toggle() {
     const el = document.querySelector('#intro');
     if (el) el.classList.toggle('active');
