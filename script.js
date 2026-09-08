@@ -40,6 +40,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let targetAngle = -90;
     let revealed = false;
 
+    const MAX_SCALE = 1.2;
+    const MIN_SCALE = 0.3;
+
     window.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
@@ -67,7 +70,15 @@ document.addEventListener('DOMContentLoaded', () => {
         let diff = ((targetAngle - angle + 540) % 360) - 180;
         angle += diff * 0.12;
 
-        rocket.style.transform = `translate(${x - 20}px, ${y - 31}px) rotate(${angle + 90}deg)`;
+        // The rocket orbits an invisible cylinder standing through the middle
+        // of the screen: the closer it gets to that center line, the more it
+        // faces the viewer (full size); the further out, the more it's
+        // wrapping around the curve, so it foreshortens toward vanishing.
+        const cylinderRadius = Math.min(window.innerWidth, 1280) / 2;
+        const orbit = Math.min(Math.abs(x - window.innerWidth / 2) / cylinderRadius, 1);
+        const scale = MIN_SCALE + (MAX_SCALE - MIN_SCALE) * Math.cos(orbit * Math.PI / 2);
+
+        rocket.style.transform = `translate(${x - 20}px, ${y - 31}px) rotate(${angle + 90}deg) scale(${scale.toFixed(3)})`;
         rocket.classList.toggle('thrust', dist > 5);
 
         requestAnimationFrame(animate);
