@@ -289,6 +289,21 @@
             <div id="rocket-cursor" aria-hidden="true">
                 <svg viewBox="0 0 40 62" width="40" height="62"
                     xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="rocketBodyFill" x1="0" y1="0" x2="1" y2="0">
+                            <stop offset="0%" stop-color="#e8663f" />
+                            <stop offset="30%" stop-color="#c2401f" />
+                            <stop offset="65%" stop-color="#9c3018" />
+                            <stop offset="100%" stop-color="#6e1c0c" />
+                        </linearGradient>
+                        <linearGradient id="rocketBodyShade" x1="0" y1="0" x2="1" y2="0">
+                            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.6" />
+                            <stop offset="16%" stop-color="#ffffff" stop-opacity="0.15" />
+                            <stop offset="45%" stop-color="#000000" stop-opacity="0" />
+                            <stop offset="82%" stop-color="#000000" stop-opacity="0.3" />
+                            <stop offset="100%" stop-color="#000000" stop-opacity="0.6" />
+                        </linearGradient>
+                    </defs>
                     <g class="flame">
                         <polygon class="flame-outer" points="15,50 25,50 20,62" />
                         <polygon class="flame-inner" points="17,50 23,50 20,58" />
@@ -299,12 +314,15 @@
                         <path class="body"
                             d="M12,16 L28,16 L28,44 L25,50 L15,50 L12,44 Z" />
                         <path class="nose" d="M20,2 Q27,10 28,16 L12,16 Q13,10 20,2 Z" />
+                        <path class="nose-shade" d="M20,2 Q27,10 28,16 L12,16 Q13,10 20,2 Z" />
                         <rect class="checker-black" x="12" y="22" width="8" height="8" />
                         <rect class="checker-white" x="20" y="22" width="8" height="8" />
                         <rect class="checker-white" x="12" y="30" width="8" height="8" />
                         <rect class="checker-black" x="20" y="30" width="8" height="8" />
                         <circle class="rivet" cx="13" cy="46" r="1.1" />
                         <circle class="rivet" cx="27" cy="46" r="1.1" />
+                        <path class="body-shade"
+                            d="M12,16 L28,16 L28,44 L25,50 L15,50 L12,44 Z" />
                     </g>
                 </svg>
             </div>

@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const rocket = document.getElementById('rocket-cursor');
     if (!rocket) return;
+    const rocketSvg = rocket.querySelector('svg');
 
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
@@ -78,7 +79,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const orbit = Math.min(Math.abs(x - window.innerWidth / 2) / cylinderRadius, 1);
         const scale = MIN_SCALE + (MAX_SCALE - MIN_SCALE) * Math.cos(orbit * Math.PI / 2);
 
-        rocket.style.transform = `translate(${x - 20}px, ${y - 31}px) rotate(${angle + 90}deg) scale(${scale.toFixed(3)})`;
+        rocket.style.transform = `translate(${x - 20}px, ${y - 31}px) scale(${scale.toFixed(3)})`;
+        rocketSvg.style.transform = `rotate(${angle + 90}deg)`;
         rocket.classList.toggle('thrust', dist > 5);
 
         requestAnimationFrame(animate);
