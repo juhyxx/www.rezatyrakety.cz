@@ -28,6 +28,68 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!rocket) return;
     const rocketSvg = rocket.querySelector('svg');
 
+    const smokeCanvas = document.getElementById('rocket-smoke');
+    const smokeCtx = smokeCanvas ? smokeCanvas.getContext('2d') : null;
+
+    function resizeSmokeCanvas() {
+        if (!smokeCanvas) return;
+        const dpr = window.devicePixelRatio || 1;
+        smokeCanvas.width = window.innerWidth * dpr;
+        smokeCanvas.height = window.innerHeight * dpr;
+        smokeCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    resizeSmokeCanvas();
+    window.addEventListener('resize', resizeSmokeCanvas);
+
+    const smokeParticles = [];
+
+    function spawnSmoke(px, py, dirAngle) {
+        const spread = (Math.random() - 0.5) * 1.5;
+        const speed = 15 + Math.random() * 25;
+        const a = dirAngle + spread;
+        smokeParticles.push({
+            x: px + (Math.random() - 0.5) * 4,
+            y: py + (Math.random() - 0.5) * 4,
+            vx: Math.cos(a) * speed,
+            vy: Math.sin(a) * speed,
+            size: 2 + Math.random() * 2,
+            maxSize: 12 + Math.random() * 10,
+            life: 0,
+            maxLife: 0.6 + Math.random() * 0.5,
+        });
+    }
+
+    function updateSmoke(dt) {
+        if (!smokeCtx) return;
+        smokeCtx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+        for (let i = smokeParticles.length - 1; i >= 0; i--) {
+            const p = smokeParticles[i];
+            p.life += dt;
+            if (p.life >= p.maxLife) {
+                smokeParticles.splice(i, 1);
+                continue;
+            }
+            p.vy -= 16 * dt;
+            const drag = Math.max(0, 1 - 1.1 * dt);
+            p.vx *= drag;
+            p.vy *= drag;
+            p.x += p.vx * dt;
+            p.y += p.vy * dt;
+
+            const t = p.life / p.maxLife;
+            const size = p.size + (p.maxSize - p.size) * t;
+            const alpha = (1 - t) * 0.32;
+
+            const gradient = smokeCtx.createRadialGradient(p.x, p.y, 0, p.x, p.y, size);
+            gradient.addColorStop(0, `rgba(225, 222, 216, ${alpha})`);
+            gradient.addColorStop(1, 'rgba(225, 222, 216, 0)');
+            smokeCtx.fillStyle = gradient;
+            smokeCtx.beginPath();
+            smokeCtx.arc(p.x, p.y, size, 0, Math.PI * 2);
+            smokeCtx.fill();
+        }
+    }
+
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
     let x = mouseX;
@@ -35,6 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let angle = -90;
     let targetAngle = -90;
     let revealed = false;
+    let lastFrameTime = performance.now();
 
     const MAX_SCALE = 1.2;
     const MIN_SCALE = 0.3;
@@ -54,6 +117,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('mouseenter', () => { if (revealed) rocket.style.opacity = '1'; });
 
     function animate() {
+        const now = performance.now();
+        const dt = Math.min((now - lastFrameTime) / 1000, 0.05);
+        lastFrameTime = now;
+
         const dx = mouseX - x;
         const dy = mouseY - y;
         x += dx * 0.06;
@@ -76,7 +143,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         rocket.style.transform = `translate(${x - 20}px, ${y - 31}px) scale(${scale.toFixed(3)})`;
         rocketSvg.style.transform = `rotate(${angle + 90}deg)`;
-        rocket.classList.toggle('thrust', dist > 5);
+        const thrusting = dist > 5;
+        rocket.classList.toggle('thrust', thrusting);
+
+        if (thrusting) {
+            const angleRad = angle * Math.PI / 180;
+            const tailX = x - Math.cos(angleRad) * 21 * scale;
+            const tailY = y - Math.sin(angleRad) * 21 * scale;
+            spawnSmoke(tailX, tailY, angleRad + Math.PI);
+        }
+        updateSmoke(dt);
 
         requestAnimationFrame(animate);
     }

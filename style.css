@@ -540,6 +540,16 @@ ul#kontakt {
     }
 }
 
+#rocket-smoke {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9998;
+    pointer-events: none;
+}
+
 #rocket-cursor {
     position: fixed;
     top: 0;
@@ -642,19 +652,25 @@ ul#kontakt {
 
 @media (hover: none),
 (pointer: coarse) {
-    #rocket-cursor {
+
+    #rocket-cursor,
+    #rocket-smoke {
         display: none;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    #rocket-cursor {
+
+    #rocket-cursor,
+    #rocket-smoke {
         display: none;
     }
 }
 
 @media print {
-    #rocket-cursor {
+
+    #rocket-cursor,
+    #rocket-smoke {
         display: none !important;
     }
 }
