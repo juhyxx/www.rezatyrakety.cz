@@ -13,9 +13,9 @@
         <meta property="og:description"
             content="Plzeňská alternativně bigbítová kapela." />
         <meta name="theme-color" content="#9b1915">
-        <link rel="stylesheet" href="style.css?27">
+        <link rel="stylesheet" href="style.css?31">
         <script src="https://use.fontawesome.com/8a57eaf791.js" defer></script>
-        <script src="script.js?13" defer></script>
+        <script src="script.js?15" defer></script>
     </head>
 
     <body>
@@ -32,7 +32,38 @@
 
             <article id="intro">
 
-                <h1>Rezatý Rakety</h1>
+                <div class="hero-pin">
+                    <h1>Rezatý Rakety</h1>
+
+                    <div class="hero-collage" aria-hidden="true">
+                        <figure class="hero-photo hero-photo-guitar"
+                            data-x0="-22" data-y0="-16" data-rot0="-6"
+                            data-x1="-34" data-y1="-58" data-rot1="-12">
+                            <img
+                                src="images/photos/9FA83432-1F1D-4AD4-83B6-D07DB9E087D0_1_105_c.jpeg"
+                                alt>
+                        </figure>
+                        <figure class="hero-photo hero-photo-drums"
+                            data-x0="20" data-y0="-14" data-rot0="7"
+                            data-x1="34" data-y1="-40" data-rot1="13">
+                            <img
+                                src="images/photos/6E64F32F-7ECD-4DAA-80D3-AD352CE7C575_1_105_c.jpeg"
+                                alt>
+                        </figure>
+                        <figure class="hero-photo hero-photo-singer"
+                            data-x0="6" data-y0="18" data-rot0="-3"
+                            data-x1="16" data-y1="36" data-rot1="-8">
+                            <img
+                                src="images/photos/F85B9BF7-6AA3-46B2-B53E-8DED37896C28_1_105_c.jpeg"
+                                alt>
+                        </figure>
+                        <div class="hero-logo" data-x0="0" data-y0="48"
+                            data-rot0="0" data-x1="-2" data-y1="88"
+                            data-rot1="0">
+                            <img src="logo/logo.svg" alt>
+                        </div>
+                    </div>
+                </div>
 
             </article>
 
@@ -290,35 +321,50 @@
                 <svg viewBox="0 0 40 62" width="40" height="62"
                     xmlns="http://www.w3.org/2000/svg">
                     <defs>
-                        <linearGradient id="rocketBodyFill" x1="0" y1="0" x2="1" y2="0">
+                        <lineargradient id="rocketBodyFill" x1="0" y1="0" x2="1"
+                            y2="0">
                             <stop offset="0%" stop-color="#e8663f" />
                             <stop offset="30%" stop-color="#c2401f" />
                             <stop offset="65%" stop-color="#9c3018" />
                             <stop offset="100%" stop-color="#6e1c0c" />
-                        </linearGradient>
-                        <linearGradient id="rocketBodyShade" x1="0" y1="0" x2="1" y2="0">
-                            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.6" />
-                            <stop offset="16%" stop-color="#ffffff" stop-opacity="0.15" />
-                            <stop offset="45%" stop-color="#000000" stop-opacity="0" />
-                            <stop offset="82%" stop-color="#000000" stop-opacity="0.3" />
-                            <stop offset="100%" stop-color="#000000" stop-opacity="0.6" />
-                        </linearGradient>
+                        </lineargradient>
+                        <lineargradient id="rocketBodyShade" x1="0" y1="0"
+                            x2="1" y2="0">
+                            <stop offset="0%" stop-color="#ffffff"
+                                stop-opacity="0.6" />
+                            <stop offset="16%" stop-color="#ffffff"
+                                stop-opacity="0.15" />
+                            <stop offset="45%" stop-color="#000000"
+                                stop-opacity="0" />
+                            <stop offset="82%" stop-color="#000000"
+                                stop-opacity="0.3" />
+                            <stop offset="100%" stop-color="#000000"
+                                stop-opacity="0.6" />
+                        </lineargradient>
                     </defs>
                     <g class="flame">
-                        <polygon class="flame-outer" points="15,50 25,50 20,62" />
-                        <polygon class="flame-inner" points="17,50 23,50 20,58" />
+                        <polygon class="flame-outer"
+                            points="15,50 25,50 20,62" />
+                        <polygon class="flame-inner"
+                            points="17,50 23,50 20,58" />
                     </g>
                     <g class="hull">
                         <polygon class="fin" points="12,34 0,52 6,60 15,50" />
                         <polygon class="fin" points="28,34 40,52 34,60 25,50" />
                         <path class="body"
                             d="M12,16 L28,16 L28,44 L25,50 L15,50 L12,44 Z" />
-                        <path class="nose" d="M20,2 Q27,10 28,16 L12,16 Q13,10 20,2 Z" />
-                        <path class="nose-shade" d="M20,2 Q27,10 28,16 L12,16 Q13,10 20,2 Z" />
-                        <rect class="checker-black" x="12" y="22" width="8" height="8" />
-                        <rect class="checker-white" x="20" y="22" width="8" height="8" />
-                        <rect class="checker-white" x="12" y="30" width="8" height="8" />
-                        <rect class="checker-black" x="20" y="30" width="8" height="8" />
+                        <path class="nose"
+                            d="M20,2 Q27,10 28,16 L12,16 Q13,10 20,2 Z" />
+                        <path class="nose-shade"
+                            d="M20,2 Q27,10 28,16 L12,16 Q13,10 20,2 Z" />
+                        <rect class="checker-black" x="12" y="22" width="8"
+                            height="8" />
+                        <rect class="checker-white" x="20" y="22" width="8"
+                            height="8" />
+                        <rect class="checker-white" x="12" y="30" width="8"
+                            height="8" />
+                        <rect class="checker-black" x="20" y="30" width="8"
+                            height="8" />
                         <circle class="rivet" cx="13" cy="46" r="1.1" />
                         <circle class="rivet" cx="27" cy="46" r="1.1" />
                         <path class="body-shade"

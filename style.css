@@ -219,13 +219,12 @@ main {
 
             user-select: none;
 
+            height: 180vh;
+            min-height: 180vh;
+            padding: 0;
 
-            background-image: url(/images/hero.png);
             background-color: transparent !important;
-            background-position: center center;
-            background-size: contain;
             box-shadow: none !important;
-            background-repeat: no-repeat;
             border: 0;
 
             &::before,
@@ -234,9 +233,19 @@ main {
                 ;
             }
 
+            .hero-pin {
+                position: sticky;
+                top: 0;
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
             h1 {
                 visibility: hidden;
                 margin: 0;
+                position: absolute;
             }
 
 
@@ -296,6 +305,75 @@ main {
 
     }
 
+}
+
+.hero-collage {
+    position: relative;
+    width: min(85vw, 30rem);
+    aspect-ratio: 1 / 1;
+    margin: 2rem auto;
+    top: -15vh;
+}
+
+.hero-photo,
+.hero-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 0;
+    transform-origin: center center;
+    transform: translate(-50%, -50%) scale(0.82);
+    transition: transform 0.05s linear;
+    will-change: transform;
+}
+
+.hero-photo {
+    width: 42%;
+    padding: 0.5rem 0.5rem 1.4rem;
+    background: #f2ecd8;
+    border: 1px solid #00000030;
+    border-radius: 2px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.8), 0 2px 4px rgba(0, 0, 0, 0.4);
+
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+}
+
+.hero-photo-guitar {
+    z-index: 2;
+}
+
+.hero-photo-drums {
+    width: 46%;
+    z-index: 1;
+}
+
+.hero-photo-singer {
+    width: 44%;
+    z-index: 3;
+}
+
+.hero-logo {
+    width: 38%;
+    z-index: 4;
+    filter: drop-shadow(20px 10px 26px rgba(0, 0, 0, 0.9));
+
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .hero-photo,
+    .hero-logo {
+        transition: none;
+    }
 }
 
 .promo-split-stage {

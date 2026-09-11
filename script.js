@@ -1,12 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const intro = document.querySelector('#intro');
     const koncertList = document.querySelector('#koncert-list');
     const koncertOldList = document.querySelector('#koncert-old-list');
     const countEl = document.querySelector('#count');
-
-    if (intro) {
-        ['mousedown', 'mouseup', 'touchstart', 'touchend'].forEach(evt => intro.addEventListener(evt, toggle));
-    }
 
     fetch('https://www.rezatyrakety.cz/be/be.php')
         .then(response => {
@@ -89,10 +84,49 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(animate);
 })();
 
-function toggle() {
-    const el = document.querySelector('#intro');
-    if (el) el.classList.toggle('active');
-}
+(function initHeroCollage() {
+    const intro = document.querySelector('#intro');
+    const collage = document.querySelector('.hero-collage');
+    if (!intro || !collage) return;
+    const items = Array.from(collage.querySelectorAll('.hero-photo, .hero-logo'));
+
+    let ticking = false;
+
+    function update() {
+        ticking = false;
+        const rect = intro.getBoundingClientRect();
+        const total = rect.height - window.innerHeight;
+        const p = total > 0 ? Math.min(Math.max(-rect.top / total, 0), 1) : 0;
+        const size = collage.getBoundingClientRect().width;
+
+        items.forEach(el => {
+            const x0 = parseFloat(el.dataset.x0) || 0;
+            const y0 = parseFloat(el.dataset.y0) || 0;
+            const rot0 = parseFloat(el.dataset.rot0) || 0;
+            const x1 = parseFloat(el.dataset.x1) || 0;
+            const y1 = parseFloat(el.dataset.y1) || 0;
+            const rot1 = parseFloat(el.dataset.rot1) || 0;
+            const dx = x0 + (x1 - x0) * p;
+            const dy = y0 + (y1 - y0) * p;
+            const rot = rot0 + (rot1 - rot0) * p;
+            const tx = (dx / 100) * size;
+            const ty = (dy / 100) * size;
+            const scale = 0.82 + 0.18 * p;
+            el.style.transform = `translate(-50%, -50%) translate(${tx}px, ${ty}px) rotate(${rot}deg) scale(${scale})`;
+        });
+    }
+
+    function onScroll() {
+        if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(update);
+        }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
+})();
 
 const months = [
     'leden', 'únor', 'březen', 'duben', 'květen', 'červen', 'červenec', 'srpen', 'září', 'říjen', 'listopad', 'prosinec'
