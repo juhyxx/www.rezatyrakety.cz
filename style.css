@@ -128,6 +128,14 @@ main {
         line-height: 1.6;
         box-shadow: 0 -2px 8px 2px rgba(0, 0, 0, 0.6), 0 2px 8px 2px rgba(0, 0, 0, 0.6);
 
+        &#img {
+            background-image: url(./images/pioneer.svg);
+            background-repeat: no-repeat;
+            background-size: contain;
+            min-height: 400px;
+            background-position: center center;
+        }
+
         &::after,
         &::before {
             content: "";
@@ -155,11 +163,10 @@ main {
             .screw {
                 display: block;
                 position: absolute;
-                box-shadow: 3px 3px 0 #000000;
-                clip-path: var(--bolt);
+
                 background-image: url(./images/sroub.png);
                 background-size: cover;
-
+                filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 1));
                 width: 2rem;
                 height: 2rem;
             }
@@ -200,7 +207,7 @@ main {
         }
 
         &:nth-of-type(odd) {
-            background-color: #000000a9;
+            background-color: #000000c6;
 
 
             /* border-image-source: url("./images/bg-black.svg"); */
