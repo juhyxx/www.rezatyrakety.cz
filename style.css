@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Doto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Doto:wght@400;700&family=Black+Ops+One&display=swap');
 
 
 :root {
@@ -106,6 +106,59 @@ main {
 
     h3:nth-of-type(1) {
         margin-top: 0;
+    }
+
+    #stencil1 {
+
+        height: 200px;
+        width: 200px;
+        border-radius: 1rem;
+        border: 1px solid #5a5a5a;
+        margin: auto;
+        box-shadow: inset 4px 6px 4px black, inset -4px -6px 4px black;
+        font: Stencil;
+        text-transform: uppercase;
+
+
+        div {
+            margin: 4px;
+            height: calc(100% - 10px);
+            width: calc(100% - 10px);
+            border-radius: 1rem;
+            border: 1px solid #5a5a5a;
+            box-shadow: inset 2px 2px 5px rgba(255, 255, 255, 0.712), inset -2px -2px 5px rgba(0, 0, 0, 0.712);
+            background-image: url(./images/rust2.png);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Black Ops One', sans-serif;
+            color: var(--base-color);
+            opacity: 0.8;
+
+            font-size: 1rem;
+            text-align: center;
+        }
+    }
+
+    #stencil2 {
+
+        font-family: 'Black Ops One', sans-serif;
+        width: 50px;
+        border-radius: 1rem;
+        margin: auto;
+        padding-right: 10rem;
+        text-align: center;
+        color: rgba(0, 0, 0, 0.54);
+
+        div {
+
+            margin: auto;
+            height: 50px;
+            width: 50px;
+            border: 2px solid #040404;
+            border-radius: 50%;
+            box-shadow: inset 2px 2px 5px rgba(255, 255, 255, 1), inset -2px -2px 5px rgba(0, 0, 0, 1);
+        }
     }
 
     article {
