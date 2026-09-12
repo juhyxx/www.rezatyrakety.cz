@@ -3,7 +3,6 @@
 
 :root {
     --base-color: #9b1915DD;
-    --dark-bg-color: rgb(59, 56, 56);
     --pixel: 10px;
     --bolt: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
 }
@@ -580,6 +579,13 @@ ul#kontakt {
         display: none !important
     }
 
+    #stencil1,
+    #stencil2,
+    .screw,
+    #logo-download {
+        display: none !important;
+    }
+
     article {
         display: none;
         height: auto !important;
@@ -588,15 +594,23 @@ ul#kontakt {
 
     .printable {
         display: block;
+        border: none !important;
+
+        & * {
+            font-family: sans-serif !important;
+            border: none !important;
+            background: none;
+        }
+
+        font-family: Arial,
+        Helvetica,
+        sans-serif !important;
+        font-size: 0.8rem !important;
+        margin: 0;
     }
 
     .non-printable {
         display: none;
-    }
-
-    article#poradatele {
-        display: block !important;
-        height: auto;
     }
 }
 
