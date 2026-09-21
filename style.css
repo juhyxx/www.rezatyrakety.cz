@@ -13,6 +13,7 @@ html {
     background-color: #8f8f8f;
     scroll-behavior: smooth;
     font-size: 18px;
+    -webkit-backface-visibility: hidden;
 }
 
 body {
@@ -27,7 +28,7 @@ html,
 body {
     margin: 0;
     width: 100%;
-    height: 100%;
+    min-height: 100%;
 }
 
 a {
@@ -96,6 +97,16 @@ main {
         white-space: nowrap;
         background: linear-gradient(90deg, #00000046, transparent);
         padding-left: 2rem;
+
+        @media only screen and (max-width: 800px) {
+            transform: none;
+            filter: none;
+            margin-top: 0;
+            text-shadow: 3px 3px 0 #000000;
+            white-space: normal;
+            background: none;
+            padding-left: 0;
+        }
     }
 
     h3 {
@@ -144,19 +155,22 @@ main {
 
         font-family: 'Black Ops One', sans-serif;
         width: 50px;
-        border-radius: 1rem;
+
         margin: auto;
         padding-right: 10rem;
+
         text-align: center;
-        color: rgba(0, 0, 0, 0.54);
+        color: rgba(0, 0, 0, 0.7);
 
         div {
-
+            background-image: url(./images/rust2.png);
             margin: auto;
             height: 50px;
             width: 50px;
             border: 2px solid #040404;
             border-radius: 50%;
+            opacity: 0.5;
+
             box-shadow: inset 2px 2px 5px rgba(255, 255, 255, 1), inset -2px -2px 5px rgba(0, 0, 0, 1);
         }
     }
@@ -249,10 +263,18 @@ main {
         @media only screen and (max-width: 800px) {
             & {
                 padding-bottom: 0;
-
+                padding-left: 1rem;
+                padding-right: 1rem;
+                padding-bottom: 2rem;
+                margin-left: 0.5rem;
+                margin-right: 0.5rem;
+                width: calc(100% - 1rem);
             }
 
-
+            &::before,
+            &::after {
+                display: none;
+            }
         }
 
         b {
@@ -297,6 +319,7 @@ main {
                 position: sticky;
                 top: 0;
                 height: 100vh;
+                overflow: hidden;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -512,7 +535,8 @@ nav {
         padding: 0;
 
         @media only screen and (max-width: 600px) {
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             font-size: 1.1rem;
 
             li {
@@ -801,6 +825,13 @@ ul#kontakt {
 
     overflow: hidden;
 
+    @media only screen and (max-width: 800px) {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 20rem;
+    }
+
 
     #logo-container {
 
@@ -809,6 +840,11 @@ ul#kontakt {
         background-size: contain;
         background-repeat: no-repeat;
         width: 200px;
+
+        @media only screen and (max-width: 800px) {
+            width: 100%;
+            height: 150px;
+        }
     }
 
     .format {
@@ -818,14 +854,25 @@ ul#kontakt {
 
         padding: 0;
 
+        @media only screen and (max-width: 800px) {
+            flex-direction: row;
+        }
+
         li {
             padding: 0;
 
             list-style: none;
             margin-top: 1px;
 
+            @media only screen and (max-width: 800px) {
+                margin-top: 0;
+                margin-left: 1px;
+                flex: 1;
+            }
+
             &:first-child {
                 margin-top: 0;
+                margin-left: 0;
             }
 
             a {
@@ -840,6 +887,10 @@ ul#kontakt {
                 border: 0 !important;
                 font-family: 'Doto', monospace;
                 font-weight: 700;
+
+                @media only screen and (max-width: 800px) {
+                    text-align: center;
+                }
 
                 &:hover {
                     background-color: var(--base-color);
