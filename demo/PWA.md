@@ -73,9 +73,12 @@ This directory now contains a fully configured Progressive Web App (PWA) setup w
 ## Service Worker Strategy
 
 The service worker uses a hybrid caching strategy:
-- **Static Assets**: Cache-first (cached locally, network as fallback)
-- **API Requests**: Network-first (fresh data, cache as fallback)
-- **Auto Updates**: Checks for service worker updates every 60 seconds
+- **App Shell** (`.js`/`.css`/`.html`): Network-first (fresh code, cache as offline fallback)
+- **Song Content** (`.md`/`.pdf`/`.json`/`.txt` under `/demo/data/`): Network-first, same as the app shell, since lyrics and sheet music get edited over time
+- **API Requests** (`.php`): Network-first (fresh data, cache as fallback)
+- **Media/Other Static Assets** (mp3, images, fonts): Cache-first (cached locally, network as fallback) — safe here since these rarely change and are large
+- **`cache: 'no-store'` requests**: Bypass the service worker cache entirely and always hit the network
+- **Auto Updates**: Checks for service worker updates every 60 seconds; when a new SW takes control, the open page reloads automatically so the update actually takes effect
 
 ## Testing the PWA Features
 

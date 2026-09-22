@@ -37,6 +37,13 @@ jobs:
           }
           ?>
           EOF
+      - name: 🔖 Cache-bust style.css/script.js
+        run: |
+          CSS_HASH=$(md5sum style.css | cut -c1-8)
+          JS_HASH=$(md5sum script.js | cut -c1-8)
+          sed -i "s/style\.css?[0-9A-Za-z]*/style.css?${CSS_HASH}/" index.html
+          sed -i "s/script\.js?[0-9A-Za-z]*/script.js?${JS_HASH}/" index.html
+
       - name: 🚀 FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:

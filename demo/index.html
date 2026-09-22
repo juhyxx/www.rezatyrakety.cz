@@ -107,11 +107,22 @@
     <script>
         // Register Service Worker for PWA support
         if ('serviceWorker' in navigator) {
+            // The new SW takes control via skipWaiting()/clients.claim(), but the
+            // page's already-loaded JS stays old until it reloads. Without this,
+            // an installed/already-open app looks "not updated" until the user
+            // manually force-closes and reopens it.
+            let refreshing = false;
+            navigator.serviceWorker.addEventListener('controllerchange', () => {
+                if (refreshing) return;
+                refreshing = true;
+                window.location.reload();
+            });
+
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('./sw.js', { scope: '/demo/' })
                     .then((registration) => {
                         console.log('Service Worker registered:', registration);
-                        
+
                         // Check for updates periodically
                         setInterval(() => {
                             registration.update();

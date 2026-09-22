@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v2';
+const CACHE_VERSION = 'v3';
 const CACHE_NAME = `rezaty-rakety-demo-${CACHE_VERSION}`;
 const ASSETS_TO_CACHE = [
     '/demo/',
@@ -60,6 +60,14 @@ self.addEventListener('fetch', (event) => {
         return;
     }
 
+    // Requests that explicitly opt out of caching (e.g. lyrics/song-list
+    // fetches using `cache: 'no-store'`) must bypass the SW cache entirely,
+    // otherwise stale content gets served forever regardless of the caller's intent.
+    if (request.cache === 'no-store') {
+        event.respondWith(fetch(request));
+        return;
+    }
+
     // Handle API requests with network-first strategy
     if (url.pathname.endsWith('.php') || url.pathname.includes('/api/')) {
         event.respondWith(
@@ -84,7 +92,11 @@ self.addEventListener('fetch', (event) => {
 
     // Handle app files (JS, CSS, HTML) with network-first strategy so updates are picked up
     const isAppFile = /\.(js|css|html)$/.test(url.pathname) || url.pathname === '/demo/' || url.pathname.endsWith('/demo');
-    if (isAppFile) {
+    // Song content (lyrics, sheet music, per-song metadata) can be edited at any
+    // time, so it needs the same network-first treatment as app files. Only the
+    // large media files (mp3) stay on the cache-first path below.
+    const isContentFile = url.pathname.startsWith('/demo/data/') && /\.(md|markdown|json|pdf|txt)$/.test(url.pathname);
+    if (isAppFile || isContentFile) {
         event.respondWith(
             fetch(request)
                 .then((response) => {
