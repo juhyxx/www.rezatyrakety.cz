@@ -7,13 +7,13 @@ Ten druhý je pro tu co přijde po tobě
 Mám kabáty pro vás pro obě  
 
 2. Jeden má tvar tvého těla, druhý krejčovské panny  
-Kdo ví co dělají ve skříni, když visí si tam tak sami  
+Kdo ví co dělaj ve skříni, když visí si tam ~~tak~~ sami  
 Oba na ramínku, jen moje bunda na skobě  
 Mám kabáty pro vás pro obě  
 
 3. První plný vzpomínek a druhý ~~je~~ kniha nepopsaná  
 Jeden jsem tam dal já a druhý pověsilas sama  
-Jeden pro paní neznámou a druhý cos nosívala na sobě  
+Jeden pro paní neznámou a druhý ~~cos~~ nosívalas na sobě  
 Mám kabáty pro vás pro obě  
   
 4. Jeden ještě trochu voní po tobě, s velkými knoflíky  
