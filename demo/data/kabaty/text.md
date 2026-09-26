@@ -15,14 +15,14 @@ Mám kabáty, kabáty pro vás pro obě
 Jeden jsem tam dal já a druhý pověsilas sama  
 Jeden pro paní neznámou a druhý  nosívalas na sobě  
 Mám kabáty, kabáty pro vás pro obě  
-  
-    Ještě trochu voní po tobě, s velkými knoflíky  
-z druhého je cítit  zápach fabriky  
-Ten  pro lásku budoucí mám v zásobě  
+
+4. Ještě trochu voní po tobě, s velkými knoflíky  
+z druhého je cítit zápach fabriky  
+Ten pro lásku budoucí mám v zásobě  
 Mám kabáty, kabáty pro vás pro obě  
 
 
-1. Až budu psát testament zmíním v něm co mám v almaře  
+_Až budu psát testament zmíním v něm co mám v almaře  
 Dva kabáty, minulost a budoucnost, oba bez tváře  
 Až budeš mi zametat jehličí na hrobě  
 Nezapomeň měl jsem kabáty pro vás pro obě_
