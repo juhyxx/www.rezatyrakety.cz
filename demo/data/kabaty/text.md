@@ -4,24 +4,25 @@
 1. Ve skříni vedle bundy z bundeswehru, visí dva kabáty  
 Jeden slušel tvému tělu, byl ti až po paty  
 Ten druhý je pro tu, co přijde po tobě  
-Mám kabáty pro vás pro obě  
+Mám kabáty, kabáty pro vás pro obě  
 
-2. Jeden má tvar tvého těla, druhý křivky krejčovské panny  
-Kdo ví co dělaj ve skříni, když visí si tam ~~tak~~ sami  
+2. První má křivky tvého těla, druhý krejčovské panny  
+Kdo ví co dělaj ve skříni, když visí si tam sami  
 Oba na ramínku, jen moje bunda na skobě  
-Mám kabáty pro vás pro obě  
+Mám kabáty, kabáty pro vás pro obě  
 
-3. První plný vzpomínek a druhý ~~je~~ kniha nepopsaná  
+3. První plný vzpomínek a druhý kniha nepopsaná  
 Jeden jsem tam dal já a druhý pověsilas sama  
-Jeden pro paní neznámou a druhý ~~cos~~ nosívalas na sobě  
-Mám kabáty pro vás pro obě  
+Jeden pro paní neznámou a druhý  nosívalas na sobě  
+Mám kabáty, kabáty pro vás pro obě  
   
-4. ~~Jeden~~ Ještě trochu voní po tobě, s velkými knoflíky  
-z druhého je cítit ~~sterilní~~ zápach fabriky  
+    Ještě trochu voní po tobě, s velkými knoflíky  
+z druhého je cítit  zápach fabriky  
 Ten  pro lásku budoucí mám v zásobě  
-Mám kabáty pro vás pro obě  
+Mám kabáty, kabáty pro vás pro obě  
 
-5. Až budu psát testament zmíním v něm co mám v almaře  
+
+1. Až budu psát testament zmíním v něm co mám v almaře  
 Dva kabáty, minulost a budoucnost, oba bez tváře  
-Až budeš mi pokládat kytku na hrobě  
-Nezapomeň měl jsem kabáty pro vás pro obě  
+Až budeš mi zametat jehličí na hrobě  
+Nezapomeň měl jsem kabáty pro vás pro obě_
