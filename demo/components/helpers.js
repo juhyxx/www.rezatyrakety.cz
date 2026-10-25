@@ -9,6 +9,11 @@ const ICON_CLASSES = {
     htm: { icon: 'fa-file-text-o', cls: 'bg-amber-50 text-amber-700 border-amber-200' },
 };
 
+const TABS_STYLE = { icon: 'fa-music', cls: 'bg-amber-400 text-slate-900 border-amber-500' };
+['gp', 'gpx', 'gp5', 'gp4', 'gp3'].forEach((ext) => {
+    ICON_CLASSES[ext] = TABS_STYLE;
+});
+
 export function createFileList(song, files = []) {
     const fragment = document.createDocumentFragment();
     (files || []).forEach((file, index) => {
@@ -31,6 +36,9 @@ function createFileItem(song, file, index) {
     link.dataset.fileIndex = String(index);
     if (file.type === 'lyrics') {
         link.dataset.lyrics = 'true';
+    }
+    if (file.type === 'tabs') {
+        link.dataset.tabs = 'true';
     }
 
     const icon = document.createElement('i');

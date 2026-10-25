@@ -104,6 +104,16 @@ class SongCard extends HTMLElement {
                     bubbles: true,
                 }));
             }
+            if (link.dataset.tabs === 'true' && file) {
+                event.preventDefault();
+                this.dispatchEvent(new CustomEvent('tabs-requested', {
+                    detail: {
+                        song: this._data,
+                        file,
+                    },
+                    bubbles: true,
+                }));
+            }
         });
 
         article.addEventListener('click', (event) => {

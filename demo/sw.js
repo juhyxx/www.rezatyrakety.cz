@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v3';
+const CACHE_VERSION = 'v4';
 const CACHE_NAME = `rezaty-rakety-demo-${CACHE_VERSION}`;
 const ASSETS_TO_CACHE = [
     '/demo/',
@@ -13,7 +13,9 @@ const ASSETS_TO_CACHE = [
     '/demo/components/lyrics-progress-viewer.js',
     '/demo/components/playlist-viewer.js',
     '/demo/components/recent-files-viewer.js',
-    '/demo/styles/lyrics-shared.css'
+    '/demo/components/gp-viewer.js',
+    '/demo/styles/lyrics-shared.css',
+    '/demo/styles/gp-viewer.css'
 ];
 
 // Install event - cache assets
@@ -92,10 +94,10 @@ self.addEventListener('fetch', (event) => {
 
     // Handle app files (JS, CSS, HTML) with network-first strategy so updates are picked up
     const isAppFile = /\.(js|css|html)$/.test(url.pathname) || url.pathname === '/demo/' || url.pathname.endsWith('/demo');
-    // Song content (lyrics, sheet music, per-song metadata) can be edited at any
+    // Song content (lyrics, sheet music, Guitar Pro tabs, per-song metadata) can be edited at any
     // time, so it needs the same network-first treatment as app files. Only the
     // large media files (mp3) stay on the cache-first path below.
-    const isContentFile = url.pathname.startsWith('/demo/data/') && /\.(md|markdown|json|pdf|txt)$/.test(url.pathname);
+    const isContentFile = url.pathname.startsWith('/demo/data/') && /\.(md|markdown|json|pdf|txt|gp|gpx|gp5|gp4|gp3)$/.test(url.pathname);
     if (isAppFile || isContentFile) {
         event.respondWith(
             fetch(request)

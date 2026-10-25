@@ -242,6 +242,12 @@ function determineFileType($extension)
             return 'lyrics';
         case 'pdf':
             return 'sheet';
+        case 'gp':
+        case 'gpx':
+        case 'gp5':
+        case 'gp4':
+        case 'gp3':
+            return 'tabs';
         default:
             return 'file';
     }

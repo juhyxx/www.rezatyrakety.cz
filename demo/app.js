@@ -4,6 +4,7 @@ import './components/lyrics-viewer.js';
 import './components/playlist-viewer.js';
 import './components/lyrics-progress-viewer.js';
 import './components/recent-files-viewer.js';
+import './components/gp-viewer.js';
 
 const CALENDAR_ID = '48jdqagdt2v2uhhd8afgcn2fc8@group.calendar.google.com';
 const CALENDAR_KEY = 'AIzaSyBxSP7qbnpzphJzT3yeRoc0XmreUx9DM2I';
@@ -27,6 +28,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     document.addEventListener('lyrics-requested', (event) => {
         const viewer = document.querySelector('lyrics-viewer');
+        if (!viewer || typeof viewer.open !== 'function') {
+            return;
+        }
+        viewer.open(event.detail.song, event.detail.file);
+    });
+    document.addEventListener('tabs-requested', (event) => {
+        const viewer = document.querySelector('gp-viewer');
         if (!viewer || typeof viewer.open !== 'function') {
             return;
         }
