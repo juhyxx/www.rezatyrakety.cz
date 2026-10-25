@@ -9,8 +9,9 @@ const STYLE_ID = 'gp-viewer-styles';
 const PREFS_PREFIX = 'gpViewer.';
 const PLAYING = 1; // alphaTab PlayerState.Playing
 // 'full' is GeneralUser GS v2.0.3 (S. Christian Collins, free to use, see soundfonts/), hosted here as its
-// license asks. 'lite' is alphaTab's own 1.3 MB Sonivox set, also the fallback if the big one fails to load.
-const SOUND_FONTS = { full: './soundfonts/GeneralUser-GS.sf2', lite: `${ALPHATAB_CDN}soundfont/sonivox.sf2` };
+// license asks, with hi-hats and the metronome click 15 dB louder (scripts/boost-soundfont-drums.py).
+// 'lite' is alphaTab's own 1.3 MB Sonivox set, also the fallback if the big one fails to load.
+const SOUND_FONTS = { full: './soundfonts/GeneralUser-GS-RR.sf2', lite: `${ALPHATAB_CDN}soundfont/sonivox.sf2` };
 const ZOOM_STEPS = [0.5, 0.6, 0.75, 0.9, 1, 1.1, 1.25, 1.5, 2];
 
 const CATEGORY_LABELS = { guitar: 'KYT', bass: 'BASA', drums: 'BICÍ', keys: 'KLÁV', vocals: 'ZPĚV', other: 'JINÉ' };
@@ -31,7 +32,6 @@ const TEMPLATE = `
         <div class="flex items-center gap-2">
             <button type="button" data-settings-toggle class="gpv-icon-btn" title="Zobrazení a zvuky" aria-label="Zobrazení a zvuky" aria-expanded="false" aria-controls="gpv-settings"><i class="fa fa-cog"></i></button>
             <a data-download class="gpv-icon-btn" title="Stáhnout soubor"><i class="fa fa-download"></i></a>
-            <button type="button" data-print class="gpv-icon-btn gpv-hide-narrow" title="Tisk"><i class="fa fa-print"></i></button>
             <button type="button" data-tracks-toggle class="gpv-icon-btn gpv-tracks-toggle" title="Stopy" aria-label="Stopy"><i class="fa fa-sliders"></i></button>
             <button type="button" data-close class="gpv-icon-btn" title="Zavřít" aria-label="Zavřít"><i class="fa fa-times"></i></button>
         </div>
@@ -70,29 +70,7 @@ const TEMPLATE = `
         </div>
     </header>
 
-    <div class="gpv-body">
-        <div data-viewport class="gpv-viewport"><div data-score class="gpv-paper"></div></div>
-        <aside data-tracks class="gpv-tracks bg-white dark:bg-slate-900">
-            <div class="flex items-center justify-between px-3 pt-3">
-                <h2 class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">Stopy</h2>
-                <button type="button" data-reset class="text-xs font-semibold text-amber-800 hover:underline dark:text-amber-400" title="Zrušit ztlumení a sóla">Obnovit</button>
-            </div>
-            <p class="border-b border-slate-200 px-3 pb-2 pt-1 text-[0.7rem] text-slate-500 dark:border-slate-800 dark:text-slate-400">
-                <i class="fa fa-eye"></i> zobrazí stopu v notách, <b>M</b> ztlumí, <b>S</b> hraje jen ji. Klik na název ukáže jen tu stopu.
-            </p>
-            <div data-track-list class="px-2 py-2"></div>
-        </aside>
-        <div data-status class="gpv-status">
-            <div class="gpv-status-card bg-white dark:bg-slate-900">
-                <div data-spinner class="gpv-spinner"></div>
-                <p data-status-title class="font-semibold"></p>
-                <p data-status-text class="mt-1 text-sm text-slate-500 dark:text-slate-400"></p>
-            </div>
-        </div>
-        <div data-scrim class="gpv-scrim"></div>
-    </div>
-
-    <footer class="gpv-transport border-t border-slate-300 bg-white dark:border-slate-800 dark:bg-slate-900">
+    <div class="gpv-transport border-b border-slate-300 bg-white dark:border-slate-800 dark:bg-slate-900">
         <div class="gpv-transport-main">
             <button type="button" data-play class="gpv-play" title="Přehrát / pauza (mezerník)" aria-label="Přehrát" disabled><i class="fa fa-play"></i></button>
             <button type="button" data-stop class="gpv-icon-btn" title="Na začátek" aria-label="Na začátek" disabled><i class="fa fa-stop"></i></button>
@@ -115,7 +93,30 @@ const TEMPLATE = `
             </div>
         </div>
         <div data-sound-status class="gpv-sound-status bg-white dark:bg-slate-900" hidden></div>
-    </footer>
+    </div>
+
+    <div class="gpv-body">
+        <div data-viewport class="gpv-viewport"><div data-score class="gpv-paper"></div></div>
+        <aside data-tracks class="gpv-tracks bg-white dark:bg-slate-900">
+            <div class="flex items-center justify-between px-3 pt-3">
+                <h2 class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">Stopy</h2>
+                <button type="button" data-reset class="text-xs font-semibold text-amber-800 hover:underline dark:text-amber-400" title="Zrušit ztlumení a sóla">Obnovit</button>
+            </div>
+            <p class="border-b border-slate-200 px-3 pb-2 pt-1 text-[0.7rem] text-slate-500 dark:border-slate-800 dark:text-slate-400">
+                <i class="fa fa-eye"></i> zobrazí stopu v notách, <b>M</b> ztlumí, <b>S</b> hraje jen ji. Klik na název ukáže jen tu stopu.
+            </p>
+            <div data-track-list class="px-2 py-2"></div>
+        </aside>
+        <div data-status class="gpv-status">
+            <div class="gpv-status-card bg-white dark:bg-slate-900">
+                <div data-spinner class="gpv-spinner"></div>
+                <p data-status-title class="font-semibold"></p>
+                <p data-status-text class="mt-1 text-sm text-slate-500 dark:text-slate-400"></p>
+            </div>
+        </div>
+        <div data-scrim class="gpv-scrim"></div>
+    </div>
+
 </div>
 `;
 
@@ -234,7 +235,6 @@ class GpViewer extends HTMLElement {
             settingsToggle: $('[data-settings-toggle]'),
             zoomValue: $('[data-zoom-value]'),
             download: $('[data-download]'),
-            print: $('[data-print]'),
             viewport: $('[data-viewport]'),
             score: $('[data-score]'),
             trackList: $('[data-track-list]'),
@@ -279,7 +279,6 @@ class GpViewer extends HTMLElement {
             this.applyMix();
             this.renderTrackList();
         });
-        this.el.print.addEventListener('click', () => this.api?.print());
         this.el.song.addEventListener('change', () => {
             const song = this.songList.find((s) => s.id === this.el.song.value);
             this.el.song.blur(); // so Space goes back to play/pause
@@ -449,6 +448,7 @@ class GpViewer extends HTMLElement {
             this.api.pause();
         }
         this.loadToken++;
+        this.pendingScore = null;
         this.toggleSettings(false);
         this.classList.add('hidden');
         this.setAttribute('aria-hidden', 'true');
@@ -542,6 +542,14 @@ class GpViewer extends HTMLElement {
             this.el.clearRange.hidden = !e.playbackRange;
         });
         api.renderFinished.on(() => this.setStatus(null));
+        api.postRenderFinished.on(() => {
+            this.rendering = false;
+            if (this.pendingScore) {
+                const bytes = this.pendingScore;
+                this.pendingScore = null;
+                this.openScore(bytes);
+            }
+        });
         api.error.on((error) => {
             if (this.soundPending && api.settings.player.soundFont !== SOUND_FONTS.lite) {
                 // The big set is missing or broken: play with the small one instead of failing.
@@ -549,6 +557,7 @@ class GpViewer extends HTMLElement {
                 this.loadSound(SOUND_FONTS.lite);
                 return;
             }
+            this.rendering = false;
             console.error('alphaTab:', error);
             this.setStatus('error', 'Něco se pokazilo.', error?.message || String(error));
         });
@@ -557,6 +566,12 @@ class GpViewer extends HTMLElement {
     }
 
     openScore(bytes) {
+        // alphaTab's render worker reports a finished render against whichever score is current by then, so a
+        // song picked mid-render waits for it (else alphaTab throws "reading 'id'" mapping the old song's bars).
+        if (this.rendering) {
+            this.pendingScore = bytes;
+            return;
+        }
         let score;
         try {
             score = window.alphaTab.importer.ScoreLoader.loadScoreFromBytes(bytes, this.api.settings);
@@ -584,6 +599,7 @@ class GpViewer extends HTMLElement {
         this.updateTempoReadout();
         this.el.clearRange.hidden = true;
         this.setStatus('loading', 'Kreslím noty…', this.song?.title ?? '');
+        this.rendering = true;
         this.api.renderScore(score, this.sortedShown());
     }
 

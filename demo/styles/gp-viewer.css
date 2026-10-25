@@ -191,7 +191,7 @@ gp-viewer button:disabled { opacity: 0.4; cursor: default; }
     flex: 1;
     min-width: 0;
     overflow: auto;
-    padding: 0.75rem;
+    padding: 0.75rem 0.75rem calc(0.75rem + env(safe-area-inset-bottom));
 }
 .gpv-paper {
     min-height: 100%;
@@ -242,20 +242,22 @@ gp-viewer button:disabled { opacity: 0.4; cursor: default; }
 }
 @keyframes gpv-spin { to { transform: rotate(360deg); } }
 
+/* Transport sits under the header; z-index keeps its sound-loading pill above the score. */
 .gpv-transport {
     position: relative;
+    z-index: 25;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 0.6rem 1.25rem;
-    padding: 0.6rem 0.9rem calc(0.6rem + env(safe-area-inset-bottom));
+    padding: 0.6rem 0.9rem;
 }
 .gpv-transport-main { display: flex; align-items: center; gap: 0.6rem; flex: 1 1 22rem; min-width: 0; }
 .gpv-transport-main input { flex: 1; min-width: 0; }
 .gpv-transport-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem; }
 .gpv-sound-status {
     position: absolute;
-    top: -2rem;
+    top: calc(100% + 0.5rem);
     left: 50%;
     transform: translateX(-50%);
     padding: 0.2rem 0.8rem;
@@ -353,8 +355,7 @@ gp-viewer button:disabled { opacity: 0.4; cursor: default; }
 }
 
 @media (max-width: 700px) {
-    .gpv-hide-narrow { display: none; }
-    .gpv-viewport { padding: 0.4rem; }
+    .gpv-viewport { padding: 0.4rem 0.4rem calc(0.4rem + env(safe-area-inset-bottom)); }
     .gpv-transport { gap: 0.5rem; padding-left: 0.6rem; padding-right: 0.6rem; }
     .gpv-transport-main { flex-basis: 100%; }
     .gpv-transport-tools { width: 100%; justify-content: space-between; }

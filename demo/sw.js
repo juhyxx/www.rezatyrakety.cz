@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v4';
+const CACHE_VERSION = 'v5'; // v5: drop the cached unpatched GeneralUser-GS.sf2 (32 MB), replaced by GeneralUser-GS-RR.sf2
 const CACHE_NAME = `rezaty-rakety-demo-${CACHE_VERSION}`;
 const ASSETS_TO_CACHE = [
     '/demo/',
