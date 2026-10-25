@@ -101,6 +101,7 @@ class RecentFilesViewer extends HTMLElement {
         } else {
             document.body.style.overflow = '';
         }
+        this.dispatchEvent(new CustomEvent('viewer-closed', { bubbles: true }));
     }
 
     renderRecentFiles() {

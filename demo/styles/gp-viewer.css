@@ -3,6 +3,7 @@ gp-viewer {
     --gpv-accent: #9b1915;
     --gpv-accent-soft: rgba(155, 25, 21, 0.1);
     --gpv-text: #0f172a;
+    --gpv-sunken: #f1f5f9;
     --gpv-line: #cbd5e1;
     --gpv-muted: #64748b;
     --gpv-control-bg: #ffffff;
@@ -21,6 +22,7 @@ gp-viewer {
         --gpv-accent: #fbbf24;
         --gpv-accent-soft: rgba(251, 191, 36, 0.14);
         --gpv-text: #f1f5f9;
+        --gpv-sunken: #020617;
         --gpv-line: #334155;
         --gpv-muted: #94a3b8;
         --gpv-control-bg: #0f172a;
@@ -41,14 +43,51 @@ gp-viewer button:disabled { opacity: 0.4; cursor: default; }
 
 /* ---------- controls ---------- */
 
-.gpv-select {
-    height: 2.25rem;
-    padding: 0 0.5rem;
+.gpv-header { position: relative; z-index: 30; }
+
+/* Settings menu (view, zoom, sounds) that drops down from the header. */
+.gpv-menu {
+    position: absolute;
+    top: calc(100% + 0.4rem);
+    right: 0.75rem;
+    display: grid;
+    gap: 0.9rem;
+    width: min(19rem, calc(100vw - 1.5rem));
+    padding: 0.9rem;
     border: 1px solid var(--gpv-line);
-    border-radius: 0.5rem;
-    background: var(--gpv-control-bg);
-    font-size: 0.8rem;
+    border-radius: 0.85rem;
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.25);
 }
+.gpv-field { display: grid; gap: 0.4rem; }
+.gpv-field-label { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gpv-muted); }
+.gpv-seg {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+    gap: 2px;
+    padding: 2px;
+    border-radius: 0.6rem;
+    background: var(--gpv-sunken);
+}
+.gpv-seg-grid { grid-auto-flow: row; grid-template-columns: 1fr 1fr; }
+.gpv-seg button {
+    min-height: 2.1rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--gpv-muted);
+    transition: background 0.15s, color 0.15s;
+}
+.gpv-seg button:hover { color: var(--gpv-text); }
+.gpv-seg button[aria-pressed="true"] {
+    background: var(--gpv-control-bg);
+    color: var(--gpv-accent);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
+}
+.gpv-seg small { margin-left: 0.2rem; font-weight: 400; opacity: 0.7; }
+.gpv-stepper { display: flex; align-items: center; gap: 0.5rem; }
+.gpv-stepper output { flex: 1; text-align: center; font-weight: 600; font-variant-numeric: tabular-nums; }
 
 /* Song picker in place of the title: looks like the heading, opens the song list. */
 .gpv-song-picker { position: relative; display: inline-flex; align-items: center; max-width: 100%; }
@@ -314,8 +353,6 @@ gp-viewer button:disabled { opacity: 0.4; cursor: default; }
 }
 
 @media (max-width: 700px) {
-    .gpv-view-options { order: 3; width: 100%; }
-    .gpv-view-options .gpv-select { flex: 1; min-width: 0; }
     .gpv-hide-narrow { display: none; }
     .gpv-viewport { padding: 0.4rem; }
     .gpv-transport { gap: 0.5rem; padding-left: 0.6rem; padding-right: 0.6rem; }

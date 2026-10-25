@@ -8,6 +8,10 @@ const ALPHATAB_SCRIPT = `${ALPHATAB_CDN}alphaTab.min.js`;
 const STYLE_ID = 'gp-viewer-styles';
 const PREFS_PREFIX = 'gpViewer.';
 const PLAYING = 1; // alphaTab PlayerState.Playing
+// 'full' is GeneralUser GS v2.0.3 (S. Christian Collins, free to use, see soundfonts/), hosted here as its
+// license asks. 'lite' is alphaTab's own 1.3 MB Sonivox set, also the fallback if the big one fails to load.
+const SOUND_FONTS = { full: './soundfonts/GeneralUser-GS.sf2', lite: `${ALPHATAB_CDN}soundfont/sonivox.sf2` };
+const ZOOM_STEPS = [0.5, 0.6, 0.75, 0.9, 1, 1.1, 1.25, 1.5, 2];
 
 const CATEGORY_LABELS = { guitar: 'KYT', bass: 'BASA', drums: 'BICÍ', keys: 'KLÁV', vocals: 'ZPĚV', other: 'JINÉ' };
 // 'auto' = staves as saved in the file, plus tab for every stringed instrument.
@@ -15,40 +19,54 @@ const VIEW_PROFILES = { auto: 'Default', file: 'Default', tab: 'Tab', score: 'Sc
 
 const TEMPLATE = `
 <div class="gpv flex h-full w-full flex-col bg-slate-200 text-slate-900 dark:bg-black dark:text-slate-100">
-    <header class="flex flex-wrap items-center gap-2 border-b border-slate-300 bg-white px-3 py-2 dark:border-slate-800 dark:bg-slate-900">
+    <header class="gpv-header flex items-center gap-2 border-b border-slate-300 bg-white px-3 py-2 dark:border-slate-800 dark:bg-slate-900">
         <div class="min-w-0 flex-1">
-            <p data-subtitle class="truncate text-[0.6rem] font-semibold uppercase tracking-[0.3em] text-amber-700/70 dark:text-amber-400/70">Tabulatura</p>
+            <p class="truncate text-[0.6rem] font-semibold uppercase tracking-[0.3em] text-amber-700/70 dark:text-amber-400/70"><i class="fa fa-music"></i> Player</p>
             <h1 data-title class="truncate text-lg font-semibold uppercase tracking-[0.15em] text-amber-800 dark:text-amber-400"></h1>
             <label data-song-picker class="gpv-song-picker text-amber-800 dark:text-amber-400" hidden>
                 <select data-song class="truncate text-lg font-semibold uppercase tracking-[0.15em]" aria-label="Skladba"></select>
                 <i class="fa fa-caret-down" aria-hidden="true"></i>
             </label>
         </div>
-        <div class="gpv-view-options flex items-center gap-2">
-            <select data-view class="gpv-select" aria-label="Zobrazení">
-                <option value="auto">Noty + taby</option>
-                <option value="tab">Jen taby</option>
-                <option value="score">Jen noty</option>
-                <option value="file">Jako v souboru</option>
-            </select>
-            <select data-layout class="gpv-select" aria-label="Rozvržení">
-                <option value="Page">Stránka</option>
-                <option value="Horizontal">Jeden řádek</option>
-            </select>
-            <select data-zoom class="gpv-select" aria-label="Zvětšení">
-                <option value="0.6">60 %</option>
-                <option value="0.75">75 %</option>
-                <option value="0.9">90 %</option>
-                <option value="1">100 %</option>
-                <option value="1.2">120 %</option>
-                <option value="1.5">150 %</option>
-            </select>
-        </div>
         <div class="flex items-center gap-2">
+            <button type="button" data-settings-toggle class="gpv-icon-btn" title="Zobrazení a zvuky" aria-label="Zobrazení a zvuky" aria-expanded="false" aria-controls="gpv-settings"><i class="fa fa-cog"></i></button>
             <a data-download class="gpv-icon-btn" title="Stáhnout soubor"><i class="fa fa-download"></i></a>
             <button type="button" data-print class="gpv-icon-btn gpv-hide-narrow" title="Tisk"><i class="fa fa-print"></i></button>
             <button type="button" data-tracks-toggle class="gpv-icon-btn gpv-tracks-toggle" title="Stopy" aria-label="Stopy"><i class="fa fa-sliders"></i></button>
             <button type="button" data-close class="gpv-icon-btn" title="Zavřít" aria-label="Zavřít"><i class="fa fa-times"></i></button>
+        </div>
+        <div data-settings id="gpv-settings" class="gpv-menu bg-white dark:bg-slate-900" hidden>
+            <div class="gpv-field">
+                <span class="gpv-field-label">Zobrazení</span>
+                <div class="gpv-seg gpv-seg-grid" data-choice="profile">
+                    <button type="button" data-value="auto">Noty + taby</button>
+                    <button type="button" data-value="tab">Jen taby</button>
+                    <button type="button" data-value="score">Jen noty</button>
+                    <button type="button" data-value="file">Jako v souboru</button>
+                </div>
+            </div>
+            <div class="gpv-field">
+                <span class="gpv-field-label">Rozvržení</span>
+                <div class="gpv-seg" data-choice="layout">
+                    <button type="button" data-value="Page">Stránka</button>
+                    <button type="button" data-value="Horizontal">Jeden řádek</button>
+                </div>
+            </div>
+            <div class="gpv-field">
+                <span class="gpv-field-label">Zvětšení</span>
+                <div class="gpv-stepper">
+                    <button type="button" data-zoom-step="-1" class="gpv-icon-btn gpv-small" aria-label="Zmenšit"><i class="fa fa-minus"></i></button>
+                    <output data-zoom-value>100 %</output>
+                    <button type="button" data-zoom-step="1" class="gpv-icon-btn gpv-small" aria-label="Zvětšit"><i class="fa fa-plus"></i></button>
+                </div>
+            </div>
+            <div class="gpv-field">
+                <span class="gpv-field-label">Zvuky nástrojů</span>
+                <div class="gpv-seg" data-choice="sound">
+                    <button type="button" data-value="full">Kvalitní <small>32 MB</small></button>
+                    <button type="button" data-value="lite">Úsporné <small>1 MB</small></button>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -181,6 +199,7 @@ class GpViewer extends HTMLElement {
             profile: prefs.get('profile', 'auto'),
             layout: prefs.get('layout', 'Page'),
             zoom: prefs.get('zoom', window.innerWidth < 700 ? 0.75 : 1),
+            sound: prefs.get('sound', 'full') in SOUND_FONTS ? prefs.get('sound', 'full') : 'full',
         };
         this.handleKeyDown = this.handleKeyDown.bind(this);
     }
@@ -209,12 +228,11 @@ class GpViewer extends HTMLElement {
         const $ = (selector) => this.querySelector(selector);
         this.el = {
             title: $('[data-title]'),
-            subtitle: $('[data-subtitle]'),
             songPicker: $('[data-song-picker]'),
             song: $('[data-song]'),
-            view: $('[data-view]'),
-            layout: $('[data-layout]'),
-            zoom: $('[data-zoom]'),
+            settings: $('[data-settings]'),
+            settingsToggle: $('[data-settings-toggle]'),
+            zoomValue: $('[data-zoom-value]'),
             download: $('[data-download]'),
             print: $('[data-print]'),
             viewport: $('[data-viewport]'),
@@ -240,6 +258,19 @@ class GpViewer extends HTMLElement {
             soundStatus: $('[data-sound-status]'),
         };
 
+        // alphaTab scrolls the cursor's line of music to the top (it calls scrollTo on our viewport). For the
+        // first line that hides the score's own header (title, words & music), so that line scrolls to 0.
+        const viewport = this.el.viewport;
+        const nativeScrollTo = viewport.scrollTo.bind(viewport);
+        viewport.scrollTo = (options, ...rest) => {
+            const firstSystem = this.api?.boundsLookup?.staffSystems?.[0];
+            if (firstSystem && typeof options === 'object' && options.top !== undefined
+                && options.top <= this.el.score.offsetTop + firstSystem.realBounds.y + this.api.settings.player.scrollOffsetY + 1) {
+                options = { ...options, top: 0 };
+            }
+            return nativeScrollTo(options, ...rest);
+        };
+
         $('[data-close]').addEventListener('click', () => this.close());
         $('[data-tracks-toggle]').addEventListener('click', () => this.classList.toggle('gpv-tracks-open'));
         $('[data-scrim]').addEventListener('click', () => this.classList.remove('gpv-tracks-open'));
@@ -252,7 +283,16 @@ class GpViewer extends HTMLElement {
         this.el.song.addEventListener('change', () => {
             const song = this.songList.find((s) => s.id === this.el.song.value);
             this.el.song.blur(); // so Space goes back to play/pause
-            if (song) this.open(song, tabsFile(song));
+            // Same request a song card makes, so the switch gets its own history entry (app.js routing).
+            if (song) {
+                this.dispatchEvent(new CustomEvent('tabs-requested', { detail: { song, file: tabsFile(song) }, bubbles: true }));
+            }
+        });
+        this.el.settingsToggle.addEventListener('click', () => this.toggleSettings());
+        this.addEventListener('pointerdown', (event) => {
+            if (!this.el.settings.hidden && !event.target.closest('[data-settings], [data-settings-toggle]')) {
+                this.toggleSettings(false);
+            }
         });
 
         this.el.play.addEventListener('click', () => this.api?.playPause());
@@ -285,9 +325,22 @@ class GpViewer extends HTMLElement {
         this.bindToggle(this.el.metronome, 'metronome', (on) => { this.api.metronomeVolume = on ? 1 : 0; });
         this.bindToggle(this.el.countIn, 'countIn', (on) => { this.api.countInVolume = on ? 1 : 0; });
 
-        this.bindView(this.el.view, 'profile');
-        this.bindView(this.el.layout, 'layout');
-        this.bindView(this.el.zoom, 'zoom');
+        for (const group of this.querySelectorAll('[data-choice]')) {
+            group.addEventListener('click', (event) => {
+                const button = event.target.closest('[data-value]');
+                if (button) this.setView(group.dataset.choice, button.dataset.value);
+            });
+        }
+        for (const button of this.querySelectorAll('[data-zoom-step]')) {
+            button.addEventListener('click', () => {
+                const step = +button.dataset.zoomStep;
+                const next = step > 0
+                    ? ZOOM_STEPS.find((z) => z > this.view.zoom + 0.001)
+                    : ZOOM_STEPS.findLast((z) => z < this.view.zoom - 0.001);
+                if (next) this.setView('zoom', next);
+            });
+        }
+        this.syncViewControls();
         this.updateTempoReadout();
     }
 
@@ -338,10 +391,9 @@ class GpViewer extends HTMLElement {
     // ---------- open / close ----------
 
     // Header "Player" button: no song chosen, so start from the one played here last.
-    openPlayer() {
+    get defaultSong() {
         const lastId = prefs.get('lastSong', null);
-        const song = this.songList.find((s) => s.id === lastId) || this.songList[0];
-        if (song) this.open(song, tabsFile(song));
+        return this.songList.find((s) => s.id === lastId) || this.songList[0] || null;
     }
 
     async open(song, file) {
@@ -356,7 +408,7 @@ class GpViewer extends HTMLElement {
         prefs.set('lastSong', song.id);
         this.el.title.textContent = song.title ?? song.id;
         this.syncSongPicker();
-        this.el.subtitle.textContent = `Tabulatura · ${file.filename}.${file.extension}`;
+        this.el.download.title = `Stáhnout ${file.filename}.${file.extension}`;
         this.el.download.href = file.url;
         this.el.download.setAttribute('download', `${file.filename}.${file.extension}`);
 
@@ -397,6 +449,7 @@ class GpViewer extends HTMLElement {
             this.api.pause();
         }
         this.loadToken++;
+        this.toggleSettings(false);
         this.classList.add('hidden');
         this.setAttribute('aria-hidden', 'true');
         if (document.body.dataset.scrollLock !== undefined) {
@@ -406,6 +459,7 @@ class GpViewer extends HTMLElement {
             document.body.style.overflow = '';
         }
         wakeLockManager.releaseWakeLock('gp-viewer');
+        this.dispatchEvent(new CustomEvent('viewer-closed', { bubbles: true }));
     }
 
     get isOpen() {
@@ -436,12 +490,13 @@ class GpViewer extends HTMLElement {
             },
             player: {
                 playerMode: alphaTab.PlayerMode.EnabledSynthesizer,
-                soundFont: `${ALPHATAB_CDN}soundfont/sonivox.sf2`,
+                soundFont: SOUND_FONTS[this.view.sound],
                 scrollElement: this.el.viewport,
                 scrollOffsetY: -24,
             },
         });
         this.api = api;
+        this.soundPending = true;
 
         api.soundFontLoad.on((e) => {
             if (e.total) {
@@ -450,6 +505,7 @@ class GpViewer extends HTMLElement {
             }
         });
         api.soundFontLoaded.on(() => {
+            this.soundPending = false;
             this.el.soundStatus.hidden = true;
         });
         // Fires again for every song once its MIDI is loaded, so the mixer is re-applied per song.
@@ -462,6 +518,10 @@ class GpViewer extends HTMLElement {
             api.playbackSpeed = this.speed;
         });
         api.playerStateChanged.on((e) => {
+            if (e.stopped && !api.playbackRange) {
+                // Stop (or the song's end) puts the cursor back on bar 1; bring the start back into view too.
+                this.el.viewport.scrollTo({ top: 0, behavior: 'smooth' });
+            }
             this.playing = e.state === PLAYING;
             this.el.play.querySelector('.fa').className = this.playing ? 'fa fa-pause' : 'fa fa-play';
             this.el.play.setAttribute('aria-label', this.playing ? 'Pauza' : 'Přehrát');
@@ -483,6 +543,12 @@ class GpViewer extends HTMLElement {
         });
         api.renderFinished.on(() => this.setStatus(null));
         api.error.on((error) => {
+            if (this.soundPending && api.settings.player.soundFont !== SOUND_FONTS.lite) {
+                // The big set is missing or broken: play with the small one instead of failing.
+                console.warn('Kvalitní zvuky se nepodařilo načíst, hraju úsporné:', error);
+                this.loadSound(SOUND_FONTS.lite);
+                return;
+            }
             console.error('alphaTab:', error);
             this.setStatus('error', 'Něco se pokazilo.', error?.message || String(error));
         });
@@ -675,25 +741,55 @@ class GpViewer extends HTMLElement {
         }
     }
 
-    bindView(select, key) {
-        select.value = String(this.view[key]);
-        select.addEventListener('change', () => {
-            this.view[key] = key === 'zoom' ? +select.value : select.value;
-            prefs.set(key, this.view[key]);
-            if (!this.api) return;
-            const display = this.api.settings.display;
-            const alphaTab = window.alphaTab;
-            if (key === 'profile') {
-                display.staveProfile = alphaTab.StaveProfile[VIEW_PROFILES[this.view.profile]];
-                this.applyStaffVisibility();
-            } else if (key === 'layout') {
-                display.layoutMode = alphaTab.LayoutMode[this.view.layout];
-            } else {
-                display.scale = this.view.zoom;
+    // ---------- settings menu ----------
+
+    toggleSettings(open = this.el.settings.hidden) {
+        this.el.settings.hidden = !open;
+        this.el.settingsToggle.setAttribute('aria-expanded', String(open));
+    }
+
+    setView(key, value) {
+        if (String(this.view[key]) === String(value)) return;
+        this.view[key] = key === 'zoom' ? +value : value;
+        prefs.set(key, this.view[key]);
+        this.syncViewControls();
+        if (!this.api) return;
+        if (key === 'sound') {
+            this.loadSound(SOUND_FONTS[this.view.sound]);
+            return;
+        }
+        const display = this.api.settings.display;
+        const alphaTab = window.alphaTab;
+        if (key === 'profile') {
+            display.staveProfile = alphaTab.StaveProfile[VIEW_PROFILES[this.view.profile]];
+            this.applyStaffVisibility();
+        } else if (key === 'layout') {
+            display.layoutMode = alphaTab.LayoutMode[this.view.layout];
+        } else {
+            display.scale = this.view.zoom;
+        }
+        this.api.updateSettings();
+        if (this.score) this.api.render();
+    }
+
+    syncViewControls() {
+        for (const group of this.querySelectorAll('[data-choice]')) {
+            for (const button of group.querySelectorAll('[data-value]')) {
+                button.setAttribute('aria-pressed', String(button.dataset.value === String(this.view[group.dataset.choice])));
             }
-            this.api.updateSettings();
-            if (this.score) this.api.render();
-        });
+        }
+        this.el.zoomValue.textContent = `${Math.round(this.view.zoom * 100)} %`;
+        this.querySelector('[data-zoom-step="-1"]').disabled = this.view.zoom <= ZOOM_STEPS[0];
+        this.querySelector('[data-zoom-step="1"]').disabled = this.view.zoom >= ZOOM_STEPS[ZOOM_STEPS.length - 1];
+    }
+
+    loadSound(url) {
+        if (this.playing) {
+            this.api.pause();
+        }
+        this.soundPending = true;
+        this.api.settings.player.soundFont = url;
+        this.api.loadSoundFont(url, false);
     }
 
     handleKeyDown(event) {
@@ -701,7 +797,8 @@ class GpViewer extends HTMLElement {
             return;
         }
         if (event.type === 'keydown' && event.key === 'Escape') {
-            this.close();
+            if (!this.el.settings.hidden) this.toggleSettings(false);
+            else this.close();
             return;
         }
         const typing = event.target.matches?.('input, select, textarea') && event.target.type !== 'range';

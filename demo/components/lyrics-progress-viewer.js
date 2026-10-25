@@ -108,6 +108,7 @@ class LyricsProgressViewer extends HTMLElement {
 
         // Release screen wake lock
         wakeLockManager.releaseWakeLock('lyrics-progress-viewer');
+        this.dispatchEvent(new CustomEvent('viewer-closed', { bubbles: true }));
     }
 
     async renderListAsync() {

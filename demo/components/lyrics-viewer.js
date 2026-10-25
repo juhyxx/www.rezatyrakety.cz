@@ -155,6 +155,7 @@ class LyricsViewer extends HTMLElement {
 
         // Release screen wake lock
         wakeLockManager.releaseWakeLock('lyrics-viewer');
+        this.dispatchEvent(new CustomEvent('viewer-closed', { bubbles: true }));
     }
 
     async loadLyrics(token) {
