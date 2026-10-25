@@ -100,7 +100,9 @@ self.addEventListener('fetch', (event) => {
     const isContentFile = url.pathname.startsWith('/demo/data/') && /\.(md|markdown|json|pdf|txt|gp|gpx|gp5|gp4|gp3)$/.test(url.pathname);
     if (isAppFile || isContentFile) {
         event.respondWith(
-            fetch(request)
+            // 'no-cache' revalidates with the server (cheap 304 when unchanged). A plain fetch may be
+            // answered from the browser's HTTP cache, which kept serving old JS after a deploy.
+            fetch(request, { cache: 'no-cache' })
                 .then((response) => {
                     if (response && response.status === 200) {
                         const responseToCache = response.clone();

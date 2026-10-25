@@ -44,7 +44,7 @@ function createFileItem(song, file, index) {
     const icon = document.createElement('i');
     icon.className = `fa ${meta.icon} text-xl`;
     const label = document.createElement('span');
-    label.textContent = file.filename;
+    label.textContent = file.type === 'tabs' ? 'Player' : file.filename;
 
     link.append(icon, label);
 

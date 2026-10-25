@@ -26,6 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (recentButton) {
         recentButton.addEventListener('click', () => openRecentFilesViewer());
     }
+    const playerButton = document.getElementById('player-button');
+    if (playerButton) {
+        playerButton.disabled = true;
+        playerButton.addEventListener('click', () => openPlayer());
+    }
     document.addEventListener('lyrics-requested', (event) => {
         const viewer = document.querySelector('lyrics-viewer');
         if (!viewer || typeof viewer.open !== 'function') {
@@ -60,7 +65,23 @@ document.addEventListener('songs-loaded', (event) => {
     if (playlistButton) {
         playlistButton.disabled = !hasReadySongs(cachedSongs);
     }
+    const gpViewer = document.querySelector('gp-viewer');
+    if (gpViewer) {
+        gpViewer.songs = cachedSongs;
+    }
+    const playerButton = document.getElementById('player-button');
+    if (playerButton) {
+        playerButton.disabled = !gpViewer?.songs.length;
+    }
 });
+
+function openPlayer() {
+    const viewer = document.querySelector('gp-viewer');
+    if (!viewer || typeof viewer.openPlayer !== 'function') {
+        return;
+    }
+    viewer.openPlayer();
+}
 
 function openPlaylist() {
     const viewer = document.querySelector('playlist-viewer');

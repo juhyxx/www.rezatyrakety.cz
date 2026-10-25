@@ -19,6 +19,10 @@ const TEMPLATE = `
         <div class="min-w-0 flex-1">
             <p data-subtitle class="truncate text-[0.6rem] font-semibold uppercase tracking-[0.3em] text-amber-700/70 dark:text-amber-400/70">Tabulatura</p>
             <h1 data-title class="truncate text-lg font-semibold uppercase tracking-[0.15em] text-amber-800 dark:text-amber-400"></h1>
+            <label data-song-picker class="gpv-song-picker text-amber-800 dark:text-amber-400" hidden>
+                <select data-song class="truncate text-lg font-semibold uppercase tracking-[0.15em]" aria-label="Skladba"></select>
+                <i class="fa fa-caret-down" aria-hidden="true"></i>
+            </label>
         </div>
         <div class="gpv-view-options flex items-center gap-2">
             <select data-view class="gpv-select" aria-label="Zobrazení">
@@ -138,6 +142,7 @@ const prefs = {
 };
 
 const fold = (text) => text.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+const tabsFile = (song) => song?.files?.find((file) => file.type === 'tabs');
 
 function formatTime(ms) {
     const total = Math.max(0, Math.round(ms / 1000));
@@ -164,6 +169,7 @@ class GpViewer extends HTMLElement {
         this._initialized = false;
         this.api = null;
         this.score = null;
+        this.songList = [];
         this.mix = [];
         this.shown = new Set();
         this.playing = false;
@@ -204,6 +210,8 @@ class GpViewer extends HTMLElement {
         this.el = {
             title: $('[data-title]'),
             subtitle: $('[data-subtitle]'),
+            songPicker: $('[data-song-picker]'),
+            song: $('[data-song]'),
             view: $('[data-view]'),
             layout: $('[data-layout]'),
             zoom: $('[data-zoom]'),
@@ -241,6 +249,11 @@ class GpViewer extends HTMLElement {
             this.renderTrackList();
         });
         this.el.print.addEventListener('click', () => this.api?.print());
+        this.el.song.addEventListener('change', () => {
+            const song = this.songList.find((s) => s.id === this.el.song.value);
+            this.el.song.blur(); // so Space goes back to play/pause
+            if (song) this.open(song, tabsFile(song));
+        });
 
         this.el.play.addEventListener('click', () => this.api?.playPause());
         this.el.stop.addEventListener('click', () => this.api?.stop());
@@ -289,19 +302,65 @@ class GpViewer extends HTMLElement {
         document.head.appendChild(link);
     }
 
+    // ---------- song list ----------
+
+    // Every song that has a Guitar Pro file; fills the song picker that replaces the title.
+    set songs(list) {
+        this.songList = (list || []).filter((song) => tabsFile(song));
+        this.renderSongPicker();
+    }
+
+    get songs() {
+        return this.songList;
+    }
+
+    renderSongPicker() {
+        if (!this.el) return;
+        const select = this.el.song;
+        select.replaceChildren();
+        const archive = document.createElement('optgroup');
+        archive.label = 'Archiv';
+        for (const song of this.songList) {
+            const option = new Option(song.title ?? song.id, song.id);
+            (song.status?.archive ? archive : select).appendChild(option);
+        }
+        if (archive.children.length) select.appendChild(archive);
+        this.syncSongPicker();
+    }
+
+    syncSongPicker() {
+        const listed = this.songList.some((s) => s.id === this.song?.id);
+        this.el.songPicker.hidden = !listed || this.songList.length < 2;
+        this.el.title.hidden = !this.el.songPicker.hidden;
+        if (listed) this.el.song.value = this.song.id;
+    }
+
     // ---------- open / close ----------
+
+    // Header "Player" button: no song chosen, so start from the one played here last.
+    openPlayer() {
+        const lastId = prefs.get('lastSong', null);
+        const song = this.songList.find((s) => s.id === lastId) || this.songList[0];
+        if (song) this.open(song, tabsFile(song));
+    }
 
     async open(song, file) {
         if (!song || !file) {
             return;
         }
+        if (this.playing) {
+            this.api.pause();
+        }
         this.song = song;
         this.file = file;
+        prefs.set('lastSong', song.id);
         this.el.title.textContent = song.title ?? song.id;
+        this.syncSongPicker();
         this.el.subtitle.textContent = `Tabulatura · ${file.filename}.${file.extension}`;
         this.el.download.href = file.url;
         this.el.download.setAttribute('download', `${file.filename}.${file.extension}`);
 
+        const wasOpen = this.isOpen;
         this.classList.remove('hidden', 'gpv-tracks-open');
         this.removeAttribute('hidden');
         this.setAttribute('aria-hidden', 'false');
@@ -309,7 +368,9 @@ class GpViewer extends HTMLElement {
             document.body.dataset.scrollLock = document.body.style.overflow || '';
         }
         document.body.style.overflow = 'hidden';
-        wakeLockManager.requestWakeLock('gp-viewer');
+        if (!wasOpen) {
+            wakeLockManager.requestWakeLock('gp-viewer');
+        }
 
         const token = ++this.loadToken;
         this.setStatus('loading', 'Načítám tabulaturu…', file.filename);

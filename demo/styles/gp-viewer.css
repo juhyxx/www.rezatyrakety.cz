@@ -2,6 +2,7 @@
 gp-viewer {
     --gpv-accent: #9b1915;
     --gpv-accent-soft: rgba(155, 25, 21, 0.1);
+    --gpv-text: #0f172a;
     --gpv-line: #cbd5e1;
     --gpv-muted: #64748b;
     --gpv-control-bg: #ffffff;
@@ -19,6 +20,7 @@ gp-viewer {
     gp-viewer {
         --gpv-accent: #fbbf24;
         --gpv-accent-soft: rgba(251, 191, 36, 0.14);
+        --gpv-text: #f1f5f9;
         --gpv-line: #334155;
         --gpv-muted: #94a3b8;
         --gpv-control-bg: #0f172a;
@@ -47,6 +49,27 @@ gp-viewer button:disabled { opacity: 0.4; cursor: default; }
     background: var(--gpv-control-bg);
     font-size: 0.8rem;
 }
+
+/* Song picker in place of the title: looks like the heading, opens the song list. */
+.gpv-song-picker { position: relative; display: inline-flex; align-items: center; max-width: 100%; }
+.gpv-song-picker select {
+    min-width: 0;
+    max-width: 100%;
+    padding-right: 1.25rem;
+    field-sizing: content; /* hug the chosen title so the caret sits right after it */
+    appearance: none;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+.gpv-song-picker select:focus-visible { outline: 2px solid var(--gpv-accent); outline-offset: 2px; border-radius: 0.25rem; }
+.gpv-song-picker option, .gpv-song-picker optgroup {
+    background: var(--gpv-control-bg);
+    color: var(--gpv-text);
+    letter-spacing: normal;
+    text-transform: none;
+}
+.gpv-song-picker .fa { position: absolute; right: 0.2rem; pointer-events: none; }
 
 .gpv-icon-btn {
     display: inline-flex;
