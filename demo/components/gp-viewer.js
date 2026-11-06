@@ -182,6 +182,21 @@ function category(track) {
     return 'other';
 }
 
+// Files can save a repeat count below their highest alternate ending (Kabáty: endings up to 6, but "x2"). alphaTab
+// stops repeating at that count, so the later endings get no playback position: they never play and clicking them
+// can't move the cursor. Only the last closing is raised: an earlier closing's count decides on which passes the
+// repeat turns back there (raising bar 27 of "Michal a samopal" would skip its Bridge).
+function completeRepeats(score) {
+    for (const group of new Set(score.masterBars.map((bar) => bar.repeatGroup))) {
+        const closing = group.closings.at(-1);
+        if (!closing) continue;
+        const endings = group.masterBars
+            .filter((bar) => bar.index <= closing.index)
+            .reduce((all, bar) => all | bar.alternateEndings, 0);
+        closing.repeatCount = Math.max(closing.repeatCount, 32 - Math.clz32(endings));
+    }
+}
+
 class GpViewer extends HTMLElement {
     constructor() {
         super();
@@ -580,6 +595,7 @@ class GpViewer extends HTMLElement {
             this.setStatus('error', 'Tento soubor se nedá přečíst.', 'Podporované jsou soubory Guitar Pro 3–8 (.gp, .gpx, .gp5, .gp4, .gp3).');
             return;
         }
+        completeRepeats(score);
 
         if (this.playing) {
             this.api.pause();

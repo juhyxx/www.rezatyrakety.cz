@@ -22,6 +22,7 @@
 ## Notes
 - Legacy `text.html` page has been removed; all lyrics handling is in the SPA.
 - alphaTab is pinned to `1.9.0-alpha.1963` in `gp-viewer.js`: 1.8.x freezes the page on songs that combine D.S. al Coda with repeats and alternate endings (e.g. `data/mesic`). Move to 1.9.0 once it's released as stable.
+- Many `.gp` files save a repeat count below their highest alternate ending (e.g. `data/kabaty`: endings up to 6, "x2"), so alphaTab would never reach the later endings. `completeRepeats()` in `gp-viewer.js` raises the count of each repeat's last closing on load. With that, song lengths match the demo recordings.
 - When adding new songs, set the `status` string in `manifest.json` to one of `archive`, `new`, `progress`, or `ready` so badges render correctly.
 - Optional numeric `weight` value in the manifest drives playlist ordering (values < 50 float to the start, > 50 to the end; omit to keep neutral).
 - Optional numeric `tempo` value (BPM) in the manifest is shown on the song card next to the duration. Extracted from the tempo marking (`♩ = NNN`) at the top of the chord chart PDF via `pdftotext -layout`, picking the guitar/bass/drums PDF in that priority order.
