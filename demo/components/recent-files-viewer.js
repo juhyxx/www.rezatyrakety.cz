@@ -5,7 +5,7 @@ const TEMPLATE = `
             <i class="fa fa-times"></i>
         </button>
         <div class="flex flex-wrap justify-start items-center gap-4">
-            <img src="../logo/logo.svg" alt="Rezaty rakety logo" class="h-8 w-auto" />
+            <img src="../logo/logo-male.svg" alt="Rezaty rakety logo" class="h-8 w-auto" />
             <h1 class="text-2xl font-semibold uppercase tracking-[0.2em] text-amber-800 dark:text-amber-400">Co je nového</h1>
         </div>
         <div data-list class="mt-6 space-y-3"></div>

@@ -1,158 +1,173 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
   <head>
     <meta charset="utf-8">
-    <title>Page Not Found :(</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Evidentně saháte vedle · Rezatý Rakety</title>
+    <meta name="robots" content="noindex">
+    <meta name="theme-color" content="#0A0807">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/apple-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&family=Special+Elite&display=swap">
     <style>
-      ::-moz-selection {
-        background: #b3d4fc;
-        text-shadow: none;
+      :root {
+        --cream: #DCCDBB;
+        --black: #0A0807;
+        --rust: #943616;
       }
 
-      ::selection {
-        background: #b3d4fc;
-        text-shadow: none;
-      }
-
-      html {
-        padding: 30px 10px;
-        font-size: 20px;
-        line-height: 1.4;
-        color: #737373;
-        background: #f0f0f0;
-        -webkit-text-size-adjust: 100%;
-        -ms-text-size-adjust: 100%;
+      * {
+        box-sizing: border-box;
       }
 
       html,
-      input {
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      body {
+        margin: 0;
+        min-height: 100%;
       }
 
       body {
-        max-width: 600px;
-        padding: 30px 20px 50px;
-        border: 1px solid #b3b3b3;
-        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        background: var(--cream);
+        color: var(--black);
+        font: 1.0625rem/1.6 'Fira Sans', system-ui, sans-serif;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        height: 4.25rem;
+        padding: 0 clamp(1rem, 4vw, 2.5rem);
+        background: var(--black);
+        border-bottom: 3px solid var(--rust);
+      }
+
+      header img {
+        display: block;
+        height: 3.1rem;
+        width: auto;
+      }
+
+      main {
+        flex: 1;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: clamp(2rem, 5vw, 4rem);
+        align-items: center;
+        width: 100%;
+        max-width: 72rem;
         margin: 0 auto;
-        box-shadow: 0 1px 10px #a7a7a7, inset 0 1px 0 #fff;
-        background: #fcfcfc;
+        padding: clamp(2.5rem, 7vw, 5rem) clamp(1rem, 4vw, 2.5rem);
+      }
+
+      @media (max-width: 760px) {
+        main {
+          grid-template-columns: minmax(0, 1fr);
+        }
+      }
+
+      .code {
+        margin: 0;
+        font-family: 'Special Elite', 'Courier New', monospace;
+        font-size: 1.1rem;
+        color: var(--rust);
+        letter-spacing: 0.1em;
       }
 
       h1 {
-        margin: 0 10px;
-        font-size: 50px;
-        text-align: center;
+        margin: 0.25rem 0 1.5rem;
+        font-family: 'Special Elite', 'Courier New', monospace;
+        font-weight: 400;
+        font-size: clamp(2.25rem, 4vw + 1rem, 3.75rem);
+        line-height: 1.05;
       }
 
-      h1 span {
-        color: #bbb;
-      }
-
-      h3 {
-        margin: 1.5em 0 0.5em;
-      }
-
-      p {
-        margin: 1em 0;
+      h1::after {
+        content: "";
+        display: block;
+        width: 5rem;
+        height: 0.32rem;
+        margin-top: 1rem;
+        background: var(--rust);
       }
 
       ul {
-        padding: 0 0 0 40px;
-        margin: 1em 0;
-      }
-
-      .container {
-        margin: 0 auto;
-      }
-
-      /* google search */
-
-      #goog-fixurl ul {
+        margin: 0 0 2rem;
+        padding: 0;
         list-style: none;
-        padding: 0;
-        margin: 0;
       }
 
-      #goog-fixurl form {
-        margin: 0;
+      li {
+        position: relative;
+        padding: 0.35rem 0 0.35rem 1.6rem;
       }
 
-      #goog-wm-qt,
-      #goog-wm-sb {
-        border: 1px solid #bbb;
-        font-size: 16px;
-        line-height: normal;
-        vertical-align: top;
-        color: #444;
-        border-radius: 2px;
+      li::before {
+        content: "";
+        position: absolute;
+        left: 0.2rem;
+        top: 0.85rem;
+        width: 0.6rem;
+        height: 0.6rem;
+        background: var(--rust);
+        transform: rotate(45deg);
       }
 
-      #goog-wm-qt {
-        width: 220px;
-        height: 20px;
-        padding: 5px;
-        margin: 5px 10px 0 0;
-        box-shadow: inset 0 1px 1px #ccc;
-      }
-
-      #goog-wm-sb {
+      .btn {
         display: inline-block;
-        height: 32px;
-        padding: 0 10px;
-        margin: 5px 0 0;
-        white-space: nowrap;
-        cursor: pointer;
-        background-color: #f5f5f5;
-        background-image: -webkit-linear-gradient(rgba(255,255,255,0), #f1f1f1);
-        background-image: -moz-linear-gradient(rgba(255,255,255,0), #f1f1f1);
-        background-image: -ms-linear-gradient(rgba(255,255,255,0), #f1f1f1);
-        background-image: -o-linear-gradient(rgba(255,255,255,0), #f1f1f1);
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        *overflow: visible;
-        *display: inline;
-        *zoom: 1;
+        padding: 0.75rem 1.3rem;
+        border: 2px solid var(--black);
+        background: var(--black);
+        color: var(--cream);
+        font-family: 'Special Elite', 'Courier New', monospace;
+        text-transform: uppercase;
+        text-decoration: none;
+        box-shadow: 4px 4px 0 var(--rust);
+        transition: transform 0.12s ease, box-shadow 0.12s ease;
       }
 
-      #goog-wm-sb:hover,
-      #goog-wm-sb:focus {
-        border-color: #aaa;
-        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-        background-color: #f8f8f8;
+      .btn:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 6px 6px 0 var(--rust);
       }
 
-      #goog-wm-qt:hover,
-      #goog-wm-qt:focus {
-        border-color: #105cb6;
-        outline: 0;
-        color: #222;
+      figure {
+        margin: 0;
       }
 
-      input::-moz-focus-inner {
-        padding: 0;
-        border: 0;
+      figure img {
+        display: block;
+        width: 100%;
+        height: auto;
+        transform: rotate(2deg);
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <h1>Evidentně saháte vedle</h1>
-      <p>To se stává pokud:</p>
-
-      <ul>
-        <li>snažíte se najít něco, co není</li>
-        <li>vaše hrátky překročily rozumnou míru</li>
-        <li>snažíte se ukojit své nízké touhy pronikáním do cizího soukromí</li>
-        <li>děláte prostě blbostě</li>
-      </ul>
-
-      <script>
-        var GOOG_FIXURL_LANG = (navigator.language || '').slice(0,2),GOOG_FIXURL_SITE = location.host;
-      </script>
-      <img src="http://www.rezatyrakety.cz/images/404.png">
-
-    </div>
+    <header>
+      <a href="/" aria-label="Rezatý Rakety – úvodní stránka"><img src="/images/logo-nav.png" alt="Rezatý Rakety" width="130" height="115"></a>
+    </header>
+    <main>
+      <div>
+        <p class="code">Chyba 404</p>
+        <h1>Evidentně saháte vedle</h1>
+        <p>To se stává, pokud:</p>
+        <ul>
+          <li>snažíte se najít něco, co není</li>
+          <li>vaše hrátky překročily rozumnou míru</li>
+          <li>snažíte se ukojit své nízké touhy pronikáním do cizího soukromí</li>
+          <li>děláte prostě blbostě</li>
+        </ul>
+        <a class="btn" href="/">Zpátky k Raketám</a>
+      </div>
+      <figure>
+        <img src="/images/404.png" alt="Rezatý Rakety na staré fotce" width="561" height="398">
+      </figure>
+    </main>
   </body>
 </html>

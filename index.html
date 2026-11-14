@@ -4,388 +4,678 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Rezatý Rakety</title>
+        <meta name="description"
+            content="Rezatý Rakety – autorský rockový chameleon z Plzně. Koncerty, nahrávky a informace pro pořadatele.">
         <meta property="og:title" content="Rezatý Rakety" />
-        <meta property="og:url" content="http://www.rezatyrakety.cz" />
+        <meta property="og:url" content="https://www.rezatyrakety.cz" />
         <meta property="og:site_name" content="Rezatý Rakety" />
         <meta property="og:image"
-            content="http://www.rezatyrakety.cz/images/logo.png" />
+            content="https://www.rezatyrakety.cz/images/og-image.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta property="og:type" content="website" />
         <meta property="og:description"
             content="Plzeňská alternativně bigbítová kapela." />
-        <meta name="theme-color" content="#9b1915">
-        <link rel="stylesheet" href="style.css?35">
-        <script src="https://use.fontawesome.com/8a57eaf791.js" defer></script>
-        <script src="script.js?18" defer></script>
+        <meta name="theme-color" content="#0A0807">
+        <link rel="icon" href="favicon.ico" sizes="any">
+        <link rel="icon" type="image/png" sizes="32x32"
+            href="favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96"
+            href="favicon-96x96.png">
+        <link rel="apple-touch-icon" href="apple-icon.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Special+Elite&display=swap">
+        <link rel="stylesheet" href="style.css?36">
+        <script src="script.js?19" defer></script>
     </head>
 
     <body>
+        <svg class="sprite" aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg">
+            <symbol id="i-youtube" viewBox="0 0 24 24"><path
+                    d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" /><polygon
+                    points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" /></symbol>
+            <symbol id="i-headphones" viewBox="0 0 24 24"><path
+                    d="M3 18v-6a9 9 0 0 1 18 0v6" /><path
+                    d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" /></symbol>
+            <symbol id="i-facebook" viewBox="0 0 24 24"><path
+                    d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></symbol>
+            <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="2" y="2"
+                    width="20" height="20" rx="5" ry="5" /><path
+                    d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line
+                    x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></symbol>
+            <symbol id="i-user" viewBox="0 0 24 24"><path
+                    d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle
+                    cx="12" cy="7" r="4" /></symbol>
+            <symbol id="i-phone" viewBox="0 0 24 24"><path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></symbol>
+            <symbol id="i-mail" viewBox="0 0 24 24"><path
+                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline
+                    points="22,6 12,13 2,6" /></symbol>
+            <symbol id="i-pin" viewBox="0 0 24 24"><path
+                    d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle
+                    cx="12" cy="10" r="3" /></symbol>
+            <symbol id="i-printer" viewBox="0 0 24 24"><polyline
+                    points="6 9 6 2 18 2 18 9" /><path
+                    d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" /><rect
+                    x="6" y="14" width="12" height="8" /></symbol>
+            <symbol id="i-menu" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21"
+                    y2="6" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3"
+                    y1="18" x2="21" y2="18" /></symbol>
+            <symbol id="i-close" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6"
+                    y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></symbol>
+            <symbol id="i-arrow-down" viewBox="0 0 24 24"><line x1="12" y1="5"
+                    x2="12" y2="19" /><polyline
+                    points="19 12 12 19 5 12" /></symbol>
+        </svg>
 
-        <main>
-            <nav>
-                <ul>
-                    <li><a href="#koncerty">Koncerty</a></li>
-                    <li><a href="#nahravky">Nahrávky</a></li>
-                    <li><a href="#rakety">O Raketách</a></li>
-                    <li><a href="#poradatele">Pro pořadatele</a></li>
-                </ul>
-            </nav>
+        <header class="site-header">
+            <div class="site-header-inner">
+                <a class="brand" href="#top"
+                    aria-label="Rezatý Rakety – na začátek">
+                    <img src="images/logo-nav.png" alt="Rezatý Rakety"
+                        width="130" height="115">
+                </a>
+                <button class="menu-toggle" type="button" aria-expanded="false"
+                    aria-controls="site-nav">
+                    <svg class="icon icon-open"><use href="#i-menu" /></svg>
+                    <svg class="icon icon-close"><use href="#i-close" /></svg>
+                    <span>Menu</span>
+                </button>
+                <nav id="site-nav" class="site-nav"
+                    aria-label="Hlavní navigace">
+                    <ul>
+                        <li><a href="#koncerty">Koncerty</a></li>
+                        <li><a href="#nahravky">Nahrávky</a></li>
+                        <li><a href="#rakety">O Raketách</a></li>
+                        <li><a href="#poradatele">Pro pořadatele</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
 
-            <article id="intro">
+        <main id="top">
 
+            <section id="intro" class="hero">
                 <div class="hero-pin">
-                    <h1>Rezatý Rakety</h1>
+                    <h1 class="visually-hidden">Rezatý Rakety</h1>
 
                     <div class="hero-collage" aria-hidden="true">
                         <figure class="hero-photo hero-photo-guitar"
-                            data-x0="-22" data-y0="-16" data-rot0="-6"
-                            data-x1="-34" data-y1="-58" data-rot1="-12">
-                            <img
-                                src="images/photos/photo-1.jpeg"
-                                alt>
+                            data-x0="-22" data-y0="-18" data-rot0="-6"
+                            data-x1="-36" data-y1="-56" data-rot1="-12">
+                            <img src="images/photos/rr-1.webp" alt width="600"
+                                height="900">
+                        </figure>
+                        <figure class="hero-photo hero-photo-bass"
+                            data-x0="22" data-y0="-16" data-rot0="7"
+                            data-x1="38" data-y1="-42" data-rot1="13">
+                            <img src="images/photos/rr-2.webp" alt width="900"
+                                height="600">
                         </figure>
                         <figure class="hero-photo hero-photo-drums"
-                            data-x0="20" data-y0="-14" data-rot0="7"
-                            data-x1="34" data-y1="-40" data-rot1="13">
-                            <img
-                                src="images/photos/photo-2.jpeg"
-                                alt>
+                            data-x0="6" data-y0="14" data-rot0="-3"
+                            data-x1="18" data-y1="32" data-rot1="-8">
+                            <img src="images/photos/rr-3.webp" alt width="675"
+                                height="900">
                         </figure>
-                        <figure class="hero-photo hero-photo-singer"
-                            data-x0="6" data-y0="18" data-rot0="-3"
-                            data-x1="16" data-y1="36" data-rot1="-8">
-                            <img
-                                src="images/photos/photo-3.jpeg"
-                                alt>
-                        </figure>
-                        <div class="hero-logo" data-x0="0" data-y0="48"
-                            data-rot0="0" data-x1="-2" data-y1="88"
-                            data-rot1="0">
-                            <img src="logo/logo.svg" alt>
+                        <div class="hero-placka hero-placka-left"
+                            data-x0="-40" data-y0="22" data-rot0="-14"
+                            data-x1="-66" data-y1="38" data-rot1="-30">
+                            <img src="images/placky/03-punk.webp" alt
+                                width="600" height="600">
+                        </div>
+                        <div class="hero-placka hero-placka-right"
+                            data-x0="40" data-y0="26" data-rot0="12"
+                            data-x1="66" data-y1="52" data-rot1="28">
+                            <img src="images/placky/07-jsme-rez.webp" alt
+                                width="600" height="600">
+                        </div>
+                        <div class="hero-logo"
+                            data-x0="0" data-y0="42" data-rot0="0"
+                            data-x1="-2" data-y1="74" data-rot1="0">
+                            <img src="logo/logo-velke.svg" alt width="1158"
+                                height="1020">
                         </div>
                     </div>
+
+                    <div class="hero-foot">
+                        <p class="hero-tagline">Alternativní bigbít
+                            z&nbsp;Plzně</p>
+                        <a class="hero-cue" href="#koncerty">
+                            <span>Kdy hrajeme</span>
+                            <svg class="icon"><use href="#i-arrow-down" /></svg>
+                        </a>
+                    </div>
                 </div>
+            </section>
 
-            </article>
+            <section id="koncerty" class="section section-cream">
+                <div class="container concerts">
+                    <div class="concerts-main">
+                        <h2 class="section-title">Koncerty</h2>
 
-            <article id="koncerty-container">
-                <h2 id="koncerty">Koncerty</h2>
-                <template id="tmpl-upcoming">
-                    <li>
-                        <span class="date"></span>
-                        <div><b class="jmeno"></b> <span
-                                class="adresaUlice"></span> <b
-                                class="adresaMesto"></b></div>
-                        <div class="poznamka"></div>
-                    </li>
-                </template>
+                        <template id="tmpl-upcoming">
+                            <li class="gig">
+                                <div class="gig-date">
+                                    <span class="gig-day"></span>
+                                    <span class="gig-month"></span>
+                                    <span class="gig-year"></span>
+                                </div>
+                                <div class="gig-info">
+                                    <p class="gig-when"></p>
+                                    <h3 class="gig-name"></h3>
+                                    <p class="gig-place"></p>
+                                    <p class="gig-note"></p>
+                                </div>
+                            </li>
+                        </template>
 
-                <template id="tmpl-past">
-                    <li>
-                        <div><span class="date-old"></span> <b
-                                class="adresaMesto"></b> <span
-                                class="jmeno"></span></div>
-                    </li>
-                </template>
-                <section id="koncert-list">Momento ...</section>
-                <h3>Odehrané (<span id="count"></span>)</h3>
-                <section id="koncert-old-list">Momento ...
+                        <template id="tmpl-past">
+                            <li>
+                                <span class="date-old"></span>
+                                <span><b class="adresaMesto"></b> <span
+                                        class="jmeno"></span></span>
+                            </li>
+                        </template>
 
-                </section>
-                <div class="decoration">
-                    <span class="screw screw-top-left"></span>
-                    <span class="screw screw-top-right"></span>
-                    <span class="screw screw-bottom-left"></span>
-                    <span class="screw screw-bottom-right"></span>
+                        <div id="koncert-list" class="gigs" aria-live="polite">
+                            <p class="loading">Momento…</p>
+                        </div>
+                    </div>
+
+                    <aside class="concerts-card" aria-hidden="true">
+                        <img class="karta" src="images/karty/06-soundtrack.webp" alt
+                            width="600" height="834" loading="lazy">
+                    </aside>
+
+                    <div class="past">
+                        <h3 class="label-title">Odehrané <span
+                                class="count">(<span
+                                    id="count">…</span>)</span></h3>
+                        <div id="koncert-old-list" class="past-list">
+                            <p class="loading">Momento…</p>
+                        </div>
+                        <button type="button" id="past-toggle"
+                            class="btn btn-outline"
+                            aria-controls="koncert-old-list"
+                            aria-expanded="false" hidden>Zobrazit
+                            všechny</button>
+                    </div>
                 </div>
-            </article>
+            </section>
 
-            <article id="img">
-
-                <div class="decoration">
-                    <span class="screw screw-top-left"></span>
-                    <span class="screw screw-top-right"></span>
-                    <span class="screw screw-bottom-left"></span>
-                    <span class="screw screw-bottom-right"></span>
-                </div>
-            </article>
-
-            <article>
-                <h2 id="rakety">O&nbsp;Raketách</h2>
-                <p>Rezatý Rakety je autorský rockový chameleon z Plzně založený
-                    v roce 2008. Po koketování s blues, přešly
-                    Rakety k rocku s odkazem k tradici k českému bigbítu.
-                    Ani to však není poslední zastávkou v hudebním vývoji
-                    skupiny, jelikož se do její tvorby začaly prolínat
-                    vlivy undergroundu a tvrdšího rocku.
-                </p>
-                <p>Poznávacím znamením Rezatých Raket jsou vlastní, česky psané
-                    texty, které se nebojí
-                    ironie a sarkasmu a zrcadlu společnosti nastavují zrcadlo.
-                </p>
-
-                <ul>
-                    <li><b>29. srpna 2008</b> první koncert</li>
-                    <li><b>23. listopadu 2009</b> vydali vlastníma silama záznam
-                        z&nbsp;koncertu <b>...a to už dneska nikdo
-                            neposlouchá</b>.</li>
-                    <li><b>5. května 2009</b> publikovali videoklip <a
-                            href="https://www.youtube.com/watch?v=CFCnQc_mMpo&t=3s">Krise
-                            středního věku <i
-                                class="fa fa-youtube"></i></a></li>
-                    <li><b>2. prosinec 2009</b> začínají Rezatý Rakety pořádat
-                        serii pravidelných koncertů pod hlavičkou
-                        Trojka z blues</li>
-                    <li><b>9. května 2011</b> publikovali videoklip <a
-                            href="https://www.youtube.com/watch?v=oE7gZZuwVnw&list=PLu4szgwcGkqqRZnTw1nH4N5I-ZZ4F3y5I">Rádio
-                            Starý dobrý časy <i
-                                class="fa fa-youtube"></i></a></li>
-                    <li><b>1. června 2011</b> vydali svoje studiové album <a
-                            href="#nahravky">Starý dobrý časy</a></li>
-                    <li><b>6.červen 2015</b> poslední ze série koncertů
-                        Trojek</li>
-                    <li><b>17. října 2016</b> publikovali animovaný videoklip <a
-                            href="https://www.youtube.com/watch?v=pUEGBv5v9VU">Ozubený
-                            Hodinář <i
-                                class="fa fa-youtube"></i></a></li>
-                    <li><b>15. listopadu 2016</b> publikovali videoklip <a
-                            href="https://www.youtube.com/watch?v=GpGzz5lSiz8">Svobodný
-                            člověk (ve svobodné zemi) <i
-                                class="fa fa-youtube"></i></a></li>
-                    <li><b>15. března 2019</b> publikovali animovaný videoklip
-                        <a
-                            href=https://www.youtube.com/watch?v=pudjS5YoUSw&t=3s>Pan
-                            Josef Novák <i
-                                class="fa fa-youtube"></i></a></li>
-                    <li><b>11. května 2019</b> publikovali animovaný videoklip
-                        <a
-                            href=https://www.youtube.com/watch?v=N6Se1Zx4eIM>Jericho
-                            <i class="fa fa-youtube"></i></a></li>
-                    <li><b>20. března 2022</b> publikovali animovaný videoklip
-                        <a
-                            href=https://www.youtube.com/watch?v=xlKFg-iTP1c>Nad
-                            piánem pán <i
-                                class="fa fa-youtube"></i></a></li>
-                    <li><b>20. března 2022</b> publikovali animovaný videoklip
-                        <a
-                            href=https://www.youtube.com/watch?v=QAKYTG0TAAE>Zubatá
-                            <i class="fa fa-youtube"></i></a></li>
-                </ul>
-                <h3>Posádka</h3>
-                <ul>
-                    <li><b>Vanad</b> basová kytara</li>
-                    <li><b>Miroslav Juhy Juhos</b> kytara, zpěv</li>
-                    <li><b>Jan Holota</b> bicí</li>
-                </ul>
-                <div class="decoration">
-                    <span class="screw screw-top-left"></span>
-                    <span class="screw screw-top-right"></span>
-                    <span class="screw screw-bottom-left"></span>
-                    <span class="screw screw-bottom-right"></span>
-                </div>
-            </article>
-            <div id="stencil1"><div>Zde netlačit</div></div>
-            <article class="nahravky">
-                <h2 id="nahravky">Nahrávky</h2>
-                <h3>2023</h3>
-                <div>
-                    <a href=https://www.youtube.com/watch?v=cHKHotgEZDE
-                        style="background-image: url(nahravky/hamlet.jpg)">
-                        <div>Hamlet (live) &nbsp;<i
-                                class="fa fa-youtube"></i></div>
-                    </a>
-
-                </div>
-                <h3>2022</h3>
-                <div>
-                    <a href=https://www.youtube.com/watch?v=QAKYTG0TAAE
-                        style="background-image: url(nahravky/zubata.jpg)">
-                        <div>Zubatá&nbsp;<i class="fa fa-youtube"></i></div>
-                    </a>
-                    <a href=https://www.youtube.com/watch?v=xlKFg-iTP1c
-                        style="background-image: url(nahravky/panupian.jpg)">
-                        <div>Nad piánem pán&nbsp;<i
-                                class="fa fa-youtube"></i></div>
-                    </a>
-
-                </div>
-                <h3>2019</h3>
-                <div>
-                    <a href=https://www.youtube.com/watch?v=pudjS5YoUSw
-                        style="background-image: url(nahravky/novak.jpg)">
-                        <div>Pan Josef Novák&nbsp;<i
-                                class="fa fa-youtube"></i></div>
-                    </a>
-                    <a href=https://www.youtube.com/watch?v=N6Se1Zx4eIM
-                        style="background-image: url(nahravky/jericho.jpg)">
-                        <div>Jericho&nbsp;<i class="fa fa-youtube"></i></div>
-                    </a>
-                </div>
-                <h3>2016</h3>
-                <div>
-                    <a href="https://www.youtube.com/watch?v=pUEGBv5v9VU"
-                        style="background-image: url(nahravky/hodinar.jpg)">
-                        <div>Ozubený Hodinář <i class="fa fa-youtube"></i></div>
-                    </a>
-                    <a href="https://www.youtube.com/watch?v=GpGzz5lSiz8"
-                        style="background-image: url(nahravky/svobodny.jpg)">
-                        <div>Svobodný člověk (ve svobodné zemi)&nbsp;<i
-                                class="fa fa-youtube"></i></div>
-                    </a>
-                </div>
-                <h3>2011</h3>
-                <div>
-                    <a
-                        href="https://soundcloud.com/miroslav-juhos/sets/stary-dobry-casy"
-                        style="background-image: url(nahravky/obal2.jpg)">
-                        <div><i class="fa fa-volume-up"></i></div>
-                    </a>
-                    <a
-                        href="https://www.youtube.com/watch?v=oE7gZZuwVnw&list=PLu4szgwcGkqqRZnTw1nH4N5I-ZZ4F3y5I"
-                        style="background-image: url(nahravky/sdc.jpg)">
-                        <div>Rádio Starý dobrý časy&nbsp;<i
-                                class="fa fa-youtube"></i></div>
-                    </a>
-                </div>
-                <h3>2009</h3>
-                <div>
-                    <a
-                        href="https://soundcloud.com/miroslav-juhos/sets/a-to-uz-dneska-nikdo"
-                        style="background-image: url(nahravky/obal1.jpg)">
-                        <div><i class="fa fa-volume-up"></i></div>
-                    </a>
-                    <a href="https://www.youtube.com/watch?v=CFCnQc_mMpo&t=3s"
-                        style="background-image: url(nahravky/ksv.jpg)">
-                        <div>Krise středního věku&nbsp;<i
-                                class="fa fa-youtube"></i></div>
-                    </a>
-                </div>
-                <div class="decoration">
-                    <span class="screw screw-top-left"></span>
-                    <span class="screw screw-top-right"></span>
-                    <span class="screw screw-bottom-left"></span>
-                    <span class="screw screw-bottom-right"></span>
-                </div>
-            </article>
-
-            <div id="stencil2"><div></div>24V</div>
-
-            <article class="printable">
-                <h2 id="poradatele">Pro pořadatele</h2>
-
-                <h3>Technický požadavky (Rider)</h3>
-                <ul>
-                    <li>2 x zpěvový mikrofon</li>
-                    <li>standardní nazvučení bicích</li>
-                    <li>mikrofon pro basový zesilovač</li>
-                    <li>2 x mikrofon pro kytarový zesilovač <b>Vox AC10</b>
-                        (stereo)
+            <section class="slogans"
+                aria-label="Slogany z placek Rezatých Raket">
+                <div class="slogans-track">
+                    <ul class="slogans-set">
+                        <li><img src="images/placky/01-hudba.webp"
+                                alt="Hudba, která neuklidní." width="600"
+                                height="600" loading="lazy"></li>
+                        <li><img src="images/placky/02-rez-je-dukaz.webp"
+                                alt="Rez je důkaz, že jsme existovali."
+                                width="600" height="600" loading="lazy"></li>
+                        <li><img src="images/placky/03-punk.webp"
+                                alt="Punk není mrtvej – zrezl." width="600"
+                                height="600" loading="lazy"></li>
+                        <li><img src="images/placky/04-zpivame.webp"
+                                alt="Zpíváme o tom, o čem ty mlčíš." width="600"
+                                height="600" loading="lazy"></li>
+                        <li><img src="images/placky/05-patina.webp"
+                                alt="Rez je jen patina slávy." width="600"
+                                height="600" loading="lazy"></li>
+                        <li><img src="images/placky/06-soundtrack.webp"
+                                alt="Soundtrack pro konec světa." width="600"
+                                height="600" loading="lazy"></li>
+                        <li><img src="images/placky/07-jsme-rez.webp"
+                                alt="Jsme rez generace X." width="600"
+                                height="600" loading="lazy"></li>
                     </ul>
+                </div>
+            </section>
 
-                    <h3>Stage plan</h3>
-                    <img style="width: 100%;" src="images/stageplan.svg?1">
+            <section id="rakety" class="section section-black">
+                <div class="container">
+                    <h2 class="section-title">O&nbsp;Raketách</h2>
 
-                    <h3 class="non-printable">Logo ke stažení</h3>
-                    <div id="logo-download" class="non-printable">
-                        <div id="logo-container"></div>
-                        <ul class="format">
-                            <li><a href="logo/logo.png" title="PNG"><i
-                                        class="fa fa-file-image-o"></i> PNG
-                                </a></li>
-                            <li><a href="logo/logo.svg" title="SVG"><i
-                                        class="fa fa-file-code-o"></i> SVG
-                                </a></li>
-                            <li><a href="logo/logo.pdf" title="PDF"><i
-                                        class="fa fa-file-pdf-o"></i> PDF
-                                </a></li>
+                    <div class="about">
+                        <div class="about-text">
+                            <p class="lead">Rezatý Rakety je autorský rockový
+                                chameleon z&nbsp;Plzně
+                                založený v&nbsp;roce 2008.</p>
+                            <p>Po koketování s&nbsp;blues přešly Rakety
+                                k&nbsp;rocku s&nbsp;odkazem
+                                k&nbsp;tradici českého bigbítu. Ani to však není
+                                poslední zastávkou
+                                v&nbsp;hudebním vývoji skupiny, jelikož se do
+                                její tvorby začaly prolínat
+                                vlivy undergroundu a&nbsp;tvrdšího rocku.</p>
+                            <p>Poznávacím znamením Rezatých Raket jsou vlastní,
+                                česky psané texty, které
+                                se nebojí ironie a&nbsp;sarkasmu a&nbsp;zrcadlu
+                                společnosti nastavují
+                                zrcadlo.</p>
+
+                            <h3 class="label-title">Posádka</h3>
+                            <ul class="crew">
+                                <li><b>Vanad</b><span>basová kytara</span></li>
+                                <li><b>Miroslav Juhy Juhos</b><span>kytara,
+                                        zpěv</span></li>
+                                <li><b>Jan Holota</b><span>bicí</span></li>
+                            </ul>
+                        </div>
+                        <div class="about-card" aria-hidden="true">
+                            <img class="karta"
+                                src="images/karty/04-zpivame.webp" alt
+                                width="600" height="834" loading="lazy">
+                        </div>
+                    </div>
+
+                    <h3 class="label-title">Historie</h3>
+                    <ol class="timeline">
+                        <li><time datetime="2008-08-29">29. srpna 2008</time>
+                            <p>První koncert.</p></li>
+                        <li><time datetime="2009-05-05">5. května 2009</time>
+                            <p>Videoklip <a
+                                    href="https://www.youtube.com/watch?v=CFCnQc_mMpo&amp;t=3s">Krise
+                                    středního věku</a>.</p></li>
+                        <li><time datetime="2009-11-23">23. listopadu
+                                2009</time>
+                            <p>Vlastníma silama vydaný záznam z&nbsp;koncertu
+                                <b>…a&nbsp;to už dneska nikdo
+                                    neposlouchá</b>.</p></li>
+                        <li><time datetime="2009-12-02">2. prosince 2009</time>
+                            <p>Začíná série pravidelných koncertů pod hlavičkou
+                                <b>Trojka
+                                    z&nbsp;blues</b>.</p></li>
+                        <li><time datetime="2011-05-09">9. května 2011</time>
+                            <p>Videoklip <a
+                                    href="https://www.youtube.com/watch?v=oE7gZZuwVnw&amp;list=PLu4szgwcGkqqRZnTw1nH4N5I-ZZ4F3y5I">Rádio
+                                    Starý dobrý časy</a>.</p></li>
+                        <li><time datetime="2011-06-01">1. června 2011</time>
+                            <p>Studiové album <a href="#nahravky">Starý dobrý
+                                    časy</a>.</p></li>
+                        <li><time datetime="2015-06-06">6. června 2015</time>
+                            <p>Poslední ze série koncertů Trojek.</p></li>
+                        <li><time datetime="2016-10-17">17. října 2016</time>
+                            <p>Animovaný videoklip <a
+                                    href="https://www.youtube.com/watch?v=pUEGBv5v9VU">Ozubený
+                                    Hodinář</a>.</p></li>
+                        <li><time datetime="2016-11-15">15. listopadu
+                                2016</time>
+                            <p>Videoklip <a
+                                    href="https://www.youtube.com/watch?v=GpGzz5lSiz8">Svobodný
+                                    člověk (ve svobodné zemi)</a>.</p></li>
+                        <li><time datetime="2019-03-15">15. března 2019</time>
+                            <p>Animovaný videoklip <a
+                                    href="https://www.youtube.com/watch?v=pudjS5YoUSw&amp;t=3s">Pan
+                                    Josef
+                                    Novák</a>.</p></li>
+                        <li><time datetime="2019-05-11">11. května 2019</time>
+                            <p>Animovaný videoklip <a
+                                    href="https://www.youtube.com/watch?v=N6Se1Zx4eIM">Jericho</a>.</p></li>
+                        <li><time datetime="2022-03-20">20. března 2022</time>
+                            <p>Animované videoklipy <a
+                                    href="https://www.youtube.com/watch?v=xlKFg-iTP1c">Nad
+                                    piánem pán</a>
+                                a&nbsp;<a
+                                    href="https://www.youtube.com/watch?v=QAKYTG0TAAE">Zubatá</a>.</p></li>
+                    </ol>
+                </div>
+            </section>
+
+            <section id="nahravky" class="section section-cream">
+                <div class="container">
+                    <h2 class="section-title">Nahrávky</h2>
+
+                    <ul class="records">
+                        <li>
+                            <a class="record"
+                                href="https://www.youtube.com/watch?v=cHKHotgEZDE">
+                                <span class="record-cover"><img
+                                        src="nahravky/hamlet.jpg" alt
+                                        width="342" height="300"
+                                        loading="lazy"></span>
+                                <span class="record-year">2023</span>
+                                <span class="record-title">Hamlet</span>
+                                <span class="record-kind"><svg class="icon"><use
+                                            href="#i-youtube" /></svg>
+                                    Živě</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="record"
+                                href="https://www.youtube.com/watch?v=QAKYTG0TAAE">
+                                <span class="record-cover"><img
+                                        src="nahravky/zubata.jpg" alt
+                                        width="300" height="300"
+                                        loading="lazy"></span>
+                                <span class="record-year">2022</span>
+                                <span class="record-title">Zubatá</span>
+                                <span class="record-kind"><svg class="icon"><use
+                                            href="#i-youtube" /></svg> Animovaný
+                                    klip</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="record"
+                                href="https://www.youtube.com/watch?v=xlKFg-iTP1c">
+                                <span class="record-cover"><img
+                                        src="nahravky/panupian.jpg" alt
+                                        width="300" height="300"
+                                        loading="lazy"></span>
+                                <span class="record-year">2022</span>
+                                <span class="record-title">Nad piánem pán</span>
+                                <span class="record-kind"><svg class="icon"><use
+                                            href="#i-youtube" /></svg> Animovaný
+                                    klip</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="record"
+                                href="https://www.youtube.com/watch?v=pudjS5YoUSw">
+                                <span class="record-cover"><img
+                                        src="nahravky/novak.jpg" alt width="300"
+                                        height="300" loading="lazy"></span>
+                                <span class="record-year">2019</span>
+                                <span class="record-title">Pan Josef
+                                    Novák</span>
+                                <span class="record-kind"><svg class="icon"><use
+                                            href="#i-youtube" /></svg> Animovaný
+                                    klip</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="record"
+                                href="https://www.youtube.com/watch?v=N6Se1Zx4eIM">
+                                <span class="record-cover"><img
+                                        src="nahravky/jericho.jpg" alt
+                                        width="300" height="300"
+                                        loading="lazy"></span>
+                                <span class="record-year">2019</span>
+                                <span class="record-title">Jericho</span>
+                                <span class="record-kind"><svg class="icon"><use
+                                            href="#i-youtube" /></svg> Animovaný
+                                    klip</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="record"
+                                href="https://www.youtube.com/watch?v=pUEGBv5v9VU">
+                                <span class="record-cover"><img
+                                        src="nahravky/hodinar.jpg" alt
+                                        width="300" height="300"
+                                        loading="lazy"></span>
+                                <span class="record-year">2016</span>
+                                <span class="record-title">Ozubený
+                                    Hodinář</span>
+                                <span class="record-kind"><svg class="icon"><use
+                                            href="#i-youtube" /></svg> Animovaný
+                                    klip</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="record"
+                                href="https://www.youtube.com/watch?v=GpGzz5lSiz8">
+                                <span class="record-cover"><img
+                                        src="nahravky/svobodny.jpg" alt
+                                        width="300" height="300"
+                                        loading="lazy"></span>
+                                <span class="record-year">2016</span>
+                                <span class="record-title">Svobodný člověk (ve
+                                    svobodné zemi)</span>
+                                <span class="record-kind"><svg class="icon"><use
+                                            href="#i-youtube" /></svg>
+                                    Videoklip</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="record"
+                                href="https://soundcloud.com/miroslav-juhos/sets/stary-dobry-casy">
+                                <span class="record-cover"><img
+                                        src="nahravky/obal2.jpg" alt width="300"
+                                        height="300" loading="lazy"></span>
+                                <span class="record-year">2011</span>
+                                <span class="record-title">Starý dobrý
+                                    časy</span>
+                                <span class="record-kind"><svg class="icon"><use
+                                            href="#i-headphones" /></svg>
+                                    Studiové album</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="record"
+                                href="https://www.youtube.com/watch?v=oE7gZZuwVnw&amp;list=PLu4szgwcGkqqRZnTw1nH4N5I-ZZ4F3y5I">
+                                <span class="record-cover"><img
+                                        src="nahravky/sdc.jpg" alt width="300"
+                                        height="300" loading="lazy"></span>
+                                <span class="record-year">2011</span>
+                                <span class="record-title">Rádio Starý dobrý
+                                    časy</span>
+                                <span class="record-kind"><svg class="icon"><use
+                                            href="#i-youtube" /></svg>
+                                    Videoklip</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="record"
+                                href="https://soundcloud.com/miroslav-juhos/sets/a-to-uz-dneska-nikdo">
+                                <span class="record-cover"><img
+                                        src="nahravky/obal1.jpg" alt width="300"
+                                        height="300" loading="lazy"></span>
+                                <span class="record-year">2009</span>
+                                <span class="record-title">…a&nbsp;to už dneska
+                                    nikdo neposlouchá</span>
+                                <span class="record-kind"><svg class="icon"><use
+                                            href="#i-headphones" /></svg> Záznam
+                                    z&nbsp;koncertu</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="record"
+                                href="https://www.youtube.com/watch?v=CFCnQc_mMpo&amp;t=3s">
+                                <span class="record-cover"><img
+                                        src="nahravky/ksv.jpg" alt width="300"
+                                        height="300" loading="lazy"></span>
+                                <span class="record-year">2009</span>
+                                <span class="record-title">Krise středního
+                                    věku</span>
+                                <span class="record-kind"><svg class="icon"><use
+                                            href="#i-youtube" /></svg>
+                                    Videoklip</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="poradatele" class="section section-rust printable">
+                <div class="container">
+                    <h2 class="section-title">Pro pořadatele</h2>
+
+                    <div class="rider">
+                        <div class="rider-text">
+                            <h3 class="label-title">Technické požadavky
+                                (rider)</h3>
+                            <ul class="rider-list">
+                                <li>2× zpěvový mikrofon</li>
+                                <li>standardní nazvučení bicích</li>
+                                <li>mikrofon pro basový zesilovač</li>
+                                <li>2× mikrofon pro kytarový zesilovač <b>Vox
+                                        AC10</b> (stereo)</li>
+                            </ul>
+                            <button type="button"
+                                class="btn btn-cream non-printable"
+                                id="print-rider">
+                                <svg class="icon"><use
+                                        href="#i-printer" /></svg> Vytisknout
+                                rider
+                            </button>
+                        </div>
+                        <figure class="stageplan">
+                            <h3 class="label-title">Stage plan</h3>
+                            <img src="images/stageplan.svg?1"
+                                alt="Stage plan: vlevo Juhy (kytara, zpěv) se dvěma kytarovými komby, vzadu uprostřed Honza (bicí), vpravo Vanad (basa) s basovým zesilovačem."
+                                width="550" height="271">
+                        </figure>
+                    </div>
+
+                    <div class="downloads non-printable">
+                        <h3 class="label-title">Logo ke stažení</h3>
+                        <ul class="logo-tiles">
+                            <li class="logo-tile tile-cream">
+                                <img src="logo/logo-velke.svg"
+                                    alt="Velké logo s dekoracemi" width="1158"
+                                    height="1020" loading="lazy">
+                                <div class="logo-tile-meta">
+                                    <span>Velké logo</span>
+                                    <span class="formats"><a
+                                            href="logo/logo-velke.svg"
+                                            download>SVG</a><a
+                                            href="logo/logo-velke.png"
+                                            download>PNG</a></span>
+                                </div>
+                            </li>
+                            <li class="logo-tile tile-black">
+                                <img src="logo/logo-male.svg"
+                                    alt="Malé logo bez dekorací" width="1158"
+                                    height="1020" loading="lazy">
+                                <div class="logo-tile-meta">
+                                    <span>Malé logo</span>
+                                    <span class="formats"><a
+                                            href="logo/logo-male.svg"
+                                            download>SVG</a><a
+                                            href="logo/logo-male.png"
+                                            download>PNG</a></span>
+                                </div>
+                            </li>
+                            <li class="logo-tile tile-cream">
+                                <img src="logo/logo-cerne.svg"
+                                    alt="Černá jednobarevná varianta loga"
+                                    width="1158" height="1020" loading="lazy">
+                                <div class="logo-tile-meta">
+                                    <span>Černá varianta</span>
+                                    <span class="formats"><a
+                                            href="logo/logo-cerne.svg"
+                                            download>SVG</a><a
+                                            href="logo/logo-cerne.png"
+                                            download>PNG</a></span>
+                                </div>
+                            </li>
+                            <li class="logo-tile tile-black">
+                                <img src="logo/logo-inverzni.svg"
+                                    alt="Inverzní krémová varianta loga"
+                                    width="1158" height="1020" loading="lazy">
+                                <div class="logo-tile-meta">
+                                    <span>Inverzní varianta</span>
+                                    <span class="formats"><a
+                                            href="logo/logo-inverzni.svg"
+                                            download>SVG</a><a
+                                            href="logo/logo-inverzni.png"
+                                            download>PNG</a></span>
+                                </div>
+                            </li>
                         </ul>
                     </div>
 
-                    <ul id="kontakt">
-                        <li><i class="fa fa-facebook-square"></i> <a
-                                target="_blank"
-                                href="http://www.facebook.com/rezatyrakety">Rezatý
-                                Rakety</a></li>
-
-                        <li><i class="fa fa-instagram"></i> <a target="_blank"
-                                href="https://www.instagram.com/rezatyrakety/">Rezatý
-                                Rakety</a></li>
-                        <li><i class="fa fa-user"></i> Miroslav Juhy Juhos</li>
-                        <li><i class="fa fa-phone"></i> <a
-                                href="tel:+420605376741"> 605 376 741</a></li>
-                        <li>
-                            <script>
-                            const _e='juhy',_d='rezatyrakety.cz',_a=_e+'@'+_d;
-                            document.currentScript.insertAdjacentHTML('afterend','<i class="fa fa-envelope"></i> <a class="email" href="mailto:'+_a+'"> '+_a+'</a>');
-                        </script>
-                        </li>
-                        <li><i class="fa fa-map-marker"></i> Plzeň</li>
+                    <h3 class="label-title">Kontakt</h3>
+                    <ul class="contact">
+                        <li><svg class="icon"><use href="#i-user" /></svg>
+                            Miroslav Juhy Juhos</li>
+                        <li><svg class="icon"><use href="#i-phone" /></svg> <a
+                                href="tel:+420605376741">605&nbsp;376&nbsp;741</a></li>
+                        <li id="contact-email"><svg class="icon"><use
+                                    href="#i-mail" /></svg>
+                            <span>e-mail</span></li>
+                        <li><svg class="icon"><use href="#i-pin" /></svg>
+                            Plzeň</li>
+                        <li class="non-printable"><svg class="icon"><use
+                                    href="#i-facebook" /></svg> <a
+                                target="_blank" rel="noopener"
+                                href="https://www.facebook.com/rezatyrakety">Facebook</a></li>
+                        <li class="non-printable"><svg class="icon"><use
+                                    href="#i-instagram" /></svg> <a
+                                target="_blank" rel="noopener"
+                                href="https://www.instagram.com/rezatyrakety/">Instagram</a></li>
                     </ul>
-                    <div class="decoration">
-                        <span class="screw screw-top-left"></span>
-                        <span class="screw screw-top-right"></span>
-                        <span class="screw screw-bottom-left"></span>
-                        <span class="screw screw-bottom-right"></span>
-                    </div>
-                </article>
-            </main>
+                </div>
+            </section>
+        </main>
 
-            <canvas id="rocket-smoke" aria-hidden="true"></canvas>
-
-            <div id="rocket-cursor" aria-hidden="true">
-                <svg viewBox="0 0 40 62" width="40" height="62"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <lineargradient id="rocketBodyFill" x1="0" y1="0" x2="1"
-                            y2="0">
-                            <stop offset="0%" stop-color="#e8663f" />
-                            <stop offset="30%" stop-color="#c2401f" />
-                            <stop offset="65%" stop-color="#9c3018" />
-                            <stop offset="100%" stop-color="#6e1c0c" />
-                        </lineargradient>
-                        <lineargradient id="rocketBodyShade" x1="0" y1="0"
-                            x2="1" y2="0">
-                            <stop offset="0%" stop-color="#ffffff"
-                                stop-opacity="0.6" />
-                            <stop offset="16%" stop-color="#ffffff"
-                                stop-opacity="0.15" />
-                            <stop offset="45%" stop-color="#000000"
-                                stop-opacity="0" />
-                            <stop offset="82%" stop-color="#000000"
-                                stop-opacity="0.3" />
-                            <stop offset="100%" stop-color="#000000"
-                                stop-opacity="0.6" />
-                        </lineargradient>
-                    </defs>
-                    <g class="flame">
-                        <polygon class="flame-outer"
-                            points="15,50 25,50 20,62" />
-                        <polygon class="flame-inner"
-                            points="17,50 23,50 20,58" />
-                    </g>
-                    <g class="hull">
-                        <polygon class="fin" points="12,34 0,52 6,60 15,50" />
-                        <polygon class="fin" points="28,34 40,52 34,60 25,50" />
-                        <path class="body"
-                            d="M12,16 L28,16 L28,44 L25,50 L15,50 L12,44 Z" />
-                        <path class="nose"
-                            d="M20,2 Q27,10 28,16 L12,16 Q13,10 20,2 Z" />
-                        <path class="nose-shade"
-                            d="M20,2 Q27,10 28,16 L12,16 Q13,10 20,2 Z" />
-                        <rect class="checker-black" x="12" y="22" width="8"
-                            height="8" />
-                        <rect class="checker-white" x="20" y="22" width="8"
-                            height="8" />
-                        <rect class="checker-white" x="12" y="30" width="8"
-                            height="8" />
-                        <rect class="checker-black" x="20" y="30" width="8"
-                            height="8" />
-                        <circle class="rivet" cx="13" cy="46" r="1.1" />
-                        <circle class="rivet" cx="27" cy="46" r="1.1" />
-                        <path class="body-shade"
-                            d="M12,16 L28,16 L28,44 L25,50 L15,50 L12,44 Z" />
-                    </g>
-                </svg>
+        <footer class="site-footer section-black">
+            <div class="container site-footer-inner">
+                <img class="footer-logo" src="images/logo-nav.png" alt
+                    width="130" height="115" loading="lazy">
+                <p class="footer-slogan">Rez je důkaz, že jsme existovali.</p>
+                <ul class="footer-social">
+                    <li><a target="_blank" rel="noopener"
+                            href="https://www.facebook.com/rezatyrakety"
+                            aria-label="Facebook"><svg class="icon"><use
+                                    href="#i-facebook" /></svg></a></li>
+                    <li><a target="_blank" rel="noopener"
+                            href="https://www.instagram.com/rezatyrakety/"
+                            aria-label="Instagram"><svg class="icon"><use
+                                    href="#i-instagram" /></svg></a></li>
+                </ul>
+                <p class="footer-copy">© 2008–<span id="year">2026</span> Rezatý
+                    Rakety · Plzeň</p>
             </div>
-        </body>
+        </footer>
 
-    </html>
+        <canvas id="rocket-smoke" aria-hidden="true"></canvas>
+
+        <div id="rocket-cursor" aria-hidden="true">
+            <svg viewBox="0 0 40 62" width="40" height="62"
+                xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <lineargradient id="rocketBodyFill" x1="0" y1="0" x2="1"
+                        y2="0">
+                        <stop offset="0%" stop-color="#f1e8dc" />
+                        <stop offset="35%" stop-color="#DCCDBB" />
+                        <stop offset="70%" stop-color="#bfae98" />
+                        <stop offset="100%" stop-color="#8d7d6a" />
+                    </lineargradient>
+                    <lineargradient id="rocketBodyShade" x1="0" y1="0" x2="1"
+                        y2="0">
+                        <stop offset="0%" stop-color="#ffffff"
+                            stop-opacity="0.5" />
+                        <stop offset="16%" stop-color="#ffffff"
+                            stop-opacity="0.12" />
+                        <stop offset="45%" stop-color="#000000"
+                            stop-opacity="0" />
+                        <stop offset="82%" stop-color="#000000"
+                            stop-opacity="0.25" />
+                        <stop offset="100%" stop-color="#000000"
+                            stop-opacity="0.5" />
+                    </lineargradient>
+                </defs>
+                <g class="flame">
+                    <polygon class="flame-outer" points="15,50 25,50 20,62" />
+                    <polygon class="flame-inner" points="17,50 23,50 20,58" />
+                </g>
+                <g class="hull">
+                    <polygon class="fin fin-left"
+                        points="12,34 0,52 6,60 15,50" />
+                    <polygon class="fin fin-right"
+                        points="28,34 40,52 34,60 25,50" />
+                    <path class="body"
+                        d="M12,16 L28,16 L28,44 L25,50 L15,50 L12,44 Z" />
+                    <path class="nose"
+                        d="M20,2 Q27,10 28,16 L12,16 Q13,10 20,2 Z" />
+                    <path class="nose-shade"
+                        d="M20,2 Q27,10 28,16 L12,16 Q13,10 20,2 Z" />
+                    <rect class="half-black" x="12" y="22" width="8"
+                        height="16" />
+                    <rect class="half-rust" x="20" y="22" width="8"
+                        height="16" />
+                    <circle class="rivet" cx="13" cy="46" r="1.1" />
+                    <circle class="rivet" cx="27" cy="46" r="1.1" />
+                    <path class="body-shade"
+                        d="M12,16 L28,16 L28,44 L25,50 L15,50 L12,44 Z" />
+                </g>
+            </svg>
+        </div>
+    </body>
+</html>
